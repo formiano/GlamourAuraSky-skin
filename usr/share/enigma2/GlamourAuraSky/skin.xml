@@ -927,8 +927,7 @@
   <screen name="TranslationInfo" position="0,0" size="1920,1080" title="TranslationInfo" backgroundColor="transparent" flags="wfNoBorder" alphatest="on">
     <panel name="ScreenElements2" />
     <ePixmap position="50,315" size="400,400" pixmap="GACommon/images/info.png" alphatest="on" transparent="1" zPosition="5" />
-    <widget source="TranslatorName" render="Label" position="540,90" size="1305,165" font="Regular; 36" halign="left" backgroundColor="background20" transparent="1" foregroundColor="sky" zPosition="6" />
-    <widget source="TranslationInfo" render="Label" position="540,270" size="1305,585" font="Regular; 36" halign="left" backgroundColor="background20" transparent="1" zPosition="8" />
+    <widget name="AboutScrollLabel" position="540,75" size="1305,650" font="RegularB;32" halign="left" transparent="1" zPosition="8" backgroundColor="background20" foregroundColor="sky" />
     <eLabel text="Glamour Aura FHD Skin by MCelliotG" position="75,705" size="400,155" font="Regular; 42" backgroundColor="transparent" shadowColor="black" shadowOffset="-2,-2" transparent="1" valign="top" halign="center" zPosition="1" />
   </screen>
   <!-- 08. Streaming Clients Info -->
@@ -1779,6 +1778,17 @@
   </screen>
   <!-- 10. Skin Selector -->
   <screen name="SkinSelector" position="0,0" size="1920,1080" title="Skin Selector" flags="wfNoBorder" backgroundColor="transparent" alphatest="on">
+    <panel name="MenuBackground" />
+    <panel name="ClockLabel1" />
+    <ePixmap position="50,315" size="400,400" pixmap="GACommon/images/skins.png" alphatest="on" transparent="1" zPosition="5" />
+    <widget name="Preview" position="460,360" size="320,320" transparent="1" alphatest="on" zPosition="5" />
+    <widget name="SkinList" font="RegularB; 32" position="810,80" size="930,650" scrollbarMode="showOnDemand" backgroundColor="background20" foregroundColor="white" itemHeight="50" enableWrapAround="1" transparent="1" selectionPixmap="GlamourAuraSky/selections/listsel930.png" alphatest="off" zPosition="6" />
+    <widget source="introduction" render="Label" position="810,730" size="930,80" font="Regular; 33" halign="center" backgroundColor="background20" transparent="1" zPosition="5" foregroundColor="cyan1" />
+    <panel name="RedKey3" />
+    <panel name="Title1" />
+  </screen>
+    <!-- 10. Skin Selector -->
+  <screen name="VFDSkinSelector" position="0,0" size="1920,1080" title="Skin Selector" flags="wfNoBorder" backgroundColor="transparent" alphatest="on">
     <panel name="MenuBackground" />
     <panel name="ClockLabel1" />
     <ePixmap position="50,315" size="400,400" pixmap="GACommon/images/skins.png" alphatest="on" transparent="1" zPosition="5" />

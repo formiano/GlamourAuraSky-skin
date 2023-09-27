@@ -296,12 +296,12 @@
     <panel name="FullKeys1" />
   </screen>
   <!-- 18. Memory Info -->
-  <screen name="MemoryInfo" position="0,0" size="1920,1080" title="Memory Info" flags="wfNoBorder" backgroundColor="transparent">
+  <screen name="ClearMem" position="0,0" size="1920,1080" title="ClearMem" flags="wfNoBorder" backgroundColor="transparent">
     <panel name="ScreenElements2" />
     <ePixmap position="50,315" size="400,400" pixmap="GACommon/images/memory.png" alphatest="on" transparent="1" zPosition="5" />
-    <widget name="lmemtext" font="Regular; 26" position="540,60" size="405,785" zPosition="1" halign="left" backgroundColor="background20" transparent="1" />
-    <widget name="lmemvalue" font="Regular; 26" position="540,60" size="405,785" zPosition="2" halign="right" backgroundColor="background20" transparent="1" />
-    <widget name="rmemtext" font="Regular; 26" position="1110,60" size="405,635" zPosition="1" halign="left" backgroundColor="background20" transparent="1" />
+    <widget name="config" font="Regular; 30" position="540,405" size="870,300" scrollbarMode="showOnDemand" selectionPixmap="GlamourAuraSky/selections/filesel.png" alphatest="off" backgroundColor="background20" itemHeight="50" enableWrapAround="1" transparent="1" zPosition="9" />
+    <widget name="memory" font="Regular; 26" position="540,60" size="405,785" zPosition="2" halign="right" backgroundColor="background20" transparent="1" />
+    <widget name="slide" font="Regular; 26" position="1110,60" size="405,635" zPosition="1" halign="left" backgroundColor="background20" transparent="1" />
     <widget name="rmemvalue" font="Regular; 26" position="1110,60" size="405,635" zPosition="2" halign="right" backgroundColor="background20" transparent="1" />
     <widget name="pfree" position="945,140" size="110,35" font="Regular; 24" zPosition="1" halign="center" backgroundColor="background20" transparent="1" />
     <widget name="pused" position="945,740" size="110,35" font="Regular; 24" zPosition="1" halign="center" backgroundColor="background20" transparent="1" />
