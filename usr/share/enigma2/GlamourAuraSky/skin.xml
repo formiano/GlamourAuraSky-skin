@@ -3487,6 +3487,7 @@ if not self["videofps"].text:
     <panel name="Wizard1" />
     <panel name="LanguageKey" />
     <panel name="RemoteWizard" />
+    <panel name="RCKeys" />
   </screen>
   <!-- 08. Video Wizard -->
   <screen name="VideoWizard" position="0,0" size="1920,1080" title="Default settings" flags="wfNoBorder" backgroundColor="transparent">
