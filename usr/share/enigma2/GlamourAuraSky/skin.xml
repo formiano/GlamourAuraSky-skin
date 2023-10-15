@@ -3478,7 +3478,7 @@ if not self["videofps"].text:
     <widget name="wizard" position="50,315" size="400,400" pixmap="GACommon/images/network.png" alphatest="on" transparent="1" zPosition="5" />
     <panel name="Wizard1" />
     <panel name="LanguageKey" />
-    <panel name="RemoteWizard" />
+        <panel name="RCKeys" />
   </screen>
   <!-- 07. Start Wizard -->
   <screen name="StartWizard" position="0,0" size="1920,1080" title="Welcome..." flags="wfNoBorder" backgroundColor="transparent">
@@ -3486,7 +3486,6 @@ if not self["videofps"].text:
     <widget name="wizard" position="50,315" size="400,400" pixmap="GACommon/images/wizard.png" alphatest="on" transparent="1" zPosition="5" />
     <panel name="Wizard1" />
     <panel name="LanguageKey" />
-    <panel name="RemoteWizard" />
     <panel name="RCKeys" />
   </screen>
   <!-- 08. Video Wizard -->
@@ -3504,7 +3503,7 @@ if not self["videofps"].text:
     </widget>
     <widget name="config" font="Regular; 33" position="950,520" size="870,400" itemHeight="50" zPosition="14" scrollbarMode="showOnDemand" selectionPixmap="GlamourAuraSky/selections/filesel.png" alphatest="off" transparent="1" />
     <panel name="LanguageKey" />
-    <panel name="RemoteWizard" />
+    <panel name="RCKeys" />
     <widget name="portpic" position="740,630" size="192,192" zPosition="18" transparent="1" alphatest="blend" />
   </screen>
   <!-- 09. Install Ipkg Updater -->
