@@ -5,14 +5,17 @@
   <!--  ######## OPENDROID IMAGES ######## -->
   <!-- 01. BluePanel -->
   <screen flags="wfNoBorder" name="BluePanel" position="0,0" size="1920,1080" title="Blue Panel" backgroundColor="transparent" alphatest="on">
-    <panel name="ScreenElements3" />
-    <ePixmap position="100,865" size="180,180" scale="1" pixmap="GACommon/images/camd.png" alphatest="on" transparent="1" zPosition="5" />
+    <panel name="ScreenElements2" />
+    <ePixmap position="50,315" size="400,400" pixmap="GACommon/images/camd.png" alphatest="on" transparent="1" zPosition="5" />
     <widget name="config" font="Regular; 30" position="540,60" size="1320,200" scrollbarMode="showOnDemand" selectionPixmap="GlamourAuraSky/selections/aurasel.png" alphatest="off" backgroundColor="background20" itemHeight="50" enableWrapAround="1" transparent="1" zPosition="9" />
-    <widget name="actifcam" position="540,260" size="650,50" font="RegularL; 30" transparent="1" foregroundColor="sky" backgroundColor="background20" halign="left" zPosition="5" />
-    <widget name="actifcam2" position="1200,260" size="660,50" font="RegularL; 30" transparent="1" foregroundColor="amarillo" backgroundColor="background20" halign="left" zPosition="5" />
-    <widget name="ecminfo" position="540,310" size="690,550" font="Regular; 30" transparent="1" foregroundColor="cyan" backgroundColor="background20" halign="left" zPosition="5" />
-    <panel name="CPUTempInfobar" />
+    <ePixmap position="50,315" size="400,400" pixmap="GACommon/images/camd.png" alphatest="on" transparent="1" zPosition="5" />
+    <widget name="info" position="560,530" size="1300,530" font="Regular; 30" transparent="1" foregroundColor="amarillo" backgroundColor="background20" halign="left" valign="top" zPosition="15" />
+    <!--panel name="CPUTempInfobar" /-->
     <eLabel text="Glamour Aura FHD Skin by MCelliotG" position="1360,360" size="400,155" font="Regular; 42" backgroundColor="background20" transparent="1" valign="center" halign="center" zPosition="1" foregroundColor="cyan2" />
+  <widget name="lb_provider" position="560,187" size="730,200" font="Regular;35" zPosition="2" foregroundColor="cyan2" transparent="1" />
+  <widget name="lb_channel" position="560,239" size="730,200" font="Regular;35" zPosition="2" transparent="1" foregroundColor="cyan2" />
+  <widget name="lb_aspectratio" position="560,294" size="730,200" font="Regular;32" zPosition="2" foregroundColor="cyan2" transparent="1" />
+  <widget name="lb_videosize" position="560,345" size="730,200" font="Regular;32" zPosition="2" foregroundColor="cyan2" transparent="1" />
     <ePixmap pixmap="GlamourAuraSky/infobar/flashspace.png" position="1235,570" zPosition="3" size="40,40" alphatest="blend" transparent="1" />
     <widget source="session.CurrentService" render="Label" position="1280,575" size="585,35" font="Regular; 26" zPosition="6" backgroundColor="background20" transparent="1" text="FlashInfo" noWrap="1" halign="left" foregroundColor="amarillo">
       <convert type="GlamourSpace">FlashInfo,Simple</convert>
@@ -41,7 +44,7 @@
     <widget source="session.CurrentService" render="Label" position="1280,815" size="585,35" font="Regular; 26" zPosition="6" backgroundColor="background20" transparent="1" text="Netspace" noWrap="1">
       <convert type="GlamourSpace">NetSpace,Full</convert>
     </widget>
-    <panel name="FullKeys1" />
+    <panel name="FullKeysMIH" />
   </screen>
   <!-- 02. GreenPanel -->
   <screen name="GreenPanel" position="0,0" size="1920,1080" title="Green Panel" flags="wfNoBorder" backgroundColor="transparent">

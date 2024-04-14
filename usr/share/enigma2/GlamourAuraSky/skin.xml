@@ -1849,7 +1849,7 @@ if not self["videofps"].text:
     </widget>
   </screen>
   <!-- 03. Softcam Setup -->
-  <screen flags="wfNoBorder" name="SoftcamSetup" position="0,0" size="1920,1080" title="Softcam Setup" backgroundColor="transparent" alphatest="on">
+  <!--screen flags="wfNoBorder" name="SoftcamSetup" position="0,0" size="1920,1080" title="Softcam Setup" backgroundColor="transparent" alphatest="on">
     <panel name="ScreenElements2" />
     <ePixmap pixmap="GlamourAuraSky/menu/accentglowt810.png" position="540,735" size="810,45" zPosition="5" alphatest="blend" transparent="1" />
     <ePixmap pixmap="GlamourAuraSky/menu/accentglowb810.png" position="1040,820" size="810,45" zPosition="5" alphatest="blend" transparent="1" />
@@ -1876,7 +1876,7 @@ if not self["videofps"].text:
     <widget name="key_green" position="1540,530" size="295,85" zPosition="5" font="Regular; 30" halign="center" backgroundColor="background20" transparent="1" valign="bottom" />
     <widget name="key_yellow" position="1540,690" size="295,85" zPosition="5" font="Regular; 30" halign="center" backgroundColor="background20" transparent="1" valign="bottom" />
     <widget name="key_blue" position="1540,850" size="295,85" zPosition="5" font="Regular; 30" halign="center" backgroundColor="background20" transparent="1" valign="bottom" />
-  </screen>
+  </screen-->
   <!-- 04. Recording Paths -->
   <screen name="RecordPathsSettings" position="0,0" size="1920,1080" title="Recording paths..." flags="wfNoBorder" backgroundColor="transparent">
     <panel name="ScreenElements2" />
