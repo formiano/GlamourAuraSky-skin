@@ -46,6 +46,7 @@
     <menu key="about_screen" image="GACommon/images/about.png" />
     <menu key="build_info_screen" image="GACommon/images/build_info.png" />
     <menu key="CommitInfo_info_screen" image="GACommon/images/commit_info.png" />
+    <menu key="GitLog_info_screen" image="GACommon/images/default_lists.png" />
     <menu key="debug_info_screen" image="GACommon/images/debug_info.png" />
     <menu key="device_screen" image="GACommon/images/devicescreen.png" />
     <menu key="distribution_info_screen" image="GACommon/images/about.png" />
@@ -983,8 +984,12 @@
       <convert type="MenuEntryCompare">supportchannel_YTChannel</convert>
       <convert type="ConditionalShowHide" />
     </widget>
-    <widget source="menu" render="Pixmap" pixmap="GACommon/images/specialfeat.png" position="515,425" size="180,180" scale="1" transparent="1" alphatest="on" zPosition="5">
+    <widget source="menu" render="Pixmap" pixmap="GACommon/images/commit_info.png" position="515,425" size="180,180" scale="1" transparent="1" alphatest="on" zPosition="5">
       <convert type="MenuEntryCompare">CommitInfo_info_screen</convert>
+      <convert type="ConditionalShowHide" />
+    </widget>
+        <widget source="menu" render="Pixmap" pixmap="GACommon/images/default_lists.png" position="515,425" size="180,180" scale="1" transparent="1" alphatest="on" zPosition="5">
+      <convert type="MenuEntryCompare">GitLog_info_screen</convert>
       <convert type="ConditionalShowHide" />
     </widget>
   </screen>
