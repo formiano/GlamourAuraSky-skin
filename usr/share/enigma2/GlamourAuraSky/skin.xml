@@ -127,6 +127,7 @@
   </fonts>
   <parameters>
     <parameter name="AboutHddSplit" value="1" />
+    <parameter name="AllowUserDatesAndTimes" value="2,2" />
     <parameter name="AutotimerEnabledIcon" value="5,2,45,45" />
     <parameter name="AutotimerRecordIcon" value="55,2,45,45" />
     <parameter name="ChoicelistDash" value="0,0,940,50" />

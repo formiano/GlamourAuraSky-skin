@@ -7,7 +7,7 @@
   <screen flags="wfNoBorder" name="BluePanel" position="0,0" size="1920,1080" title="Blue Panel" backgroundColor="transparent" alphatest="on">
     <panel name="ScreenElements2" />
     <ePixmap position="50,315" size="400,400" pixmap="GACommon/images/camd.png" alphatest="on" transparent="1" zPosition="5" />
-    <widget name="config" font="Regular; 30" position="540,60" size="1320,200" scrollbarMode="showOnDemand" selectionPixmap="GlamourAuraSky/selections/aurasel.png" alphatest="off" backgroundColor="background20" itemHeight="50" enableWrapAround="1" transparent="1" zPosition="9" />
+    <widget name="config" font="Regular; 33" position="540,60" size="1320,200" scrollbarMode="showOnDemand" selectionPixmap="GlamourAuraSky/selections/aurasel.png" alphatest="off" backgroundColor="background20" itemHeight="50" enableWrapAround="1" transparent="1" zPosition="9" />
     <ePixmap position="50,315" size="400,400" pixmap="GACommon/images/camd.png" alphatest="on" transparent="1" zPosition="5" />
     <widget name="info" position="560,530" size="1300,530" font="Regular; 30" transparent="1" foregroundColor="amarillo" backgroundColor="background20" halign="left" valign="top" zPosition="15" />
     <!--panel name="CPUTempInfobar" /-->
