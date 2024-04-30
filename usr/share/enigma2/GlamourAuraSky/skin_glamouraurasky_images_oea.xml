@@ -291,7 +291,8 @@
   <screen name="CommitInfo" position="0,0" size="1920,1080" title="Commit Info" backgroundColor="transparent" flags="wfNoBorder" alphatest="on">
     <panel name="ScreenElements2" />
     <ePixmap position="50,315" size="400,400" pixmap="GACommon/images/specialfeat.png" alphatest="on" transparent="1" zPosition="5" />
-    <widget name="AboutScrollLabel" position="540,90" size="1305,700" font="Regular; 32" halign="left" backgroundColor="background20" transparent="1" foregroundColor="cyan1" zPosition="6" />
+    <widget name="AboutScrollLabel" position="540,210" size="1305,700" font="Regular; 32" halign="left" backgroundColor="background20" transparent="1" foregroundColor="cyan1" zPosition="6" />
+    <widget name="HintText" position="540,90" size="715,475" font="Regular; 32" halign="left" backgroundColor="background20" transparent="1" foregroundColor="cyan1" zPosition="6" />
     <ePixmap position="1845,90" size="54,54" zPosition="10" pixmap="GlamourAuraSky/buttons/key_up2.png" transparent="1" alphatest="on" />
     <ePixmap position="1845,735" size="54,54" zPosition="10" pixmap="GlamourAuraSky/buttons/key_down2.png" transparent="1" alphatest="on" />
     <ePixmap position="540,35" size="54,54" zPosition="10" pixmap="GlamourAuraSky/buttons/key_left2.png" transparent="1" alphatest="on" />
