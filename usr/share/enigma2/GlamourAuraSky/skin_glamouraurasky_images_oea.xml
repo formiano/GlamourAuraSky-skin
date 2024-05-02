@@ -313,6 +313,20 @@
     <widget name="info" position="1110,712" size="720,225" font="Regular; 30" zPosition="3" halign="left" backgroundColor="background20" transparent="1" foregroundColor="sky" />
     <panel name="FullKeysV2" />
   </screen>
+    <screen name="MemoryInfo" position="0,0" size="1920,1080" title="ClearMem" flags="wfNoBorder" backgroundColor="transparent">
+    <panel name="ScreenElements2" />
+    <ePixmap position="50,315" size="400,400" pixmap="GACommon/images/memory.png" alphatest="on" transparent="1" zPosition="5" />
+    <widget name="rmemtext" font="Regular; 30" position="1040,155" size="250,650" zPosition="2" halign="right" backgroundColor="background20" transparent="1" />
+    <widget name="lmemvalue" font="Regular; 30" position="760,155" size="250,850" zPosition="1" halign="left" backgroundColor="background20" transparent="1" />
+    <widget name="rmemvalue" font="Regular; 30" position="1300,155" size="250,650" zPosition="2" halign="right" backgroundColor="background20" transparent="1" />
+    <widget name="lmemtext" font="Regular; 30" position="470,155" size="250,850" zPosition="2" halign="right" backgroundColor="background20" transparent="1" />
+    <eLabel text="pfree" position="968,160" size="120,50" font="Regular; 32" backgroundColor="background20" transparent="1" zPosition="3" />
+    <eLabel text="pused" position="968,960" size="120,40" font="Regular; 32" backgroundColor="background20" transparent="1" zPosition="3" />
+    <panel name="FullKeys1" />
+    <widget name="slide" render="Progress" position="600,70" size="640,8" pixmap="GlamourAuraSky/pointers/pointer_main.png" alphatest="blend" transparent="1" zPosition="7">
+      <convert type="slide">Progress</convert>
+    </widget>
+  </screen>
   <!-- 19. ModelPic -->
   <screen name="ModelPic" position="0,0" size="1920,1080" title="ModelPic" backgroundColor="transparent" flags="wfNoBorder" alphatest="on">
     <panel name="ScreenElements2" />
