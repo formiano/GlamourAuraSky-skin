@@ -16,6 +16,7 @@
   <widget name="lb_channel" position="560,239" size="730,200" font="Regular;35" zPosition="2" transparent="1" foregroundColor="cyan2" />
   <widget name="lb_aspectratio" position="560,294" size="730,200" font="Regular;32" zPosition="2" foregroundColor="cyan2" transparent="1" />
   <widget name="lb_videosize" position="560,345" size="730,200" font="Regular;32" zPosition="2" foregroundColor="cyan2" transparent="1" />
+  <widget name="label1" position="1520,870" size="730,200" font="Regular;32" zPosition="2" foregroundColor="cyan2" transparent="1" />
     <ePixmap pixmap="GlamourAuraSky/infobar/flashspace.png" position="1235,570" zPosition="3" size="40,40" alphatest="blend" transparent="1" />
     <widget source="session.CurrentService" render="Label" position="1280,575" size="585,35" font="Regular; 26" zPosition="6" backgroundColor="background20" transparent="1" text="FlashInfo" noWrap="1" halign="left" foregroundColor="amarillo">
       <convert type="GlamourSpace">FlashInfo,Simple</convert>
