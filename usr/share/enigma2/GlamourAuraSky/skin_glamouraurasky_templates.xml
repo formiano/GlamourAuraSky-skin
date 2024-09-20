@@ -96,6 +96,7 @@
     <menu key="cablescan" image="GACommon/images/cable_scan.png" />
     <menu key="default_lists" image="GACommon/images/manual_scan.png" />
     <menu key="diseqc_tester" image="GACommon/images/diseqc.png" />
+    <menu key="fallback_mode" image="GACommon/images/remotereceiver.png" />
     <menu key="fastscan" image="GACommon/images/fast_scan.png" />
     <menu key="ipbox_client_Start" image="GACommon/images/ipbox.png" />
     <menu key="manual_scan" image="GACommon/images/manual_scan.png" />
@@ -232,7 +233,7 @@
     <menu key="usbdisk_init" image="GACommon/images/usb.png" />
     <!-- Common interface -->
     <menu key="autocam_settings" image="GACommon/images/autocam_settings.png" />
-    <menu key="cardserver_settings" image="GACommon/images/cardserver_settings.png" />   
+    <menu key="cardserver_settings" image="GACommon/images/cardserver_settings.png" />
     <menu key="cccam_info" image="GACommon/images/cccam.png" />
     <menu key="ci_assign" image="GACommon/images/ciassign.png" />
     <menu key="ci_selection" image="GACommon/images/cisettings.png" />
@@ -316,6 +317,7 @@
     <setup key="EPGMulti" image="GACommon/images/epgmulti.png" />
     <setup key="EPGVertical" image="GACommon/images/epgvertical.png" />
     <setup key="FactoryReset" image="GACommon/images/factory.png" />
+    <setup key="Fallbacktuner" image="GACommon/images/remotereceiver.png" />
     <setup key="FlashExpander" image="GACommon/images/flashexpander.png" />
     <setup key="GPTSlotManager" image="GACommon/images/slotmanager.png" />
     <setup key="HardDisk" image="GACommon/images/hdd-big.png" />
@@ -366,16 +368,38 @@
   <!-- PANELS -->
   <!-- 01. Key Panels -->
   <screen name="FullKeysCC" flags="wfNoBorder">
-    <ePixmap pixmap="GACommon/buttons/aura_red.png" position="810,960" size="225,75" alphatest="blend" transparent="1" zPosition="3" />
-    <ePixmap pixmap="GACommon/buttons/aura_green.png" position="1050,960" size="225,75" alphatest="blend" transparent="1" zPosition="3" />
-    <ePixmap pixmap="GACommon/buttons/aura_yellow.png" position="1290,960" size="225,75" alphatest="blend" transparent="1" zPosition="3" />
-    <ePixmap pixmap="GACommon/buttons/aura_blue.png" position="1530,960" size="225,75" alphatest="blend" transparent="1" zPosition="3" />
+    <!-- Button Graphics -->
+    <widget objectTypes="key_red,StaticText" source="key_red" render="Pixmap" pixmap="GACommon/buttons/aura_red.png" position="810,960" size="225,75" alphatest="blend" zPosition="5" transparent="1">
+      <convert type="ConditionalShowHide" />
+    </widget>
+    <ePixmap objectTypes="key_red,red,Button,Label" pixmap="GACommon/buttons/aura_red.png" position="810,960" size="225,75" alphatest="blend" zPosition="5" transparent="1" />
+    <widget objectTypes="key_green,StaticText" source="key_green" render="Pixmap" pixmap="GACommon/buttons/aura_green.png" position="1050,960" size="225,75" alphatest="blend" zPosition="5" transparent="1">
+      <convert type="ConditionalShowHide" />
+    </widget>
+    <ePixmap objectTypes="key_green,green,Button,Label" pixmap="GACommon/buttons/aura_green.png" position="1050,960" size="225,75" alphatest="blend" zPosition="5" transparent="1" />
+    <widget objectTypes="key_yellow,StaticText" source="key_yellow" render="Pixmap" pixmap="GACommon/buttons/aura_yellow.png" position="1290,960" size="225,75" alphatest="blend" zPosition="5" transparent="1">
+      <convert type="ConditionalShowHide" />
+    </widget>
+    <ePixmap objectTypes="key_yellow,yellow,Button,Label" pixmap="GACommon/buttons/aura_yellow.png" position="1290,960" size="225,75" alphatest="blend" zPosition="5" transparent="1" />
+    <widget objectTypes="key_blue,StaticText" source="key_blue" render="Pixmap" pixmap="GACommon/buttons/aura_blue.png" position="1530,960" size="225,75" alphatest="blend" zPosition="5" transparent="1">
+      <convert type="ConditionalShowHide" />
+    </widget>
+    <ePixmap objectTypes="key_blue,blue,Button,Label" pixmap="GACommon/buttons/aura_blue.png" position="1530,960" size="225,75" alphatest="blend" zPosition="5" transparent="1" />
+    <!-- Button Labels -->
+    <widget objectTypes="key_red,Label,Button" name="key_red" position="810,975" size="225,60" zPosition="6" font="Regular; 30" halign="center" backgroundColor="background20" transparent="1" valign="bottom" />
+    <widget objectTypes="red,Label,Button" name="red" position="810,975" size="225,60" zPosition="6" font="Regular; 30" halign="center" backgroundColor="background20" transparent="1" valign="bottom" />
+    <widget objectTypes="key_red,StaticText" source="key_red" render="Label" position="810,975" size="225,60" zPosition="6" font="Regular; 30" halign="center" backgroundColor="background20" transparent="1" valign="bottom" />
+    <widget objectTypes="key_green,Label,Button" name="key_green" position="1050,975" size="225,60" zPosition="6" font="Regular; 30" halign="center" backgroundColor="background20" transparent="1" valign="bottom" />
+    <widget objectTypes="green,Label,Button" name="green" position="1050,975" size="225,60" zPosition="6" font="Regular; 30" halign="center" backgroundColor="background20" transparent="1" valign="bottom" />
+    <widget objectTypes="key_green,StaticText" source="key_green" render="Label" position="1050,975" size="225,60" zPosition="6" font="Regular; 30" halign="center" backgroundColor="background20" transparent="1" valign="bottom" />
+    <widget objectTypes="key_yellow,Label,Button" name="key_yellow" position="1290,975" size="225,60" zPosition="6" font="Regular; 30" halign="center" backgroundColor="background20" transparent="1" valign="bottom" />
+    <widget objectTypes="yellow,Label,Button" name="yellow" position="1290,975" size="225,60" zPosition="6" font="Regular; 30" halign="center" backgroundColor="background20" transparent="1" valign="bottom" />
+    <widget objectTypes="key_yellow,StaticText" source="key_yellow" render="Label" position="1290,975" size="225,60" zPosition="6" font="Regular; 30" halign="center" backgroundColor="background20" transparent="1" valign="bottom" />
+    <widget objectTypes="key_blue,Label,Button" name="key_blue" position="1530,975" size="225,60" zPosition="6" font="Regular; 30" halign="center" backgroundColor="background20" transparent="1" valign="bottom" />
+    <widget objectTypes="blue,Label,Button" name="blue" position="1530,975" size="225,60" zPosition="6" font="Regular; 30" halign="center" backgroundColor="background20" transparent="1" valign="bottom" />
+    <widget objectTypes="key_blue,StaticText" source="key_blue" render="Label" position="1530,975" size="225,60" zPosition="6" font="Regular; 30" halign="center" backgroundColor="background20" transparent="1" valign="bottom" />
     <ePixmap pixmap="GlamourAuraSky/buttons/key_info_small.png" position="1770,975" size="60,30" alphatest="blend" zPosition="4" transparent="1" />
     <ePixmap pixmap="GlamourAuraSky/buttons/key_menu_small.png" position="1822,1005" size="60,30" alphatest="blend" zPosition="4" transparent="1" />
-    <widget name="key_red" position="810,975" size="225,60" zPosition="4" font="Regular; 30" halign="center" valign="bottom" backgroundColor="background20" transparent="1" />
-    <widget name="key_green" position="1050,975" size="225,60" zPosition="4" font="Regular; 30" halign="center" valign="bottom" backgroundColor="background20" transparent="1" />
-    <widget name="key_yellow" position="1290,975" size="225,60" zPosition="4" font="Regular; 30" halign="center" valign="bottom" backgroundColor="background20" transparent="1" />
-    <widget name="key_blue" position="1530,975" size="225,60" zPosition="4" font="Regular; 30" halign="center" valign="bottom" backgroundColor="background20" transparent="1" />
   </screen>
   <screen name="FullKeysMIH" flags="wfNoBorder">
     <!-- Button Graphics -->

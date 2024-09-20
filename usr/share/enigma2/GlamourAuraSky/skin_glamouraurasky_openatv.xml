@@ -558,7 +558,7 @@
       <convert type="EventName">FullDescription</convert>
     </widget>
     <!--WEATHER WIDGETS -->
-    <panel name="WeatherF1" />
+    <panel name="WeatherF2" />
   </screen>
   <!-- 08b. Graphical InfoBar EPG -->
   <screen name="GraphicalInfoBarEPG" position="0,0" size="1920,1080" title="Graphical InfoBar EPG" flags="wfNoBorder" backgroundColor="transparent">

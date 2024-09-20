@@ -10,7 +10,7 @@
     <widget name="config" font="Regular; 33" position="540,60" size="1320,200" scrollbarMode="showOnDemand" selectionPixmap="GlamourAuraSky/selections/aurasel.png" alphatest="off" backgroundColor="background20" itemHeight="50" enableWrapAround="1" transparent="1" zPosition="9" />
     <ePixmap position="50,315" size="400,400" pixmap="GACommon/images/camd.png" alphatest="on" transparent="1" zPosition="5" />
     <widget name="info" position="560,440" size="1300,530" font="Regular; 30" transparent="1" foregroundColor="amarillo" backgroundColor="background20" halign="left" valign="top" zPosition="15" />
-    <!--panel name="CPUTempInfobar" /-->
+    <panel name="CPUTempInfobar" />
     <eLabel text="Glamour Aura FHD Skin by MCelliotG" position="1360,360" size="400,155" font="Regular; 42" backgroundColor="background20" transparent="1" valign="center" halign="center" zPosition="1" foregroundColor="cyan2" />
   <widget name="lb_provider" position="560,187" size="730,200" font="Regular;35" zPosition="2" foregroundColor="cyan2" transparent="1" />
   <widget name="lb_channel" position="560,239" size="730,200" font="Regular;35" zPosition="2" transparent="1" foregroundColor="cyan2" />
