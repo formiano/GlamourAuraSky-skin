@@ -288,6 +288,12 @@
     <widget name="imageList" font="Regular; 30" position="540,80" size="1305,750" scrollbarMode="showOnDemand" selectionPixmap="GlamourAuraSky/selections/aurasel.png" alphatest="off" backgroundColor="background20" itemHeight="50" enableWrapAround="1" transparent="1" zPosition="9" />
     <panel name="FullKeys1" />
   </screen>
+    <screen name="info" position="0,0" size="1920,1080" title="Info" backgroundColor="transparent" flags="wfNoBorder">
+    <panel name="ScreenElements1" />
+    <ePixmap pixmap="GACommon/images/infopanel.png" position="255,315" size="400,400" transparent="1" alphatest="on" zPosition="5" />
+    <widget name="lab1" position="812,90" size="960,750" font="RegularB; 33" backgroundColor="background20" transparent="1" valign="top" zPosition="5" halign="left" foregroundColor="cyan" />
+    <widget name="label2" position="810,865" size="950,80" font="RegularB; 33" backgroundColor="background20" transparent="1" valign="center" zPosition="5" halign="left" foregroundColor="cyan" />
+  </screen>
   <!-- 17. Commit Info -->
   <screen name="CommitInfo" position="0,0" size="1920,1080" title="Commit Info" backgroundColor="transparent" flags="wfNoBorder" alphatest="on">
     <panel name="ScreenElements2" />
