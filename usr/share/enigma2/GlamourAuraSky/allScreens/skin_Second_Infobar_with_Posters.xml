@@ -11,8 +11,8 @@
     <panel name="PIDSInfobar" />
     <panel name="CPUTempInfobar" />
     <panel name="MemoryInfobar" />
-    <ePixmap pixmap="GlamourAuraFHD-ATV/infobar/halo_bottom.png" position="0,975" zPosition="-12" size="1920,88" alphatest="off" transparent="1" />
-    <ePixmap pixmap="GlamourAuraFHD-ATV/infobar/infobar_crypt.png" position="0,990" zPosition="-1" size="1800,35" alphatest="blend" transparent="1" />
+    <ePixmap pixmap="GlamourAuraSky/infobar/halo_bottom.png" position="0,975" zPosition="-12" size="1920,88" alphatest="off" transparent="1" />
+    <ePixmap pixmap="GlamourAuraSky/infobar/infobar_crypt.png" position="0,990" zPosition="-1" size="1800,35" alphatest="blend" transparent="1" />
     <panel name="CryptInfo" />
     <panel name="SourceInfo" />
     <panel name="CamName" />

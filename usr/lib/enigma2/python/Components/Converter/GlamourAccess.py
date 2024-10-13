@@ -3,14 +3,13 @@
 #	Based on CaidInfo2 converter coded by bigroma & 2boom
 #	If you use this Converter for other skins and rename it, please keep the lines above adding your credits below
 
-from __future__ import absolute_import
 from Components.Converter.Converter import Converter
 from enigma import iServiceInformation, iPlayableService
 from Components.Element import cached
 from Components.config import config, ConfigText, ConfigSubsection
 from Components.Converter.Poll import Poll
 import os
-from os import path
+from os.path import exists
 info = {}
 old_ecm_mtime = None
 try:
@@ -650,7 +649,7 @@ class GlamourAccess(Poll, Converter):
 			info = service and service.info()
 
 			if self.type == self.CRYPTINFO:
-				if os.path.exists(ecmpath):
+				if exists(ecmpath):
 					try:
 						caid = "%0.4X" % int(ecm_info.get("caid", ""), 16)
 						return "%s" % caidname
@@ -874,7 +873,7 @@ class GlamourAccess(Poll, Converter):
 		camdname = []
 		sername = []
 #OpenPLI/SatDreamGr
-		if os.path.exists("/etc/init.d/softcam") and not os.path.exists("/etc/image-version") or os.path.exists("/etc/init.d/cardserver") and not os.path.exists("/etc/image-version"):
+		if exists("/etc/init.d/softcam") and not exists("/etc/image-version") or exists("/etc/init.d/cardserver") and not exists("/etc/image-version"):
 			try:
 				for line in open("/etc/init.d/softcam"):
 					if line.startswith("CAMNAME="):
@@ -905,7 +904,7 @@ class GlamourAccess(Poll, Converter):
 				camdlist = ""
 			return "%s %s" % (serlist, camdlist)
 #OE-A
-		if os.path.exists("/etc/image-version") and not os.path.exists("/etc/.emustart"):
+		if exists("/etc/image-version") and not exists("/etc/.emustart"):
 			for line in open("/etc/image-version"):
 				if "=openOPD" in line:
 					try:
@@ -922,11 +921,11 @@ class GlamourAccess(Poll, Converter):
 					except:
 						pass
 					try:
-						if os.path.exists("/tmp/.oscam/oscam.version"):
+						if exists("/tmp/.oscam/oscam.version"):
 							for line in open("/tmp/.oscam/oscam.version"):
 								if line.startswith("Version:"):
 									cam1 = "%s" % line.split(':')[1].replace(" ", "")
-						elif os.path.exists("/tmp/.ncam/ncam.version"):
+						elif exists("/tmp/.ncam/ncam.version"):
 							for line in open("/tmp/.ncam/ncam.version"):
 								if line.startswith("Version:"):
 									cam1 = "%s" % line.split(':')[1].replace(" ", "")
@@ -970,37 +969,37 @@ class GlamourAccess(Poll, Converter):
 						pass
 			return "%s%s" % (cam1, cam2)
 #BLACKHOLE
-		if os.path.exists("/etc/CurrentDelCamName"):
+		if exists("/etc/CurrentDelCamName"):
 			try:
 				camdlist = open("/etc/CurrentDelCamName", "r")
 			except:
 				return None
-		if os.path.exists("/etc/CurrentBhCamName"):
+		if exists("/etc/CurrentBhCamName"):
 			try:
 				camdlist = open("/etc/CurrentBhCamName", "r")
 			except:
 				return None
 # DE-OpenBlackHole
-		if os.path.exists("/etc/BhFpConf"):
+		if exists("/etc/BhFpConf"):
 			try:
 				camdlist = open("/etc/BhCamConf", "r")
 			except:
 				return None
 #HDMU
-		if os.path.exists("/etc/.emustart") and os.path.exists("/etc/image-version"):
+		if exists("/etc/.emustart") and exists("/etc/image-version"):
 			try:
 				for line in open("/etc/.emustart"):
 					return line.split()[0].split("/")[-1]
 			except:
 				return None
 # Domica
-		if os.path.exists("/etc/active_emu.list"):
+		if exists("/etc/active_emu.list"):
 			try:
 				camdlist = open("/etc/active_emu.list", "r")
 			except:
 				return None
 # Egami 
-		if os.path.exists("/tmp/egami.inf"):
+		if exists("/tmp/egami.inf"):
 			try:
 				lines = open("/tmp/egami.inf", "r").readlines()
 				for line in lines:
@@ -1010,25 +1009,25 @@ class GlamourAccess(Poll, Converter):
 			except:
 				return None
 # OoZooN
-		if os.path.exists("/tmp/cam.info"):
+		if exists("/tmp/cam.info"):
 			try:
 				camdlist = open("/tmp/cam.info", "r")
 			except:
 				return None
 # Dream Elite
-		if os.path.exists("/usr/bin/emuactive"):
+		if exists("/usr/bin/emuactive"):
 			try:
 				camdlist = open("/usr/bin/emuactive", "r")
 			except:
 				return None
 # Merlin2
-		if os.path.exists("/etc/clist.list"):
+		if oexists("/etc/clist.list"):
 			try:
 				camdlist = open("/etc/clist.list", "r")
 			except:
 				return None
 # TS-Panel
-		if os.path.exists("/etc/startcam.sh"):
+		if exists("/etc/startcam.sh"):
 			try:
 				for line in open("/etc/startcam.sh"):
 					if line.find("script") > -1:
@@ -1036,7 +1035,7 @@ class GlamourAccess(Poll, Converter):
 			except:
 				camdlist = None
 #  GlassSysUtil
-		if os.path.exists("/tmp/ucm_cam.info"):
+		if exists("/tmp/ucm_cam.info"):
 			try:
 				return open("/tmp/ucm_cam.info").read()
 			except:
@@ -1160,23 +1159,23 @@ class GlamourAccess(Poll, Converter):
 
 	def ecmpath(self):
 		ecmpath = None
-		if os.path.exists("/tmp/ecm7.info"):
+		if exists("/tmp/ecm7.info"):
 			ecmpath = "/tmp/ecm7.info"
-		elif os.path.exists("/tmp/ecm6.info") and not os.path.exists("tmp/ecm7.info"):
+		elif exists("/tmp/ecm6.info") and not exists("tmp/ecm7.info"):
 			ecmpath = "/tmp/ecm6.info"
-		elif os.path.exists("/tmp/ecm5.info") and not os.path.exists("tmp/ecm6.info"):
+		elif exists("/tmp/ecm5.info") and not exists("tmp/ecm6.info"):
 			ecmpath = "/tmp/ecm5.info"
-		elif os.path.exists("/tmp/ecm4.info") and not os.path.exists("tmp/ecm5.info"):
+		elif exists("/tmp/ecm4.info") and not exists("tmp/ecm5.info"):
 			ecmpath = "/tmp/ecm4.info"
-		elif os.path.exists("/tmp/ecm3.info") and not os.path.exists("tmp/ecm4.info"):
+		elif exists("/tmp/ecm3.info") and not exists("tmp/ecm4.info"):
 			ecmpath = "/tmp/ecm3.info"
-		elif os.path.exists("/tmp/ecm2.info") and not os.path.exists("tmp/ecm3.info"):
+		elif exists("/tmp/ecm2.info") and not exists("tmp/ecm3.info"):
 			ecmpath = "/tmp/ecm2.info"
-		elif os.path.exists("/tmp/ecm1.info") and not os.path.exists("tmp/ecm2.info"):
+		elif exists("/tmp/ecm1.info") and not exists("tmp/ecm2.info"):
 			ecmpath = "/tmp/ecm1.info"
-		elif os.path.exists("/tmp/ecm0.info") and os.path.exists("/tmp/ecm.info"):
+		elif exists("/tmp/ecm0.info") and exists("/tmp/ecm.info"):
 			ecmpath = "/tmp/ecm.info"
-		elif os.path.exists("/tmp/ecm0.info") and not os.path.exists("/tmp/ecm.info"):
+		elif exists("/tmp/ecm0.info") and not exists("/tmp/ecm.info"):
 			ecmpath = None
 		else:
 			try:
