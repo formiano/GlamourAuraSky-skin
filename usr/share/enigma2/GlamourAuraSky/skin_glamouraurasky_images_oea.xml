@@ -292,7 +292,6 @@
     <panel name="ScreenElements1" />
     <ePixmap pixmap="GACommon/images/infopanel.png" position="255,315" size="400,400" transparent="1" alphatest="on" zPosition="5" />
     <widget name="lab1" position="812,90" size="960,750" font="RegularB; 33" backgroundColor="background20" transparent="1" valign="top" zPosition="5" halign="left" foregroundColor="cyan" />
-    <widget name="label2" position="810,865" size="950,80" font="RegularB; 33" backgroundColor="background20" transparent="1" valign="center" zPosition="5" halign="left" foregroundColor="cyan" />
   </screen>
   <!-- 17. Commit Info -->
   <screen name="CommitInfo" position="0,0" size="1920,1080" title="Commit Info" backgroundColor="transparent" flags="wfNoBorder" alphatest="on">

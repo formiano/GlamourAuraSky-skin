@@ -150,6 +150,7 @@
     <parameter name="FcFileListName" value="65,3,615,47" />
     <parameter name="FileListFont" value="Regular;30" />
     <parameter name="FileListIcon" value="5,2,50,50" />
+    <parameter name="FileListItemHeight" value="50" />
     <parameter name="FileListMultiIcon" value="5,2,50,50" />
     <parameter name="FileListMultiLock" value="2,0,50,50" />
     <parameter name="FileListMultiName" value="60,0,800,50" />
@@ -168,8 +169,12 @@
     <parameter name="PluginBrowserIcon" value="10,15,150,60" />
     <parameter name="PluginBrowserName" value="180,2,50" />
     <parameter name="SelectionListDescr" value="70,2,1000,50" />
+    <parameter name="SelectionListDescription" value="70,2,1000,50" />
     <parameter name="SelectionListLock" value="10,0,50,50" />
     <parameter name="SelectionListLockOff" value="10,0,50,50" />
+    <parameter name="SelectionListIcon" value="5,2,50,50" />
+    <parameter name="SelectionListFontSize" value="30" />
+    <parameter name="SelectionListItemHeight" value="50" />
     <parameter name="ServiceInfo" value="0,0,1050,50" />
     <parameter name="ServiceInfoLeft" value="0,0,525,50" />
     <parameter name="ServiceInfoRight" value="530,0,525,50" />
@@ -240,46 +245,19 @@
   <!-- ###INFOBARS -->
   <!-- 01. Main Infobar -->
   <screen name="InfoBar" position="0,0" size="1920,1080" title="InfoBar" flags="wfNoBorder" backgroundColor="transparent">
-    <!-- Clock -->
-    <panel name="ClockLabel2" />
-    <!--Tuner Infobar -->
-    <panel name="TunerInfobar" />
-    <panel name="TunersInfo" />
-    <!-- Service info and icons -->
-    <panel name="IconsInfobar" />
-    <!-- MIDDLE INFOBAR MAIN INFO -->
+    <panel name="CommonInfobars" />
     <ePixmap pixmap="GlamourAuraSky/infobar/infobar_chname.png" position="350,708" zPosition="-1" size="1570,130" alphatest="off" transparent="1" />
-    <panel name="MainInfobar" />
     <!-- Provider -->
     <ePixmap pixmap="GACommon/infobar/infobar_provider.png" position="980,130" zPosition="-2" size="675,50" alphatest="off" transparent="1" />
-    <widget source="session.CurrentService" render="Label" position="1145,135" size="500,40" font="Regular; 26" valign="center" backgroundColor="deepgrey" transparent="1" zPosition="7" halign="center" foregroundColor="deepgrey">
-      <convert type="ServiceName">Provider</convert>
-    </widget>
-    <widget source="session.CurrentService" render="GlamPicon" position="1045,125" size="100,60" alphatest="blend" scale="1" transparent="1" zPosition="7">
-      <convert type="ServiceName">Provider</convert>
-    </widget>
-    <ePixmap pixmap="GlamourAuraSky/infobar/halo_bottom.png" position="0,975" zPosition="-12" size="1920,88" alphatest="off" transparent="1" />
+    <panel name="Prov" />
     <!-- Crypt Info -->
-    <panel name="CryptInfo" />
     <panel name="CasInfo" />
-    <!-- Bitrate -->
-    <!--panel name="BitrateInfobar" /-->
-    <!--/* WEATHER WIDGETS -->
+    <!-- Weather Info -->
     <panel name="WeatherToday2" />
-    <!-- WEATHER Current Temp on Infobar -->
-    <panel name="WeatherInfobar2" />
   </screen>
   <!-- 02. Second Infobar -->
   <screen name="SecondInfoBar" position="0,0" size="1920,1080" backgroundColor="transparent" flags="wfNoBorder">
-    <!-- Clock -->
-    <panel name="ClockLabel2" />
-    <!--Tuner Infobar -->
-    <panel name="TunerInfobar" />
-    <panel name="TunersInfo" />
-    <!-- Service info and icons -->
-    <panel name="IconsInfobar" />
-    <!-- MIDDLE INFOBAR MAIN INFO -->
-    <panel name="MainInfobar" />
+    <panel name="CommonInfobars" />
     <!-- Provider name and Reference -->
     <panel name="P+RInfobar" />
     <!-- Current and next event -->
@@ -290,21 +268,15 @@
     <panel name="CPUTempInfobar" />
     <!-- Memory Info -->
     <panel name="MemoryInfobar" />
-    <ePixmap pixmap="GlamourAuraSky/infobar/halo_bottom.png" position="0,975" zPosition="-12" size="1920,88" alphatest="off" transparent="1" />
     <!-- Crypt Info -->
     <ePixmap pixmap="GlamourAuraSky/infobar/infobar_crypt.png" position="0,990" zPosition="-1" size="1800,35" alphatest="blend" transparent="1" />
-    <panel name="CryptInfo" />
     <panel name="SourceInfo" />
     <panel name="CamName" />
     <ePixmap pixmap="GACommon/infobar/infobar_ecminfo.png" position="0,1030" zPosition="-2" size="1920,35" alphatest="off" transparent="1" />
     <!-- ECM Info -->
     <panel name="ECMInfo" />
-    <!-- Bitrate -->
-    <!--panel name="BitrateInfobar" /-->
-    <!--/* WEATHER WIDGETS -->
+    <!-- Weather Info -->
     <panel name="WeatherF2" />
-    <!-- WEATHER Current Temp on Infobar -->
-    <panel name="WeatherInfobar2" />
   </screen>
   <!-- 03. Radio Infobar -->
   <!-- Radio Infobar -->
@@ -396,224 +368,170 @@
   </screen>
   <!-- 04. Subservices Quickzap -->
   <screen name="SubservicesQuickzap" position="0,0" size="1920,1080" title="Subservices" backgroundColor="transparent" flags="wfNoBorder">
-    <!-- Clock -->
-    <panel name="ClockLabel2" />
-    <!--Tuner Infobar -->
-    <panel name="TunerInfobar" />
-    <panel name="TunersInfo" />
-    <!-- Service info and icons -->
-    <panel name="IconsInfobar" />
-    <!-- MIDDLE INFOBAR MAIN INFO -->
+    <panel name="CommonInfobars" />
     <ePixmap pixmap="GlamourAuraSky/infobar/infobar_chname.png" position="350,708" zPosition="-1" size="1570,130" alphatest="off" transparent="1" />
-    <panel name="MainInfobar" />
-    <!-- Provider -->
-    <ePixmap pixmap="GACommon/infobar/infobar_provider.png" position="980,130" zPosition="-2" size="675,50" alphatest="off" transparent="1" />
-    <widget source="session.CurrentService" render="Label" position="1045,140" size="600,35" font="Regular; 26" valign="center" backgroundColor="deepgrey" transparent="1" zPosition="7" halign="center" foregroundColor="deepgrey">
-      <convert type="ServiceName">Provider</convert>
-    </widget>
-    <ePixmap pixmap="GlamourAuraSky/infobar/halo_bottom.png" position="0,975" zPosition="-12" size="1920,88" alphatest="off" transparent="1" />
+    <panel name="CommonInfobars" />
+    <!-- Provider name and Reference -->
+    <panel name="P+RInfobar" />
+    <!-- Pid and Reference info -->
+    <panel name="PIDSInfobar" />
     <!-- Crypt Info -->
     <ePixmap pixmap="GlamourAuraSky/infobar/infobar_crypt.png" position="0,990" zPosition="-1" size="1800,35" alphatest="blend" transparent="1" />
-    <panel name="CryptInfo" />
     <panel name="SourceInfo" />
     <panel name="CamName" />
-    <ePixmap pixmap="GACommon/infobar/infobar_ecminfo.png" position="0,1030" zPosition="-2" size="1920,35" alphatest="off" transparent="1" />
     <!-- ECM Info -->
+    <ePixmap pixmap="GACommon/infobar/infobar_ecminfo.png" position="0,1030" zPosition="-2" size="1920,35" alphatest="off" transparent="1" />
     <panel name="ECMInfo" />
-    <!-- Bitrate -->
-    <!--panel name="BitrateInfobar" /-->
-    <!--/* WEATHER WIDGETS -->
-    <panel name="WeatherToday" />
-    <!-- WEATHER Current Temp on Infobar -->
-    <panel name="WeatherInfobar2" />
+    <!-- Weather Info -->
+    <panel name="WeatherToday2" />
   </screen>
   <!-- ###MENUS -->
   <!-- 00. Menu General-->
   <screen name="Menu" position="center,center" size="1920,1080" title="Menu" backgroundColor="transparent" flags="wfNoBorder">
-    <panel name="MenuBackground" />
-    <panel name="ClockLabel1" />
+    <panel name="ScreenElements5" />
     <ePixmap position="50,315" size="400,400" pixmap="GACommon/images/menu.png" alphatest="on" transparent="1" zPosition="5" />
-    <panel name="Title1" />
     <panel name="MainMenu1" />
     <panel name="MainMenuTiles" />
   </screen>
   <!-- 01. Main Menu -->
   <screen name="menu_mainmenu" position="0,0" size="1920,1080" title="Main menu" backgroundColor="transparent" flags="wfNoBorder">
-    <panel name="MenuBackground" />
-    <panel name="ClockLabel1" />
+    <panel name="ScreenElements5" />
     <ePixmap position="50,315" size="400,400" pixmap="GACommon/images/menu.png" alphatest="on" transparent="1" zPosition="5" />
-    <panel name="Title1" />
     <panel name="MainMenu1" />
     <panel name="MenuMain" />
   </screen>
   <!-- 02. Menu Information -->
   <screen name="menu_information" position="0,0" size="1920,1080" title="Information" backgroundColor="transparent" flags="wfNoBorder">
-    <panel name="MenuBackground" />
-    <panel name="ClockLabel1" />
+    <panel name="ScreenElements5" />
     <ePixmap position="50,315" size="400,400" pixmap="GACommon/images/info.png" alphatest="on" transparent="1" zPosition="5" />
-    <panel name="Title1" />
     <panel name="MainMenu1" />
     <panel name="MenuInfo" />
   </screen>
   <!-- 03. Menu Timer -->
   <screen name="menu_timermenu" position="0,0" size="1920,1080" title="Information" backgroundColor="transparent" flags="wfNoBorder">
-    <panel name="MenuBackground" />
-    <panel name="ClockLabel1" />
+    <panel name="ScreenElements5" />
     <ePixmap position="50,315" size="400,400" pixmap="GACommon/images/timers.png" alphatest="on" transparent="1" zPosition="5" />
-    <panel name="Title1" />
     <panel name="MainMenu1" />
     <panel name="MenuTimer" />
   </screen>
   <!-- 04. Menu Setup -->
   <screen name="menu_setup" position="0,0" size="1920,1080" title="Setup" flags="wfNoBorder" backgroundColor="transparent">
-    <panel name="MenuBackground" />
-    <panel name="ClockLabel1" />
+    <panel name="ScreenElements5" />
     <ePixmap position="50,315" size="400,400" pixmap="GACommon/images/setup.png" alphatest="on" transparent="1" zPosition="5" />
-    <panel name="Title1" />
     <panel name="MainMenu1" />
     <panel name="MenuSetup" />
   </screen>
   <!-- 05. Menu Scan -->
   <screen name="menu_scan" position="0,0" size="1920,1080" title="Service searching" backgroundColor="transparent" flags="wfNoBorder">
-    <panel name="MenuBackground" />
-    <panel name="ClockLabel1" />
+    <panel name="ScreenElements5" />
     <ePixmap position="50,315" size="400,400" pixmap="GACommon/images/dish-big.png" alphatest="on" transparent="1" zPosition="5" />
-    <panel name="Title1" />
     <panel name="MainMenu1" />
     <panel name="MenuScan" />
   </screen>
   <!-- 06. Menu System-->
   <screen name="menu_system" position="0,0" size="1920,1080" title="System" backgroundColor="transparent" flags="wfNoBorder">
-    <panel name="ScreenElements4" />
+    <panel name="ScreenElements5" />
     <ePixmap position="50,315" size="400,400" pixmap="GACommon/images/system.png" alphatest="on" transparent="1" zPosition="5" />
     <panel name="MainMenu1" />
     <panel name="MenuSystem" />
   </screen>
   <!-- 07. Menu Video -->
   <screen name="menu_video_menu" position="0,0" size="1920,1080" title="Setup" flags="wfNoBorder" backgroundColor="transparent">
-    <panel name="MenuBackground" />
-    <panel name="ClockLabel1" />
+    <panel name="ScreenElements5" />
     <ePixmap position="50,315" size="400,400" pixmap="GACommon/images/videosetup.png" alphatest="on" transparent="1" zPosition="5" />
-    <panel name="Title1" />
     <panel name="MainMenu1" />
     <panel name="MenuVideo" />
   </screen>
   <!-- 08. Menu Audio -->
   <screen name="menu_audio_menu" position="0,0" size="1920,1080" title="Setup" flags="wfNoBorder" backgroundColor="transparent">
-    <panel name="MenuBackground" />
-    <panel name="ClockLabel1" />
+    <panel name="ScreenElements5" />
     <ePixmap position="50,315" size="400,400" pixmap="GACommon/images/audiosetup.png" alphatest="on" transparent="1" zPosition="5" />
-    <panel name="Title1" />
     <panel name="MainMenu1" />
     <panel name="MenuAudio" />
   </screen>
   <!-- 09. Menu Recordings -->
   <screen name="menu_rec" position="0,0" size="1920,1080" title="Setup" flags="wfNoBorder" backgroundColor="transparent">
-    <panel name="MenuBackground" />
-    <panel name="ClockLabel1" />
+    <panel name="ScreenElements5" />
     <ePixmap position="50,315" size="400,400" pixmap="GACommon/images/recordsetup.png" alphatest="on" transparent="1" zPosition="5" />
-    <panel name="Title1" />
     <panel name="MainMenu1" />
     <panel name="MenuRec" />
   </screen>
   <!-- 10. Menu Extended -->
   <screen name="menu_extended" position="0,0" size="1920,1080" title="Setup" flags="wfNoBorder" backgroundColor="transparent">
-    <panel name="MenuBackground" />
-    <panel name="ClockLabel1" />
+    <panel name="ScreenElements5" />
     <ePixmap position="50,315" size="400,400" pixmap="GACommon/images/expert.png" alphatest="on" transparent="1" zPosition="5" />
-    <panel name="Title1" />
     <panel name="MainMenu1" />
     <panel name="MenuExtended" />
   </screen>
   <!-- 11. Menu Display -->
   <screen name="menu_display" position="0,0" size="1920,1080" title="Setup" flags="wfNoBorder" backgroundColor="transparent">
-    <panel name="MenuBackground" />
-    <panel name="ClockLabel1" />
+    <panel name="ScreenElements5" />
     <ePixmap position="50,315" size="400,400" pixmap="GACommon/images/displaysetup.png" alphatest="on" transparent="1" zPosition="5" />
-    <panel name="Title1" />
     <panel name="MainMenu1" />
     <panel name="MenuDisplay" />
   </screen>
   <!-- 12. Menu OSD -->
   <screen name="menu_osd_menu" position="0,0" size="1920,1080" title="Setup" flags="wfNoBorder" backgroundColor="transparent">
-    <panel name="MenuBackground" />
-    <panel name="ClockLabel1" />
+    <panel name="ScreenElements5" />
     <ePixmap position="50,315" size="400,400" pixmap="GACommon/images/osdmenu.png" alphatest="on" transparent="1" zPosition="5" />
-    <panel name="Title1" />
     <panel name="MainMenu1" />
     <panel name="MenuOSD" />
   </screen>
   <!-- 13. Menu EPG -->
   <screen name="menu_epg" position="0,0" size="1920,1080" title="Setup" flags="wfNoBorder" backgroundColor="transparent">
-    <panel name="MenuBackground" />
-    <panel name="ClockLabel1" />
+    <panel name="ScreenElements5" />
     <ePixmap position="50,315" size="400,400" pixmap="GACommon/images/epgsetup.png" alphatest="on" transparent="1" zPosition="5" />
-    <panel name="Title1" />
     <panel name="MainMenu1" />
     <panel name="MenuEPG" />
   </screen>
   <!-- 14. Menu EPG Load Save -->
   <screen name="menu_epgloadsave_menu" position="0,0" size="1920,1080" title="Setup" flags="wfNoBorder" backgroundColor="transparent">
-    <panel name="MenuBackground" />
-    <panel name="ClockLabel1" />
+    <panel name="ScreenElements5" />
     <ePixmap position="50,315" size="400,400" pixmap="GACommon/images/epgloadsave.png" alphatest="on" transparent="1" zPosition="5" />
-    <panel name="Title1" />
     <panel name="MainMenu1" />
     <panel name="MenuEPGLoadSave" />
   </screen>
   <!-- 15. Menu Network -->
   <screen name="menu_network" position="0,0" size="1920,1080" title="Setup" flags="wfNoBorder" backgroundColor="transparent">
-    <panel name="MenuBackground" />
-    <panel name="ClockLabel1" />
+    <panel name="ScreenElements5" />
     <ePixmap position="50,315" size="400,400" pixmap="GACommon/images/network.png" alphatest="on" transparent="1" zPosition="5" />
-    <panel name="Title1" />
     <panel name="MainMenu1" />
     <panel name="MenuNetwork" />
   </screen>
   <!-- 16. Menu Harddisk -->
   <screen name="menu_harddisk" position="0,0" size="1920,1080" title="Standby /restart" backgroundColor="transparent" flags="wfNoBorder">
-    <panel name="MenuBackground" />
-    <panel name="ClockLabel1" />
+    <panel name="ScreenElements5" />
     <ePixmap position="150,425" size="180,180" scale="1" pixmap="GACommon/images/hdd-big.png" alphatest="on" transparent="1" zPosition="5" />
-    <panel name="Title1" />
     <panel name="MainMenu1" />
     <panel name="MenuHDD" />
     <panel name="HDDInfoPanel" />
   </screen>
   <!-- 17. Menu Cam -->
   <screen name="menu_cam" position="0,0" size="1920,1080" title="Setup" flags="wfNoBorder" backgroundColor="transparent">
-    <panel name="MenuBackground" />
-    <panel name="ClockLabel1" />
+    <panel name="ScreenElements5" />
     <ePixmap position="210,500" size="120,120" scale="1" pixmap="GACommon/images/camsetup.png" alphatest="on" transparent="1" zPosition="5" />
     <ePixmap position="150,400" size="120,120" scale="1" pixmap="GACommon/images/parental.png" alphatest="on" transparent="1" zPosition="5" />
-    <panel name="Title1" />
     <panel name="MainMenu1" />
     <panel name="MenuCam" />
   </screen>
   <!-- 18. Menu Shutdown -->
   <screen name="menu_shutdown" position="0,0" size="1920,1080" title="Standby /restart" backgroundColor="transparent" flags="wfNoBorder">
-    <panel name="MenuBackground" />
-    <panel name="ClockLabel1" />
+    <panel name="ScreenElements5" />
     <ePixmap position="150,425" size="180,180" scale="1" pixmap="GACommon/images/shutdown.png" alphatest="on" transparent="1" zPosition="5" />
-    <panel name="Title1" />
     <panel name="MainMenu1" />
     <panel name="MenuShutdown" />
   </screen>
   <!-- 19. Menu Software -->
   <screen name="menu_software_manager" position="0,0" size="1920,1080" title="Software Manager" backgroundColor="transparent" flags="wfNoBorder">
-    <panel name="MenuBackground" />
-    <panel name="ClockLabel1" />
+    <panel name="ScreenElements5" />
     <ePixmap position="50,315" size="400,400" pixmap="GACommon/images/softwaremanager.png" alphatest="on" transparent="1" zPosition="5" />
-    <panel name="Title1" />
     <panel name="MainMenu1" />
     <panel name="MenuSoftware" />
   </screen>
   <!-- 20. Menu Software Advanced-->
   <screen name="menu_advanced_software" position="0,0" size="1920,1080" title="Software Manager" backgroundColor="transparent" flags="wfNoBorder">
-    <panel name="MenuBackground" />
-    <panel name="ClockLabel1" />
+    <panel name="ScreenElements5" />
     <ePixmap position="50,315" size="400,400" pixmap="GACommon/images/advanced_software.png" alphatest="on" transparent="1" zPosition="5" />
-    <panel name="Title1" />
     <panel name="MainMenu1" />
     <panel name="MenuSoftwareAdv" />
   </screen>
@@ -895,7 +813,7 @@
   </screen>
   <!-- ###INFO SCREENS -->
   <!-- 01. About -->
-  <screen name="About" position="0,0" size="1920,1080" title="About" backgroundColor="transparent" flags="wfNoBorder" alphatest="on">
+  <screen name="About" position="0,0" size="1920,1080" title="About" backgroundColor="transparent" flags="wfNoBorder">
     <panel name="ScreenElements2" />
     <ePixmap position="50,315" size="400,400" pixmap="GACommon/images/about.png" alphatest="on" transparent="1" zPosition="5" />
     <widget name="AboutScrollLabel" position="540,90" size="1305,720" font="Regular; 36" halign="left" backgroundColor="background20" transparent="1" foregroundColor="cyan1" split="1" dividechar=":" colposition="0" zPosition="6" />
@@ -1609,9 +1527,7 @@
   </screen>
   <!-- 04. Audio Selection -->
   <screen name="AudioSelection" title="Audio Selection" position="0,0" size="1920,1080" flags="wfNoBorder" backgroundColor="transparent">
-    <panel name="MainBackground3" />
-    <panel name="ClockLabel1" />
-    <panel name="Title1" />
+    <panel name="ScreenElements4" />
     <ePixmap pixmap="GACommon/images/audiosetup.png" position="255,315" size="400,400" transparent="1" alphatest="on" zPosition="5" />
     <widget name="config" font="Regular; 30" position="900,60" size="925,375" scrollbarMode="showOnDemand" itemHeight="75" selectionPixmap="GlamourAuraSky/selections/audiosel2.png" alphatest="off" transparent="1" zPosition="3" />
     <widget source="key_red" render="Pixmap" pixmap="GACommon/buttons/aura_red.png" position="795,60" size="225,75" transparent="1" zPosition="3" alphatest="blend">
@@ -1672,42 +1588,18 @@
   </screen>
   <!-- 06. EventView -->
   <screen name="EventView" position="0,0" size="1935,1080" title="Eventview" backgroundColor="transparent" flags="wfNoBorder">
-    <panel name="MainBackgroundClock" />
-    <ePixmap pixmap="GlamourAuraSky/menu/eventviewaura.png" position="0,0" size="645,1080" zPosition="-11" alphatest="off" transparent="1" />
-    <ePixmap pixmap="GlamourAuraSky/buttons/key_menu_medium.png" position="1550,45" size="90,45" alphatest="blend" transparent="1" zPosition="5" />
-    <ePixmap pixmap="GlamourAuraSky/buttons/key_info_medium.png" position="1555,95" size="90,45" alphatest="blend" transparent="1" zPosition="5" />
-    <ePixmap pixmap="GlamourAuraSky/buttons/key_epg_medium.png" position="1465,95" size="90,45" alphatest="blend" transparent="1" zPosition="5" />
-    <widget source="Title" render="Picon" position="125,90" size="400,240" transparent="1" alphatest="blend" zPosition="5">
-      <convert type="GlamRefString">CurrentRef</convert>
-    </widget>
-    <widget source="ServiceEvent" render="Picon" position="125,90" size="400,240" transparent="1" alphatest="blend" zPosition="4">
-      <convert type="ServiceName">Reference</convert>
-    </widget>
-    <widget name="channel" position="665,85" size="795,75" font="RegularB; 40" halign="left" backgroundColor="background20" transparent="1" valign="center" foregroundColor="sky" zPosition="5" />
+    <panel name="EventsCommon" />
     <widget name="epg_description" position="665,160" size="1210,780" font="Regular; 33" backgroundColor="background20" transparent="1" zPosition="2" />
-    <widget name="FullDescription" position="665,160" size="0,0" font="Regular; 33" backgroundColor="background20" transparent="1" zPosition="1" />
-    <panel name="EventsInfos" />
-    <widget source="session.CurrentService" render="Label" position="40,765" size="600,75" font="Numbers; 32" transparent="1" zPosition="5" foregroundColor="amarillo" backgroundColor="grey2" halign="center" valign="center" text="PidHexInfo">
-      <convert type="GlamourBase">PidHexInfo</convert>
-    </widget>
-    <panel name="EventDurations" />
-    <panel name="EventIcons" />
-    <panel name="EventNext" />
-    <panel name="FullKeys2" />
   </screen>
   <!-- 07. EventView Context -->
   <screen name="EventViewContextMenu" position="center,center" size="1920,1080" title="Channellist menu" flags="wfNoBorder" backgroundColor="transparent">
-    <panel name="MainBackground3" />
-    <panel name="ClockLabel1" />
-    <panel name="Title1" />
+    <panel name="ScreenElements4" />
     <widget name="menu" font="Regular; 30" position="810,90" size="1050,850" itemHeight="50" scrollbarMode="showOnDemand" enableWrapAround="1" transparent="1" selectionPixmap="GlamourAuraSky/selections/aurasel1050.png" alphatest="off" zPosition="7" />
     <ePixmap position="255,315" size="400,400" pixmap="GACommon/images/channelselection.png" alphatest="on" transparent="1" zPosition="5" />
   </screen>
   <!-- 08. Bouquet Selection -->
   <screen name="BouquetSelector" position="0,0" size="1920,1080" title="Choose bouquet" flags="wfNoBorder" backgroundColor="transparent">
-    <panel name="MainBackground3" />
-    <panel name="ClockLabel1" />
-    <panel name="Title1" />
+    <panel name="ScreenElements4" />
     <widget name="menu" font="Regular; 30" position="810,90" size="1050,700" itemHeight="50" scrollbarMode="showOnDemand" enableWrapAround="1" transparent="1" selectionPixmap="GlamourAuraSky/selections/aurasel1050.png" alphatest="off" zPosition="3" />
     <ePixmap position="255,315" size="400,400" pixmap="GACommon/images/bouquet.png" alphatest="on" transparent="1" zPosition="5" />
     <ePixmap pixmap="GlamourAuraSky/menu/accentglowt810.png" position="810,790" size="810,45" zPosition="-3" alphatest="blend" transparent="1" />
@@ -1771,16 +1663,13 @@
   </screen>
   <!-- 09. Channel Context Menu -->
   <screen name="ChannelContextMenu" position="center,center" size="1920,1080" title="Channellist menu" flags="wfNoBorder" backgroundColor="transparent">
-    <panel name="MainBackground3" />
-    <panel name="ClockLabel1" />
-    <panel name="Title1" />
+    <panel name="ScreenElements4" />
     <widget name="menu" font="Regular; 30" position="810,90" size="1050,850" itemHeight="50" scrollbarMode="showOnDemand" enableWrapAround="1" transparent="1" selectionPixmap="GlamourAuraSky/selections/aurasel1050.png" alphatest="off" zPosition="7" />
     <ePixmap position="255,315" size="400,400" pixmap="GACommon/images/tv.png" alphatest="on" transparent="1" zPosition="5" />
   </screen>
   <!-- 10. Skin Selector -->
   <screen name="SkinSelector" position="0,0" size="1920,1080" title="Skin Selector" flags="wfNoBorder" backgroundColor="transparent" alphatest="on">
-    <panel name="MenuBackground" />
-    <panel name="ClockLabel1" />
+    <panel name="ScreenElements5" />
     <ePixmap position="50,315" size="400,400" pixmap="GACommon/images/skins.png" alphatest="on" transparent="1" zPosition="5" />
     <widget name="Preview" position="460,360" size="320,320" transparent="1" alphatest="on" zPosition="5" />
     <widget name="SkinList" font="RegularB; 32" position="810,80" size="930,650" scrollbarMode="showOnDemand" backgroundColor="background20" foregroundColor="white" itemHeight="50" enableWrapAround="1" transparent="1" selectionPixmap="GlamourAuraSky/selections/listsel930.png" alphatest="off" zPosition="6" />
@@ -1798,6 +1687,19 @@
     <widget source="introduction" render="Label" position="810,730" size="930,80" font="Regular; 33" halign="center" backgroundColor="background20" transparent="1" zPosition="5" foregroundColor="cyan1" />
     <panel name="RedKey3" />
     <panel name="Title1" />
+    </screen>
+  <!-- NEW Skin Selector -->
+  <screen name="SkinSelection" position="0,0" size="1920,1080" title="Skin Selection" flags="wfNoBorder" backgroundColor="transparent">
+    <panel name="ScreenElements5" />
+    <ePixmap position="50,315" size="400,400" pixmap="GACommon/images/skins.png" alphatest="on" transparent="1" zPosition="5" />
+    <widget name="preview" position="460,360" size="320,320" transparent="1" alphatest="on" zPosition="5" />
+    <widget name="config" font="RegularB; 32" position="810,110" size="930,600" scrollbarMode="showOnDemand" backgroundColor="background20" foregroundColor="white" itemHeight="50" enableWrapAround="1" transparent="1" selectionPixmap="GlamourAuraSky/selections/listsel930.png" alphatest="off" zPosition="6" />
+    <widget name="description" position="810,710" size="930,200" backgroundColor="background20" transparent="1" font="Regular; 30" zPosition="5" foregroundColor="sky" />
+    <widget name="footnote" position="50,730" size="730,200" font="Regular; 32" foregroundColor="white" backgroundColor="black" shadowColor="black" shadowOffset="2,1" transparent="1" valign="top" halign="center" zPosition="7" />
+    <ePixmap pixmap="GACommon/buttons/aura_red.png" position="850,30" size="225,75" alphatest="blend" zPosition="5" transparent="1" />
+    <ePixmap pixmap="GACommon/buttons/aura_green.png" position="1180,30" size="225,75" alphatest="blend" zPosition="5" transparent="1" />
+    <widget source="key_red" render="Label" position="805,15" size="320,90" zPosition="6" font="Regular; 30" halign="center" backgroundColor="background20" transparent="1" valign="bottom" />
+    <widget source="key_green" render="Label" position="1135,15" size="320,90" zPosition="6" font="Regular; 30" halign="center" backgroundColor="background20" transparent="1" valign="bottom" />
   </screen>
   <!-- 11. Subtitle Quickmenu -->
   <screen name="QuickSubtitlesConfigMenu" title="Subtitle Quickmenu" position="0,0" size="1920,575" flags="wfNoBorder" backgroundColor="transparent">
@@ -1915,94 +1817,19 @@ if not self["videofps"].text:
   <!-- ### EPG MENUS -->
   <!-- 01. EPG Selection -->
   <screen name="EPGSelection" position="0,0" size="1920,1080" title="EPG Selection" flags="wfNoBorder" backgroundColor="transparent">
-    <panel name="EventViewScreen" />
-    <widget source="Title" render="Label" position="645,75" size="1005,60" font="RegularB; 40" backgroundColor="background20" halign="center" transparent="1" foregroundColor="sky" zPosition="3" />
-    <widget source="Event" render="Label" position="60,80" size="565,120" font="Caps; 36" backgroundColor="transwhite" transparent="0" halign="center" zPosition="3" foregroundColor="black" valign="center">
-      <convert type="EventName">Name</convert>
-    </widget>
-    <widget source="Event" render="GlamRun" options="movetype=running,startpoint=0,direction=top,steptime=10,repeat=2,startdelay=5000,wrap,oneshot=1,always=0" position="60,200" size="565,780" font="Regular; 30" backgroundColor="sky" transparent="1" valign="top" zPosition="4">
-      <convert type="EventName">ExtendedDescription</convert>
-    </widget>
-    <widget name="list" position="650,140" size="1220,800" font="Regular;28" enableWrapAround="1" scrollbarMode="showOnDemand" backgroundColor="background20" foregroundColorSelected="lightciel" selectionPixmap="GlamourAuraSky/selections/moviesel.png" alphatest="off" transparent="1" zPosition="4" />
-    <ePixmap pixmap="GlamourAuraSky/buttons/key_menu_medium.png" position="1550,45" size="90,45" alphatest="blend" transparent="1" zPosition="5" />
-    <panel name="FullKeys2" />
+    <panel name="EPGSelectionCommon" />
   </screen>
   <!-- 02. Multi EPG selection -->
   <screen name="EPGSelectionMulti" position="center,center" size="1920,1080" title="EPG Selection" flags="wfNoBorder" backgroundColor="transparent">
-    <panel name="EventViewScreen" />
-    <widget source="Event" render="Label" position="58,80" size="565,120" font="Caps; 36" backgroundColor="transwhite" transparent="0" halign="center" zPosition="3" foregroundColor="black" valign="center">
-      <convert type="EventName">Name</convert>
-    </widget>
-    <widget source="Event" render="GlamRun" options="movetype=running,startpoint=0,direction=top,steptime=10,repeat=2,startdelay=5000,wrap,oneshot=1,always=0" position="60,200" size="565,780" font="Regular; 30" backgroundColor="sky" transparent="1" valign="top" zPosition="4">
-      <convert type="EventName">ExtendedDescription</convert>
-    </widget>
-    <widget name="list" position="665,220" size="1200,720" font="Regular;28" scrollbarMode="showOnDemand" backgroundColor="background20" foregroundColorSelected="lightciel" enableWrapAround="1" transparent="1" selectionPixmap="GlamourAuraSky/selections/epgselmulti90.png" alphatest="off" zPosition="5" />
-    <eLabel name="new eLabel" position="665,210" size="1200,3" zPosition="5" backgroundColor="cyan" foregroundColor="cyan1" />
-    <widget name="now_button_sel" position="670,130" size="705,70" zPosition="3" pixmap="GlamourAuraSky/epg/epg_now.png" alphatest="blend" transparent="1" />
-    <widget name="next_button_sel" position="670,130" size="705,70" zPosition="3" pixmap="GlamourAuraSky/epg/epg_next.png" alphatest="blend" transparent="1" />
-    <widget name="more_button_sel" position="670,130" size="705,70" zPosition="3" pixmap="GlamourAuraSky/epg/epg_more.png" alphatest="blend" transparent="1" />
-    <widget name="now_text" position="675,140" size="220,60" zPosition="6" text="NOW" font="Caps; 30" halign="center" backgroundColor="background20" foregroundColor="white" transparent="1" noWrap="1" valign="center" />
-    <widget name="next_text" position="915,140" size="220,60" zPosition="6" text="NEXT" font="Caps; 30" halign="center" backgroundColor="background20" foregroundColor="white" transparent="1" noWrap="1" valign="center" />
-    <widget name="more_text" position="1150,140" size="220,60" zPosition="6" text="MORE" font="Caps; 30" halign="center" backgroundColor="background20" foregroundColor="amarillo" transparent="1" noWrap="1" valign="center" />
-    <widget name="date" position="1380,145" size="480,60" font="Regular; 28" valign="center" halign="right" transparent="1" noWrap="1" backgroundColor="background20" zPosition="5" foregroundColor="yellow" />
-    <ePixmap pixmap="GlamourAuraSky/buttons/key_menu_medium.png" position="1550,45" size="90,45" alphatest="blend" transparent="1" zPosition="5" />
-    <panel name="FullKeys2" />
+    <panel name="EPGSelectionMultiCommon" />
   </screen>
   <!-- 03. Graphical Multi EPG -->
   <screen name="GraphMultiEPG" position="0,0" size="1920,1080" title="Electronic Program Guide" flags="wfNoBorder" backgroundColor="transparent">
-    <panel name="EventViewScreen" />
-    <widget source="Title" render="Label" position="650,45" size="890,90" font="Regular; 32" backgroundColor="background20" halign="left" transparent="1" foregroundColor="cyan1" zPosition="3" />
-    <widget source="Event" render="Label" position="60,80" size="570,120" font="Caps; 36" backgroundColor="transwhite" transparent="0" halign="center" zPosition="3" foregroundColor="black" valign="center">
-      <convert type="EventName">Name</convert>
-    </widget>
-    <widget source="Event" render="GlamRun" options="movetype=running,startpoint=0,direction=top,steptime=10,repeat=2,startdelay=5000,wrap,oneshot=1,always=0" position="62,250" size="570,750" font="Regular; 30" backgroundColor="sky" transparent="1" valign="top" zPosition="4">
-      <convert type="EventName">ExtendedDescription</convert>
-    </widget>
-    <widget source="Event" render="Label" position="60,205" size="85,45" font="Numbers; 36" halign="left" backgroundColor="sky" transparent="1" zPosition="7">
-      <convert type="EventTime">StartTime</convert>
-      <convert type="ClockToText">Format:%H:%M </convert>
-    </widget>
-    <widget source="Event" render="Label" position="545,205" size="85,45" font="Numbers; 36" backgroundColor="background20" transparent="1" zPosition="7" halign="right">
-      <convert type="EventTime">EndTime</convert>
-      <convert type="ClockToText">Format:%H:%M</convert>
-    </widget>
-    <widget source="Event" render="Progress" position="150,222" size="390,7" borderWidth="0" backgroundColor="white" transparent="1" zPosition="7">
-      <convert type="EventTime">Progress</convert>
-    </widget>
-    <eLabel position="150,225" size="390,2" backgroundColor="grey" zPosition="6" />
-    <widget name="timeline_text" position="650,135" size="1220,55" selectionDisabled="1" backgroundColor="background20" transparent="1" zPosition="8" font="Regular; 30" itemHeight="50" />
-    <eLabel position="650,195" size="1220,3" backgroundColor="cyan1" zPosition="8" />
-    <widget name="list" position="650,205" size="1220,720" itemHeight="60" ServiceBackgroundColor="background20" ServiceBorderColor="grey" ServiceBorderWidth="1" EntryBackgroundColor="transpdark" EntryBackgroundColorNow="clearpurple" EntryBackgroundColorNowSelected="clearorange" EntryBackgroundColorSelected="clearcyan" EntryBorderColor="grey" EntryForegroundColor="white" EntryForegroundColorNow="white" EntryForegroundColorSelected="amarillo" EventBorderWidth="1" scrollbarMode="showOnDemand" transparent="1" zPosition="8" />
-    <widget name="timeline0" position="665,205" zPosition="8" size="3,720" pixmap="GlamourAuraSky/menu/timeline.png" transparent="1" alphatest="blend" />
-    <widget name="timeline1" position="665,205" zPosition="8" size="3,720" pixmap="GlamourAuraSky/menu/timeline.png" transparent="1" alphatest="blend" />
-    <widget name="timeline2" position="665,205" zPosition="8" size="3,720" pixmap="GlamourAuraSky/menu/timeline.png" transparent="1" alphatest="blend" />
-    <widget name="timeline3" position="665,205" zPosition="8" size="3,720" pixmap="GlamourAuraSky/menu/timeline.png" transparent="1" alphatest="blend" />
-    <widget name="timeline4" position="665,205" zPosition="8" size="3,720" pixmap="GlamourAuraSky/menu/timeline.png" transparent="1" alphatest="blend" />
-    <widget name="timeline5" position="665,205" zPosition="8" size="3,720" pixmap="GlamourAuraSky/menu/timeline.png" transparent="1" alphatest="blend" />
-    <widget name="timeline_now" position="665,204" zPosition="9" size="22,720" pixmap="GlamourAuraSky/menu/timeline-now.png" transparent="1" alphatest="blend" />
-    <panel name="FullKeys2" />
-    <ePixmap pixmap="GlamourAuraSky/buttons/key_menu_medium.png" position="1552,45" size="90,45" alphatest="blend" transparent="1" zPosition="5" />
+    <panel name="GraphMultiEPGCommon" />
   </screen>
   <!-- 04. Graphical MultiEPG List -->
   <screen name="GraphMultiEPGList" position="0,0" size="1920,1080" title="Electronic Program Guide" flags="wfNoBorder" backgroundColor="transparent">
-    <panel name="MainBackgroundEPG" />
-    <panel name="ClockLabel3" />
-    <ePixmap position="40,420" size="180,180" scale="180,180" zPosition="10" pixmap="GACommon/images/epggraphical.png" transparent="1" alphatest="on" />
-    <widget source="Title" render="Label" position="240,45" size="1420,90" font="Regular; 34" backgroundColor="background20" halign="left" transparent="1" foregroundColor="cyan1" zPosition="3" />
-    <widget name="timeline_text" position="239,133" size="1620,55" selectionDisabled="1" backgroundColor="background20" transparent="1" zPosition="8" font="Regular; 30" itemHeight="50" />
-    <eLabel position="240,195" size="1620,3" backgroundColor="cyan1" zPosition="8" />
-    <widget name="list" position="240,200" size="1620,720" itemHeight="60" ServiceBackgroundColor="background20" ServiceBorderColor="grey" ServiceBorderWidth="1" EntryBackgroundColor="transpdark" EntryBackgroundColorNow="clearpurple" EntryBackgroundColorNowSelected="clearorange" EntryBackgroundColorSelected="clearcyan" EntryBorderColor="grey" EntryForegroundColor="white" EntryForegroundColorNow="white" EntryForegroundColorSelected="amarillo" EventBorderWidth="1" scrollbarMode="showOnDemand" transparent="1" zPosition="8" />
-    <widget name="timeline0" position="255,200" zPosition="8" size="3,720" pixmap="GlamourAuraSky/menu/timeline.png" transparent="1" alphatest="blend" />
-    <widget name="timeline1" position="255,200" zPosition="8" size="3,720" pixmap="GlamourAuraSky/menu/timeline.png" transparent="1" alphatest="blend" />
-    <widget name="timeline2" position="255,200" zPosition="8" size="3,720" pixmap="GlamourAuraSky/menu/timeline.png" transparent="1" alphatest="blend" />
-    <widget name="timeline3" position="255,200" zPosition="8" size="3,720" pixmap="GlamourAuraSky/menu/timeline.png" transparent="1" alphatest="blend" />
-    <widget name="timeline4" position="255,200" zPosition="8" size="3,720" pixmap="GlamourAuraSky/menu/timeline.png" transparent="1" alphatest="blend" />
-    <widget name="timeline5" position="255,200" zPosition="8" size="3,720" pixmap="GlamourAuraSky/menu/timeline.png" transparent="1" alphatest="blend" />
-    <widget name="timeline_now" position="255,199" zPosition="9" size="22,720" pixmap="GlamourAuraSky/menu/timeline-now.png" transparent="1" alphatest="blend" />
-    <ePixmap position="240,960" size="120,60" zPosition="10" pixmap="GlamourAuraSky/buttons/key_info_big.png" transparent="1" alphatest="blend" />
-    <ePixmap position="365,960" size="120,60" zPosition="10" pixmap="GlamourAuraSky/buttons/key_menu_big.png" transparent="1" alphatest="blend" />
-    <ePixmap position="495,960" size="90,60" zPosition="10" pixmap="GlamourAuraSky/buttons/key_ok_big.png" transparent="1" alphatest="blend" />
-    <panel name="FullKeys2" />
+    <panel name="GraphMultiEPGListCommon" />
   </screen>
   <!-- 05. Graphical Multi Epg Setup -->
   <screen name="GraphMultiEpgSetup" position="center,center" size="1920,1080" title="Electronic Program Guide Setup" flags="wfNoBorder" backgroundColor="transparent">
@@ -2012,83 +1839,11 @@ if not self["videofps"].text:
   </screen>
   <!-- 06. Graphical EPG -->
   <screen name="GraphicalEPG" position="0,0" size="1920,1080" title="Electronic Program Guide" flags="wfNoBorder" backgroundColor="transparent">
-    <panel name="MainBackgroundEPG" />
-    <panel name="ClockLabel3" />
-    <ePixmap position="40,420" size="180,180" scale="1" zPosition="10" pixmap="GACommon/images/epggraphical.png" transparent="1" alphatest="on" />
-    <widget source="Title" render="Label" position="240,45" size="1420,90" font="RegularB; 34" backgroundColor="background20" halign="left" transparent="1" foregroundColor="cyan1" zPosition="3" />
-    <widget source="Event" render="Label" position="240,870" size="1630,50" font="Regular; 33" backgroundColor="background20" transparent="1" foregroundColor="sky" zPosition="5">
-      <convert type="EventName">Name</convert>
-    </widget>
-    <widget source="Event" render="Label" position="240,920" size="150,35" font="Numbers; 34" halign="center" backgroundColor="background20" transparent="1">
-      <convert type="EventTime">StartTime</convert>
-      <convert type="ClockToText">Format:%H:%M </convert>
-    </widget>
-    <widget source="Event" render="Label" position="1715,920" size="150,35" font="Numbers; 34" backgroundColor="background20" transparent="1" halign="center" zPosition="5">
-      <convert type="EventTime">EndTime</convert>
-      <convert type="ClockToText">Format:%H:%M</convert>
-    </widget>
-    <eLabel position="400,938" size="1305,1" backgroundColor="grey" zPosition="1" />
-    <widget source="Event" render="Progress" position="400,935" size="1305,8" pixmap="GlamourAuraSky/pointers/pointer_main.png" transparent="1" zPosition="1">
-      <convert type="EventTime">Progress</convert>
-    </widget>
-    <widget name="list" position="240,200" size="1620,660" itemHeight="60" ServiceBackgroundColor="background20" ServiceBorderColor="grey" ServiceBorderWidth="1" EntryBackgroundColor="transpdark" EntryBackgroundColorNow="clearpurple" EntryBackgroundColorNowSelected="clearorange" EntryBackgroundColorSelected="clearcyan" EntryBorderColor="grey" EntryForegroundColor="white" EntryForegroundColorNow="white" EntryForegroundColorSelected="amarillo" EventBorderWidth="1" scrollbarMode="showOnDemand" transparent="1" zPosition="8" />
-    <widget name="lab1" position="240,200" size="1620,660" halign="center" valign="center" backgroundColor="background20" transparent="0" zPosition="20" />
-    <widget name="timeline_text" position="240,135" size="1620,55" selectionDisabled="1" backgroundColor="background20" transparent="1" zPosition="8" font="Regular; 30" itemHeight="50" />
-    <eLabel position="240,190" size="1620,3" backgroundColor="cyan1" zPosition="8" />
-    <widget name="timeline_now" position="255,200" zPosition="9" size="18,660" pixmap="GlamourAuraSky/menu/timeline-now.png" transparent="1" alphatest="blend" />
-    <widget name="timeline0" position="255,201" size="1,660" pixmap="GlamourAuraSky/menu/timeline.png" zPosition="8" />
-    <widget name="timeline1" position="255,201" size="1,660" pixmap="GlamourAuraSky/menu/timeline.png" zPosition="8" />
-    <widget name="timeline2" position="255,201" size="1,660" pixmap="GlamourAuraSky/menu/timeline.png" zPosition="8" />
-    <widget name="timeline3" position="255,201" size="1,660" pixmap="GlamourAuraSky/menu/timeline.png" zPosition="8" />
-    <widget name="timeline4" position="255,201" size="1,660" pixmap="GlamourAuraSky/menu/timeline.png" zPosition="8" />
-    <widget name="timeline5" position="255,201" size="1,660" pixmap="GlamourAuraSky/menu/timeline.png" zPosition="8" />
-    <ePixmap position="240,960" size="120,60" zPosition="10" pixmap="GlamourAuraSky/buttons/key_info_big.png" transparent="1" alphatest="blend" />
-    <ePixmap position="365,960" size="120,60" zPosition="10" pixmap="GlamourAuraSky/buttons/key_menu_big.png" transparent="1" alphatest="blend" />
-    <ePixmap position="495,960" size="90,60" zPosition="10" pixmap="GlamourAuraSky/buttons/key_ok_big.png" transparent="1" alphatest="blend" />
-    <panel name="FullKeys2" />
+    <panel name="GraphicalEPGCommon" />
   </screen>
   <!-- 07. Graphical EPG PIG -->
   <screen name="GraphicalEPGPIG" position="0,0" size="1920,1080" title="Electronic Program Guide" flags="wfNoBorder" backgroundColor="transparent">
-    <panel name="MainBackgroundEPG" />
-    <panel name="ClockLabel3" />
-    <ePixmap position="40,420" size="180,180" scale="1" zPosition="10" pixmap="GACommon/images/epgmulti.png" transparent="1" alphatest="on" />
-    <widget source="Title" render="Label" position="240,45" size="1420,90" font="RegularB; 34" backgroundColor="background20" halign="left" transparent="1" foregroundColor="cyan1" zPosition="3" />
-    <widget source="Event" render="Label" position="240,550" size="900,35" font="Caps; 28" backgroundColor="background20" transparent="1" foregroundColor="sky" zPosition="5" halign="center" noWrap="1">
-      <convert type="EventName">Name</convert>
-    </widget>
-    <widget source="Event" render="Label" position="240,585" size="150,35" font="Numbers; 34" halign="center" backgroundColor="background20" transparent="1">
-      <convert type="EventTime">StartTime</convert>
-      <convert type="ClockToText">Format:%H:%M </convert>
-    </widget>
-    <widget source="Event" render="Label" position="995,585" size="150,35" font="Numbers; 34" backgroundColor="background20" transparent="1" halign="center" zPosition="5">
-      <convert type="EventTime">EndTime</convert>
-      <convert type="ClockToText">Format:%H:%M</convert>
-    </widget>
-    <eLabel position="400,602" size="585,1" backgroundColor="grey" zPosition="5" />
-    <widget source="Event" render="Progress" position="400,600" size="585,7" pixmap="GlamourAuraSky/pointers/pointer_infobar.png" transparent="1" zPosition="11">
-      <convert type="EventTime">Progress</convert>
-    </widget>
-    <ePixmap position="845,620" size="300,270" zPosition="-10" pixmap="GlamourAuraSky/menu/accentglowtr.png" transparent="1" alphatest="blend" />
-    <ePixmap position="233,681" size="300,270" zPosition="-10" pixmap="GlamourAuraSky/menu/accentglowbl.png" transparent="1" alphatest="blend" />
-    <widget source="Event" render="GlamRun" options="movetype=running,startpoint=0,direction=top,steptime=10,repeat=2,startdelay=5000,wrap,oneshot=1,always=0" position="239,620" size="900,330" font="Regular; 30" backgroundColor="background20" foregroundColor="cyan1" transparent="1" valign="top" zPosition="7">
-      <convert type="EventName">ExtendedDescription</convert>
-    </widget>
-    <widget name="list" position="240,180" size="1620,360" itemHeight="60" ServiceBackgroundColor="background20" ServiceBorderColor="grey" ServiceBorderWidth="1" EntryBackgroundColor="transpdark" EntryBackgroundColorNow="clearpurple" EntryBackgroundColorNowSelected="clearorange" EntryBackgroundColorSelected="clearcyan" EntryBorderColor="grey" EntryForegroundColor="white" EntryForegroundColorNow="white" EntryForegroundColorSelected="amarillo" EventBorderWidth="1" scrollbarMode="showOnDemand" transparent="1" zPosition="8" />
-    <widget name="lab1" position="240,180" size="1620,360" halign="center" valign="center" backgroundColor="background20" transparent="0" zPosition="20" />
-    <widget name="timeline_text" position="240,135" size="1620,45" selectionDisabled="1" backgroundColor="background20" transparent="1" zPosition="8" font="Regular; 30" itemHeight="50" foregroundColor="yellow" />
-    <eLabel position="240,180" size="1620,3" backgroundColor="cyan1" zPosition="22" />
-    <widget name="timeline_now" position="255,181" zPosition="9" size="18,360" pixmap="GlamourAuraSky/menu/timeline-now.png" transparent="1" alphatest="blend" />
-    <widget name="timeline0" position="255,180" size="1,360" pixmap="GlamourAuraSky/menu/timeline.png" zPosition="8" />
-    <widget name="timeline1" position="255,180" size="1,360" pixmap="GlamourAuraSky/menu/timeline.png" zPosition="8" />
-    <widget name="timeline2" position="255,180" size="1,360" pixmap="GlamourAuraSky/menu/timeline.png" zPosition="8" />
-    <widget name="timeline3" position="255,180" size="1,360" pixmap="GlamourAuraSky/menu/timeline.png" zPosition="8" />
-    <widget name="timeline4" position="255,180" size="1,360" pixmap="GlamourAuraSky/menu/timeline.png" zPosition="8" />
-    <widget name="timeline5" position="255,180" size="1,360" pixmap="GlamourAuraSky/menu/timeline.png" zPosition="8" />
-    <ePixmap position="240,960" size="120,60" zPosition="10" pixmap="GlamourAuraSky/buttons/key_info_big.png" transparent="1" alphatest="blend" />
-    <ePixmap position="365,960" size="120,60" zPosition="10" pixmap="GlamourAuraSky/buttons/key_menu_big.png" transparent="1" alphatest="blend" />
-    <ePixmap position="495,960" size="90,60" zPosition="10" pixmap="GlamourAuraSky/buttons/key_ok_big.png" transparent="1" alphatest="blend" />
-    <widget source="session.VideoPicture" render="Pig" position="1145,545" size="720,405" backgroundColor="transparent" zPosition="21" />
-    <panel name="FullKeys2" />
+    <panel name="GraphicalEPGPIGCommon" />
   </screen>
   <!-- 08. Movie EPG -->
   <screen name="MovieEpgSetup" position="0,0" size="1920,1080" title="MovieEpg Setup" flags="wfNoBorder" backgroundColor="transparent">
@@ -2122,15 +1877,12 @@ if not self["videofps"].text:
   <!-- ### MESSAGEBOXES -->
   <!-- 01. ChoiceBox -->
   <screen name="ChoiceBox" position="0,0" size="1920,1080" flags="wfNoBorder" title="Input" backgroundColor="transparent">
-    <panel name="MainBackground3" />
-    <panel name="ClockLabel1" />
-    <panel name="Title1" />
+    <panel name="ScreenElements4" />
     <ePixmap position="255,315" size="400,400" pixmap="GACommon/images/choice.png" alphatest="on" transparent="1" zPosition="5" />
     <widget name="text" position="805,60" size="1050,240" font="RegularB; 34" backgroundColor="background20" zPosition="4" foregroundColor="sky" halign="center" transparent="1" valign="center" enableWrapAround="1" />
     <widget name="list" position="805,300" size="1050,550" itemHeight="50" scrollbarMode="showOnDemand" selectionPixmap="GlamourAuraSky/selections/aurasel1050.png" alphatest="off" transparent="1" zPosition="6" />
     <ePixmap position="720,110" size="54,54" zPosition="10" pixmap="GlamourAuraSky/buttons/key_up2.png" transparent="1" alphatest="on" />
     <ePixmap position="720,880" size="54,54" zPosition="10" pixmap="GlamourAuraSky/buttons/key_down2.png" transparent="1" alphatest="on" />
-    <panel name="FullKeysH" />
   </screen>
   <!-- 02. InputBox -->
   <screen name="InputBox" position="0,0" size="1920,1080" flags="wfNoBorder" backgroundColor="transparent">
@@ -2155,10 +1907,8 @@ if not self["videofps"].text:
   </screen>
   <!-- 05. MessageBox -->
   <screen name="MessageBox" position="0,0" size="1920,1080" zPosition="1" title="Message" backgroundColor="transparent" flags="wfNoBorder">
-    <widget name="ErrorPixmap" pixmap="GACommon/icons/message/attention.png" position="255,315" size="400,400" zPosition="2" transparent="1" alphatest="on" />
-    <widget name="QuestionPixmap" pixmap="GACommon/icons/message/question.png" position="255,315" size="400,400" zPosition="3" transparent="1" alphatest="on" />
-    <widget name="InfoPixmap" pixmap="GACommon/icons/message/information.png" position="255,315" size="400,400" zPosition="4" transparent="1" alphatest="on" />
-    <panel name="ScreenElements5" />
+    <widget name="icon" pixmaps="GACommon/icons/message/input_question.png,GACommon/icons/message/input_info.png,GACommon/icons/message/input_warning.png,GACommon/icons/message/input_error.png,GACommon/icons/message/input_message.png" position="255,315" size="400,400" zPosition="4" transparent="1" alphatest="on" />
+    <panel name="ScreenElements6" />
     <widget name="text" position="810,60" size="1050,480" font="RegularB; 33" backgroundColor="background20" zPosition="4" foregroundColor="sky" halign="center" transparent="1" valign="center" />
     <widget name="list" font="Regular; 30" position="810,540" size="1050,400" itemHeight="50" scrollbarMode="showOnDemand" selectionPixmap="GlamourAuraSky/selections/aurasel1050.png" transparent="1" alphatest="off" zPosition="6" />
   </screen>
@@ -2354,7 +2104,6 @@ if not self["videofps"].text:
   <!-- 01. Nim selection -->
   <screen name="NimSelection" position="0,0" size="1920,1080" flags="wfNoBorder" backgroundColor="transparent">
     <panel name="ScreenElements2" />
-     <panel name="FullKeys1" />
     <ePixmap position="50,315" size="400,400" pixmap="GACommon/images/tuner.png" alphatest="on" transparent="1" zPosition="5" />
     <widget source="nimlist" render="Listbox" position="540,60" size="1305,900" enableWrapAround="1" transparent="1" selectionPixmap="GlamourAuraSky/selections/nimsel.png" alphatest="off" zPosition="4">
       <convert type="TemplatedMultiContent">
@@ -2636,7 +2385,7 @@ if not self["videofps"].text:
           MultiContentEntryText(pos = (120, 5), size = (1150, 60), font=0, flags = RT_HALIGN_LEFT|RT_VALIGN_TOP, text = 1, color=0x90e6, color_sel=0xdeff), # index 1 is the interfacename
           MultiContentEntryText(pos = (120, 65), size = (1150, 50), font=1, flags = RT_HALIGN_LEFT|RT_VALIGN_BOTTOM, text = 2), # index 2 is the description
         ],
-        "fonts": [gFont("RegularB", 36),gFont("RegularL", 28)],
+        "fonts": [gFont("RegularB", 36),gFont("Regular", 28)],
         "itemHeight": 120
         }
       </convert>
@@ -2697,7 +2446,7 @@ if not self["videofps"].text:
             MultiContentEntryPixmapAlphaBlend(pos = (65, 8), size = (72, 72), png = 5), # index 5 is the nfs/cifs icon
             MultiContentEntryPixmapAlphaBlend(pos = (110, 8), size = (72, 72), png = 6), # index 6 is the isMounted icon
           ],
-        "fonts": [gFont("Regular", 28),gFont("RegularL", 24),gFont("RegularB", 36)],
+        "fonts": [gFont("Regular", 28),gFont("Regular", 24),gFont("RegularB", 36)],
         "itemHeight": 90
         }
       </convert>
@@ -2736,7 +2485,7 @@ if not self["videofps"].text:
   <!-- 09. Mount Editor -->
   <screen name="AutoMountEdit" position="0,0" size="1920,1080" title="MountEdit" flags="wfNoBorder" backgroundColor="transparent">
     <panel name="ScreenElements2" />
-    <ePixmap position="50,315" size="400,400" pixmap="GACommon/images/netmounts.png" alphatest="on" transparent="1" zPosition="5" />
+    <ePixmap position="50,315" size="400,400" pixmap="GACommon/images/netmounts_manager.png" alphatest="on" transparent="1" zPosition="5" />
     <widget name="config" font="Regular; 30" position="540,90" size="1305,650" itemHeight="50" scrollbarMode="showOnDemand" backgroundColor="background20" transparent="1" selectionPixmap="GlamourAuraSky/selections/aurasel.png" zPosition="5" />
     <widget name="introduction" position="540,745" size="1305,60" font="RegularB;33" halign="center" backgroundColor="background20" transparent="1" zPosition="6" foregroundColor="sky" />
     <panel name="FullKeys1" />
@@ -2746,7 +2495,7 @@ if not self["videofps"].text:
   <!-- 10. Mount Manager -->
   <screen name="AutoMountManager" position="0,0" size="1920,1080" title="AutoMountManager" flags="wfNoBorder" backgroundColor="transparent">
     <panel name="ScreenElements2" />
-    <ePixmap position="50,315" size="400,400" pixmap="GACommon/images/netmounts.png" alphatest="on" transparent="1" zPosition="5" />
+    <ePixmap position="50,315" size="400,400" pixmap="GACommon/images/netmounts_manager.png" alphatest="on" transparent="1" zPosition="5" />
     <widget source="config" render="Listbox" position="540,90" size="1305,630" scrollbarMode="showOnDemand" backgroundColor="background20" selectionPixmap="GlamourAuraSky/selections/aurasel1305.png" alphatest="off" transparent="1" zPosition="4">
       <convert type="TemplatedMultiContent">
                         {"template": [
@@ -3480,7 +3229,7 @@ if not self["videofps"].text:
     <widget name="wizard" position="50,315" size="400,400" pixmap="GACommon/images/network.png" alphatest="on" transparent="1" zPosition="5" />
     <panel name="Wizard1" />
     <panel name="LanguageKey" />
-        <panel name="RCKeys" />
+    <panel name="RemoteWizard" />
   </screen>
   <!-- 07. Start Wizard -->
   <screen name="StartWizard" position="0,0" size="1920,1080" title="Welcome..." flags="wfNoBorder" backgroundColor="transparent">
@@ -3489,7 +3238,7 @@ if not self["videofps"].text:
     <ePixmap pixmap="GlamourAuraSky/buttons/key_exit_big.png" position="1700,875" size="120,60" alphatest="blend" zPosition="4" transparent="1" />
     <panel name="Wizard1" />
     <panel name="LanguageKey" />
-    <panel name="RCKeys" />
+    <panel name="RemoteWizard" />
   </screen>
   <!-- 08. Video Wizard -->
   <screen name="VideoWizard" position="0,0" size="1920,1080" title="Default settings" flags="wfNoBorder" backgroundColor="transparent">
@@ -3506,7 +3255,7 @@ if not self["videofps"].text:
     </widget>
     <widget name="config" font="Regular; 33" position="950,520" size="870,400" itemHeight="50" zPosition="14" scrollbarMode="showOnDemand" selectionPixmap="GlamourAuraSky/selections/filesel.png" alphatest="off" transparent="1" />
     <panel name="LanguageKey" />
-    <panel name="RCKeys" />
+    <panel name="RemoteWizard" />
     <widget name="portpic" position="740,630" size="192,192" zPosition="18" transparent="1" alphatest="blend" />
   </screen>
   <!-- 09. Install Ipkg Updater -->

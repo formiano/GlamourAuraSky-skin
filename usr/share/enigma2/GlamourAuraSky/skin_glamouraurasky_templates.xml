@@ -348,6 +348,7 @@
     <setup key="RemoteButton" image="GACommon/images/remotesetup.png" />
     <setup key="RFModulator" image="GACommon/images/rfmod.png" />
     <setup key="Satellite" image="GACommon/images/satellite.png" />
+    <setup key="Skin" image="GACommon/images/skins.png" />
     <setup key="SleepTimer" image="GACommon/images/sleep.png" />
     <setup key="Softcam" image="GACommon/images/camsetup.png" />
     <setup key="SoftwareManager" image="GACommon/images/softwaremanager.png" />
@@ -1858,11 +1859,16 @@
     <panel name="Title2" />
   </screen>
   <screen name="ScreenElements4" flags="wfNoBorder">
-    <panel name="MenuBackground" />
+    <panel name="MainBackground3" />
     <panel name="ClockLabel1" />
     <panel name="Title1" />
   </screen>
   <screen name="ScreenElements5" flags="wfNoBorder">
+    <panel name="MenuBackground" />
+    <panel name="ClockLabel1" />
+    <panel name="Title1" />
+  </screen>
+  <screen name="ScreenElements6" flags="wfNoBorder">
     <panel name="MainBackgroundMS" />
     <panel name="ClockLabel1" />
     <panel name="Title1" />
@@ -1870,6 +1876,10 @@
   <screen name="EventViewScreen" flags="wfNoBorder">
     <panel name="MainBackgroundClock" />
     <ePixmap pixmap="GlamourAuraSky/menu/eventview.png" position="0,60" size="645,960" zPosition="-11" alphatest="off" transparent="1" />
+  </screen>
+  <screen name="EventViewScreenT" flags="wfNoBorder">
+    <panel name="EventViewScreen" />
+    <panel name="Title1" />
   </screen>
   <!-- 06. TITLES -->
   <screen name="Title1" flags="wfNoBorder" alphatest="on" zPosition="6">
@@ -2671,15 +2681,19 @@
     </widget>
   </screen>
   <!-- Provider name and Reference -->
-  <screen name="P+RInfobar" flags="wfNoBorder">
-    <ePixmap pixmap="GACommon/infobar/infobar_provider2IB.png" position="425,130" zPosition="-12" size="1240,50" alphatest="off" transparent="1" />
-    <widget source="session.CurrentService" render="Label" position="1145,135" size="500,40" font="Regular; 26" valign="center" backgroundColor="deepgrey" transparent="1" zPosition="7" halign="center" foregroundColor="deepgrey">
+  <screen name="Prov" flags="wfNoBorder">
+    <widget source="session.CurrentService" render="Label" position="1145,135" size="500,40" font="Regular; 26" halign="center" valign="center" foregroundColor="black" backgroundColor="grey2" transparent="1" noWrap="1" zPosition="7">
       <convert type="ServiceName">Provider</convert>
     </widget>
     <widget source="session.CurrentService" render="GlamPicon" position="1045,125" size="100,60" alphatest="blend" scale="1" transparent="1" zPosition="7">
       <convert type="ServiceName">Provider</convert>
     </widget>
-    <widget source="session.CurrentService" render="GlamRoll" position="440,135" size="600,40" font="Regular; 26" valign="center" backgroundColor="deepgrey" transparent="1" zPosition="7" halign="center" noWrap="1">
+  </screen>
+  <screen name="P+RInfobar" flags="wfNoBorder">
+    <ePixmap pixmap="GACommon/infobar/infobar_provider2IB.png" position="425,130" zPosition="-12" size="1240,50" alphatest="off" transparent="1" />
+    <widget source="session.CurrentService" render="Label" position="1145,135" size="500,40" font="Regular; 26" valign="center" backgroundColor="deepgrey" transparent="1" zPosition="7" halign="center" foregroundColor="deepgrey">
+    <panel name="Prov" />
+    <widget source="session.CurrentService" render="GlamRoll" position="440,135" size="600,40" font="Regular; 26" halign="center" valign="center" foregroundColor="amarillo" backgroundColor="darkgrey" transparent="1" noWrap="1" zPosition="7">
       <convert type="ServiceName">Reference</convert>
     </widget>
   </screen>
@@ -2727,7 +2741,13 @@
     <ePixmap pixmap="GlamourAuraSky/infobar/infobar_pidinfo.png" position="885,195" zPosition="-12" size="1035,52" alphatest="off" transparent="1" />
     <ePixmap pixmap="GlamourAuraSky/menu/accentglowt500.png" position="1140,195" size="500,45" zPosition="-10" alphatest="blend" transparent="1" />
     <widget source="session.CurrentService" render="Label" position="905,205" size="950,35" font="Regular; 26" transparent="1" zPosition="5" foregroundColor="white" backgroundColor="background20" halign="right" valign="center" noWrap="1" text="PidInfo">
-      <convert type="GlamourBase">PidInfo</convert>
+      <convert type="GlamourBase">PidInfo,Dec</convert>
+    </widget>
+    <widget source="session.CurrentService" render="Label" position="905,205" size="0,0" font="Regular; 26" transparent="1" zPosition="4" foregroundColor="white" backgroundColor="background20" halign="right" valign="center" noWrap="1">
+      <convert type="GlamourBase">PidInfo,Hex</convert>
+    </widget>
+    <widget source="session.CurrentService" render="Label" position="905,205" size="0,0" font="Regular; 26" transparent="1" zPosition="3" foregroundColor="white" backgroundColor="background20" halign="right" valign="center" noWrap="1">
+      <convert type="GlamourBase">PidInfo,DecHex</convert>
     </widget>
   </screen>
   <!-- Bitrate Infobar -->
@@ -3028,9 +3048,29 @@
   </screen>
   <!--  CAS info -->
   <screen name="CasInfo" flags="wfNoBorder">
-    <widget source="session.CurrentService" render="Label" position="50,1030" size="1860,35" font="Numbers; 31" halign="center" zPosition="7" backgroundColor="amarillo" transparent="1" text="CAS Info" valign="center" noWrap="1" foregroundColor="amarillo">
+    <widget source="session.CurrentService" render="Label" position="50,1030" size="1860,35" font="Numbers; 31" foregroundColor="amarillo" backgroundColor="transparent" transparent="1" text="CAS Info" valign="center" halign="center" noWrap="1" shadowColor="grey" shadowOffset="1,0" zPosition="7">
       <convert type="GlamourAccess">CasInfo</convert>
     </widget>
+  </screen>
+  <!-- 08b. COMMON INFOBARS -->
+  <screen name="CommonInfobars" flags="wfNoBorder">
+    <!-- Clock -->
+    <panel name="ClockLabel2" />
+    <!--Tuner Infobar -->
+    <panel name="TunerInfobar" />
+    <panel name="TunersInfo" />
+    <!-- Service info and icons -->
+    <panel name="IconsInfobar" />
+    <!-- MIDDLE INFOBAR MAIN INFO -->
+    <panel name="MainInfobar" />
+    <!-- BOTTOM INFOBAR MAIN INFO -->
+    <ePixmap pixmap="GlamourAuraSky/infobar/halo_bottom.png" position="0,975" zPosition="-12" size="1920,88" alphatest="off" transparent="1" />
+    <!-- Crypt Info -->
+    <panel name="CryptInfo" />
+    <!-- Bitrate -->
+    <!--panel name="BitrateInfobar" /-->
+    <!-- WEATHER Current Temp on Infobar -->
+    <panel name="WeatherInfobar2" />
   </screen>
   <!-- 09. SETUP TEMPLATES -->
   <!-- 09-1 Common Setup -->
@@ -3042,6 +3082,7 @@
     <widget name="footnote" position="50,730" size="470,200" font="Regular; 32" foregroundColor="white" backgroundColor="black" shadowColor="black" shadowOffset="2,1" transparent="1" valign="top" halign="center" zPosition="7" />
     <widget name="HelpWindow" position="540,870" size="1320,90" zPosition="11" transparent="1" />
     <widget name="setupimage" position="50,315" size="400,400" conditional="setupimage" alphatest="on" transparent="1" zPosition="5" />
+    <widget name="Image" position="50,315" size="400,400" conditional="Image" alphatest="on" transparent="1" zPosition="5" />
     <panel name="SetupKeys" />
   </screen>
   <!-- 10. CHANNEL SELECTION TEMPLATES -->
