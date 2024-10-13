@@ -3,29 +3,29 @@ echo "                        *******                             "
 echo "                  ******       *****                        "
 echo "             ****                   ****                    "
 echo "          ***                            ***                "
-echo "        **    GLAMOUR AURA FHD ATV SKIN     **              "
+echo "        **    GLAMOUR AURA FHD OPD SKIN     **              "
 echo "                a skin by MCelliotG                         "
 echo "                                                            "
 echo "                                                            "
 echo "        *********    DISCLAIMER      *********              "
-echo "Glamour Aura FHD ATV skin requires a minimal CPU @ 1000 Mhz."
-echo "Glamour Aura FHD ATV is NOT guaranteed to work on slower or older receivers."
+echo "Glamour Aura FHD OPD skin requires a minimal CPU @ 1000 Mhz."
+echo "Glamour Aura FHD OPD is NOT guaranteed to work on slower or older receivers."
 echo "                                             "
 echo "                                             "
 echo "                                             "
 echo "                                             "
-echo "Checking if a previous version of Glamour Aura FHD ATV skin is installed..."
-if [ -f /usr/share/enigma2/GlamourAuraFHD-ATV/skin.xml ]; then
-    cp -R /usr/share/enigma2/GlamourAuraFHD-ATV/ /tmp
+echo "Checking if a previous version of Glamour Aura FHD openDroid skin is installed..."
+if [ -f /usr/share/enigma2/GlamourAuraFHD-OPD/skin.xml ]; then
+    cp -R /usr/share/enigma2/GlamourAuraFHD-OPD/ /tmp
     cp -R /usr/share/enigma2/GACommon/ /tmp
-    rm -rf /usr/share/enigma2/GlamourAuraFHD-ATV
+    rm -rf /usr/share/enigma2/GlamourAuraFHD-OPD
     rm -rf /usr/lib/enigma2/python/Components/Converter/Glam*
     rm -rf /usr/lib/enigma2/python/Components/Renderer/Glam*
     echo "                                               "
-    echo "Previous Glamour Aura FHD ATV skin installation"
+    echo "Previous Glamour Aura FHD  skin installation"
     echo "    was found and removed successfully!        "
     echo "                                               "
 fi
 echo "                                                   "
-echo "Glamour Aura FHD ATV skin is now being installed..."
+echo "Glamour Aura FHD OPD skin is now being installed..."
 echo "                                                   "

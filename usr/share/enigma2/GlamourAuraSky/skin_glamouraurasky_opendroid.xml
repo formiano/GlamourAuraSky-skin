@@ -2,7 +2,7 @@
   <!-- Original Skin: GlamourAuraSky by MCelliotG -->
   <!-- SKIN FILE -->
   <!-- GlamourAuraSky Templates by MCelliotG -->
-  <!-- OPENATV -->
+  <!-- OPENOPD -->
   <!-- 01. SIMPLE SCREENS -->
   <!-- 1a. MovieSelectionSlim -->
   <screen name="MovieSelectionSlim" position="0,0" size="1920,1080" title="Movie Center" flags="wfNoBorder" backgroundColor="transparent">
@@ -1438,7 +1438,7 @@
   <screen name="Swap" position="0, 0" flags="wfNoBorders" title="Swap File Manager" backgroundColor="transparent" size="1920, 1080">
     <panel name="SwapManager" />
   </screen>
-  <!-- OPENATV 7.xx SCREENS -->
+  <!-- OPENOPD 7.xx SCREENS -->
   <!-- 1. Info Screens -->
   <screen name="CommonInfo">
     <widget source="description" render="Label" position="50,715" size="475,230" conditional="description" font="Regular; 32" foregroundColor="white" backgroundColor="black" shadowColor="black" shadowOffset="2,1" transparent="1" valign="top" halign="center" zPosition="7" />
@@ -1454,7 +1454,7 @@
   <screen name="DistributionInformation" position="0,0" size="1920,1080" title="Distribution Information" flags="wfNoBorder" backgroundColor="transparent">
     <panel name="ScreenElements2" />
     <ePixmap position="50,315" size="400,400" pixmap="GACommon/images/about.png" alphatest="on" transparent="1" zPosition="5" />
-    <eLabel text="https://github.com/openatv" position="50,200" size="470,50" font="Regular;30" backgroundColor="background20" foregroundColor="yellow" halign="left" transparent="1" zPosition="5" />
+    <eLabel text="https://github.com/opendroid" position="50,200" size="470,50" font="Regular;30" backgroundColor="background20" foregroundColor="yellow" halign="left" transparent="1" zPosition="5" />
     <eLabel text="https://github.com/oe-alliance" position="50,250" size="470,50" font="Regular;30" backgroundColor="background20" foregroundColor="amarillo" halign="left" transparent="1" zPosition="5" />
     <panel name="CommonInfo" />
   </screen>

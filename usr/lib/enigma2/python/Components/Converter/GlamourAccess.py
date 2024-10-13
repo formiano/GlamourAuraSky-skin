@@ -907,7 +907,7 @@ class GlamourAccess(Poll, Converter):
 #OE-A
 		if os.path.exists("/etc/image-version") and not os.path.exists("/etc/.emustart"):
 			for line in open("/etc/image-version"):
-				if "=openATV" in line:
+				if "=openOPD" in line:
 					try:
 						if config.softcam.actCam.value:
 							cam1 = config.softcam.actCam.value

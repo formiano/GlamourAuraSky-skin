@@ -7,6 +7,6 @@ License: GNU GENERAL PUBLIC LICENSE Version 3, 29 June 2007
 OE: OE-A based images
 Maintainer: MCelliotG
 Recommends: enigma2-plugin-extensions-bitrate, enigma2-plugin-extensions-oaweather
-Description: Glamour Aura Sky skin for new generation STBs with OpenATV/OE-A based images
+Description: Glamour Aura Sky skin for new generation STBs with OPD/OE-A based images
 Source: https://github.com/MCelliotG/GlamourAuraSky-skin
 Homepage: https://github.com/MCelliotG/GlamourAuraSky-skin

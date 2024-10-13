@@ -1,12 +1,12 @@
 #!/bin/sh
-if [ -f /tmp/GlamourAuraFHD-ATV/skin.xml ]; then
-  rm -rf /usr/share/enigma2/GlamourAuraFHD-ATV/
-  mv /tmp/GlamourAuraFHD-ATV /usr/share/enigma2/
+if [ -f /tmp/GlamourAuraFHD-OPD/skin.xml ]; then
+  rm -rf /usr/share/enigma2/GlamourAuraFHD-OPD/
+  mv /tmp/GlamourAuraFHD-OPD /usr/share/enigma2/
 fi
 if [ -f /tmp/GACommon ]; then
   rm -rf /usr/share/enigma2/GACommon/
   mv /tmp/GACommon /usr/share/enigma2/
 fi
 echo "                                                                        "
-echo "Glamour Aura FHD ATV skin is now successfully installed on your receiver"
+echo "Glamour Aura FHD OPD skin is now successfully installed on your receiver"
 echo "                       Enjoy!!!                                         "

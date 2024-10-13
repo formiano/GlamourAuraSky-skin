@@ -6,7 +6,7 @@ This skin was created for new generation Enigma2 receivers. MINIMAL requirement 
 
 This skin is not guaranteed to work in older E2 receivers with slower CPUs. Use at your own risk.
 
-This skin is FREE software. You can use it for free on your E2 receivers running OpenATV 6.3 and newer images.
+This skin is FREE software. You can use it for free on your E2 receivers running OpenOPD 7.5 and newer images.
 
 You are NOT allowed to modify the first line of the skin and its graphics.
 
@@ -24,6 +24,6 @@ You are allowed and encouraged to commit changes and suggestions to github. Pull
 
 Pull requests can include modifications for other images as well. For these the author can create new repositories.
 
-Until a modification for any image OTHER than OpenATV and its variants is final, the skin is NOT advised to be used in other images. 
+Until a modification for any image OTHER than OpenOPD and its variants is final, the skin is NOT advised to be used in other images. 
 
 For any modifications and questions, please contact the author at mcelliotg@gmail.com
