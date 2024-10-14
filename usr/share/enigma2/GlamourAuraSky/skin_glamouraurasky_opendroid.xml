@@ -423,7 +423,7 @@
     <widget name="list" font="Regular; 30" position="540,60" size="620,720" itemHeight="80" scrollbarMode="showOnDemand" selectionPixmap="GlamourAuraSky/selections/aurasel620.png" alphatest="off" backgroundColor="background20" enableWrapAround="1" transparent="1" zPosition="9" />
     <widget name="sublist" font="Regular; 30" position="1165,60" size="700,720" itemHeight="80" scrollbarMode="showOnDemand" selectionPixmap="GACommon/selections/auraselwhite700.png" alphatest="off" backgroundColor="background20" foregroundColor="white" foregroundColorSelected="sky" backgroundColorSelected="clearsky" enableWrapAround="1" transparent="1" zPosition="9" />
     <!-- New Lists -->
-    <widget source="mainlist" render="Listbox" position="540,60" size="620,720" itemHeight="80" scrollbarMode="showOnDemand" selectionPixmap="GlamourAuraFHD-ATV/selections/aurasel620.png" alphatest="off" backgroundColor="background20" enableWrapAround="1" transparent="1" zPosition="9">
+    <widget source="mainlist" render="Listbox" position="540,60" size="620,720" itemHeight="80" scrollbarMode="showOnDemand" selectionPixmap="GlamourAuraSky/selections/aurasel620.png" alphatest="off" backgroundColor="background20" enableWrapAround="1" transparent="1" zPosition="9">
       <templates>
         <template name="Default" fonts="RegularB;30,Regular;26" itemWidth="620" itemHeight="80">
           <mode name="default">
