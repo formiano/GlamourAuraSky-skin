@@ -358,9 +358,9 @@
     <ePixmap pixmap="GACommon/buttons/aura_yellow.png" position="1230,870" size="225,75" alphatest="blend" zPosition="5" transparent="1" />
     <ePixmap pixmap="GACommon/buttons/aura_blue.png" position="1555,870" size="225,75" alphatest="blend" zPosition="5" transparent="1" />
     <eLabel text="Cancel" position="535,855" size="320,90" zPosition="6" font="Regular; 30" halign="center" backgroundColor="background20" transparent="1" valign="bottom" />
-    <eLabel text="Start" position="860,855" size="320,90" zPosition="6" font="Regular; 30" halign="center" backgroundColor="background20" transparent="1" valign="bottom" />
-    <eLabel text="Info" position="1185,855" size="320,90" zPosition="6" font="Regular; 30" halign="center" backgroundColor="background20" transparent="1" valign="bottom" />
-    <eLabel text="clean up" position="1510,855" size="320,90" zPosition="6" font="Regular; 30" halign="center" backgroundColor="background20" transparent="1" valign="bottom" />
+    <eLabel text="Download" position="860,855" size="320,90" zPosition="6" font="Regular; 30" halign="center" backgroundColor="background20" transparent="1" valign="bottom" />
+    <eLabel text="Commit" position="1185,855" size="320,90" zPosition="6" font="Regular; 30" halign="center" backgroundColor="background20" transparent="1" valign="bottom" />
+    <eLabel text="Clean up" position="1510,855" size="320,90" zPosition="6" font="Regular; 30" halign="center" backgroundColor="background20" transparent="1" valign="bottom" />
     <widget name="oscamsmartcardhelperimage" position="1440,260" size="330,300" zPosition="3" backgroundColor="black" transparent="1" />
     <widget name="HELPTEXT" position="1195,705" size="650,150" zPosition="9" font="Regular; 30" halign="left" backgroundColor="background20" transparent="1" foregroundColor="cyan1" />
     <widget name="HEADER" position="540,135" size="870,270" zPosition="8" font="RegularB; 32" halign="left" backgroundColor="background20" transparent="1" foregroundColor="lightciel" />
