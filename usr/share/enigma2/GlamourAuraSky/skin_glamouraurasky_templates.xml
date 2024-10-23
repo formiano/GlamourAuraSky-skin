@@ -339,6 +339,7 @@
     <setup key="NetworkuShareSetup" image="GACommon/images/ushare.png" />
     <setup key="openwebif" image="GACommon/images/webif.png" />
     <setup key="OscamInfo" image="GACommon/images/oscam.png" />
+    <setup key="OscamSmartcard_setup" image="GACommon/images/oscam.png" />
     <setup key="OSD3D" image="GACommon/images/auto_3d.png" />
     <setup key="Password" image="GACommon/images/panel+.png" />
     <setup key="Playback" image="GACommon/images/play_big.png" />
