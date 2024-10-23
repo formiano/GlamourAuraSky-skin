@@ -365,7 +365,7 @@
     <widget name="HELPTEXT" position="1195,705" size="650,150" zPosition="9" font="Regular; 30" halign="left" backgroundColor="background20" transparent="1" foregroundColor="cyan1" />
     <widget name="HEADER" position="540,135" size="870,270" zPosition="8" font="RegularB; 32" halign="left" backgroundColor="background20" transparent="1" foregroundColor="lightciel" />
     <widget name="INFOTXT" position="540,705" size="650,150" zPosition="8" font="Regular; 30" halign="left" backgroundColor="background20" transparent="1" foregroundColor="amarillo" />
-    <eLabel text="OscamSmartcard 2.5 by arn354 and Undertaker Mod Team OpenDroid" position="496,90" size="1000,45" zPosition="6" font="Regular; 36" halign="right" backgroundColor="background20" transparent="1" foregroundColor="amarillo" />
+    <eLabel text="OscamSmartcard 2.5 by arn354 and Undertaker Mod Team OpenDroid" position="496,90" size="1000,45" zPosition="6" font="Regular; 36" halign="right" backgroundColor="background20" transparent="1" foregroundColor="cyan1" />
   </screen>
   <!-- 22. Usb Format -->
   <screen name="UsbFormat" position="0,0" size="1920,1080" title="UsbFormat" backgroundColor="transparent" flags="wfNoBorder" alphatest="on">
