@@ -349,7 +349,7 @@
     <panel name="FullKeys1" />
   </screen>
   <!-- 21. OscamSmartcard -->
-  <screen name="OscamSmartcard" position="0,0" size="1920,1080" title="OscamSmartcard" flags="wfNoBorder" backgroundColor="transparent">
+ <screen name="OscamSmartcard" position="0,0" size="1920,1080" title="OscamSmartcard" flags="wfNoBorder" backgroundColor="transparent">
     <panel name="ScreenElements2" />
     <ePixmap position="50,315" size="400,400" pixmap="GACommon/images/oscam.png" alphatest="on" transparent="1" zPosition="5" />
     <widget name="config" font="Regular; 30" position="540,405" size="870,300" scrollbarMode="showOnDemand" selectionPixmap="GlamourAuraSky/selections/filesel.png" alphatest="off" backgroundColor="background20" itemHeight="50" enableWrapAround="1" transparent="1" zPosition="9" />
@@ -358,14 +358,14 @@
     <ePixmap pixmap="GACommon/buttons/aura_yellow.png" position="1230,870" size="225,75" alphatest="blend" zPosition="5" transparent="1" />
     <ePixmap pixmap="GACommon/buttons/aura_blue.png" position="1555,870" size="225,75" alphatest="blend" zPosition="5" transparent="1" />
     <eLabel text="Cancel" position="535,855" size="320,90" zPosition="6" font="Regular; 30" halign="center" backgroundColor="background20" transparent="1" valign="bottom" />
-    <eLabel text="Download" position="860,855" size="320,90" zPosition="6" font="Regular; 30" halign="center" backgroundColor="background20" transparent="1" valign="bottom" />
-    <eLabel text="Commit" position="1000,855" size="400,400" zPosition="6" font="Regular; 30" halign="center" backgroundColor="background20" transparent="1" valign="bottom" />
-    <eLabel text="Clean up" position="1510,855" size="320,90" zPosition="6" font="Regular; 30" halign="center" backgroundColor="background20" transparent="1" valign="bottom" />
+    <eLabel text="save" position="860,855" size="320,90" zPosition="6" font="Regular; 30" halign="center" backgroundColor="background20" transparent="1" valign="bottom" />
+    <eLabel text="Note Release" position="1185,855" size="320,90" zPosition="6" font="Regular; 30" halign="center" backgroundColor="background20" transparent="1" valign="bottom" />
+    <eLabel text="Reset" position="1510,855" size="320,90" zPosition="6" font="Regular; 30" halign="center" backgroundColor="background20" transparent="1" valign="bottom" />
     <widget name="oscamsmartcardhelperimage" position="1440,260" size="330,300" zPosition="3" backgroundColor="black" transparent="1" />
-    <widget name="HELPTEXT" position="1195,705" size="650,150" zPosition="9" font="Regular; 30" halign="left" backgroundColor="background20" transparent="1" foregroundColor="cyan1" />
+    <widget name="HELPTEXT" position="1195,680" size="650,350" zPosition="9" font="Regular; 30" halign="left" backgroundColor="background20" transparent="1" foregroundColor="cyan1" />
     <widget name="HEADER" position="540,135" size="870,270" zPosition="8" font="RegularB; 32" halign="left" backgroundColor="background20" transparent="1" foregroundColor="lightciel" />
-    <widget name="INFOTXT" position="540,705" size="650,150" zPosition="8" font="Regular; 30" halign="left" backgroundColor="background20" transparent="1" foregroundColor="amarillo" />
-    <eLabel text="OscamSmartcard 2.5 by arn354 and Undertaker Mod Team OpenDroid" position="496,90" size="1000,45" zPosition="6" font="Regular; 36" halign="right" backgroundColor="background20" transparent="1" foregroundColor="cyan1" />
+    <widget name="INFOTXT" position="540,680" size="650,170" zPosition="8" font="Regular; 30" halign="left" backgroundColor="background20" transparent="1" foregroundColor="cyan1" />
+    <eLabel text="OscamSmartcard 2.5 by arn354 and Undertaker Mod Team OpenDroid" position="496,60" size="1000,45" zPosition="6" font="Regular; 36" halign="right" backgroundColor="background20" transparent="1" foregroundColor="cyan1" />
   </screen>
   <!-- 22. Usb Format -->
   <screen name="UsbFormat" position="0,0" size="1920,1080" title="UsbFormat" backgroundColor="transparent" flags="wfNoBorder" alphatest="on">
