@@ -229,7 +229,7 @@
     <menu key="harddisk_convert" image="GACommon/images/hddconvert.png" />
     <menu key="harddisk_init" image="GACommon/images/hddinit.png" />
     <menu key="harddisk_setup" image="GACommon/images/hddsetup.png" />
-    <menu key="mount_manager" image="GACommon/images/mount_manager.png" />
+    <menu key="mount_manager" image="GACommon/images/hddsetup.png" />
     <menu key="swap_manager" image="GACommon/images/swap.png" />
     <menu key="usbdisk_init" image="GACommon/images/usb.png" />
     <!-- Common interface -->
@@ -306,6 +306,7 @@
     <setup key="CiSelection" image="GACommon/images/cisetup.png" />
     <setup key="CISettings" image="GACommon/images/cisettings.png" />
     <setup key="Display" image="GACommon/images/lcd.png" />
+    <setup key="DeviceManager" image="GACommon/images/hddsetup.png" />
     <setup key="DNS" image="GACommon/images/dns.png" />
     <setup key="dvdplayer" image="GACommon/images/dvd.png" />
     <setup key="EditBirthdaySetting" image="GACommon/images/bday.png" />
@@ -322,6 +323,7 @@
     <setup key="FlashExpander" image="GACommon/images/flashexpander.png" />
     <setup key="GPTSlotManager" image="GACommon/images/slotmanager.png" />
     <setup key="HardDisk" image="GACommon/images/hdd-big.png" />
+    <setup key="MountManager" image="GACommon/images/hddsetup.png" />
     <setup key="HDMICEC" image="GACommon/images/hdmicec.png" />
     <setup key="HDMIRecord" image="GACommon/images/hdmicec.png" />
     <setup key="InputDeviceSetup" image="GACommon/images/hdmicec.png" />
@@ -975,7 +977,11 @@
       <convert type="MenuEntryCompare">BluePanel</convert>
       <convert type="ConditionalShowHide" />
     </widget>
-    <widget source="menu" render="Pixmap" pixmap="GACommon/images/oscam.png" position="515,425" size="180,180" scale="1" transparent="1" alphatest="on" zPosition="5">
+    <widget source="menu" render="Pixmap" pixmap="GACommon/images/hddsetup.png" position="515,425" size="180,180" scale="1" transparent="1" alphatest="on" zPosition="5">
+      <convert type="MenuEntryCompare">DeviceManager</convert>
+      <convert type="ConditionalShowHide" />
+    </widget>
+    <widget source="menu" render="Pixmap" pixmap="GACommon/oscam/camd.png" position="515,425" size="180,180" scale="1" transparent="1" alphatest="on" zPosition="5">
       <convert type="MenuEntryCompare">OscamSmartcard_setup</convert>
       <convert type="ConditionalShowHide" />
     </widget>

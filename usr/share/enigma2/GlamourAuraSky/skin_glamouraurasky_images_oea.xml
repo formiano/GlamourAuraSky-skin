@@ -93,7 +93,7 @@
     <widget source="key_green" render="Label" position="1205,855" size="320,90" zPosition="6" font="Regular; 30" halign="center" backgroundColor="background20" transparent="1" valign="bottom" />
   </screen>
   <!-- 05. Devices Manager -->
-  <screen name="DeviceManager" position="0,0" size="1920,1080" title="Devices Manager" flags="wfNoBorder" backgroundColor="transparent">
+ <!-- <screen name="DeviceManager" position="0,0" size="1920,1080" title="Devices Manager" flags="wfNoBorder" backgroundColor="transparent">
     <panel name="ScreenElements2" />
     <ePixmap position="50,315" size="400,400" pixmap="GACommon/images/input_devices.png" alphatest="on" transparent="1" zPosition="5" />
     <widget source="list" render="Listbox" position="540,90" size="1305,600" enableWrapAround="1" scrollbarMode="showOnDemand" backgroundColor="background20" transparent="1" selectionPixmap="GlamourAuraSky/selections/lanselfhd.png" alphatest="off" zPosition="5">
@@ -111,7 +111,7 @@
     <ePixmap pixmap="GlamourAuraSky/menu/accentglowb810.png" position="1030,785" size="810,45" zPosition="5" alphatest="blend" transparent="1" />
     <widget source="lab1" render="Label" font="Regular; 30" backgroundColor="background20" position="540,730" size="1305,100" transparent="1" foregroundColor="sky" zPosition="5" />
     <panel name="FullKeys1" />
-  </screen>
+  </screen> -->
   <!-- 06. OPENDROID IPK Tools Panel -->
   <screen name="ManualPanel" position="0,0" size="1920,1080" title="OPENDROID IPK Tools Panel" backgroundColor="transparent" flags="wfNoBorder">
     <panel name="ScreenElements1" />

@@ -2511,6 +2511,26 @@ if not self["videofps"].text:
     <widget source="introduction" render="Label" position="540,735" size="1305,100" zPosition="3" font="Regular; 33" halign="center" transparent="1" foregroundColor="sky" backgroundColor="background20" />
     <panel name="FullKeys1" />
   </screen>
+	<screen name="DeviceManager" position="0,0" size="1920,1080" title="Mount Manager" flags="wfNoBorder" backgroundColor="transparent">
+		<widget source="devicelist" render="Listbox" position="540,90" size="1305,630" scrollbarMode="showOnDemand" backgroundColor="background20" selectionPixmap="GlamourAuraSky/selections/aurasel1305.png" alphatest="off" transparent="1" zPosition="4">
+			<templates>
+		<template name="Default" fonts="Regular;30,Regular;34" itemHeight="53">
+			<mode name="default">
+			<text index="Device" position="80,9" size="280,48" font="0" />
+			<text index="DeviceIndent" position="135,9" size="330,48" font="0" />
+			<text index="Description" position="360,9" size="700,48" font="0" verticalAlignment="top" horizontalAlignment="left" />
+			<text index="Size" position="980,9" size="200,48" font="0" verticalAlignment="top" horizontalAlignment="right" />
+			<text index="PartitionSeparator" position="12,12" size="48,48" font="1" verticalAlignment="center" />
+		  <pixmap index="Image" position="20,4" size="44,44" alpha="blend" scale="centerScaled" />
+			</mode>
+		</template>
+		</templates>
+		</widget>
+		 <ePixmap position="50,315" size="400,400" pixmap="GACommon/images/hddsetup.png" alphatest="blend" transparent="1" zPosition="5" />
+		<widget name="description" render="Label" position="540,615" size="930,375" font="Regular;30" verticalAlignment="top" horizontalAlignment="left" transparent="1" halign="center" />
+		<panel name="FullKeys1" />
+		<panel name="ScreenElements2" />
+  </screen>
   <!-- 11. Mount View -->
   <screen name="AutoMountView" position="0,0" size="1920,1080" title="MountView" flags="wfNoBorder" backgroundColor="transparent">
     <panel name="ScreenElements2" />
