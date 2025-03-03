@@ -279,7 +279,7 @@
     <widget name="AboutScrollLabel" render="Label" position="540,90" size="1305,750" font="Regular; 32" backgroundColor="background20" transparent="1" valign="top" zPosition="5" halign="left" foregroundColor="amarillo" scrollbarMode="showOnDemand" />
     <ePixmap pixmap="GlamourAuraSky/buttons/key_exit_big.png" position="1700,875" size="120,60" alphatest="blend" zPosition="4" transparent="1" />
   </screen>
-  <screen name="SystemNetworkInfo" position="0,0" size="1920,1080" title="System Info" backgroundColor="transparent" flags="wfNoBorder">
+ <!-- <screen name="SystemNetworkInfo" position="0,0" size="1920,1080" title="System Info" backgroundColor="transparent" flags="wfNoBorder">
     <panel name="ScreenElements2" />
     <ePixmap position="50,315" size="400,400" pixmap="GACommon/images/network.png" alphatest="on" transparent="1" zPosition="5" />
     <widget source="IF" render="Label" position="540,75" size="745,45" font="RegularB; 36" backgroundColor="background20" transparent="1" foregroundColor="sky" zPosition="4" />
@@ -289,7 +289,7 @@
     <widget source="IFtext" render="Label" font="RegularB; 33" backgroundColor="background20" foregroundColor="white" halign="left" position="540,140" size="745,45" transparent="1" zPosition="4" />
     <widget name="AboutScrollLabel" itemHeight="50" font="Regular;30" scrollbarMode="showOnDemand" backgroundColor="background20" foregroundColor="white" halign="left" position="540,190" size="1305,650" transparent="1" zPosition="9" />
     <panel name="FullKeys1" />
-  </screen>
+  </screen> -->
   <screen name="SoftwareUpdateChanges" position="0,0" size="1920,1080" title="Software Update Changes" flags="wfNoBorder" backgroundColor="transparent">
     <panel name="ScreenElements2" />
     <ePixmap position="50,315" size="400,400" pixmap="GACommon/images/softupdate.png" alphatest="on" transparent="1" zPosition="5" />
@@ -1329,7 +1329,7 @@
     <panel name="CommonInfo" />
   </screen>
   <!-- 1-06. Network Info -->
-  <screen name="NetworkInformation" position="0,0" size="1920,1080" title="Network Information" flags="wfNoBorder" backgroundColor="transparent">
+  <screen name="SystemNetworkInfo" position="0,0" size="1920,1080" title="Network Information" flags="wfNoBorder" backgroundColor="transparent">
     <panel name="ScreenElements2" />
     <ePixmap position="50,315" size="400,400" pixmap="GACommon/images/network.png" alphatest="on" transparent="1" zPosition="5" />
     <panel name="CommonInfo" />
