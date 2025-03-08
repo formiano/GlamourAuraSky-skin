@@ -2104,7 +2104,9 @@ if not self["videofps"].text:
   <!-- 01. Nim selection -->
   <screen name="NimSelection" position="0,0" size="1920,1080" flags="wfNoBorder" backgroundColor="transparent">
     <panel name="ScreenElements2" />
+        <panel name="FullKeys1" />
     <ePixmap position="50,315" size="400,400" pixmap="GACommon/images/tuner.png" alphatest="on" transparent="1" zPosition="5" />
+    <ePixmap position="1725,950" size="120,60" pixmap="GlamourAuraSky/buttons/key_info_big.png" alphatest="blend" transparent="1" zPosition="5" />
     <widget source="nimlist" render="Listbox" position="540,60" size="1305,900" enableWrapAround="1" transparent="1" selectionPixmap="GlamourAuraSky/selections/nimsel.png" alphatest="off" zPosition="4">
       <convert type="TemplatedMultiContent">
         {"template": [
