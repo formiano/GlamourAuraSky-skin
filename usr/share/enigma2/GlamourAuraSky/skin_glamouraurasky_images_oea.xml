@@ -67,12 +67,8 @@
     </widget>
     <ePixmap pixmap="GACommon/buttons/aura_red.png" position="920,65" size="225,75" alphatest="blend" transparent="1" zPosition="3" />
     <ePixmap pixmap="GACommon/buttons/aura_green.png" position="1390,65" size="225,75" alphatest="blend" transparent="1" zPosition="3" />
-    <ePixmap pixmap="GACommon/buttons/aura_yellow.png" position="920,0" size="225,75" alphatest="blend" transparent="1" zPosition="3" />
-    <ePixmap pixmap="GACommon/buttons/aura_blue.png" position="1390,0" size="225,75" alphatest="blend" transparent="1" zPosition="3" />
     <widget name="key_red" position="810,65" size="450,75" zPosition="4" font="Regular; 30" halign="center" backgroundColor="background20" transparent="1" valign="bottom" />
     <widget name="key_green" position="1270,65" size="450,75" zPosition="4" font="Regular; 30" halign="center" backgroundColor="background20" transparent="1" valign="bottom" />
-    <widget name="key_yellow" position="810,0" size="450,75" zPosition="4" font="Regular; 30" halign="center" backgroundColor="background20" transparent="1" valign="bottom" />
-    <widget name="key_blue" position="1270,0" size="450,75" zPosition="4" font="Regular; 30" halign="center" backgroundColor="background20" transparent="1" valign="bottom" />
   </screen>
   <!-- 03. OPD Panel -->
   <screen name="OPD_panel" position="0,0" size="1920,1080" title="OPD panel" backgroundColor="transparent" flags="wfNoBorder">
