@@ -109,7 +109,7 @@
     <panel name="FullKeys1" />
   </screen> -->
   <!-- 06. OPENDROID IPK Tools Panel -->
-  <screen name="ManualPanel" position="0,0" size="1920,1080" title="OPENDROID IPK Tools Panel" backgroundColor="transparent" flags="wfNoBorder">
+  <screen name="ManualPanel" position="0,0" size="1920,1080" title="IPK Tools Panel" backgroundColor="transparent" flags="wfNoBorder">
     <panel name="ScreenElements1" />
     <ePixmap pixmap="GACommon/images/infopanel.png" position="255,315" size="400,400" transparent="1" alphatest="on" zPosition="5" />
     <widget name="list" font="Regular; 36" position="800,140" size="930,800" scrollbarMode="showOnDemand" backgroundColor="background20" foregroundColor="white" itemHeight="50" enableWrapAround="1" transparent="1" selectionPixmap="GlamourAuraSky/selections/listsel930.png" alphatest="off" zPosition="3" />
@@ -120,10 +120,7 @@
     <widget source="list" render="Listbox" font="Regular; 36" position="800,140" size="930,800" scrollbarMode="showOnDemand" backgroundColor="background20" foregroundColor="white" itemHeight="50" enableWrapAround="1" transparent="1" selectionPixmap="GlamourAuraSky/selections/listsel930.png" alphatest="off" zPosition="3">
       <convert type="StringList" />
     </widget>
-    <ePixmap pixmap="GACommon/buttons/aura_red.png" position="920,65" size="225,75" alphatest="blend" transparent="1" zPosition="3" />
-    <ePixmap pixmap="GACommon/buttons/aura_green.png" position="1390,65" size="225,75" alphatest="blend" transparent="1" zPosition="3" />
-    <widget name="key_red" position="810,65" size="450,75" zPosition="4" font="Regular; 30" halign="center" backgroundColor="background20" transparent="1" valign="bottom" />
-    <widget name="key_green" position="1270,65" size="450,75" zPosition="4" font="Regular; 30" halign="center" backgroundColor="background20" transparent="1" valign="bottom" />
+    <panel name="FullKeysUP" />
   </screen>
   <!-- 07. Manual Install Tgz Packages -->
   <screen name="PanelTGzInstaller" position="0,0" size="1920,1080" title="Manual Install Tgz Packages" backgroundColor="transparent" flags="wfNoBorder">
@@ -132,10 +129,7 @@
     <widget source="list" render="Listbox" font="Regular; 36" position="800,140" size="930,800" scrollbarMode="showOnDemand" backgroundColor="background20" foregroundColor="white" itemHeight="50" enableWrapAround="1" transparent="1" selectionPixmap="GlamourAuraSky/selections/listsel930.png" alphatest="off" zPosition="3">
       <convert type="StringList" />
     </widget>
-    <ePixmap pixmap="GACommon/buttons/aura_red.png" position="920,65" size="225,75" alphatest="blend" transparent="1" zPosition="3" />
-    <ePixmap pixmap="GACommon/buttons/aura_green.png" position="1390,65" size="225,75" alphatest="blend" transparent="1" zPosition="3" />
-    <widget name="key_red" position="810,65" size="450,75" zPosition="4" font="Regular; 30" halign="center" backgroundColor="background20" transparent="1" valign="bottom" />
-    <widget name="key_green" position="1270,65" size="450,75" zPosition="4" font="Regular; 30" halign="center" backgroundColor="background20" transparent="1" valign="bottom" />
+    <panel name="FullKeysUP" />
   </screen>
   <!-- 08. Feed Install -->
  <!-- <screen name="InstallFeed" position="0,0" size="1920,1080" title="Install extensions from feed" backgroundColor="transparent" flags="wfNoBorder">
@@ -165,12 +159,7 @@
     <widget source="menu" render="Listbox" font="Regular; 36" position="800,140" size="930,800" scrollbarMode="showOnDemand" backgroundColor="background20" foregroundColor="white" itemHeight="50" enableWrapAround="1" transparent="1" selectionPixmap="GlamourAuraSky/selections/listsel930.png" alphatest="off" zPosition="3">
       <convert type="StringList" />
     </widget>
-    <ePixmap pixmap="GACommon/buttons/aura_red.png" position="920,65" size="225,75" alphatest="blend" transparent="1" zPosition="3" />
-    <ePixmap pixmap="GACommon/buttons/aura_green.png" position="1390,65" size="225,75" alphatest="blend" transparent="1" zPosition="3" />
-    <ePixmap pixmap="GACommon/buttons/aura_yellow.png" position="920,0" size="225,75" alphatest="blend" transparent="1" zPosition="3" />
-    <widget name="key_red" position="810,65" size="450,75" zPosition="4" font="Regular; 30" halign="center" backgroundColor="background20" transparent="1" valign="bottom" />
-    <widget name="key_green" position="1270,65" size="450,75" zPosition="4" font="Regular; 30" halign="center" backgroundColor="background20" transparent="1" valign="bottom" />
-    <widget name="key_yellow" position="810,0" size="450,75" zPosition="4" font="Regular; 30" halign="center" backgroundColor="background20" transparent="1" valign="bottom" />
+    <panel name="FullKeysUP" />
   </screen>
   <!-- 11. OPENDROID Addons Manager -->
  <!-- <screen name="AddonsUtility" position="0,0" size="1920,1080" title="OPENDROID Addons Manager" backgroundColor="transparent" flags="wfNoBorder">
