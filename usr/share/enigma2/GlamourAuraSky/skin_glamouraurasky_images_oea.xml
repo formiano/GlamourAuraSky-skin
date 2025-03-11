@@ -142,7 +142,7 @@
     <widget name="key_green" position="1270,65" size="450,75" zPosition="4" font="Regular; 30" halign="center" backgroundColor="background20" transparent="1" valign="bottom" />
   </screen>
   <!-- 08. Feed Install -->
-  <screen name="InstallFeed" position="0,0" size="1920,1080" title="Install extensions from feed" backgroundColor="transparent" flags="wfNoBorder">
+ <!-- <screen name="InstallFeed" position="0,0" size="1920,1080" title="Install extensions from feed" backgroundColor="transparent" flags="wfNoBorder">
     <panel name="ScreenElements1" />
     <ePixmap pixmap="GACommon/images/infopanel.png" position="255,315" size="400,400" transparent="1" alphatest="on" zPosition="5" />
     <widget source="list" render="Listbox" font="Regular; 36" position="800,140" size="930,800" scrollbarMode="showOnDemand" backgroundColor="background20" foregroundColor="white" itemHeight="50" enableWrapAround="1" transparent="1" selectionPixmap="GlamourAuraSky/selections/listsel930.png" alphatest="off" zPosition="3">
@@ -152,7 +152,7 @@
     <ePixmap pixmap="GACommon/buttons/aura_green.png" position="1390,65" size="225,75" alphatest="blend" transparent="1" zPosition="3" />
     <widget name="key_red" position="810,65" size="450,75" zPosition="4" font="Regular; 30" halign="center" backgroundColor="background20" transparent="1" valign="bottom" />
     <widget name="key_green" position="1270,65" size="450,75" zPosition="4" font="Regular; 30" halign="center" backgroundColor="background20" transparent="1" valign="bottom" />
-  </screen>
+  </screen>-->
   <!-- 09. Advanced Install -->
   <screen name="AdvInstallIpk" position="0,0" size="1920,1080" title="Select install files" backgroundColor="transparent" flags="wfNoBorder">
     <panel name="ScreenElements1" />
@@ -177,7 +177,7 @@
     <widget name="key_yellow" position="810,0" size="450,75" zPosition="4" font="Regular; 30" halign="center" backgroundColor="background20" transparent="1" valign="bottom" />
   </screen>
   <!-- 11. OPENDROID Addons Manager -->
-  <screen name="AddonsUtility" position="0,0" size="1920,1080" title="OPENDROID Addons Manager" backgroundColor="transparent" flags="wfNoBorder">
+ <!-- <screen name="AddonsUtility" position="0,0" size="1920,1080" title="OPENDROID Addons Manager" backgroundColor="transparent" flags="wfNoBorder">
     <panel name="ScreenElements1" />
     <ePixmap pixmap="GACommon/images/packet.png" position="255,315" size="400,400" transparent="1" alphatest="on" zPosition="5" />
     <widget name="list" font="Regular; 36" position="800,140" size="930,800" scrollbarMode="showOnDemand" backgroundColor="background20" foregroundColor="white" itemHeight="50" enableWrapAround="1" transparent="1" selectionPixmap="GlamourAuraSky/selections/listsel930.png" alphatest="off" zPosition="3" />
@@ -187,7 +187,7 @@
     <widget name="key_red" position="810,65" size="450,75" zPosition="4" font="Regular; 30" halign="center" backgroundColor="background20" transparent="1" valign="bottom" />
     <widget name="key_green" position="1270,65" size="450,75" zPosition="4" font="Regular; 30" halign="center" backgroundColor="background20" transparent="1" valign="bottom" />
     <widget name="key_yellow" position="810,0" size="450,75" zPosition="4" font="Regular; 30" halign="center" backgroundColor="background20" transparent="1" valign="bottom" />
-  </screen>
+  </screen> -->
   <!-- 12. OPENDROID Download Manager -->
   <screen name="Connection_Server" position="0,0" size="1920,1080" title="OPENDROID Download Manager" backgroundColor="transparent" flags="wfNoBorder">
     <panel name="ScreenElements1" />
