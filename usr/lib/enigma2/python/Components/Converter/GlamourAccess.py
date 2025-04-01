@@ -1,7 +1,6 @@
-﻿#	GlamourAccess converter
-#	Modded and recoded by MCelliotG for use in Glamour skins or standalone, added Python3 support
-#	Based on CaidInfo2 converter coded by bigroma & 2boom
-#	If you use this Converter for other skins and rename it, please keep the lines above adding your credits below
+﻿#GlamourAccess converter (Python 3)
+#Modded and recoded by MCelliotG for use in Glamour skins or standalone
+#If you use this Converter for other skins and rename it, please keep the lines above adding your credits below
 
 from Components.Converter.Converter import Converter
 from enigma import iServiceInformation, iPlayableService
@@ -9,7 +8,7 @@ from Components.Element import cached
 from Components.config import config, ConfigText, ConfigSubsection
 from Components.Converter.Poll import Poll
 import os
-from os.path import exists
+from os import path
 info = {}
 old_ecm_mtime = None
 try:
@@ -19,14 +18,19 @@ except:
 	pass
 
 cainfo = (
+	("0000", "0000", "no or unknown"),
+	("0001", "0001", "IPDC SPP"),
 	("0002", "0002", "18Crypt"),
+	("0004", "0006", "OMA"),
+	("0007", "0007", "Open IPTV"),
+	("0008", "0008", "Open Mobile Alliance"),
 	("0100", "01FF", "Seca"),
 	("0200", "02FF", "CCETT"),
 	("0300", "03FF", "Kabel Deutschland"),
 	("0400", "04FF", "Eurodec"),
 	("0500", "05FF", "Viaccess"),
 	("0600", "06FF", "Irdeto"),
-	("0700", "07FF", "DigiChiper"),
+	("0700", "07FF", "Digichiper"),
 	("0800", "08FF", "Matra"),
 	("0900", "09FF", "NDS/Videoguard"),
 	("0A00", "0AFF", "Nokia"),
@@ -52,63 +56,64 @@ cainfo = (
 	("1900", "19FF", "Titan"),
 	("1E00", "1E07", "Alticast"),
 	("1EA0", "1EA0", "Monacrypt"),
-	("1EB0", "1EB0", "TeleCast"),
+	("1EB0", "1EB0", "Telecast"),
 	("1EC0", "1EC2", "Cryptoguard"),
 	("1ED0", "1ED1", "Monacrypt"),
 	("2000", "20FF", "Telefonica Servicios Audiovisuales"),
 	("2100", "21FF", "Stendor"),
 	("2200", "22FF", "Codicrypt"),
 	("2300", "23FF", "Barco"),
-	("2400", "24FF", "StarGuide"),
+	("2400", "24FF", "Starguide"),
 	("2500", "25FF", "Mentor"),
 	("2600", "2601", "Biss"),
 	("2602", "26FF", "Biss2"),
-	("2700", "2711", "ExSet"),
+	("2700", "2711", "Exset"),
 	("2712", "2712", "Derincrypt"),
 	("2713", "2714", "Wuhan"),
 	("2715", "2715", "Network Broadcast"),
 	("2716", "2716", "Bromteck"),
-	("2717", "2718", "LogiWays"),
+	("2717", "2718", "Logiways"),
 	("2719", "2719", "S-Curious"),
-	("27A0", "27A4", "ByDesign India"),
+	("27A0", "27A4", "Bydesign India"),
 	("2800", "2809", "LCS LLC"),
-	("2810", "2810", "DeltaSat"),
+	("2810", "2810", "Deltasat"),
 	("4347", "4347", "Crypton"),
 	("4348", "4348", "Secure TV"),
 	("44A0", "44A0", "Russkiy Mir"),
 	("4700", "47FF", "General Instrument/Motorola"),
 	("4825", "4825", "ChinaEPG"),
 	("4855", "4856", "Intertrust"),
-	("4800", "48FF", "AccessGate/Telemann"),
+	("4800", "48FF", "Accessgate/Telemann"),
 	("4900", "49FF", "Cryptoworks China"),
-	("4A10", "4A1F", "EasyCas"),
-	("4A20", "4A2F", "AlphaCrypt"),
+	("4A10", "4A1F", "Easycas"),
+	("4A20", "4A2F", "Alphacrypt"),
 	("4A30", "4A3F", "DVN Holdings"),
 	("4A40", "4A4F", "ADT"),
 	("4A50", "4A5F", "Shenzhen Kingsky"),
 	("4A60", "4A6F", "@Sky"),
-	("4A70", "4A7F", "DreamCrypt"),
-	("4A80", "4A8F", "THALESCrypt"),
+	("4A70", "4A7F", "Dreamcrypt"),
+	("4A80", "4A8F", "THALEScrypt"),
 	("4A90", "4A9F", "Runcom"),
 	("4AA0", "4AAF", "SIDSA"),
 	("4AB0", "4ABF", "Sky Pilot"),
 	("4AC0", "4ACF", "Latens"),
-	("4AD0", "4AD1", "XCrypt"),
+	("4AD0", "4AD1", "Xcrypt"),
 	("4AD2", "4AD3", "Beijing Digital"),
 	("4AD4", "4AD5", "Widevine"),
 	("4AD6", "4AD7", "SK Telecom"),
 	("4AD8", "4AD9", "Enigma"),
 	("4ADA", "4ADA", "Wyplay"),
 	("4ADB", "4ADB", "Jinan Taixin"),
-	("4ADC", "4ADC", "LogiWays"),
+	("4ADC", "4ADC", "Logiways"),
 	("4ADD", "4ADD", "ATSC SRM"),
-	("4ADE", "4ADE", "CerberCrypt"),
+	("4ADE", "4ADE", "Cerbercrypt"),
 	("4ADF", "4ADF", "Caston"),
-	("4AE0", "4AE1", "DreCrypt"),
+	("4AE0", "4AE0", "DRE-Crypt"),
+	("4AE1", "4AE1", "DRE-Crypt"),
 	("4AE2", "4AE3", "Microsoft"),
 	("4AE4", "4AE4", "Coretrust"),
 	("4AE5", "4AE5", "IK SATPROF"),
-	("4AE6", "4AE6", "SypherMedia"),
+	("4AE6", "4AE6", "Syphermedia"),
 	("4AE7", "4AE7", "Guangzhou Ewider"),
 	("4AE8", "4AE8", "FG Digital"),
 	("4AE9", "4AE9", "Dreamer-i"),
@@ -122,16 +127,16 @@ cainfo = (
 	("4AF1", "4AF2", "China DTV"),
 	("4AF3", "4AF3", "Baustem"),
 	("4AF4", "4AF4", "Marlin"),
-	("4AF5", "4AF5", "SecureMedia"),
+	("4AF5", "4AF5", "Securemedia"),
 	("4AF6", "4AF6", "Tongfang"),
 	("4AF7", "4AF7", "MSA"),
 	("4AF8", "4AF8", "Griffin"),
 	("4AF9", "4AFA", "Beijing Topreal"),
 	("4AFB", "4AFB", "NST"),
-	("4AFC", "4AFC", "PanAccess"),
+	("4AFC", "4AFC", "Panaccess"),
 	("4AFD", "4AFD", "Comteza"),
 	("4B00", "4B02", "Tongfang"),
-	("4B03", "4B03", "DuoCrypt"),
+	("4B03", "4B03", "Duocrypt"),
 	("4B04", "4B04", "Great Wall"),
 	("4B05", "4B06", "Digicap"),
 	("4B07", "4B07", "Wuhan"),
@@ -142,28 +147,28 @@ cainfo = (
 	("4B10", "4B10", "Exterity"),
 	("4B11", "4B12", "Merlin/Advanced Digital"),
 	("4B13", "4B14", "Microsoft"),
-	("4B19", "4B19", "RidSys"),
-	("4B20", "4B22", "DeltaSat"),
+	("4B19", "4B19", "Ridsys"),
+	("4B20", "4B22", "Deltasat"),
 	("4B23", "4B23", "SkyNLand"),
 	("4B24", "4B24", "Prowill"),
-	("4B25", "4B25", "SureSoft"),
+	("4B25", "4B25", "Suresoft"),
 	("4B26", "4B26", "Unitend"),
 	("4B30", "4B31", "VTC"),
 	("4B3A", "4B3A", "ipanel"),
 	("4B3B", "4B3B", "Jinggangshan"),
-	("4B40", "4B41", "ExCaf"),
+	("4B40", "4B41", "Excaf"),
 	("4B42", "4B43", "CI Plus"),
 	("4B4A", "4B4A", "Topwell"),
 	("4B4B", "4B4D", "ABV"),
 	("4B50", "4B53", "Safeview India"),
 	("4B54", "4B54", "Telelynx"),
-	("4B60", "4B60", "KiwiSat"),
+	("4B60", "4B60", "Kiwisat"),
 	("4B61", "4B61", "O2 Czech"),
 	("4B62", "4B62", "GMA"),
 	("4B63", "4B63", "redCrypter"),
 	("4B64", "4B64", "Samsung/TV Key"),
-	("5347", "5347", "GkWare/StreamGuru"),
-	("5448", "5449", "Gospell VisionCrypt"),
+	("5347", "5347", "GkWare/Streamguru"),
+	("5448", "5449", "Gospell Visioncrypt"),
 	("5501", "5580", "Griffin"),
 	("5581", "55FF", "Bulcrypt"),
 	("5601", "5604", "Verimatrix"),
@@ -174,212 +179,42 @@ cainfo = (
 	("56A1", "56A1", "C-Dot"),
 	("56B0", "56B0", "Laxmi"),
 	("56D0", "56D1", "redCrypter"),
-	("6448", "6449", "Gospell VisionCrypt"),
-	("7AC8", "7AC8", "Gospell VisionCrypt"),
-	("7BE0", "7BE1", "DreCrypt"),
+	("6448", "6449", "Gospell Visioncrypt"),
+	("7700", "7704", "DRE-Guard"),
+	("7AC8", "7AC8", "Gospell Visioncrypt"),
+	("7BE0", "7BE1", "DRE-Crypt"),
 	("AA00", "AA01", "Best CAS"),
-	("A100", "A1FF", "RusCrypt"),
-	("FFFE", "FFFE", "TrophyAccess"),
-	("0001", "0001", "IPDC SPP"),
-	("0002", "0002", "18Crypt"),
-	("0004", "0006", "OMA"),
-	("0007", "0007", "Open IPTV"),
-	("0008", "0008", "Open Mobile Alliance"),
-	("0000", "0000", "no or unknown")
+	("A100", "A1FF", "Ruscrypt"),
+	("FFFE", "FFFE", "Trophyaccess")
 )
 
 class GlamourAccess(Poll, Converter):
-	CAID = 0
-	PID = 1
-	BETACAS = 2
-	IRDCAS = 3
-	SECACAS = 4
-	VIACAS = 5
-	NAGRACAS = 6
-	CRWCAS = 7
-	NDSCAS = 8
-	CONAXCAS = 9
-	DRCCAS = 10
-	BISSCAS = 11
-	BULCAS = 12
-	VMXCAS = 13
-	PWVCAS = 14
-	TBGCAS = 15
-	TGFCAS = 16
-	PANCAS = 17
-	EXSCAS = 18
-	CGDCAS = 19
-	VCRCAS = 20
-	BETAECM = 21
-	IRDECM = 22
-	SECAECM = 23
-	VIAECM = 24
-	NAGRAECM = 25
-	CRWECM = 26
-	NDSECM = 27
-	CONAXECM = 28
-	DRCECM = 29
-	BISSECM = 30
-	BULECM = 31
-	VMXECM = 32
-	PWVECM = 33
-	TBGECM = 34
-	TGFECM = 35
-	PANECM = 36
-	EXSECM = 37
-	CGDECM = 38
-	VCRECM = 39
-	RUSCAS = 40
-	CODICAS = 41
-	AGTCAS = 42
-	SAMCAS = 43
-	CAIDINFO = 44
-	PROV = 45
-	NET = 46
-	EMU = 47
-	CRD = 48
-	CRDTXT = 49
-	FTA = 50
-	CACHE = 51
-	CRYPTINFO = 52
-	CAMNAME = 53
-	ADDRESS = 54
-	ECMTIME = 55
-	FORMAT = 56
-	ECMINFO = 57
-	SHORTINFO = 58
-	CASINFO = 59
-	ISCRYPTED = 60
+	CAID, PID, BETACAS, IRDCAS, SECACAS, VIACAS, NAGRACAS, CRWCAS, NDSCAS, CONAXCAS, DRCCAS, BISSCAS, BULCAS, VMXCAS, PWVCAS, TBGCAS, TGFCAS, PANCAS, EXSCAS, CGDCAS, VCRCAS = range(21)
+	BETAECM, IRDECM, SECAECM, VIAECM, NAGRAECM, CRWECM, NDSECM, CONAXECM, DRCECM, BISSECM, BULECM, VMXECM, PWVECM, TBGECM, TGFECM, PANECM, EXSECM, CGDECM, VCRECM = range(21, 40)
+	RUSCAS, CODICAS, AGTCAS, SAMCAS, CAIDINFO, PROV, NET, EMU, CRD, CRDTXT, FTA, CACHE, CRYPTINFO, CAMNAME, ADDRESS, ECMTIME, FORMAT, ECMINFO, SHORTINFO, CASINFO, ISCRYPTED = range(40, 61)
 	timespan = 1000
+
+	TYPE_MAP = {
+		"CaID": CAID, "Pid": PID, "BetaCaS": BETACAS, "IrdCaS": IRDCAS, "SecaCaS": SECACAS, "ViaCaS": VIACAS,
+		"NagraCaS": NAGRACAS, "CrwCaS": CRWCAS, "NdsCaS": NDSCAS, "ConaxCaS": CONAXCAS, "DrcCaS": DRCCAS,
+		"BissCaS": BISSCAS, "BulCaS": BULCAS, "VmxCaS": VMXCAS, "PwvCaS": PWVCAS, "TbgCaS": TBGCAS, "TgfCaS": TGFCAS,
+		"PanCaS": PANCAS, "ExsCaS": EXSCAS, "RusCaS": RUSCAS, "BetaEcm": BETAECM, "IrdEcm": IRDECM,
+		"SecaEcm": SECAECM, "ViaEcm": VIAECM, "NagraEcm": NAGRAECM, "CrwEcm": CRWECM, "NdsEcm": NDSECM,
+		"ConaxEcm": CONAXECM, "DrcEcm": DRCECM, "BissEcm": BISSECM, "BulEcm": BULECM, "VmxEcm": VMXECM,
+		"PwvEcm": PWVECM, "TbgEcm": TBGECM, "TgfEcm": TGFECM, "PanEcm": PANECM, "ExsEcm": EXSECM,
+		"CgdEcm": CGDECM, "VcrEcm": VCRECM, "CodiCaS": CODICAS, "CgdCaS": CGDCAS, "VcrCaS": VCRCAS,
+		"AgtCaS": AGTCAS, "SamCaS": SAMCAS, "CaidInfo": CAIDINFO, "ProvID": PROV, "Net": NET, "Emu": EMU,
+		"Crd": CRD, "CrdTxt": CRDTXT, "Fta": FTA, "Cache": CACHE, "CryptInfo": CRYPTINFO, "CamName": CAMNAME,
+		"Address": ADDRESS, "EcmTime": ECMTIME, "IsCrypted": ISCRYPTED, "ShortInfo": SHORTINFO, "CasInfo": CASINFO,
+		"EcmInfo": ECMINFO, "Default": ECMINFO, "": ECMINFO, None: ECMINFO, "%": ECMINFO
+	}
 
 	def __init__(self, type):
 		Poll.__init__(self)
 		Converter.__init__(self, type)
-		if type == "CaID":
-			self.type = self.CAID
-		elif type == "Pid":
-			self.type = self.PID
-		elif type == "BetaCaS":
-			self.type = self.BETACAS
-		elif type == "IrdCaS":
-			self.type = self.IRDCAS
-		elif type == "SecaCaS":
-			self.type = self.SECACAS
-		elif type == "ViaCaS":
-			self.type = self.VIACAS
-		elif type == "NagraCaS":
-			self.type = self.NAGRACAS
-		elif type == "CrwCaS":
-			self.type = self.CRWCAS
-		elif type == "NdsCaS":
-			self.type = self.NDSCAS
-		elif type == "ConaxCaS":
-			self.type = self.CONAXCAS
-		elif type == "DrcCaS":
-			self.type = self.DRCCAS
-		elif type == "BissCaS":
-			self.type = self.BISSCAS
-		elif type == "BulCaS":
-			self.type = self.BULCAS
-		elif type == "VmxCaS":
-			self.type = self.VMXCAS
-		elif type == "PwvCaS":
-			self.type = self.PWVCAS
-		elif type == "TbgCaS":
-			self.type = self.TBGCAS
-		elif type == "TgfCaS":
-			self.type = self.TGFCAS
-		elif type == "PanCaS":
-			self.type = self.PANCAS
-		elif type == "ExsCaS":
-			self.type = self.EXSCAS
-		elif type == "RusCaS":
-			self.type = self.RUSCAS
-		elif type == "BetaEcm":
-			self.type = self.BETAECM
-		elif type == "IrdEcm":
-			self.type = self.IRDECM
-		elif type == "SecaEcm":
-			self.type = self.SECAECM
-		elif type == "ViaEcm":
-			self.type = self.VIAECM
-		elif type == "NagraEcm":
-			self.type = self.NAGRAECM
-		elif type == "CrwEcm":
-			self.type = self.CRWECM
-		elif type == "NdsEcm":
-			self.type = self.NDSECM
-		elif type == "ConaxEcm":
-			self.type = self.CONAXECM
-		elif type == "DrcEcm":
-			self.type = self.DRCECM
-		elif type == "BissEcm":
-			self.type = self.BISSECM
-		elif type == "BulEcm":
-			self.type = self.BULECM
-		elif type == "VmxEcm":
-			self.type = self.VMXECM
-		elif type == "PwvEcm":
-			self.type = self.PWVECM
-		elif type == "TbgEcm":
-			self.type = self.TBGECM
-		elif type == "TgfEcm":
-			self.type = self.TGFECM
-		elif type == "PanEcm":
-			self.type = self.PANECM
-		elif type == "ExsEcm":
-			self.type = self.EXSECM
-		elif type == "CgdEcm":
-			self.type = self.CGDECM
-		elif type == "VcrEcm":
-			self.type = self.VCRECM
-		elif type == "CodiCaS":
-			self.type = self.CODICAS
-		elif type == "CgdCaS":
-			self.type = self.CGDCAS
-		elif type == "VcrCaS":
-			self.type = self.VCRCAS
-		elif type == "AgtCaS":
-			self.type = self.AGTCAS
-		elif type == "SamCaS":
-			self.type = self.SAMCAS
-		elif type == "CaidInfo":
-			self.type = self.CAIDINFO
-		elif type == "ProvID":
-			self.type = self.PROV
-		elif type == "Net":
-			self.type = self.NET
-		elif type == "Emu":
-			self.type = self.EMU
-		elif type == "Crd":
-			self.type = self.CRD
-		elif type == "CrdTxt":
-			self.type = self.CRDTXT
-		elif type == "Fta":
-			self.type = self.FTA
-		elif type == "Cache":
-			self.type = self.CACHE
-		elif type == "CryptInfo":
-			self.type = self.CRYPTINFO
-		elif type == "CamName":
-			self.type = self.CAMNAME
-		elif type == "Address":
-			self.type = self.ADDRESS
-		elif type == "EcmTime":
-			self.type = self.ECMTIME
-		elif type == "IsCrypted":
-			self.type = self.ISCRYPTED
-		elif type == "ShortInfo":
-			self.type = self.SHORTINFO
-		elif type == "CasInfo":
-			self.type = self.CASINFO
-		elif type == "EcmInfo" or type == "Default" or type == "" or type == None or type == "%":
-			self.type = self.ECMINFO
-		else:
-			self.type = self.FORMAT
+		self.type = self.TYPE_MAP.get(type, self.FORMAT)
+		if self.type == self.FORMAT:
 			self.sfmt = type[:]
-
-
 
 	@cached
 	def getBoolean(self):
@@ -396,242 +231,102 @@ class GlamourAccess(Poll, Converter):
 		if self.type == self.FTA:
 			if not caids and not ecm_info:
 				return True
-			elif ecm_info:
-				if "fta" in protocol:
-					return True
-			return False
+			return "fta" in protocol if ecm_info else False
 
 		if self.type == self.ISCRYPTED:
-			if caids:
-				return True
-			return False
+			return bool(caids)
 
+		caid_ranges = {
+			self.BETACAS: [("1702", "1762")],
+			self.IRDCAS: [("0600", "06FF")],
+			self.SECACAS: [("0100", "01FF")],
+			self.VIACAS: [("0500", "05FF")],
+			self.NAGRACAS: [("1800", "18FF")],
+			self.CRWCAS: [("0D00", "0DFF"), ("4900", "49FF")],
+			self.NDSCAS: [("0900", "09FF")],
+			self.CONAXCAS: [("0B00", "0BFF")],
+			self.DRCCAS: [("4A00", "4AE9"), ("5000", "50FF"), ("7BE0", "7BE1"), ("0700", "07FF"), ("4700", "47FF")],
+			self.BISSCAS: [("2600", "26FF")],
+			self.BULCAS: [("4AEE", "4AEE"), ("5501", "55FF")],
+			self.VMXCAS: [("5600", "5604"), ("1700", "1701"), ("1703", "1721"), ("1723", "1761"), ("1763", "17FF")],
+			self.PWVCAS: [("0E00", "0EFF")],
+			self.TBGCAS: [("1000", "10FF")],
+			self.TGFCAS: [("4B00", "4B09"), ("4AF6")],
+			self.PANCAS: [("4AFC")],
+			self.EXSCAS: [("2700", "27FF")],
+			self.RUSCAS: [("A100", "A1FF"), ("44A0", "44A0")],
+			self.CODICAS: [("2200", "22FF")],
+			self.CGDCAS: [("4AEA", "4AEA"), ("1EC0", "1ECF")],
+			self.VCRCAS: [("5448", "5449"), ("7AC8")],
+			self.AGTCAS: [("4800", "48FF")],
+			self.SAMCAS: [("4B64", "4B64")],
+		}
 		if caids or ecm_info:
-			if self.type == self.BETACAS:
-				for caid in caids:
-					if caid == "1702" or caid == "1722" or caid == "1762":
+			for caid in caids:
+				for valid_caid_range in caid_ranges.get(self.type, []):
+					if isinstance(valid_caid_range, tuple):
+						start, end = valid_caid_range
+						if start <= caid <= end:
+							return True
+					elif valid_caid_range == caid:
 						return True
-				return False
-			if self.type == self.IRDCAS:
-				for caid in caids:
-					if caid >= "0600" and caid <= "06FF":
-						return True
-				return False
-			if self.type == self.SECACAS:
-				for caid in caids:
-					if caid >= "0100" and caid <= "01FF":
-						return True
-				return False
-			if self.type == self.VIACAS:
-				for caid in caids:
-					if caid >= "0500" and caid <= "05FF":
-						return True
-				return False
-			if self.type == self.NAGRACAS:
-				for caid in caids:
-					if caid >= "1800" and caid <= "18FF":
-						return True
-				return False
-			if self.type == self.CRWCAS:
-				for caid in caids:
-					if caid >= "0D00" and caid <= "0DFF":
-						return True
-				return False
-			if self.type == self.NDSCAS:
-				for caid in caids:
-					if caid >= "0900" and caid <= "09FF":
-						return True
-				return False
-			if self.type == self.CONAXCAS:
-				for caid in caids:
-					if caid >= "0B00" and caid <= "0BFF":
-						return True
-				return False
-			if self.type == self.DRCCAS:
-				for caid in caids:
-					if caid >= "4A00" and caid <= "4AE9" or caid >= "5000" and caid <= "50FF" or caid >= "7BE0" and caid <= "7BE1" or caid >= "0700" and caid <= "07FF" or caid >= "4700" and caid <= "47FF":
-						return True
-				return False
-			if self.type == self.BISSCAS:
-				for caid in caids:
-					if caid >= "2600" and caid <= "26FF":
-						return True
-				return False
-			if self.type == self.BULCAS:
-				for caid in caids:
-					if caid == "4AEE" or caid == "4AF8" or caid >= "5581" and caid <= "55FF":
-						return True
-				return False
-			if self.type == self.VMXCAS:
-				for caid in caids:
-					if caid >= "5600" and caid <= "5604" or caid >= "1700" and caid <= "1701" or caid >= "1703" and caid <= "1721" or caid >= "1723" and caid <= "1761" or caid >= "1763" and caid <= "17FF":
-						return True
-				return False
-			if self.type == self.PWVCAS:
-				for caid in caids:
-					if caid >= "0E00" and caid <= "0EFF":
-						return True
-				return False
-			if self.type == self.TBGCAS:
-				for caid in caids:
-					if caid >= "1000" and caid <= "10FF":
-						return True
-				return False
-			if self.type == self.TGFCAS:
-				for caid in caids:
-					if caid >= "4B00" and caid <= "4B09" or caid == "4AF6":
-						return True
-				return False
-			if self.type == self.PANCAS:
-				for caid in caids:
-					if caid == "4AFC":
-						return True
-				return False
-			if self.type == self.EXSCAS:
-				for caid in caids:
-					if caid >= "2700" and caid <= "27FF":
-						return True
-				return False
-			if self.type == self.RUSCAS:
-				for caid in caids:
-					if caid >= "A100" and caid <= "A1FF" or caid == "44A0":
-						return True
-				return False
-			if self.type == self.CODICAS:
-				for caid in caids:
-					if caid >= "2200" and caid <= "22FF":
-						return True
-				return False
-			if self.type == self.CGDCAS:
-				for caid in caids:
-					if caid == "4AEA" or caid >= "1EC0" and caid <= "1ECF":
-						return True
-				return False
-			if self.type == self.VCRCAS:
-				for caid in caids:
-					if caid == "5448" or caid == "7AC8":
-						return True
-				return False
-			if self.type == self.AGTCAS:
-				for caid in caids:
-					if caid >= "4800" and caid <= "48FF":
-						return True
-				return False
-			if self.type == self.SAMCAS:
-				for caid in caids:
-					if caid == "4B64":
-						return True
-				return False
 
 			if ecm_info:
-				caid = ("%0.4X" % int(ecm_info.get("caid", ""), 16))[:4]
-				if self.type == self.BETAECM:
-					if caid == "1702" or caid == "1722" or caid == "1762":
-						return True
-					return False
-				if self.type == self.IRDECM:
-					if caid >= "0600" and caid <= "06FF":
-						return True
-					return False
-				if self.type == self.SECAECM:
-					if caid >= "0100" and caid <= "01FF":
-						return True
-					return False
-				if self.type == self.VIAECM:
-					if caid >= "0500" and caid <= "05FF":
-						return True
-					return False
-				if self.type == self.NAGRAECM:
-					if caid >= "1800" and caid <= "18FF":
-						return True
-					return False
-				if self.type == self.CRWECM:
-					if caid >= "0D00" and caid <= "0DFF" or caid >= "4900" and caid <= "49FF":
-						return True
-					return False
-				if self.type == self.NDSECM:
-					if caid >= "0900" and caid <= "09FF":
-						return True
-					return False
-				if self.type == self.CONAXECM:
-					if caid >= "0B00" and caid <= "0BFF":
-						return True
-					return False
-				if self.type == self.DRCECM:
-					if caid >= "4A00" and caid <= "4AE9" or caid >= "5000" and caid <= "50FF" or caid >= "7BE0" and caid <= "7BE1" or caid >= "0700" and caid <= "07FF" or caid >= "4700" and caid <= "47FF":
-						return True
-					return False
-				if self.type == self.BISSECM:
-					if caid >= "2600" and caid <= "26FF":
-						return True
-					return False
-				if self.type == self.BULECM:
-					if caid == "4AEE" or caid == "4AF8" or caid >= "5581" and caid <= "55FF":
-						return True
-					return False
-				if self.type == self.VMXECM:
-					if caid >= "5600" and caid <= "5604" or caid >= "1700" and caid <= "1701" or caid >= "1703" and caid <= "1721" or caid >= "1723" and caid <= "1761"  or caid >= "1763" and caid <= "17FF":
-						return True
-					return False
-				if self.type == self.PWVECM:
-					if caid >= "0E00" and caid <= "0EFF":
-						return True
-					return False
-				if self.type == self.TBGECM:
-					if caid >= "1000" and caid <= "10FF":
-						return True
-					return False
-				if self.type == self.TGFECM:
-					if caid >= "4B00" and caid <= "4B09" or caid == "4AF6":
-						return True
-					return False
-				if self.type == self.PANECM:
-					if caid == "4AFC":
-						return True
-					return False
-				if self.type == self.EXSECM:
-					if caid >= "2700" and caid <= "27FF":
-						return True
-					return False
-				if self.type == self.CGDECM:
-					if caid == "4AEA" or caid >= "1EC0" and caid <= "1ECF":
-						return True
-					return False
-				if self.type == self.VCRECM:
-					if caid == "5448" or caid == "7AC8":
-						return True
-					return False
-
 				reader = str(ecm_info.get("reader", ""))
 				protocol = str(ecm_info.get("protocol", ""))
 				frm = str(ecm_info.get("from", ""))
 				using = str(ecm_info.get("using", ""))
 				source = str(ecm_info.get("source", ""))
+				caid = ("%0.4X" % int(ecm_info.get("caid", ""), 16))[:4]
+				ecm_caid_ranges = {
+					self.BETAECM: ["1702", "1722", "1762"],
+					self.IRDECM: [("0600", "06FF")],
+					self.SECAECM: [("0100", "01FF")],
+					self.VIAECM: [("0500", "05FF")],
+					self.NAGRAECM: [("1800", "18FF")],
+					self.CRWECM: [("0D00", "0DFF"), ("4900", "49FF")],
+					self.NDSECM: [("0900", "09FF")],
+					self.CONAXECM: [("0B00", "0BFF")],
+					self.DRCECM: [("4A00", "4AE9"), ("5000", "50FF"), ("7BE0", "7BE1"), ("0700", "07FF"), ("4700", "47FF")],
+					self.BISSECM: [("2600", "26FF")],
+					self.BULECM: [("4AEE"), ("5501", "55FF")],
+					self.VMXECM: [("5600", "5604"), ("1700", "1701"), ("1703", "1721"), ("1723", "1761"), ("1763", "17FF")],
+					self.PWVECM: [("0E00", "0EFF")],
+					self.TBGECM: [("1000", "10FF")],
+					self.TGFECM: [("4B00", "4B09"), ("4AF6")],
+					self.PANECM: [("4AFC")],
+					self.EXSECM: [("2700", "27FF")],
+					self.CGDECM: [("4AEA", "4AEA"), ("1EC0", "1ECF")],
+					self.VCRECM: [("5448", "5449"), ("7AC8")],
+				}
+				if self.type in ecm_caid_ranges:
+					for valid_caid in ecm_caid_ranges[self.type]:
+						if isinstance(valid_caid, tuple):
+							if valid_caid[0] <= caid <= valid_caid[1]:
+								return True
+						elif valid_caid == caid:
+							return True
+
+				if int(config.usage.show_cryptoinfo.value) == 0:
+					return False
 
 				if self.type == self.CRD:
-					if int(config.usage.show_cryptoinfo.value) > 0:
-						if source == "sci":
-							return True
-						if source != "cache" and source != "net" and source.find("emu") == -1:
-							return True
-					return False
+					return source == "sci" or (source not in {"cache", "net"} and "emu" not in source)
+
 				if self.type == self.CACHE:
-					if int(config.usage.show_cryptoinfo.value) > 0:
-						if source == "cache" or reader == "Cache" or "cache" in frm:
-							return True
-					return False
+					return source == "cache" or reader == "Cache" or "cache" in frm
+
 				if self.type == self.EMU:
-					if int(config.usage.show_cryptoinfo.value) > 0:
-						return using == "emu" or source == "emu" or source == "card" or reader == "emu" or source.find("card") > -1 or source.find("emu") > -1 or source.find("biss") > -1 or source.find("tb") > -1 or reader.find("constant_cw") > -1 or protocol.find("constcw") > -1 or protocol.find("static") > -1
+					return using == "emu" or source in {"emu", "card"} or reader == "emu" or \
+						any(x in source for x in {"card", "emu", "biss", "tb"}) or \
+						"constant_cw" in reader or any(x in protocol for x in {"constcw", "static"})
+
 				if self.type == self.NET:
-					if int(config.usage.show_cryptoinfo.value) > 0:
-						if source == "net" and not "unsupported" in protocol and not "cache" in frm and not "static" in protocol and not "fta" in protocol:
-							return True
-					return False
+					return source == "net" and all(x not in protocol for x in {"unsupported", "static", "fta"}) and "cache" not in frm
+
 		return False
 
 	boolean = property(getBoolean)
-
 
 	@cached
 	def getText(self):
@@ -645,18 +340,18 @@ class GlamourAccess(Poll, Converter):
 		self.poll_interval = self.timespan
 		self.poll_enabled = True
 		service = self.source.service
+
 		if service:
-			info = service and service.info()
+			info = service.info() if service else None
 
 			if self.type == self.CRYPTINFO:
-				if exists(ecmpath):
+				if os.path.exists(ecmpath):
 					try:
-						caid = "%0.4X" % int(ecm_info.get("caid", ""), 16)
-						return "%s" % caidname
+						caid = f"{int(ecm_info.get('caid', ''), 16):04X}"
+						return caidname
 					except:
 						return "Unknown CA Info"
-				else:
-					return "CA Info not available"
+				return "CA Info not available"
 
 			if info:
 				caids = list(set(info.getInfoObject(iServiceInformation.sCAIDs)))
@@ -668,72 +363,63 @@ class GlamourAccess(Poll, Converter):
 					return self.CaidInfo()
 
 				if caids or ecm_info:
-					if len(caids) > 0:
+					if caids:
 						caidtxt = self.CaidTxtList()
-						for cas in caids:
-							cas = self.int2hex(cas).upper().zfill(4)
+						caids = [f"{int(cas):04X}" for cas in caids]
 
 					if ecm_info:
-						caid = "%0.4X" % int(ecm_info.get("caid", ""), 16)
+						caid = f"{int(ecm_info.get('caid', ''), 16):04X}"
 
 						if self.type == self.CAID:
 							return caid
 
-						try:
-							pid = "%0.4X" % int(ecm_info.get("pid", ""), 16)
-						except:
-							pid = ""
-
+						pid = f"{int(ecm_info.get('pid', ''), 16):04X}" if ecm_info.get('pid') else ""
 						if self.type == self.PID:
 							return pid
 
-						try:
-							prov = "%0.6X" % int(ecm_info.get("prov", ""), 16)
-						except:
-							prov = ecm_info.get("prov", "")
-
+						prov = f"{int(ecm_info.get('prov', ''), 16):06X}" if ecm_info.get('prov') else ecm_info.get('prov', "")
 						if self.type == self.PROV:
 							return prov
 
-						if ecm_info.get("ecm time", "").find("msec") > -1:
-							ecm_time = (ecm_info.get("ecm time", "")).replace("msec", "ms")
-						else:
-							ecm_time = "%s ms" % ecm_info.get("ecm time", "").replace(".", "").lstrip("0")
-
+						ecm_time = ""
+						if "ecm time" in ecm_info:
+							if "msec" in ecm_info["ecm time"]:
+								ecm_time = ecm_info["ecm time"].replace("msec", "ms")
+							else:
+								ecm_time = f"{ecm_info['ecm time'].replace('.', '').lstrip('0')} ms"
 						if self.type == self.ECMTIME:
 							return ecm_time
 
-						csi = "Service with %s encryption" % (caidtxt)
-						casi = "Service with %s encryption (%s)" % (caidtxt, caidlist)
+						csi = f"Service with {caidtxt} encryption"
+						casi = f"Service with {caidtxt} encryption ({caidlist})"
 						protocol = ecm_info.get("protocol", "")
 						port = ecm_info.get("port", "")
 						source = ecm_info.get("source", "")
 						server = ecm_info.get("server", "")
-						hops = hop = ecm_info.get("hops", "")
-						if hops:
-							if hops > "0":
-								hops = " Hops: %s" % hops
-								hop = "%s" % hop
-							else:
-								hops = hop = ""
+
+						hop = ecm_info.get("hops", "")
+						if hop and hop.isdigit() and int(hop) > 0:
+							hop = str(hop)
+							hops = f" Hops: {hop}"
+						else:
+							hops = hop = ""
+
 						system = ecm_info.get("system", "")
 						frm = ecm_info.get("from", "")
+
 						if len(frm) > 36:
-							frm = "%s..." % frm[:35]
+							frm = f"{frm[:35]}..."
+
 						provider = ecm_info.get("provider", "")
 						if provider:
-							provider = "Prov: " + provider
+							provider = f"Prov: {provider}"
+
 						reader = ecm_info.get("reader", "")
 						if len(reader) > 36:
-							reader = "%s..." % reader[:35]
+							reader = f"{reader[:35]}..."
 
 						if self.type == self.CRDTXT:
-							info_card = "False"
-							if source == "sci":
-								info_card = "True"
-							if source != "cache" and source != "net" and source.find("emu") == -1:
-								info_card = "True"
-							return info_card
+							return "True" if source == "sci" or (source not in {"cache", "net"} and "emu" not in source) else "False"
 
 						if self.type == self.ADDRESS:
 							return server
@@ -777,93 +463,78 @@ class GlamourAccess(Poll, Converter):
 										ecminfo += "\n"
 									elif param[1:].isdigit():
 										ecminfo = ecminfo.ljust(len(ecminfo) + int(param[1:]))
-									if len(ecminfo) > 0:
-										if ecminfo[-1] != "\t" and ecminfo[-1] != "\n":
-											ecminfo += " "
-							return ecminfo[:-1]
+									if len(ecminfo) > 0 and ecminfo[-1] not in ["\t", "\n"]:
+										ecminfo += " "
+							return ecminfo.rstrip()
 
-						if self.type == self.ECMINFO:
-							if "fta" in protocol:
-								ecminfo = "FTA service"
-							elif int(config.usage.show_cryptoinfo.value) > 0:
-								if source == "emu":
-									ecminfo = "CA: %s:%s  PID:%s  Source: %s@%s  Ecm Time: %s" % (caid, prov, pid, source, frm, ecm_time)
-								elif reader != "" and source == "net" and port != "":
-									ecminfo = "CA: %s:%s  PID:%s  Reader: %s@%s  Prtc:%s (%s)  Source: %s:%s %s  Ecm Time: %s  %s" % (caid, prov, pid, reader, frm, protocol, source, server, port, hops, ecm_time, provider)
-								elif reader != "" and source == "net" and not "fta" in protocol:
-									ecminfo = "CA: %s:%s  PID:%s  Reader: %s@%s  Ptrc:%s (%s)  Source: %s %s  Ecm Time: %s  %s" % (caid, prov, pid, reader, frm, protocol, source, server, hops, ecm_time, provider)
-								elif reader != "" and source != "net":
-									ecminfo = "CA: %s:%s  PID:%s  Reader: %s@%s  Prtc:%s (local) - %s %s  Ecm Time: %s  %s" % (caid, prov, pid, reader, frm, protocol, source, hops, ecm_time, provider)
-								elif server == "" and port == "" and protocol != "":
-									ecminfo = "CA: %s:%s  PID:%s  Prtc: %s (%s) %s Ecm Time: %s" % (caid, prov, pid, protocol, source, hops, ecm_time)
-								elif server == "" and port == "" and protocol == "":
-									ecminfo = "CA: %s:%s  PID:%s  Source: %s  Ecm Time: %s" % (caid, prov, pid, source, ecm_time)
-								else:
-									try:
-										ecminfo = "CA: %s:%s  PID:%s  Addr:%s:%s  Prtc: %s (%s) %s  Ecm Time: %s  %s" % (caid, prov, pid, server, port, protocol, source, hops, ecm_time, provider)
-									except:
-										pass
-							else:
-								ecminfo = casi
-
-						if self.type == self.SHORTINFO:
-							if "fta" in protocol:
-								ecminfo = "FTA service"
-							elif int(config.usage.show_cryptoinfo.value) > 0:
-								if source == "emu":
-									ecminfo = "%s:%s - %s - %s" % (caid, prov, source, caidname)
-								elif server == "" and port == "":
-									ecminfo = "%s:%s - %s - %s" % (caid, prov, source, ecm_time)
-								else:
-									try:
-										if reader != "":
-											if hop != "":
-												ecminfo = "%s:%s - %s (%s) - %s" % (caid, prov, frm, hop, ecm_time)
-											else:
-												ecminfo = "%s:%s - %s - %s" % (caid, prov, frm, ecm_time)
+						if self.type in [self.ECMINFO, self.SHORTINFO, self.CASINFO]:
+								if "fta" in protocol:
+									ecminfo = "FTA service"
+								elif int(config.usage.show_cryptoinfo.value) > 0:
+									if self.type == self.SHORTINFO:
+										if source == "emu":
+											ecminfo = f"{caid}:{prov} - {source} - {caidname}"
+										elif not server and not port:
+											ecminfo = f"{caid}:{prov} - {source} - {ecm_time}"
 										else:
-											if hop != "":
-												ecminfo = "%s:%s - %s (%s) - %s" % (caid, prov, server, hop, ecm_time)
-											else:
-												ecminfo = "%s:%s - %s - %s" % (caid, prov, server, ecm_time)
-									except:
-										pass
-							else:
-								ecminfo = csi
+											try:
+												if reader:
+													ecminfo = f"{caid}:{prov} - {frm} ({hop}) - {ecm_time}" if hop else f"{caid}:{prov} - {frm} - {ecm_time}"
+												else:
+													ecminfo = f"{caid}:{prov} - {server} ({hop}) - {ecm_time}" if hop else f"{caid}:{prov} - {server} - {ecm_time}"
+											except:
+												pass
 
-						if self.type == self.CASINFO:
-							if "fta" in protocol:
-								ecminfo = "FTA service"
-							elif int(config.usage.show_cryptoinfo.value) > 0:
-								if source == "emu" or server == "" and port == "":
-									ecminfo = "%s [%s:%s - %s - %s]" % (csi, caid, prov, source, ecm_time)
-								else:
-									try:
-										if reader != "":
-											if hop != "":
-												ecminfo = "%s [%s:%s - %s@%s - %s]" % (csi, caid, prov, reader, hop, ecm_time)
-											else:
-												ecminfo = "%s [%s:%s - %s - %s]" % (csi, caid, prov, reader, ecm_time)
+									elif self.type == self.CASINFO:
+										if source == "emu" or not server and not port:
+											ecminfo = f"{csi} [{caid}:{prov} - {source} - {ecm_time}]"
 										else:
-											if hop != "":
-												ecminfo = "%s [%s:%s - %s@%s - %s]" % (csi, caid, prov, server, hop, ecm_time)
-											else:
-												ecminfo = "%s [%s:%s - %s - %s]" % (csi, caid, prov, server, ecm_time)
-									except:
-										pass
-							else:
-								ecminfo = csi
+											try:
+												if reader:
+													ecminfo = f"{csi} [{caid}:{prov} - {reader}@{hop} - {ecm_time}]" if hop else f"{csi} [{caid}:{prov} - {reader} - {ecm_time}]"
+												else:
+													ecminfo = f"{csi} [{caid}:{prov} - {server}@{hop} - {ecm_time}]" if hop else f"{csi} [{caid}:{prov} - {server} - {ecm_time}]"
+											except:
+												pass
+
+									elif self.type == self.ECMINFO:
+										if source == "emu":
+											ecminfo = f"CA: {caid}:{prov}  PID:{pid}  Source: {source}@{frm}  Ecm Time: {ecm_time}"
+										elif reader and source == "net" and port:
+											ecminfo = f"CA: {caid}:{prov}  PID:{pid}  Reader: {reader}@{frm}  Prtc:{protocol} ({source})  Source: {server}:{port} {hops}  Ecm Time: {ecm_time}  {provider}"
+										elif reader and source == "net" and "fta" not in protocol:
+											ecminfo = f"CA: {caid}:{prov}  PID:{pid}  Reader: {reader}@{frm}  Ptrc:{protocol} ({source})  Source: {server} {hops}  Ecm Time: {ecm_time}  {provider}"
+										elif reader and source != "net":
+											ecminfo = f"CA: {caid}:{prov}  PID:{pid}  Reader: {reader}@{frm}  Prtc:{protocol} (local) - {source} {hops}  Ecm Time: {ecm_time}  {provider}"
+										elif not server and not port and protocol:
+											ecminfo = f"CA: {caid}:{prov}  PID:{pid}  Prtc: {protocol} ({source}) {hops} Ecm Time: {ecm_time}"
+										elif not server and not port and not protocol:
+											ecminfo = f"CA: {caid}:{prov}  PID:{pid}  Source: {source}  Ecm Time: {ecm_time}"
+										else:
+											try:
+												ecminfo = f"CA: {caid}:{prov}  PID:{pid}  Addr:{server}:{port}  Prtc: {protocol} ({source}) {hops}  Ecm Time: {ecm_time}  {provider}"
+											except:
+												pass
+								else:
+									ecminfo = casi
 
 					elif self.type == self.ECMINFO or self.type == self.FORMAT and self.sfmt.count("%") > 3:
-						ecminfo = "Service with %s encryption (%s)" % (caidtxt, caidlist)
+						ecminfo = f"Service with {caidtxt} encryption ({caidlist})"
 					elif self.type == self.SHORTINFO or self.type == self.CASINFO:
-						ecminfo = "Service with %s encryption" % caidtxt
+						ecminfo = f"Service with {caidtxt} encryption"
 				elif self.type == self.ECMINFO or self.type == self.SHORTINFO or self.type == self.CASINFO or self.type == self.FORMAT and self.sfmt.count("%") > 3:
 					ecminfo = "FTA service"
 		return ecminfo
 
 	text = property(getText)
 
+	# Helper function for reading lines from a file
+	def read_file(self, file_path):
+		try:
+			with open(file_path) as f:
+				return f.readlines()
+		except:
+			return []
 
 	def CamName(self):
 		cam1 = ""
@@ -872,448 +543,299 @@ class GlamourAccess(Poll, Converter):
 		camdlist = None
 		camdname = []
 		sername = []
-#OpenPLI/SatDreamGr
-		if exists("/etc/init.d/softcam") and not exists("/etc/image-version") or exists("/etc/init.d/cardserver") and not exists("/etc/image-version"):
-			try:
-				for line in open("/etc/init.d/softcam"):
-					if line.startswith("CAMNAME="):
-						cam1 = "%s" % line.split('"')[1]
-					elif line.find("echo") > -1:
-						camdname.append(line)
-				cam2 = "%s" % camdname[1].split('"')[1]
-				if not cam1:
-					camdlist = cam2
-				else:
-					camdlist = cam1
-				return camdlist
-			except:
-				pass
-			try:
-				for line in open("/etc/init.d/cardserver"):
-					if line.find("echo") > -1:
-						sername.append(line)
-				serlist = "%s" % sername[1].split('"')[1]
-			except:
-				pass
-			if serlist is None:
-				serlist = ""
-			elif camdlist is None:
+
+		# OpenPLI/SatDreamGr
+		if os.path.exists("/etc/init.d/softcam") and not os.path.exists("/etc/image-version") or os.path.exists("/etc/init.d/cardserver") and not os.path.exists("/etc/image-version"):
+			lines = self.read_file("/etc/init.d/softcam")
+			for line in lines:
+				if line.startswith("CAMNAME="):
+					cam1 = line.split('"')[1]
+				elif "echo" in line:
+					camdname.append(line)
+			if camdname:
+				cam2 = camdname[1].split('"')[1]
+			camdlist = cam1 if cam1 else cam2
+			if not camdlist:
 				camdlist = ""
-			elif serlist is None and camdlist is None:
-				serlist = ""
-				camdlist = ""
-			return "%s %s" % (serlist, camdlist)
-#OE-A
-		if exists("/etc/image-version") and not exists("/etc/.emustart"):
-			for line in open("/etc/image-version"):
-				if "=openOPD" in line:
-					try:
-						if config.softcam.actCam.value:
-							cam1 = config.softcam.actCam.value
-							if " CAM 1" in cam1 or "no cam" in cam1:
-								cam1 = "No CAM active"
-						if config.softcam.actCam2.value:
-							cam2 = config.softcam.actCam2.value
-							if " CAM 2" in cam2 or "no cam" in cam2 or " CAM" in cam2:
-								cam2 = ""
-							else:
-								cam2 = "+" + cam2
-					except:
-						pass
-					try:
-						if exists("/tmp/.oscam/oscam.version"):
-							for line in open("/tmp/.oscam/oscam.version"):
-								if line.startswith("Version:"):
-									cam1 = "%s" % line.split(':')[1].replace(" ", "")
-						elif exists("/tmp/.ncam/ncam.version"):
-							for line in open("/tmp/.ncam/ncam.version"):
-								if line.startswith("Version:"):
-									cam1 = "%s" % line.split(':')[1].replace(" ", "")
-						else:
-							for line in open("/etc/init.d/softcam"):
-								if "Short-Description" in line:
-									cam1 = "%s" % line.split(':')[1].replace(" ", "")
-								if line.startswith("CAMNAME="):
-									cam1 = "%s" % line.split('"')[1]
-								elif line.find("echo") > -1:
-									camdname.append(line)
-							cam2 = "%s" % camdname[1].split('"')[1]
-						if not cam1:
-							return cam2
-						else:
-							return cam1
-					except:
-						pass
-					try:
-						for line in open("/etc/init.d/cardserver"):
-							if line.find("echo") > -1:
-								sername.append(line)
-						cam2 = " %s" % sername[1].split('"')[1]
-						if not cam2 or cam2 == "None":
-							cam2 = ""
-					except:
-						pass
-				elif "=opendroid" in line:
-					try:
-						cam1 = config.softcam_actCam.value
-						if cam1:
-							if " CAM 1" in cam1 or "no cam" in cam1:
-								cam1 = "No CAM active"
-						cam2 = config.softcam_actCam2.value
-						if cam2:
-							if " CAM 2" in cam2 or "no cam" in cam2 or " CAM" in cam2:
-								cam2 = ""
-							else:
-								cam2 = "/" + cam2
-					except:
-						pass
-			return "%s%s" % (cam1, cam2)
-#BLACKHOLE
-		if exists("/etc/CurrentDelCamName"):
-			try:
-				camdlist = open("/etc/CurrentDelCamName", "r")
-			except:
-				return None
-		if exists("/etc/CurrentBhCamName"):
-			try:
-				camdlist = open("/etc/CurrentBhCamName", "r")
-			except:
-				return None
-# DE-OpenBlackHole
-		if exists("/etc/BhFpConf"):
-			try:
-				camdlist = open("/etc/BhCamConf", "r")
-			except:
-				return None
-#HDMU
-		if exists("/etc/.emustart") and exists("/etc/image-version"):
-			try:
-				for line in open("/etc/.emustart"):
-					return line.split()[0].split("/")[-1]
-			except:
-				return None
-# Domica
-		if exists("/etc/active_emu.list"):
-			try:
-				camdlist = open("/etc/active_emu.list", "r")
-			except:
-				return None
-# Egami 
-		if exists("/tmp/egami.inf"):
-			try:
-				lines = open("/tmp/egami.inf", "r").readlines()
-				for line in lines:
-					item = line.split(":", 1)
-					if item[0] == "Current emulator":
-						return item[1].strip()
-			except:
-				return None
-# OoZooN
-		if exists("/tmp/cam.info"):
-			try:
-				camdlist = open("/tmp/cam.info", "r")
-			except:
-				return None
-# Dream Elite
-		if exists("/usr/bin/emuactive"):
-			try:
-				camdlist = open("/usr/bin/emuactive", "r")
-			except:
-				return None
-# Merlin2
-		if oexists("/etc/clist.list"):
-			try:
-				camdlist = open("/etc/clist.list", "r")
-			except:
-				return None
-# TS-Panel
-		if exists("/etc/startcam.sh"):
-			try:
-				for line in open("/etc/startcam.sh"):
-					if line.find("script") > -1:
-						return "%s" % line.split("/")[-1].split()[0][:-3]
-			except:
-				camdlist = None
-#  GlassSysUtil
-		if exists("/tmp/ucm_cam.info"):
-			try:
-				return open("/tmp/ucm_cam.info").read()
-			except:
-				return None
-# Others
-		if serlist != None:
-			try:
-				cardserver = ""
-				for current in serlist.readlines():
-					cardserver = current
-				serlist.close()
-			except:
-				pass
+			serlist = self.read_cardserver()
+			return f"{serlist} {camdlist}" if camdlist else "No active softcam"
+
+		# OE-A (OpenATV)
+		if os.path.exists("/etc/image-version") and not os.path.exists("/etc/.emustart"):
+			lines = self.read_file("/etc/enigma2/settings")
+			active_softcam = ""
+			for line in lines:
+				if line.startswith("config.misc.softcams="):
+					active_softcam = line.split('=')[1].strip()
+					break
+			# Alternative search method for softcam name
+			if not active_softcam or active_softcam.lower() == "none":
+				softcam_init_file = "/etc/init.d/softcam"
+				if os.path.exists(softcam_init_file):
+					with open(softcam_init_file, "r") as f:
+						for line in f:
+							if "Short-Description:" in line:
+								active_softcam = line.split(":")[1].strip()
+								break
+			if not active_softcam or active_softcam.lower() in {"nocam", "none"}:
+				return "No active softcam"
+			active_softcam = active_softcam.capitalize()
+			if "oscam" in active_softcam.lower() or "ncam" in active_softcam.lower():
+				version_file = "/tmp/.oscam/oscam.version" if "oscam" in active_softcam.lower() else "/tmp/.ncam/ncam.version"
+				if os.path.exists(version_file):
+					version = self.read_version_from_file(version_file)
+					if "oscam" in active_softcam.lower() and "@" in version:
+						version = f"v.{version.split('-')[1].split('@')[0]}"
+					elif "oscam" in active_softcam.lower() and "svn" in version:
+						version = version.split('_')[1]
+					return f"{active_softcam} {version}"
+			return active_softcam
+
+		# Handle other cases (BLACKHOLE, HDMU, Domica, etc.)
+		if os.path.exists("/etc/CurrentDelCamName"):
+			camdlist = self.read_file("/etc/CurrentDelCamName")
+		elif os.path.exists("/etc/CurrentBhCamName"):
+			camdlist = self.read_file("/etc/CurrentBhCamName")
+		elif os.path.exists("/etc/BhFpConf"):
+			camdlist = self.read_file("/etc/BhCamConf")
+
+		if os.path.exists("/etc/.emustart") and os.path.exists("/etc/image-version"):
+			lines = self.read_file("/etc/.emustart")
+			if lines:
+				return lines[0].split()[0].split("/")[-1]
+
+		# Additional checks for specific systems
+		if os.path.exists("/tmp/egami.inf"):
+			return self.read_egami_info("/tmp/egami.inf")
+
+		# Others
+		if serlist:
+			cardserver = self.read_lines(serlist)
 		else:
 			cardserver = "N/A"
-		if camdlist != None:
+		if camdlist:
+			emu = self.read_lines(camdlist)
+		else:
+			emu = "No active softcam"
+		
+		return f"{cardserver.split('\n')[0]} {emu.split('\n')[0]}"
+
+	# Helper method to read lines
+	def read_lines(self, file_path):
+		with open(file_path, "r") as f:
+			return f.readlines()
+
+	# Read version from a file
+	def read_version_from_file(self, file_path):
+		lines = self.read_file(file_path)
+		for line in lines:
+			if line.startswith("Version:"):
+				return line.split(':')[1].strip()
+		return ""
+
+	# Helper function for extracting CAID name from a list of ranges
+	def get_caid_name(self, caidr):
+		for ce in cainfo:
 			try:
-				emu = ""
-				for current in camdlist.readlines():
-					emu = current
-				camdlist.close()
+				if ce[0] <= caidr <= ce[1] or caidr.startswith(ce[0]):
+					return ce[2]
 			except:
 				pass
-		else:
-			emu = "N/A"
-		return "%s %s" % (cardserver.split("\n")[0], emu.split("\n")[0])
-
-
-
-	def int2hex(self, int):
-		return "%x" % int
-
+		return ""
 
 	def Caids(self):
 		caids = ""
 		service = self.source.service
 		if service:
-			info = service and service.info()
+			info = service.info()
 			if info:
 				caids = list(set(info.getInfoObject(iServiceInformation.sCAIDs)))
 		return sorted(caids)
 
-
 	def CaidList(self):
 		caids = self.Caids()
-		caidlist = ""
 		if caids:
-			for caid in caids:
-				caid = self.int2hex(caid).upper().zfill(4)
-				if len(caids) > 1:
-					caidlist = ", ".join(("{:04x}".format(x) for x in caids)).upper()
-				else:
-					caidlist += caid
-		return caidlist
-
+			caidlist = ", ".join(("{:04x}".format(x) for x in caids)).upper()
+			return caidlist
+		return ""
 
 	def CaidName(self):
 		ecm_info = self.ecmfile()
 		caidname = ""
 		if ecm_info:
 			caidr = ("%0.4X" % int(ecm_info.get("caid", ""), 16))[:4]
-			for ce in cainfo:
-				try:
-					if ce[0] <= caidr <= ce[1] or caidr.startswith(ce[0]):
-						caidname = ce[2]
-				except:
-					pass
+			caidname = self.get_caid_name(caidr)
 		return caidname
 
-
 	def CaidNames(self):
-		caidnames = ""
+		caidnames = []
 		caids = self.CaidList().strip(",").split()
 		if caids:
 			for caid in caids:
 				for ce in cainfo:
 					if ce[0] <= caid <= ce[1] or caid.startswith(ce[0]):
 						caid = ce[2]
-				if len(caids) > 1:
-					caidnames += ", " + caid
-				else:
-					caidnames = caid
-		return caidnames.lstrip(", ")
-
+				caidnames.append(caid)
+		return ", ".join(caidnames)
 
 	def CaidTxtList(self):
 		caidtxt = ""
 		caidnames = self.CaidNames()
 		if caidnames:
-			for caidname in caidnames:
-				caidtxt = caidnames.strip(", ").split(", ")
-				calist = []
-				for ca in caidtxt:
-					if ca not in calist:
-						calist.append(ca)
-						calist = list(calist)
-						if len(calist) > 1:
-							caidtxt = ", ".join(calist[:-1]) + " & " + calist[-1]
-						else:
-							caidtxt = calist[0]
+			unique_names = list(dict.fromkeys(caidnames.split(", ")))
+			if len(unique_names) > 1:
+				caidtxt = ", ".join(unique_names[:-1]) + " & " + unique_names[-1]
+			else:
+				caidtxt = unique_names[0]
 		return caidtxt
-
 
 	def CaidInfo(self):
 		caids = self.CaidList()
 		caidnames = self.CaidNames()
-		caidlist = ""
 		if caids and caidnames:
-			caidlist = "%s (%s)" % (caids, caidnames)
+			caidlist = f"{caids} ({caidnames})"
 			if config.osd.language.value == "el_GR":
-				caidlist = "Συστήματα κωδικοποίησης: " + caidlist
+				return f"Συστήματα κωδικοποίησης: {caidlist}"
 			else:
-				caidlist = "Coding systems: " + caidlist
-			return caidlist
-		if not caids:
-			if config.osd.language.value == "el_GR":
-				return "Χωρίς κωδικοποίηση ή αναγνωριστικό"
-			else:
+				return f"Coding systems: {caidlist}"
+		elif not caids:
 				return "Free to air or no descriptor"
 
-
 	def ecmpath(self):
-		ecmpath = None
-		if exists("/tmp/ecm7.info"):
-			ecmpath = "/tmp/ecm7.info"
-		elif exists("/tmp/ecm6.info") and not exists("tmp/ecm7.info"):
-			ecmpath = "/tmp/ecm6.info"
-		elif exists("/tmp/ecm5.info") and not exists("tmp/ecm6.info"):
-			ecmpath = "/tmp/ecm5.info"
-		elif exists("/tmp/ecm4.info") and not exists("tmp/ecm5.info"):
-			ecmpath = "/tmp/ecm4.info"
-		elif exists("/tmp/ecm3.info") and not exists("tmp/ecm4.info"):
-			ecmpath = "/tmp/ecm3.info"
-		elif exists("/tmp/ecm2.info") and not exists("tmp/ecm3.info"):
-			ecmpath = "/tmp/ecm2.info"
-		elif exists("/tmp/ecm1.info") and not exists("tmp/ecm2.info"):
-			ecmpath = "/tmp/ecm1.info"
-		elif exists("/tmp/ecm0.info") and exists("/tmp/ecm.info"):
-			ecmpath = "/tmp/ecm.info"
-		elif exists("/tmp/ecm0.info") and not exists("/tmp/ecm.info"):
-			ecmpath = None
-		else:
-			try:
-				ecmpath = "/tmp/ecm.info"
-			except:
-				pass
-		return ecmpath
-
+		for i in range(7, 0, -1):
+			ecm_file = f"/tmp/ecm{i}.info"
+			if os.path.exists(ecm_file):
+				return ecm_file
+		return "/tmp/ecm.info" if os.path.exists("/tmp/ecm.info") else None
 
 	def ecmfile(self):
 		global info
 		global old_ecm_mtime
-		ecm = None
 		ecmpath = self.ecmpath()
 		service = self.source.service
-		if service:
-			try:
-				ecm_mtime = os.stat(ecmpath).st_mtime
-				if not os.stat(ecmpath).st_size > 0:
-					info = {}
-				if ecm_mtime == old_ecm_mtime:
-					return info
-				old_ecm_mtime = ecm_mtime
-				ecmf = open(ecmpath, "r")
-				ecm = ecmf.readlines()
-			except:
-				old_ecm_mtime = None
+		if not service:
+			return info
+
+		try:
+			stat = os.stat(ecmpath)
+			ecm_mtime = stat.st_mtime
+			if not stat.st_size > 0:
 				info = {}
 				return info
-			if ecm:
-				for line in ecm:
-					x = line.lower().find("msec")
-					if x != -1:
-						info["ecm time"] = line[0:x + 4]
-					else:
-						item = line.split(":", 1)
-						if len(item) > 1:
-							if item[0] == "Provider":
-								item[0] = "prov"
-								item[1] = item[1].strip()[2:]
-							elif item[0] == "ECM PID":
-								item[0] = "pid"
-							elif item[0] == "response time":
-								info["source"] = "net"
-								it_tmp = item[1].strip().split(" ")
-								info["ecm time"] = "%s msec" % it_tmp[0]
-								y = it_tmp[-1].find("[")
-								if y != -1:
-									info["server"] = it_tmp[-1][:y]
-									info["protocol"] = it_tmp[-1][y + 1:-1]
-								y = it_tmp[-1].find("(")
-								if y != -1:
-									info["server"] = it_tmp[-1].split("(")[-1].split(":")[0]
-									info["port"] = it_tmp[-1].split("(")[-1].split(":")[-1].rstrip(")")
-								elif y == -1:
-									item[0] = "source"
-									item[1] = "sci"
-								if it_tmp[-1].find("emu") > -1 or it_tmp[-1].find("card") > -1 or it_tmp[-1].find("biss") > -1 or it_tmp[-1].find("tb") > -1:
-									item[0] = "source"
-									item[1] = "emu"
-							elif item[0] == "hops":
-								item[1] = item[1].strip("\n")
-							elif item[0] == "from":
-								item[1] = item[1].strip("\n")
-							elif item[0] == "system":
-								item[1] = item[1].strip("\n")
-							elif item[0] == "provider":
-								item[1] = item[1].strip("\n")
-							elif item[0][:2] == "cw" or item[0] == "ChID" or item[0] == "Service":
-								pass
-							elif item[0] == "source":
-								if item[1].strip()[:3] == "net":
-									it_tmp = item[1].strip().split(" ")
-									info["protocol"] = it_tmp[1][1:]
-									if ":" in it_tmp[-1]:
-										info["server"] = it_tmp[-1].split(":", 1)[0]
-										info["port"] = it_tmp[-1].split(":", 1)[1][:-1]
-									elif ":" not in it_tmp[-1]:
-										try:
-											info["server"] = it_tmp[3].split(":", 1)[0]
-											info["port"] = it_tmp[3].split(":", 1)[1][:-1]
-										except:
-											pass
-									else:
-										info["server"] == ""
-										info["port"] == ""
-									item[1] = "net"
-							elif item[0] == "prov":
-								y = item[1].find(",")
-								if y != -1:
-									item[1] = item[1][:y]
-							elif item[0] == "reader":
-								if item[1].strip() == "emu":
-									item[0] = "source"
-							elif item[0] == "protocol":
-								if item[1].strip() == "emu" or item[1].strip() == "constcw":
-									item[1] = "emu"
-									item[0] = "source"
-								elif item[1].strip() == "internal":
-									item[1] = "sci"
-									item[0] = "source"
-								else:
-									info["source"] = "net"
-									item[0] = "server"
-							elif item[0] == "provid":
-								item[0] = "prov"
-							elif item[0] == "using":
-								if item[1].strip() == "emu" or item[1].strip() == "sci":
-									item[0] = "source"
-								else:
-									info["source"] = "net"
-									item[0] = "protocol"
-							elif item[0] == "address":
-								tt = item[1].find(":")
-								if tt != -1:
-									info["server"] = item[1][:tt].strip()
-									item[0] = "port"
-									item[1] = item[1][tt + 1:]
-							info[item[0].strip().lower()] = item[1].strip()
-						else:
-							if "caid" not in info:
-								x = line.lower().find("caid")
-								if x != -1:
-									y = line.find(",")
-									if y != -1:
-										info["caid"] = line[x + 5:y]
-							if "pid" not in info:
-								x = line.lower().find("pid")
-								if x != -1:
-									y = line.find(" =")
-									z = line.find(" *")
-									if y != -1:
-										info["pid"] = line[x + 4:y]
-									elif z != -1:
-										info["pid"] = line[x + 4:z]
-				ecmf.close()
-		return info
+			if ecm_mtime == old_ecm_mtime:
+				return info
+			old_ecm_mtime = ecm_mtime
 
+			with open(ecmpath, "r") as ecmf:
+				ecm = ecmf.readlines()
+
+			if not ecm:
+				return info
+
+			for line in ecm:
+				line_lower = line.lower()
+				x = line_lower.find("msec")
+				if x != -1:
+					info["ecm time"] = line[:x + 4]
+					continue
+
+				item = line.split(":", 1)
+				if len(item) <= 1:
+					if "caid" not in info:
+						x = line_lower.find("caid")
+						if x != -1:
+							y = line.find(",")
+							if y != -1:
+								info["caid"] = line[x + 5:y]
+					if "pid" not in info:
+						x = line_lower.find("pid")
+						if x != -1:
+							y = line.find(" =")
+							z = line.find(" *")
+							if y != -1:
+								info["pid"] = line[x + 4:y]
+							elif z != -1:
+								info["pid"] = line[x + 4:z]
+					continue
+
+				key, value = item[0].strip().lower(), item[1].strip()
+
+				match key:
+					case "provider":
+						key = "prov"
+						value = value[2:]
+					case "ecm pid":
+						key = "pid"
+					case "response time":
+						info["source"] = "net"
+						it_tmp = value.split(" ")
+						info["ecm time"] = f"{it_tmp[0]} msec"
+						if "[" in it_tmp[-1]:
+							info["server"] = it_tmp[-1].split("[")[0]
+							info["protocol"] = it_tmp[-1].split("[")[1][:-1]
+						elif "(" in it_tmp[-1]:
+							info["server"] = it_tmp[-1].split("(")[-1].split(":")[0]
+							info["port"] = it_tmp[-1].split("(")[-1].split(":")[-1].rstrip(")")
+						else:
+							key = "source"
+							value = "sci"
+						if any(x in it_tmp[-1] for x in ["emu", "card", "biss", "tb"]):
+							key = "source"
+							value = "emu"
+					case "hops" | "from" | "system" | "provider":
+						value = value.rstrip("\n")
+					case "source":
+						if value.startswith("net"):
+							it_tmp = value.split(" ")
+							info["protocol"] = it_tmp[1][1:]
+							if ":" in it_tmp[-1]:
+								info["server"], info["port"] = it_tmp[-1].split(":", 1)
+								info["port"] = info["port"][:-1]
+							else:
+								try:
+									info["server"], info["port"] = it_tmp[3].split(":", 1)
+									info["port"] = info["port"][:-1]
+								except (IndexError, ValueError):
+									info["server"] = info["port"] = ""
+							value = "net"
+					case "prov":
+						if "," in value:
+							value = value.split(",")[0]
+					case "reader":
+						if value == "emu":
+							key = "source"
+					case "protocol":
+						match value:
+							case "emu" | "constcw":
+								key, value = "source", "emu"
+							case "internal":
+								key, value = "source", "sci"
+							case _:
+								info["source"] = "net"
+								key = "server"
+					case "provid":
+						key = "prov"
+					case "using":
+						match value:
+							case "emu" | "sci":
+								key = "source"
+							case _:
+								info["source"] = "net"
+								key = "protocol"
+					case "address":
+						if ":" in value:
+							info["server"], value = value.split(":", 1)
+							key = "port"
+					case _:
+						pass
+
+				info[key] = value
+
+		except Exception:
+			old_ecm_mtime = None
+			info = {}
+
+		return info
 
 	def changed(self, what):
 		Converter.changed(self, (self.CHANGED_POLL,))

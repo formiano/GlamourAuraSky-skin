@@ -1,13 +1,12 @@
-﻿#	GlamourAudioInfo converter
-#	Modded and recoded by MCelliotG for use in Glamour skins or standalone, added Python3 support
-#	If you use this Converter for other skins and rename it, please keep the lines above adding your credits below
+#GlamourAudioInfo converter (Python 3)
+#Modded and recoded by MCelliotG for use in Glamour skins or standalone, based on VAudioInfo converter
+#If you use this Converter with its modifications as it is for other skins and rename it, please keep the lines above adding your credits below
 
 from enigma import iPlayableService
 from Components.Converter.Converter import Converter
 from Components.Element import cached
 from Components.Converter.Poll import Poll
 import re
-import six
 
 try:
 	from enigma import iAudioType_ENUMS as iAt
@@ -24,16 +23,17 @@ try:
 		iAt.atPCM: ("PCM", _("PCM"), 10),
 		iAt.atWMA: ("WMA", _("WMA"), 11),
 		iAt.atFLAC: ("FLAC", _("FLAC"), 12),
-		iAt.atOGG: ("OGG", _("OGG"), 13),
+		iAt.atTRUEHD: ("TRUEHD", _("TRUEHD"), 13),
 		iAt.atOPUS: ("OPUS", _("OPUS"), 14),
 		iAt.atAC4: ("AC4", _("AC4"), 15),
+		iAt.atOGG: ("OGG", _("OGG"), 16),
+		iAt.atATMOS: ("ATMOS", _("ATMOS"), 17),
 		iAt.atUnknown: ("unknown", _("<unknown>"), -1)
 	}
 except:
 	pass
 
-
-class GlamourAudioInfo(Poll, Converter, object):
+class GlamourAudioInfo(Poll, Converter):
 	GET_AUDIO_ICON = 0
 	GET_AUDIO_CODEC = 1
 
@@ -43,31 +43,37 @@ class GlamourAudioInfo(Poll, Converter, object):
 		self.type = type
 		self.poll_interval = 1000
 		self.poll_enabled = True
-		self.lang_strings = ("ger", "german", "deu")
+		self.lang_dict = {
+			"ger": "Deutsch", "deu": "Deutsch", "german": "Deutsch",
+			"gre": "Ελληνικά", "ell": "Ελληνικά", "greek": "Ελληνικά"
+		}
 		self.codecs = {
-			"01_dolbydigitalplus" : ("digital+", "digitalplus", "ac3+", "e-ac-3"),
-			"02_dolbydigital": ("ac3", "ac-3", "dolbydigital"),
+			"01_dolbydigitalplus": ("digital+", "digitalplus", "ac3+", "e-ac-3",),
+			"02_dolbydigital": ("dolbyac3", "ac3", "ac-3", "dolbydigital",),
 			"03_mp3": ("mp3",),
 			"04_wma": ("wma",),
 			"05_flac": ("flac",),
 			"06_he-aac": ("he-aac",),
-			"07_aac": ("aac", "mpeg-4 aac", "mpeg-4"),
+			"07_aac": ("aac", "mpeg-4 aac", "mpeg-4",),
 			"08_lpcm": ("lpcm",),
 			"09_dts-hd": ("dts-hd",),
 			"10_dts": ("dts",),
 			"11_pcm": ("pcm",),
 			"12_mpeg": ("mpeg",),
-			"13_ogg": ("vorbis", "ogg"),
+			"13_dolbytruehd": ("truehd","dolbytruehd",),
 			"14_opus": ("opus",),
-			"15_dolbyac4": ("dolbyac4","ac4","ac-4"),
+			"15_dolbyac4": ("dolbyac4","ac4","ac-4",),
+			"16_ogg": ("vorbis", "ogg",),
+			"17_dolbyatmos": ("atmos", "doblyatmos",)
 			}
-		self.codec_info = { "dolbydigitalplus" : ("51", "20", "71"),
-			"dolbydigital" : ("51", "20", "10", "71"),
-			"wma" : ("8", "9"),
-			}
+		self.codec_info = {
+			"dolbydigitalplus": ("51", "20", "71"),
+			"dolbydigital": ("51", "20", "10", "71"),
+			"wma": ("8", "9"),
+		}
 		self.type, self.interesting_events = {
-			"AudioIcon": (self.GET_AUDIO_ICON, (iPlayableService.evUpdatedInfo,)),
-			"AudioCodec": (self.GET_AUDIO_CODEC, (iPlayableService.evUpdatedInfo,)),
+				"AudioIcon": (self.GET_AUDIO_ICON, (iPlayableService.evUpdatedInfo,)),
+				"AudioCodec": (self.GET_AUDIO_CODEC, (iPlayableService.evUpdatedInfo,)),
 			}[type]
 
 	def getAudio(self):
@@ -83,12 +89,7 @@ class GlamourAudioInfo(Poll, Converter, object):
 
 	def getLanguage(self):
 		languages = self.audio_info.getLanguage()
-		for lang in self.lang_strings:
-			if lang in languages:
-				languages = "Deutsch"
-				break
-		languages = languages.replace("und ", "")
-		return languages
+		return self.lang_dict.get(languages.lower(), languages).replace("und ", "")
 
 	def getAudioCodec(self, info):
 		description_str = _("unknown")
@@ -112,14 +113,14 @@ class GlamourAudioInfo(Poll, Converter, object):
 		return description_str
 
 	def getAudioIcon(self, info):
-		description_str = self.get_short("".join(a for a in self.getAudioCodec(info) if a not in " .").lower())
+		description_str = self.get_short(self.getAudioCodec(info).translate(str.maketrans("", "", ' .')).lower())
 		return description_str
 
 	def get_short(self, audioName):
-		for return_codec, codecs in sorted(six.iteritems(self.codecs)):
+		for return_codec, codecs in sorted(iter(self.codecs.items())):
 			for codec in codecs:
 				if codec in audioName:
-					codec = return_codec.split("_")[1]
+					codec = return_codec.split('_')[1]
 					if codec in self.codec_info:
 						for ex_codec in self.codec_info[codec]:
 							if ex_codec in audioName:
@@ -138,9 +139,10 @@ class GlamourAudioInfo(Poll, Converter, object):
 					return self.getAudioCodec(info)
 				if self.type == self.GET_AUDIO_ICON:
 					return self.getAudioIcon(info)
-		return _("invalid type")
+		return _( "Invalid type" )
 
 	text = property(getText)
+
 
 	def changed(self, what):
 		if what[0] != self.CHANGED_SPECIFIC or what[1] in self.interesting_events:
