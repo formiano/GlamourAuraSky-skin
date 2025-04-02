@@ -218,22 +218,22 @@
   <screen name="OPDBootImageChoose" position="0,0" size="1920,1080" title="OPDBoot Image Choose" flags="wfNoBorder" backgroundColor="transparent">
     <panel name="ScreenElements2" />
     <ePixmap position="50,315" size="400,400" pixmap="GACommon/images/multiboot.png" alphatest="on" transparent="1" zPosition="5" />
-    <widget name="label2" position="640,90" size="750,45" zPosition="7" font="Regular; 30" backgroundColor="background20" transparent="1" />
-    <widget name="label3" position="640,135" size="400,45" zPosition="8" font="Regular; 30" backgroundColor="background20" transparent="1" />
-    <widget name="label4" position="640,180" size="750,45" zPosition="7" font="Regular; 30" backgroundColor="background20" transparent="1" />
-    <widget name="label5" position="640,225" size="650,45" zPosition="8" font="Regular; 30" backgroundColor="background20" transparent="1" />
-    <widget name="label6" position="1390,90" size="450,45" zPosition="7" halign="right" font="Regular; 30" backgroundColor="background20" foregroundColor="cyan2" transparent="1" />
-    <widget name="label7" position="1720,135" size="120,45" zPosition="8" halign="right" font="Regular; 30" backgroundColor="background20" foregroundColor="cyan" transparent="1" />
-    <widget name="label8" position="1390,180" size="450,45" zPosition="7" halign="right" font="Regular; 30" backgroundColor="background20" foregroundColor="cyan2" transparent="1" />
-    <widget name="label9" position="1290,225" size="550,45" zPosition="8" halign="right" font="Regular; 30" backgroundColor="background20" foregroundColor="amarillo" transparent="1" />
-    <widget name="label10" position="640,270" size="750,45" zPosition="7" font="Regular; 30" backgroundColor="background20" transparent="1" />
-    <widget name="label11" position="1390,270" size="450,45" zPosition="9" halign="right" font="Regular; 30" backgroundColor="background20" foregroundColor="cyan2" transparent="1" />
-    <widget name="label1" position="540,330" size="1305,45" zPosition="7" halign="center" font="Regular; 30" backgroundColor="background20" transparent="1" foregroundColor="orange" />
+    <widget name="label2" position="640,90" size="750,45" zPosition="7" font="Regular; 32" backgroundColor="background20" transparent="1" />
+    <widget name="label3" position="640,135" size="400,45" zPosition="8" font="Regular; 32" backgroundColor="background20" transparent="1" />
+    <widget name="label4" position="640,180" size="750,45" zPosition="7" font="Regular; 32" backgroundColor="background20" transparent="1" />
+    <widget name="label5" position="640,225" size="650,45" zPosition="8" font="Regular; 32" backgroundColor="background20" transparent="1" />
+    <widget name="label6" position="1390,90" size="450,45" zPosition="7" halign="right" font="Regular; 32" backgroundColor="background20" foregroundColor="cyan2" transparent="1" />
+    <widget name="label7" position="1720,135" size="120,45" zPosition="8" halign="right" font="Regular; 32" backgroundColor="background20" foregroundColor="cyan" transparent="1" />
+    <widget name="label8" position="1390,180" size="450,45" zPosition="7" halign="right" font="Regular; 32" backgroundColor="background20" foregroundColor="cyan2" transparent="1" />
+    <widget name="label9" position="1290,225" size="550,45" zPosition="8" halign="right" font="Regular; 32" backgroundColor="background20" foregroundColor="amarillo" transparent="1" />
+    <widget name="label10" position="640,270" size="750,45" zPosition="7" font="Regular; 32" backgroundColor="background20" transparent="1" />
+    <widget name="label11" position="1390,270" size="450,45" zPosition="9" halign="right" font="Regular; 32" backgroundColor="background20" foregroundColor="cyan2" transparent="1" />
+    <widget name="label1" position="540,330" size="1305,45" zPosition="7" halign="center" font="Regular; 32" backgroundColor="background20" transparent="1" foregroundColor="orange" />
     <widget name="device_icon" position="545,145" size="80,80" alphatest="on" zPosition="8" transparent="1" />
     <widget name="free_space_progressbar" position="1055,142" size="650,25" borderWidth="1" zPosition="9" backgroundColor="white" foregroundColor="cyan" />
-    <widget name="config" font="Regular; 30" position="540,380" size="1305,400" scrollbarMode="showOnDemand" selectionPixmap="GlamourAuraSky/selections/aurasel.png" alphatest="off" backgroundColor="background20" itemHeight="50" enableWrapAround="1" transparent="1" zPosition="9" />
+    <widget name="config" font="Regular; 32" position="540,380" size="1305,400" scrollbarMode="showOnDemand" selectionPixmap="GlamourAuraSky/selections/aurasel.png" alphatest="off" backgroundColor="background20" itemHeight="50" enableWrapAround="1" transparent="1" zPosition="9" />
     <ePixmap position="1430,805" size="90,45" zPosition="10" pixmap="GlamourAuraSky/buttons/key_menu_medium.png" transparent="1" alphatest="blend" />
-    <widget name="key_menu" position="1530,810" size="360,45" zPosition="5" transparent="1" font="Regular; 30" noWrap="1" backgroundColor="background20" halign="left" />
+    <widget name="key_menu" position="1530,810" size="360,45" zPosition="5" transparent="1" font="Regular; 32" noWrap="1" backgroundColor="background20" halign="left" />
     <panel name="FullKeys1" />
   </screen>
   <screen name="OPDBootInstallation" position="0,0" size="1920,1080" title="OPDBoot - Installation" flags="wfNoBorder" backgroundColor="transparent">

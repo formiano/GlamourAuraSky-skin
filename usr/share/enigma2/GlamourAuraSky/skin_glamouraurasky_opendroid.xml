@@ -160,7 +160,7 @@
     <panel name="ScreenElements2" />
     <ePixmap position="50,315" size="400,400" pixmap="GACommon/images/minidlna.png" alphatest="on" transparent="1" zPosition="5" />
     <widget name="autostart" font="Regular;30" backgroundColor="background20" foregroundColor="white" position="540,120" size="500,50" valign="center" halign="right" transparent="1" zPosition="4" />
-    <widget name="labdisabled" font="Regular; 30" backgroundColor="deepgrey" foregroundColor="white" position="1050,120" size="640,50" valign="center" halign="center" zPosition="7" />
+    <widget name="labdisabled" font="Regular; 32" backgroundColor="deepgrey" foregroundColor="white" position="1050,120" size="640,50" valign="center" halign="center" zPosition="7" />
     <widget name="labactive" font="Regular;30" backgroundColor="purple" foregroundColor="white" position="1050,120" size="640,50" valign="center" halign="center" zPosition="8" />
     <widget name="status" font="Regular;30" backgroundColor="background20" foregroundColor="white" position="540,200" size="500,50" valign="center" halign="right" transparent="1" zPosition="5" />
     <widget name="labstop" font="Regular;30" backgroundColor="red" foregroundColor="white" position="1050,200" size="640,50" valign="center" halign="center" zPosition="7" />
@@ -191,7 +191,7 @@
     <panel name="ScreenElements2" />
     <ePixmap position="50,315" size="400,400" pixmap="GACommon/images/ushare.png" alphatest="on" transparent="1" zPosition="5" />
     <widget name="autostart" font="Regular;30" backgroundColor="background20" foregroundColor="white" position="540,120" size="500,50" valign="center" halign="right" transparent="1" zPosition="4" />
-    <widget name="labdisabled" font="Regular; 30" backgroundColor="deepgrey" position="1050,120" size="640,50" valign="center" halign="center" zPosition="7" />
+    <widget name="labdisabled" font="Regular; 32" backgroundColor="deepgrey" position="1050,120" size="640,50" valign="center" halign="center" zPosition="7" />
     <widget name="labactive" font="Regular;30" backgroundColor="purple" foregroundColor="white" position="1050,120" size="640,50" valign="center" halign="center" zPosition="8" />
     <widget name="status" font="Regular;30" backgroundColor="background20" foregroundColor="white" position="540,200" size="500,50" valign="center" halign="right" transparent="1" zPosition="5" />
     <widget name="labstop" font="Regular;30" backgroundColor="red" foregroundColor="white" position="1050,200" size="640,50" valign="center" halign="center" zPosition="7" />
@@ -337,7 +337,7 @@
     <panel name="ScreenElements2" />
     <ePixmap position="50,315" size="400,400" pixmap="GACommon/images/softupdate.png" alphatest="on" transparent="1" zPosition="5" />
     <widget name="text" render="Label" position="540,90" size="1305,80" font="Regular; 32" backgroundColor="background20" transparent="1" valign="center" zPosition="5" halign="left" foregroundColor="lightciel" scrollbarMode="showOnDemand" />
-    <widget name="list" font="Regular; 30" position="540,190" size="1305,750" itemHeight="50" scrollbarMode="showOnDemand" backgroundColor="background20" transparent="1" selectionPixmap="GlamourAuraSky/selections/aurasel.png" zPosition="5" />
+    <widget name="list" font="Regular; 32" position="540,190" size="1305,750" itemHeight="50" scrollbarMode="showOnDemand" backgroundColor="background20" transparent="1" selectionPixmap="GlamourAuraSky/selections/aurasel.png" zPosition="5" />
   </screen>
   <!-- 04. HDD SCREENS -->
   <screen name="Devices" position="0,0" size="1920,1080" title=" System Info" backgroundColor="transparent" flags="wfNoBorder">
@@ -359,7 +359,7 @@
   {"template": [
   MultiContentEntryPixmapAlphaBlend(pos = (2, 2), size = (80, 80), png = 2), # index 2 is the interface pixmap
   MultiContentEntryText(pos = (100, 2), size = (1200, 50), font=0, flags = RT_HALIGN_LEFT|RT_VALIGN_TOP, text = 0), # index 0 is the interfacename
-     MultiContentEntryText(pos = (110, 52), size = (1200, 38), font=1, flags = RT_HALIGN_LEFT|RT_VALIGN_CENTER, text = 0), # index 1 is the description
+	 MultiContentEntryText(pos = (110, 52), size = (1200, 38), font=1, flags = RT_HALIGN_LEFT|RT_VALIGN_CENTER, text = 0), # index 1 is the description
   ],
   "fonts": [gFont("RegularB", 32),gFont("Regular", 24)],
   "itemHeight": 90}
@@ -370,23 +370,23 @@
   <screen name="DevicePanelConf" position="0,0" size="1920,1080" title="Mount Manager" flags="wfNoBorder" backgroundColor="transparent">
     <panel name="ScreenElements2" />
     <ePixmap position="50,315" size="400,400" pixmap="GACommon/images/input_devices.png" alphatest="on" transparent="1" zPosition="5" />
-    <widget name="config" font="Regular; 30" position="540,75" size="1305,750" scrollbarMode="showOnDemand" selectionPixmap="GlamourAuraSky/selections/aurasel.png" alphatest="off" backgroundColor="background20" itemHeight="50" enableWrapAround="1" transparent="1" zPosition="9" />
+    <widget name="config" font="Regular; 32" position="540,75" size="1305,750" scrollbarMode="showOnDemand" selectionPixmap="GlamourAuraSky/selections/aurasel.png" alphatest="off" backgroundColor="background20" itemHeight="50" enableWrapAround="1" transparent="1" zPosition="9" />
     <panel name="FullKeys1" />
   </screen>
   <!-- 05. HOTKEY SCREENS -->
   <screen name="ButtonSetup" position="0,0" size="1920,1080" title="Button Setup" flags="wfNoBorder" backgroundColor="transparent">
     <panel name="ScreenElements2" />
     <ePixmap position="50,315" size="400,400" pixmap="GACommon/images/hotkey.png" alphatest="on" transparent="1" zPosition="5" />
-    <widget name="list" font="Regular; 30" position="540,60" size="650,750" itemHeight="50" scrollbarMode="showOnDemand" backgroundColor="background20" enableWrapAround="1" transparent="1" selectionPixmap="GlamourAuraSky/selections/aurasel.png" alphatest="off" zPosition="5" />
-    <widget name="choosen" font="Regular; 30" position="1190,60" size="670,750" itemHeight="50" scrollbarMode="showOnDemand" foregroundColor="cyan1" foregroundColorSelected="amarillo" backgroundColor="background20" enableWrapAround="1" transparent="1" selectionPixmap="GlamourAuraSky/selections/aurasel.png" alphatest="off" zPosition="6" />
-    <widget name="description" font="Regular; 30" backgroundColor="background20" position="540,820" size="1305,120" transparent="1" zPosition="11" foregroundColor="sky" />
+    <widget name="list" font="Regular; 32" position="540,60" size="650,750" itemHeight="50" scrollbarMode="showOnDemand" backgroundColor="background20" enableWrapAround="1" transparent="1" selectionPixmap="GlamourAuraSky/selections/aurasel.png" alphatest="off" zPosition="5" />
+    <widget name="choosen" font="Regular; 32" position="1190,60" size="670,750" itemHeight="50" scrollbarMode="showOnDemand" foregroundColor="cyan1" foregroundColorSelected="amarillo" backgroundColor="background20" enableWrapAround="1" transparent="1" selectionPixmap="GlamourAuraSky/selections/aurasel.png" alphatest="off" zPosition="6" />
+    <widget name="description" font="Regular; 32" backgroundColor="background20" position="540,820" size="1305,120" transparent="1" zPosition="11" foregroundColor="sky" />
   </screen>
   <screen name="ButtonSetupSelect" position="0,0" size="1920,1080" title="Button Setup" flags="wfNoBorder" backgroundColor="transparent">
     <panel name="ScreenElements2" />
     <ePixmap position="50,315" size="400,400" pixmap="GACommon/images/hotkey.png" alphatest="on" transparent="1" zPosition="5" />
-    <widget name="list" font="Regular; 30" position="540,60" size="650,650" itemHeight="50" scrollbarMode="showOnDemand" backgroundColor="background20" enableWrapAround="1" transparent="1" selectionPixmap="GlamourAuraSky/selections/aurasel.png" alphatest="off" zPosition="5" />
-    <widget name="choosen" font="Regular; 30" position="1190,60" size="670,650" itemHeight="50" scrollbarMode="showOnDemand" foregroundColor="cyan1" foregroundColorSelected="amarillo" backgroundColor="background20" enableWrapAround="1" transparent="1" selectionPixmap="GlamourAuraSky/selections/aurasel.png" alphatest="off" zPosition="6" />
-    <widget name="description" font="Regular; 30" backgroundColor="background20" position="540,720" size="1305,120" transparent="1" zPosition="11" foregroundColor="sky" />
+    <widget name="list" font="Regular; 32" position="540,60" size="650,650" itemHeight="50" scrollbarMode="showOnDemand" backgroundColor="background20" enableWrapAround="1" transparent="1" selectionPixmap="GlamourAuraSky/selections/aurasel.png" alphatest="off" zPosition="5" />
+    <widget name="choosen" font="Regular; 32" position="1190,60" size="670,650" itemHeight="50" scrollbarMode="showOnDemand" foregroundColor="cyan1" foregroundColorSelected="amarillo" backgroundColor="background20" enableWrapAround="1" transparent="1" selectionPixmap="GlamourAuraSky/selections/aurasel.png" alphatest="off" zPosition="6" />
+    <widget name="description" font="Regular; 32" backgroundColor="background20" position="540,720" size="1305,120" transparent="1" zPosition="11" foregroundColor="sky" />
     <panel name="FullKeys1" />
   </screen>
   <!-- 06. VOLUME SCREENS -->
@@ -420,8 +420,8 @@
     <eLabel position="1162,60" size="2,720" backgroundColor="blue" zPosition="12" foregroundColor="blue" />
     <ePixmap pixmap="GlamourAuraSky/menu/accentglowt810.png" position="540,780" size="810,45" zPosition="5" alphatest="blend" transparent="1" />
     <ePixmap pixmap="GlamourAuraSky/menu/accentglowb810.png" position="1040,815" size="810,45" zPosition="5" alphatest="blend" transparent="1" />
-    <widget name="list" font="Regular; 30" position="540,60" size="620,720" itemHeight="80" scrollbarMode="showOnDemand" selectionPixmap="GlamourAuraSky/selections/aurasel620.png" alphatest="off" backgroundColor="background20" enableWrapAround="1" transparent="1" zPosition="9" />
-    <widget name="sublist" font="Regular; 30" position="1165,60" size="700,720" itemHeight="80" scrollbarMode="showOnDemand" selectionPixmap="GACommon/selections/auraselwhite700.png" alphatest="off" backgroundColor="background20" foregroundColor="white" foregroundColorSelected="sky" backgroundColorSelected="clearsky" enableWrapAround="1" transparent="1" zPosition="9" />
+    <widget name="list" font="Regular; 32" position="540,60" size="620,720" itemHeight="80" scrollbarMode="showOnDemand" selectionPixmap="GlamourAuraSky/selections/aurasel620.png" alphatest="off" backgroundColor="background20" enableWrapAround="1" transparent="1" zPosition="9" />
+    <widget name="sublist" font="Regular; 32" position="1165,60" size="700,720" itemHeight="80" scrollbarMode="showOnDemand" selectionPixmap="GACommon/selections/auraselwhite700.png" alphatest="off" backgroundColor="background20" foregroundColor="white" foregroundColorSelected="sky" backgroundColorSelected="clearsky" enableWrapAround="1" transparent="1" zPosition="9" />
     <!-- New Lists -->
     <widget source="mainlist" render="Listbox" position="540,60" size="620,720" itemHeight="80" scrollbarMode="showOnDemand" selectionPixmap="GlamourAuraSky/selections/aurasel620.png" alphatest="off" backgroundColor="background20" enableWrapAround="1" transparent="1" zPosition="9">
       <templates>
@@ -471,10 +471,10 @@
     <widget source="list" render="Listbox" position="540,90" size="1305,720" enableWrapAround="1" scrollbarMode="showOnDemand" backgroundColor="background20" transparent="1" selectionPixmap="GlamourAuraSky/selections/aurasel1305.png" alphatest="off" zPosition="5">
       <convert type="TemplatedMultiContent">
   {"template": [
-    MultiContentEntryPixmapAlphaBlend(pos = (20, 15), size = (72, 72), png = 4), # index 4 is the status pixmap
-    MultiContentEntryText(pos = (100, 2), size = (1200, 50), font=0, flags = RT_HALIGN_LEFT, text = 0, color=0x90e6, color_sel=0xdeff), # index 0 is the name
-    MultiContentEntryText(pos = (100, 50), size = (1200, 40), font=1, flags = RT_HALIGN_LEFT, text = 2), # index 2 is the description
-    MultiContentEntryPixmapAlphaBlend(pos = (5, 50), size = (0, 0), png = 5), # index 4 is the div pixmap
+	MultiContentEntryPixmapAlphaBlend(pos = (20, 15), size = (72, 72), png = 4), # index 4 is the status pixmap
+	MultiContentEntryText(pos = (100, 2), size = (1200, 50), font=0, flags = RT_HALIGN_LEFT, text = 0, color=0x90e6, color_sel=0xdeff), # index 0 is the name
+	MultiContentEntryText(pos = (100, 50), size = (1200, 40), font=1, flags = RT_HALIGN_LEFT, text = 2), # index 2 is the description
+	MultiContentEntryPixmapAlphaBlend(pos = (5, 50), size = (0, 0), png = 5), # index 4 is the div pixmap
    ],
   "fonts": [gFont("RegularB", 34),gFont("Regular", 26)],
   "itemHeight": 90
@@ -491,10 +491,10 @@
     <widget source="list" render="Listbox" position="540,305" size="1305,640" enableWrapAround="1" scrollbarMode="showOnDemand" backgroundColor="background20" transparent="1" selectionPixmap="GlamourAuraSky/selections/updatesel.png" alphatest="off" zPosition="5">
       <convert type="TemplatedMultiContent">
   {"template": [
-    MultiContentEntryText(pos = (5, 2), size = (1200, 50), font=0, flags = RT_HALIGN_LEFT | RT_VALIGN_TOP, text = 0, color=0x90e6, color_sel=0xdeff), # index 0 is the name
-    MultiContentEntryText(pos = (5, 45), size = (1200, 30), font=1, flags = RT_HALIGN_LEFT | RT_VALIGN_TOP, text = 2), # index 2 is the description
-    MultiContentEntryPixmapAlphaBlend(pos = (1150, 5), size = (72, 72), png = 4), # index 4 is the status pixmap
-    MultiContentEntryPixmapAlphaBlend(pos = (5, 50), size = (0, 0), png = 5), # index 5 is the div pixmap
+	MultiContentEntryText(pos = (5, 2), size = (1200, 50), font=0, flags = RT_HALIGN_LEFT | RT_VALIGN_TOP, text = 0, color=0x90e6, color_sel=0xdeff), # index 0 is the name
+	MultiContentEntryText(pos = (5, 45), size = (1200, 30), font=1, flags = RT_HALIGN_LEFT | RT_VALIGN_TOP, text = 2), # index 2 is the description
+	MultiContentEntryPixmapAlphaBlend(pos = (1150, 5), size = (72, 72), png = 4), # index 4 is the status pixmap
+	MultiContentEntryPixmapAlphaBlend(pos = (5, 50), size = (0, 0), png = 5), # index 5 is the div pixmap
    ],
   "fonts": [gFont("RegularB",29),gFont("Regular",23)],
   "itemHeight": 80
@@ -510,8 +510,8 @@
     <widget name="feedstatusGREEN" position="710,230" size="400,50" zPosition="4" font="Regular; 32" halign="left" foregroundColor="green" backgroundColor="background20" transparent="1" />
     <ePixmap pixmap="GACommon/buttons/aura_red.png" position="1185,50" size="225,75" alphatest="blend" transparent="1" zPosition="3" />
     <widget name="key_green_pic" pixmap="GACommon/buttons/aura_green.png" position="1540,50" size="225,75" alphatest="blend" transparent="1" zPosition="3" />
-    <widget name="key_red" position="1120,50" size="350,75" zPosition="4" font="Regular; 30" halign="center" backgroundColor="background20" transparent="1" valign="bottom" />
-    <widget name="key_green" position="1480,50" size="350,75" zPosition="4" font="Regular; 30" halign="center" backgroundColor="background20" transparent="1" valign="bottom" />
+    <widget name="key_red" position="1120,50" size="350,75" zPosition="4" font="Regular; 32" halign="center" backgroundColor="background20" transparent="1" valign="bottom" />
+    <widget name="key_green" position="1480,50" size="350,75" zPosition="4" font="Regular; 32" halign="center" backgroundColor="background20" transparent="1" valign="bottom" />
   </screen>
   <screen name="XtraPluginsSelection" title="Xtra Plugin" position="0,0" size="1920,1080" backgroundColor="transparent" flags="wfNoBorder">
     <panel name="ScreenElements2" />
@@ -706,12 +706,12 @@
   }
   </convert>
     </widget>
-    <panel name="RGKeysUP1" />
+    <panel name="RGKeysUP" />
   </screen>
   <screen name="ZapHistoryBrowser" title="ZapHistoryBrowser" backgroundColor="transparent" flags="wfNoBorder" position="center,center" size="1920,1080">
     <panel name="ScreenElements2" />
     <ePixmap position="50,315" size="400,400" pixmap="GACommon/images/numzap.png" alphatest="on" transparent="1" zPosition="5" />
-    <widget name="list" position="540,90" size="1305,750" font="Regular; 30" backgroundColor="background20" foregroundColor="white" itemHeight="50" selectionPixmap="GlamourAuraSky/selections/aurasel.png" alphatest="off" enableWrapAround="1" zPosition="13" scrollbarMode="showOnDemand" transparent="1" />
+    <widget name="list" position="540,90" size="1305,750" font="Regular; 32" backgroundColor="background20" foregroundColor="white" itemHeight="50" selectionPixmap="GlamourAuraSky/selections/aurasel.png" alphatest="off" enableWrapAround="1" zPosition="13" scrollbarMode="showOnDemand" transparent="1" />
     <panel name="FullKeys1" />
   </screen>
   <!-- 10. FLASH SCREENS -->
@@ -725,20 +725,20 @@
   <screen name="FlashOnline" position="0,0" size="1920,1080" title="Select Image" flags="wfNoBorder" backgroundColor="transparent">
     <panel name="ScreenElements2" />
     <ePixmap position="50,315" size="400,400" pixmap="GACommon/images/flashimage.png" alphatest="on" transparent="1" zPosition="5" />
-    <widget name="list" font="Regular; 30" position="540,90" size="1305,750" scrollbarMode="showOnDemand" backgroundColor="background20" foregroundColor="white" itemHeight="50" enableWrapAround="1" transparent="1" selectionPixmap="GlamourAuraSky/selections/aurasel.png" alphatest="off" zPosition="5" />
+    <widget name="list" font="Regular; 32" position="540,90" size="1305,750" scrollbarMode="showOnDemand" backgroundColor="background20" foregroundColor="white" itemHeight="50" enableWrapAround="1" transparent="1" selectionPixmap="GlamourAuraSky/selections/aurasel.png" alphatest="off" zPosition="5" />
     <panel name="FullKeys1" />
   </screen>
   <screen name="doFlashImage" position="0,0" size="1920,1080" title="About" backgroundColor="transparent" flags="wfNoBorder" alphatest="on">
     <panel name="ScreenElements2" />
     <ePixmap position="50,315" size="400,400" pixmap="GACommon/images/dflash.png" alphatest="on" transparent="1" zPosition="5" />
-    <widget name="imageList" position="530,75" size="1305,750" font="Regular; 30" backgroundColor="background20" foregroundColor="white" itemHeight="50" selectionPixmap="GlamourAuraSky/selections/wlansel.png" alphatest="off" zPosition="13" scrollbarMode="showOnDemand" transparent="1" />
+    <widget name="imageList" position="530,75" size="1305,750" font="Regular; 32" backgroundColor="background20" foregroundColor="white" itemHeight="50" selectionPixmap="GlamourAuraSky/selections/wlansel.png" alphatest="off" zPosition="13" scrollbarMode="showOnDemand" transparent="1" />
     <panel name="FullKeys1" />
   </screen>
   <screen name="DeviceBrowser" position="0,0" size="1920,1080" title="Device Browser" backgroundColor="transparent" flags="wfNoBorder" alphatest="on">
     <panel name="ScreenElements2" />
     <ePixmap position="50,315" size="400,400" pixmap="GACommon/images/drives_info.png" alphatest="on" transparent="1" zPosition="5" />
-    <widget name="imageList" position="530,75" size="1305,700" font="Regular; 30" backgroundColor="background20" foregroundColor="white" itemHeight="50" selectionPixmap="GlamourAuraSky/selections/wlansel.png" alphatest="off" zPosition="13" scrollbarMode="showOnDemand" transparent="1" />
-    <widget source="message" render="Label" position="530,783" size="1305,50" font="Regular;30" backgroundColor="background" foregroundColor="sky" halign="center" transparent="1" zPosition="5" />
+    <widget name="imageList" position="530,75" size="1305,700" font="Regular; 32" backgroundColor="background20" foregroundColor="white" itemHeight="50" selectionPixmap="GlamourAuraSky/selections/wlansel.png" alphatest="off" zPosition="13" scrollbarMode="showOnDemand" transparent="1" />
+    <widget source="message" render="Label" position="530,783" size="1305,50" font="Regular;32" backgroundColor="background" foregroundColor="sky" halign="center" transparent="1" zPosition="5" />
     <panel name="FullKeys1" />
   </screen>
   <!-- 11. CCCAM SCREENS -->
@@ -784,7 +784,7 @@
     <panel name="ScreenElements2" />
     <ePixmap position="50,315" size="400,400" pixmap="GACommon/images/cccam.png" alphatest="on" transparent="1" zPosition="5" />
     <widget name="list" position="540,75" size="1305,550" font="Regular; 32" backgroundColor="background20" foregroundColor="white" itemHeight="50" selectionPixmap="GlamourAuraSky/selections/aurasel.png" alphatest="off" zPosition="13" scrollbarMode="showOnDemand" transparent="1" />
-    <widget name="info" position="540,640" size="1305,300" font="Regular; 30" transparent="1" backgroundColor="background" zPosition="7" foregroundColor="cyan1" />
+    <widget name="info" position="540,640" size="1305,300" font="Regular; 32" transparent="1" backgroundColor="background" zPosition="7" foregroundColor="cyan1" />
   </screen>
   <screen name="CCcamInfoConfigMenu" position="0,0" size="1920,1080" title="CCcamInfo Config Menu" backgroundColor="transparent" flags="wfNoBorder" alphatest="on">
     <panel name="ScreenElements2" />
@@ -821,24 +821,24 @@
   <screen name="OscamInfoMenu" position="0,0" size="1920,1080" title="OscamInfo Main Menu" backgroundColor="transparent" flags="wfNoBorder" alphatest="on">
     <panel name="ScreenElements2" />
     <ePixmap position="50,315" size="400,400" pixmap="GACommon/images/oscam.png" alphatest="on" transparent="1" zPosition="5" />
-    <widget name="mainmenu" position="530,75" size="1305,850" font="Regular; 30" backgroundColor="background20" foregroundColor="white" itemHeight="50" selectionPixmap="GlamourAuraSky/selections/aurasel.png" alphatest="off" zPosition="13" scrollbarMode="showOnDemand" transparent="1" />
+    <widget name="mainmenu" position="530,75" size="1305,850" font="Regular; 32" backgroundColor="background20" foregroundColor="white" itemHeight="50" selectionPixmap="GlamourAuraSky/selections/aurasel.png" alphatest="off" zPosition="13" scrollbarMode="showOnDemand" transparent="1" />
   </screen>
   <screen name="oscECMInfo" position="0,0" size="1920,1080" title="Oscam ECM Info" backgroundColor="transparent" flags="wfNoBorder" alphatest="on">
     <panel name="ScreenElements2" />
     <ePixmap position="50,315" size="400,400" pixmap="GACommon/images/oscam.png" alphatest="on" transparent="1" zPosition="5" />
-    <widget name="output" position="530,75" size="1355,850" font="Regular; 30" backgroundColor="background20" foregroundColor="white" itemHeight="50" selectionPixmap="GlamourAuraSky/selections/aurasel.png" alphatest="off" zPosition="13" scrollbarMode="showOnDemand" transparent="1" />
+    <widget name="output" position="530,75" size="1355,850" font="Regular; 32" backgroundColor="background20" foregroundColor="white" itemHeight="50" selectionPixmap="GlamourAuraSky/selections/aurasel.png" alphatest="off" zPosition="13" scrollbarMode="showOnDemand" transparent="1" />
   </screen>
   <screen name="OscamInfoConfigScreen" position="0,0" size="1920,1080" title="Oscam Info Setup" backgroundColor="transparent" flags="wfNoBorder" alphatest="on">
     <panel name="ScreenElements2" />
     <ePixmap position="50,315" size="400,400" pixmap="GACommon/images/oscam.png" alphatest="on" transparent="1" zPosition="5" />
-    <widget name="config" position="530,75" size="1305,350" font="Regular; 30" backgroundColor="background20" foregroundColor="white" itemHeight="50" selectionPixmap="GlamourAuraSky/selections/aurasel.png" alphatest="off" zPosition="13" scrollbarMode="showOnDemand" transparent="1" />
-    <widget name="status" position="530,425" size="1305,350" font="Regular; 30" backgroundColor="background20" foregroundColor="white" itemHeight="50" selectionPixmap="GlamourAuraSky/selections/aurasel.png" alphatest="off" zPosition="13" scrollbarMode="showOnDemand" transparent="1" />
+    <widget name="config" position="530,75" size="1305,350" font="Regular; 32" backgroundColor="background20" foregroundColor="white" itemHeight="50" selectionPixmap="GlamourAuraSky/selections/aurasel.png" alphatest="off" zPosition="13" scrollbarMode="showOnDemand" transparent="1" />
+    <widget name="status" position="530,425" size="1305,350" font="Regular; 32" backgroundColor="background20" foregroundColor="white" itemHeight="50" selectionPixmap="GlamourAuraSky/selections/aurasel.png" alphatest="off" zPosition="13" scrollbarMode="showOnDemand" transparent="1" />
     <panel name="FullKeys1" />
   </screen>
   <screen name="oscInfo" position="0,0" size="1920,1080" title="Oscam Client Info" backgroundColor="transparent" flags="wfNoBorder" alphatest="on">
     <panel name="ScreenElements2" />
     <ePixmap position="50,315" size="400,400" pixmap="GACommon/images/oscam.png" alphatest="on" transparent="1" zPosition="5" />
-    <widget name="output" position="530,75" size="1355,750" font="Regular; 30" backgroundColor="background20" foregroundColor="white" itemHeight="50" selectionPixmap="GlamourAuraSky/selections/aurasel.png" alphatest="off" zPosition="13" scrollbarMode="showOnDemand" transparent="1" />
+    <widget name="output" position="530,75" size="1355,750" font="Regular; 32" backgroundColor="background20" foregroundColor="white" itemHeight="50" selectionPixmap="GlamourAuraSky/selections/aurasel.png" alphatest="off" zPosition="13" scrollbarMode="showOnDemand" transparent="1" />
     <panel name="FullKeys1" />
   </screen>
   <screen name="oscReaderStats" position="0,0" size="1920,1080" title="OscamReader Stats" backgroundColor="transparent" flags="wfNoBorder" alphatest="on">
@@ -902,17 +902,17 @@
   <screen name="CronTimers" position="0,0" size="1920,1080" title="Cron Manager" flags="wfNoBorder" backgroundColor="transparent">
     <panel name="ScreenElements2" />
     <ePixmap position="50,315" size="400,400" pixmap="GACommon/images/crontimer.png" alphatest="on" transparent="1" zPosition="5" />
-    <widget name="lab1" position="570,50" size="500,50" font="RegularB; 30" backgroundColor="background20" transparent="1" zPosition="4" halign="right" />
-    <widget name="labactive" position="1080,50" size="600,50" font="Regular; 30" backgroundColor="background20" transparent="1" halign="center" zPosition="6" />
-    <widget name="lab2" position="570,110" size="500,50" font="RegularB; 30" backgroundColor="background20" transparent="1" zPosition="5" halign="right" />
-    <widget name="labstop" position="1080,110" size="600,50" font="Regular; 30" valign="center" halign="center" backgroundColor="red" zPosition="4" foregroundColor="white" />
-    <widget name="labrun" position="1080,110" size="600,50" font="Regular; 30" valign="center" halign="center" backgroundColor="green" zPosition="7" />
+    <widget name="lab1" position="570,50" size="500,50" font="RegularB; 32" backgroundColor="background20" transparent="1" zPosition="4" halign="right" />
+    <widget name="labactive" position="1080,50" size="600,50" font="Regular; 32" backgroundColor="background20" transparent="1" halign="center" zPosition="6" />
+    <widget name="lab2" position="570,110" size="500,50" font="RegularB; 32" backgroundColor="background20" transparent="1" zPosition="5" halign="right" />
+    <widget name="labstop" position="1080,110" size="600,50" font="Regular; 32" valign="center" halign="center" backgroundColor="red" zPosition="4" foregroundColor="white" />
+    <widget name="labrun" position="1080,110" size="600,50" font="Regular; 32" valign="center" halign="center" backgroundColor="green" zPosition="7" />
     <widget source="list" render="Listbox" position="540,180" size="1305,600" scrollbarMode="showOnDemand" backgroundColor="background20" foregroundColor="white" foregroundColorSelected="lightciel" foregroundColorMarkedSelected="amarillo" selectionPixmap="GlamourAuraSky/selections/aurasel.png" alphatest="off" transparent="1" zPosition="5">
       <convert type="TemplatedMultiContent">
  {"template": [
  MultiContentEntryText(pos = (5, 0), size = (1300, 50), font=0, flags = RT_HALIGN_LEFT | RT_VALIGN_CENTER, text = 0), # index 0 is the name
  ],
- "fonts": [gFont("RegularL", 32)],
+ "fonts": [gFont("Regular", 32)],
  "itemHeight": 50
  }
 </convert>
@@ -924,10 +924,10 @@
     <panel name="ScreenElements2" />
     <ePixmap position="50,315" size="400,400" pixmap="GACommon/images/crontimer.png" alphatest="on" transparent="1" zPosition="5" />
     <widget name="lab1" position="820,750" size="350,50" font="RegularB; 30" backgroundColor="background20" transparent="1" zPosition="4" halign="right" />
-    <widget name="labactive" position="1180,750" size="350,50" font="Regular; 30" backgroundColor="background20" transparent="1" halign="center" zPosition="6" />
+    <widget name="labactive" position="1180,750" size="350,50" font="Regular; 32" backgroundColor="background20" transparent="1" halign="center" zPosition="6" />
     <widget name="lab2" position="820,805" size="350,45" font="RegularB; 30" backgroundColor="background20" transparent="1" zPosition="5" halign="right" />
-    <widget name="labstop" position="1180,805" size="350,45" font="Regular; 30" valign="center" halign="center" backgroundColor="red" zPosition="4" foregroundColor="white" />
-    <widget name="labrun" position="1180,805" size="350,45" font="Regular; 30" valign="center" halign="center" backgroundColor="green" zPosition="7" />
+    <widget name="labstop" position="1180,805" size="350,45" font="Regular; 32" valign="center" halign="center" backgroundColor="red" zPosition="4" foregroundColor="white" />
+    <widget name="labrun" position="1180,805" size="350,45" font="Regular; 32" valign="center" halign="center" backgroundColor="green" zPosition="7" />
     <widget source="list" render="Listbox" font="Regular;30" itemHeight="50" position="540,90" size="1305,600" scrollbarMode="showOnDemand" backgroundColor="background20" foregroundColor="white" foregroundColorSelected="lightciel" foregroundColorMarkedSelected="amarillo" selectionPixmap="GlamourAuraSky/selections/aurasel.png" alphatest="off" transparent="1" zPosition="5">
       <convert type="TemplatedMultiContent">
  {"template": [
@@ -944,7 +944,7 @@
   <screen name="SetupCronConf" position="0,0" size="1920,1080" title="Cron Manager" flags="wfNoBorder" backgroundColor="transparent">
     <panel name="ScreenElements2" />
     <ePixmap position="50,315" size="400,400" pixmap="GACommon/images/crontimer.png" alphatest="on" transparent="1" zPosition="5" />
-    <widget name="config" font="Regular; 30" position="540,90" size="1305,650" itemHeight="50" scrollbarMode="showOnDemand" backgroundColor="background20" transparent="1" selectionPixmap="GlamourAuraSky/selections/aurasel.png" zPosition="5" />
+    <widget name="config" font="Regular; 32" position="540,90" size="1305,650" itemHeight="50" scrollbarMode="showOnDemand" backgroundColor="background20" transparent="1" selectionPixmap="GlamourAuraSky/selections/aurasel.png" zPosition="5" />
     <widget name="HelpWindow" position="540,740" size="1320,120" zPosition="11" transparent="1" alphatest="blend" />
     <panel name="FullKeys1" />
   </screen>
@@ -968,28 +968,28 @@
     <panel name="ScreenElements2" />
     <ePixmap position="50,315" size="400,400" pixmap="GACommon/images/script.png" alphatest="on" transparent="1" zPosition="5" />
     <widget name="lab1" position="540,90" size="1305,50" font="RegularB; 34" halign="center" valign="center" transparent="1" foregroundColor="cyan1" backgroundColor="background20" noWrap="1" zPosition="3" />
-    <widget name="list" position="540,145" size="1305,700" font="Regular; 30" backgroundColor="background20" foregroundColor="white" itemHeight="50" selectionPixmap="GlamourAuraSky/selections/aurasel.png" alphatest="off" zPosition="13" scrollbarMode="showOnDemand" transparent="1" />
+    <widget name="list" position="540,145" size="1305,700" font="Regular; 32" backgroundColor="background20" foregroundColor="white" itemHeight="50" selectionPixmap="GlamourAuraSky/selections/aurasel.png" alphatest="off" zPosition="13" scrollbarMode="showOnDemand" transparent="1" />
     <panel name="FullKeys1" />
   </screen>
   <!-- 14. LOG SCREENS -->
   <screen name="LogManager" position="0,0" size="1920,1080" title="Log Manager" backgroundColor="transparent" flags="wfNoBorder" alphatest="on">
     <panel name="ScreenElements2" />
     <ePixmap position="50,315" size="400,400" pixmap="GACommon/images/crashlog.png" alphatest="on" transparent="1" zPosition="5" />
-    <widget name="list" position="540,50" size="1305,650" font="Regular; 30" backgroundColor="background20" foregroundColor="white" itemHeight="50" selectionPixmap="GlamourAuraSky/selections/aurasel.png" alphatest="off" zPosition="13" scrollbarMode="showOnDemand" transparent="1" />
-    <widget name="LogsSize" position="540,705" size="1305,150" font="Regular; 30" foregroundColor="white" halign="center" backgroundColor="background20" valign="top" transparent="1" zPosition="4" />
+    <widget name="list" position="540,50" size="1305,650" font="Regular; 32" backgroundColor="background20" foregroundColor="white" itemHeight="50" selectionPixmap="GlamourAuraSky/selections/aurasel.png" alphatest="off" zPosition="13" scrollbarMode="showOnDemand" transparent="1" />
+    <widget name="LogsSize" position="540,705" size="1305,150" font="Regular; 32" foregroundColor="white" halign="center" backgroundColor="background20" valign="top" transparent="1" zPosition="4" />
     <panel name="FullKeys1" />
   </screen>
   <screen name="LogManagerViewLog" position="0,0" size="1920,1080" title="Log Manager - View Log" backgroundColor="transparent" flags="wfNoBorder" alphatest="on">
     <panel name="ScreenElements2" />
     <ePixmap position="50,315" size="400,400" pixmap="GACommon/images/crashlog.png" alphatest="on" transparent="1" zPosition="5" />
-    <widget name="list" position="540,90" size="1305,850" font="Regular; 30" backgroundColor="background20" foregroundColor="white" itemHeight="50" selectionPixmap="GlamourAuraSky/selections/aurasel.png" alphatest="off" zPosition="13" scrollbarMode="showOnDemand" transparent="1" />
+    <widget name="list" position="540,90" size="1305,850" font="Regular; 32" backgroundColor="background20" foregroundColor="white" itemHeight="50" selectionPixmap="GlamourAuraSky/selections/aurasel.png" alphatest="off" zPosition="13" scrollbarMode="showOnDemand" transparent="1" />
   </screen>
   <!-- 15. WIZARD SCREENS -->
   <screen name="MessageBoxWizard" title="Message Wizard..." position="0,0" size="1920,1080" backgroundColor="transparent" flags="wfNoBorder">
     <panel name="ScreenElements2" />
-    <widget name="ErrorPixmap" position="50,315" size="400,400" pixmap="GACommon/icons/message/attention.png" alphatest="on" transparent="1" zPosition="5" />
-    <widget name="QuestionPixmap" position="50,315" size="400,400" pixmap="GACommon/icons/message/question.png" alphatest="on" transparent="1" zPosition="6" />
-    <widget name="InfoPixmap" position="50,315" size="400,400" pixmap="GACommon/icons/message/information.png" alphatest="on" transparent="1" zPosition="7" />
+    <widget name="ErrorPixmap" position="50,315" size="400,400" pixmap="GACommon/icons/message/input_warning.png" alphatest="on" transparent="1" zPosition="5" />
+    <widget name="QuestionPixmap" position="50,315" size="400,400" pixmap="GACommon/icons/message/input_question.png" alphatest="on" transparent="1" zPosition="6" />
+    <widget name="InfoPixmap" position="50,315" size="400,400" pixmap="GACommon/icons/message/input_info.png" alphatest="on" transparent="1" zPosition="7" />
     <panel name="Wizard1" />
     <panel name="LanguageKey" />
     <panel name="RemoteWizard" />
@@ -1004,7 +1004,7 @@
   <screen name="CleanupWizardConfiguration" position="0,0" size="1920,1080" title="CleanupWizard settings" flags="wfNoBorder" backgroundColor="transparent">
     <panel name="ScreenElements2" />
     <ePixmap position="50,315" size="400,400" pixmap="GACommon/images/cleanup.png" alphatest="on" transparent="1" zPosition="5" />
-    <widget name="config" font="Regular; 30" position="540,92" size="1305,650" itemHeight="50" scrollbarMode="showOnDemand" backgroundColor="background20" transparent="1" selectionPixmap="GlamourAuraSky/selections/aurasel.png" zPosition="5" />
+    <widget name="config" font="Regular; 32" position="540,92" size="1305,650" itemHeight="50" scrollbarMode="showOnDemand" backgroundColor="background20" transparent="1" selectionPixmap="GlamourAuraSky/selections/aurasel.png" zPosition="5" />
     <widget source="status" render="Label" position="540,745" size="1305,100" halign="left" font="Regular; 33" transparent="1" zPosition="5" valign="center" foregroundColor="cyan" backgroundColor="background20" />
     <panel name="FullKeys1" />
   </screen>
@@ -1017,10 +1017,10 @@
    {"template": [ MultiContentEntryText(pos = (20, 0), size = (1000, 50), flags = RT_HALIGN_LEFT, text = 0) ],
   "fonts": [gFont("Regular", 33)],
   "itemHeight": 50
-     }
+	 }
  </convert>
     </widget>
-    <widget name="config" font="Regular; 30" position="800,430" size="1050,400" itemHeight="50" zPosition="14" scrollbarMode="showOnDemand" selectionPixmap="GlamourAuraSky/selections/aurasel.png" alphatest="off" transparent="1" />
+    <widget name="config" font="Regular; 32" position="800,430" size="1050,400" itemHeight="50" zPosition="14" scrollbarMode="showOnDemand" selectionPixmap="GlamourAuraSky/selections/aurasel.png" alphatest="off" transparent="1" />
     <panel name="LanguageKey" />
     <panel name="RemoteWizard" />
     <widget name="HelpWindow" position="540,830" size="1305,130" zPosition="11" transparent="1" alphatest="blend" />
@@ -1029,14 +1029,14 @@
   <screen name="AnimationSetupConfig" title="AnimationSetupConfig" position="0,0" size="1920,1080" backgroundColor="transparent" flags="wfNoBorder">
     <panel name="ScreenElements2" />
     <ePixmap position="50,315" size="400,400" pixmap="GACommon/images/animation.png" alphatest="on" transparent="1" zPosition="5" />
-    <widget name="config" font="Regular; 30" position="540,90" size="1305,750" itemHeight="50" scrollbarMode="showOnDemand" backgroundColor="background20" transparent="1" selectionPixmap="GlamourAuraSky/selections/aurasel.png" zPosition="5" />
+    <widget name="config" font="Regular; 32" position="540,90" size="1305,750" itemHeight="50" scrollbarMode="showOnDemand" backgroundColor="background20" transparent="1" selectionPixmap="GlamourAuraSky/selections/aurasel.png" zPosition="5" />
     <panel name="FullKeys1" />
   </screen>
   <screen name="AnimationSetupScreen" title="Animation Setup" backgroundColor="transparent" flags="wfNoBorder" position="0,0" size="1920,1080">
     <panel name="ScreenElements2" />
     <ePixmap position="50,315" size="400,400" pixmap="GACommon/images/animation.png" alphatest="on" transparent="1" zPosition="5" />
-    <widget name="list" font="Regular; 30" position="540,90" size="1305,600" itemHeight="50" scrollbarMode="showOnDemand" backgroundColor="background20" transparent="1" selectionPixmap="GlamourAuraSky/selections/aurasel.png" zPosition="5" />
-    <widget source="introduction" render="Label" position="540,700" size="1305,150" font="Regular; 30" backgroundColor="background20" foregroundColor="sky" zPosition="13" transparent="1" />
+    <widget name="list" font="Regular; 32" position="540,90" size="1305,600" itemHeight="50" scrollbarMode="showOnDemand" backgroundColor="background20" transparent="1" selectionPixmap="GlamourAuraSky/selections/aurasel.png" zPosition="5" />
+    <widget source="introduction" render="Label" position="540,700" size="1305,150" font="Regular; 32" backgroundColor="background20" foregroundColor="sky" zPosition="13" transparent="1" />
     <panel name="FullKeys1" />
   </screen>
   <screen name="AudioSetup" position="0,0" size="1920,1080" title="Setup" flags="wfNoBorder" backgroundColor="transparent" alphatest="on">
@@ -1177,7 +1177,7 @@
   <screen name="PowerTimerEditList" position="0,0" size="1920,1080" title="Timer Editor" flags="wfNoBorder" backgroundColor="transparent">
     <panel name="ScreenElements2" />
     <ePixmap position="50,315" size="400,400" pixmap="GACommon/images/powertimer.png" alphatest="on" transparent="1" zPosition="5" />
-    <widget name="timerlist" position="540,75" size="1305,720" itemHeight="90" font="Regular; 30" rowSplit="50" setEventNameFont="Regular; 30" setServiceNameFont="Regular;28" setFont="Regular;28" satPosLeft="250" iconWidth="50" iconHeight="50" iconMargin="10" scrollbarMode="showOnDemand" backgroundColor="background20" enableWrapAround="1" transparent="1" selectionPixmap="GlamourAuraSky/selections/timersel.png" alphatest="off" zPosition="5" />
+    <widget name="timerlist" position="540,75" size="1305,720" itemHeight="90" font="Regular; 32" rowSplit="50" setEventNameFont="Regular; 32" setServiceNameFont="Regular;28" setFont="Regular;28" satPosLeft="250" iconWidth="50" iconHeight="50" iconMargin="10" scrollbarMode="showOnDemand" backgroundColor="background20" enableWrapAround="1" transparent="1" selectionPixmap="GlamourAuraSky/selections/timersel.png" alphatest="off" zPosition="5" />
     <panel name="FullKeys1" />
   </screen>
   <screen name="installedPlugins" position="0,0" size="1920,1080" zPosition="1" title="Message" backgroundColor="transparent" flags="wfNoBorder">
@@ -1195,8 +1195,8 @@
     <ePixmap position="50,315" size="400,400" pixmap="GACommon/images/gigaled.png" alphatest="on" transparent="1" zPosition="5" />
     <ePixmap pixmap="GlamourAuraSky/menu/accentglowt810.png" position="540,735" size="810,45" zPosition="5" alphatest="blend" transparent="1" />
     <ePixmap pixmap="GlamourAuraSky/menu/accentglowb810.png" position="1040,820" size="810,45" zPosition="5" alphatest="blend" transparent="1" />
-    <widget name="description" position="540,735" size="1320,130" backgroundColor="background20" transparent="1" font="Regular; 30" zPosition="5" foregroundColor="sky" />
-    <widget name="config" font="Regular; 30" position="540,60" size="1320,675" scrollbarMode="showOnDemand" selectionPixmap="GlamourAuraSky/selections/setupsel.png" alphatest="off" backgroundColor="background20" itemHeight="45" enableWrapAround="1" transparent="1" zPosition="9" />
+    <widget name="description" position="540,735" size="1320,130" backgroundColor="background20" transparent="1" font="Regular; 32" zPosition="5" foregroundColor="sky" />
+    <widget name="config" font="Regular; 32" position="540,60" size="1320,675" scrollbarMode="showOnDemand" selectionPixmap="GlamourAuraSky/selections/setupsel.png" alphatest="off" backgroundColor="background20" itemHeight="45" enableWrapAround="1" transparent="1" zPosition="9" />
     <panel name="FullKeys1" />
   </screen>
   <screen name="PiPSetup" position="0,0" size="1920,1080" title="PiP Setup" flags="wfNoBorder" backgroundColor="transparent">
@@ -1244,25 +1244,25 @@
   <screen name="CIHelper" title="CIHelper Setup" position="0,0" size="1920,1080" flags="wfNoBorder" backgroundColor="transparent">
     <panel name="ScreenElements2" />
     <ePixmap position="50,315" size="400,400" pixmap="GACommon/images/ciassign.png" alphatest="on" transparent="1" zPosition="5" />
-    <widget name="autostart" font="Regular;30" backgroundColor="background20" foregroundColor="white" position="540,320" size="500,50" valign="center" halign="right" transparent="1" zPosition="4" />
-    <widget name="labdisabled" font="Regular; 30" backgroundColor="deepgrey" position="1050,320" size="640,50" valign="center" halign="center" zPosition="7" />
-    <widget name="labactive" font="Regular;30" backgroundColor="purple" foregroundColor="white" position="1050,320" size="640,50" valign="center" halign="center" zPosition="8" />
-    <widget name="status" font="Regular;30" backgroundColor="background20" foregroundColor="white" position="540,400" size="500,50" valign="center" halign="right" transparent="1" zPosition="5" />
-    <widget name="labstop" font="Regular;30" backgroundColor="red" foregroundColor="white" position="1050,400" size="640,50" valign="center" halign="center" zPosition="7" />
-    <widget name="labrun" font="Regular;30" backgroundColor="green" foregroundColor="white" position="1050,400" size="640,50" valign="center" halign="center" zPosition="8" />
-    <widget name="ci0inactive" font="Regular;30" position="1000,480" zPosition="4" pixmap="GlamourAuraSky/icons/lock_off.png" size="45,45" alphatest="blend" />
-    <widget name="ci0active" font="Regular;30" position="1000,480" zPosition="7" pixmap="GlamourAuraSky/icons/lock_on.png" size="45,45" alphatest="blend" />
-    <widget name="ci0" font="Regular;30" backgroundColor="background20" foregroundColor="white" position="540,485" size="450,50" valign="center" halign="right" transparent="1" zPosition="5" />
-    <widget name="ci1inactive" font="Regular;30" position="1000,560" zPosition="5" pixmap="GlamourAuraSky/icons/lock_off.png" size="45,45" alphatest="blend" />
-    <widget name="ci1active" font="Regular;30" position="1000,560" zPosition="8" pixmap="GlamourAuraSky/icons/lock_on.png" size="45,45" alphatest="blend" />
-    <widget name="ci1" font="Regular;30" backgroundColor="background20" foregroundColor="white" position="540,565" size="450,50" valign="center" halign="right" transparent="1" zPosition="7" />
+    <widget name="autostart" font="Regular;32" backgroundColor="background20" foregroundColor="white" position="540,320" size="500,50" valign="center" halign="right" transparent="1" zPosition="4" />
+    <widget name="labdisabled" font="Regular; 32" backgroundColor="deepgrey" position="1050,320" size="640,50" valign="center" halign="center" zPosition="7" />
+    <widget name="labactive" font="Regular;32" backgroundColor="purple" foregroundColor="white" position="1050,320" size="640,50" valign="center" halign="center" zPosition="8" />
+    <widget name="status" font="Regular;32" backgroundColor="background20" foregroundColor="white" position="540,400" size="500,50" valign="center" halign="right" transparent="1" zPosition="5" />
+    <widget name="labstop" font="Regular;32" backgroundColor="red" foregroundColor="white" position="1050,400" size="640,50" valign="center" halign="center" zPosition="7" />
+    <widget name="labrun" font="Regular;32" backgroundColor="green" foregroundColor="white" position="1050,400" size="640,50" valign="center" halign="center" zPosition="8" />
+    <widget name="ci0inactive" font="Regular;32" position="1000,480" zPosition="4" pixmap="GlamourAuraSky/icons/lock_off.png" size="45,45" alphatest="blend" />
+    <widget name="ci0active" font="Regular;32" position="1000,480" zPosition="7" pixmap="GlamourAuraSky/icons/lock_on.png" size="45,45" alphatest="blend" />
+    <widget name="ci0" font="Regular;32" backgroundColor="background20" foregroundColor="white" position="540,485" size="450,50" valign="center" halign="right" transparent="1" zPosition="5" />
+    <widget name="ci1inactive" font="Regular;32" position="1000,560" zPosition="5" pixmap="GlamourAuraSky/icons/lock_off.png" size="45,45" alphatest="blend" />
+    <widget name="ci1active" font="Regular;32" position="1000,560" zPosition="8" pixmap="GlamourAuraSky/icons/lock_on.png" size="45,45" alphatest="blend" />
+    <widget name="ci1" font="Regular;32" backgroundColor="background20" foregroundColor="white" position="540,565" size="450,50" valign="center" halign="right" transparent="1" zPosition="7" />
     <ePixmap position="1700,780" size="120,60" zPosition="10" pixmap="GlamourAuraSky/buttons/key_menu_big.png" transparent="1" alphatest="blend" />
     <panel name="FullKeys1" />
   </screen>
   <screen name="CIHelperSetup" title="CIHelper Setup" position="0,0" size="1920,1080" flags="wfNoBorder" backgroundColor="transparent">
     <panel name="ScreenElements2" />
     <ePixmap position="50,315" size="400,400" pixmap="GACommon/images/ciassign.png" alphatest="on" transparent="1" zPosition="5" />
-    <widget name="config" position="540,90" size="1305,750" font="Regular; 30" backgroundColor="background20" foregroundColor="white" itemHeight="50" selectionPixmap="GlamourAuraSky/selections/aurasel.png" alphatest="off" zPosition="13" scrollbarMode="showOnDemand" transparent="1" />
+    <widget name="config" position="540,90" size="1305,750" font="Regular; 32" backgroundColor="background20" foregroundColor="white" itemHeight="50" selectionPixmap="GlamourAuraSky/selections/aurasel.png" alphatest="off" zPosition="13" scrollbarMode="showOnDemand" transparent="1" />
     <panel name="FullKeys1" />
   </screen>
   <!-- 19. SWAP SCREENS -->
@@ -1300,8 +1300,8 @@
   <screen name="DistributionInformation" position="0,0" size="1920,1080" title="Distribution Information" flags="wfNoBorder" backgroundColor="transparent">
     <panel name="ScreenElements2" />
     <ePixmap position="50,315" size="400,400" pixmap="GACommon/images/about.png" alphatest="on" transparent="1" zPosition="5" />
-    <eLabel text="https://github.com/opendroid" position="50,200" size="470,50" font="Regular;30" backgroundColor="background20" foregroundColor="yellow" halign="left" transparent="1" zPosition="5" />
-    <eLabel text="https://github.com/oe-alliance" position="50,250" size="470,50" font="Regular;30" backgroundColor="background20" foregroundColor="amarillo" halign="left" transparent="1" zPosition="5" />
+    <eLabel text="https://github.com/opendroid" position="50,200" size="470,50" font="Regular;32" backgroundColor="background20" foregroundColor="yellow" halign="left" transparent="1" zPosition="5" />
+    <eLabel text="https://github.com/oe-alliance" position="50,250" size="470,50" font="Regular;32" backgroundColor="background20" foregroundColor="amarillo" halign="left" transparent="1" zPosition="5" />
     <panel name="CommonInfo" />
   </screen>
   <!-- 1-02. System Info -->
@@ -1412,38 +1412,46 @@
   <!-- 1-19. General Info -->
   <screen name="Information" position="0,0" size="1920,1080" title="Information" flags="wfNoBorder" backgroundColor="transparent">
     <panel name="ScreenElements2" />
-    <ePixmap position="50,315" size="400,400" pixmap="GACommon/images/infopanel.png" alphatest="on" transparent="1" zPosition="5" />
+    <ePixmap position="50,315" size="400,400" pixmap="GACommon/images/service_info.png" alphatest="on" transparent="1" zPosition="5" />
     <panel name="CommonInfo" />
+    <ePixmap pixmap="GACommon/icons/infobar/hbbtv_off.png" position="535,825" size="60,30" zPosition="1" alphatest="blend" />
+    <widget source="session.CurrentService" render="Pixmap" position="535,825" size="60,30" zPosition="2" pixmap="GACommon/icons/infobar/hbbtv_on.png" alphatest="blend">
+      <convert type="ServiceInfo">HasHBBTV</convert>
+      <convert type="ConditionalShowHide" />
+    </widget>
+    <widget source="session.CurrentService" backgroundColor="background20" foregroundColor="cyan2" render="Label" font="RegularB;30" position="600,815" size="1245,45" halign="left" valign="center" noWrap="1" transparent="1" zPosition="9">
+      <convert type="ServiceInfo">HasHBBTV</convert>
+    </widget>
   </screen>
   <!-- 2. New Update Panel -->
   <!-- 2-01. Software Update -->
   <screen name="SoftwareUpdate" position="0,0" size="1920,1080" title="Software Update" flags="wfNoBorder" backgroundColor="transparent">
     <panel name="ScreenElements2" />
     <ePixmap position="50,315" size="400,400" pixmap="GACommon/images/softupdate.png" alphatest="on" transparent="1" zPosition="5" />
-    <widget name="package_text" position="1200,215" size="490,50" zPosition="5" font="RegularB; 32" halign="right" backgroundColor="background20" transparent="1" foregroundColor="cyan1" />
+    <widget name="package_text" position="1220,215" size="470,50" zPosition="5" font="RegularB; 32" halign="right" backgroundColor="background20" transparent="1" foregroundColor="cyan1" />
     <widget name="package_count" position="1695,215" size="150,50" zPosition="6" font="Regular; 32" halign="left" backgroundColor="background20" transparent="1" foregroundColor="cyan" />
-    <widget name="feedmessage" position="1200,40" size="650,170" font="Regular; 30" halign="center" backgroundColor="background20" valign="center" transparent="1" zPosition="22" foregroundColor="amarillo" />
+    <widget name="feedmessage" position="1220,40" size="630,170" font="Regular; 32" halign="center" backgroundColor="background20" valign="center" transparent="1" zPosition="22" foregroundColor="amarillo" />
     <widget name="activity" position="535,280" size="1305,25" pixmap="GlamourAuraSky/pointers/activityslider_white.png" scale="1" alphatest="blend" transparent="1" zPosition="4" />
     <widget source="list" render="Listbox" position="535,305" size="1305,560" enableWrapAround="1" scrollbarMode="showOnDemand" backgroundColor="background20" transparent="1" selectionPixmap="GlamourAuraSky/selections/updatesel.png" alphatest="off" zPosition="5">
       <convert type="TemplatedMultiContent">
-      {"template": [
-                    MultiContentEntryText(pos = (5, 2), size = (1200, 50), font=0, flags = RT_HALIGN_LEFT | RT_VALIGN_TOP, text = 0, color=0x90e6, color_sel=0xdeff), # index 0 is the name
-                    MultiContentEntryText(pos = (5, 45), size = (1200, 30), font=1, flags = RT_HALIGN_LEFT | RT_VALIGN_TOP, text = 2), # index 2 is the description
-                    MultiContentEntryPixmapAlphaBlend(pos = (1150, 5), size = (72, 72), png = 4), # index 4 is the status pixmap
-                    MultiContentEntryPixmapAlphaBlend(pos = (5, 50), size = (0, 0), png = 5), # index 5 is the div pixmap
-                    ],
-       "fonts": [gFont("RegularB",29),gFont("Regular",23)],
-       "itemHeight": 80
-      }
-     </convert>
+	  {"template": [
+					MultiContentEntryText(pos = (5, 2), size = (1200, 50), font=0, flags = RT_HALIGN_LEFT | RT_VALIGN_TOP, text = 0, color=0x90e6, color_sel=0xdeff), # index 0 is the name
+					MultiContentEntryText(pos = (5, 45), size = (1200, 30), font=1, flags = RT_HALIGN_LEFT | RT_VALIGN_TOP, text = 2), # index 2 is the description
+					MultiContentEntryPixmapAlphaBlend(pos = (1150, 5), size = (72, 72), png = 4), # index 4 is the status pixmap
+					MultiContentEntryPixmapAlphaBlend(pos = (5, 50), size = (0, 0), png = 5), # index 5 is the div pixmap
+					],
+	   "fonts": [gFont("RegularB",29),gFont("Regular",23)],
+	   "itemHeight": 80
+	  }
+	 </convert>
     </widget>
     <widget name="traffic_off" position="530,30" zPosition="11" size="155,250" pixmap="GACommon/icons/sources_off.png" alphatest="blend" transparent="1" />
     <widget name="traffic_red" position="530,30" zPosition="12" size="155,250" pixmap="GACommon/icons/sources_red.png" alphatest="on" transparent="1" />
     <widget name="traffic_yellow" position="530,30" zPosition="12" size="155,250" pixmap="GACommon/icons/sources_yellow.png" alphatest="on" transparent="1" />
     <widget name="traffic_green" position="530,30" zPosition="12" size="155,250" pixmap="GACommon/icons/sources_green.png" alphatest="on" transparent="1" />
-    <widget name="feedstatus_red" position="680,40" size="520,80" zPosition="4" font="Regular; 30" halign="left" valign="center" foregroundColor="red" backgroundColor="background20" transparent="1" />
-    <widget name="feedstatus_yellow" position="680,120" size="520,80" zPosition="4" font="Regular; 30" halign="left" valign="center" foregroundColor="yellow" backgroundColor="background20" transparent="1" />
-    <widget name="feedstatus_green" position="680,200" size="520,80" zPosition="4" font="Regular; 30" halign="left" valign="center" foregroundColor="green" backgroundColor="background20" transparent="1" />
+    <widget name="feedstatus_red" position="680,25" size="540,85" zPosition="4" font="Regular; 32" halign="left" valign="center" foregroundColor="red" backgroundColor="background20" transparent="1" text="feedstatus_red" />
+    <widget name="feedstatus_yellow" position="680,110" size="540,85" zPosition="4" font="Regular; 32" halign="left" valign="center" foregroundColor="yellow" backgroundColor="background20" transparent="1" />
+    <widget name="feedstatus_green" position="680,195" size="540,85" zPosition="4" font="Regular; 32" halign="left" valign="center" foregroundColor="green" backgroundColor="background20" transparent="1" />
     <panel name="FullKeys1" />
   </screen>
   <!-- 2-02. Update Progress -->
@@ -1495,7 +1503,7 @@
   </screen>
   <!-- 2-05. Plugins Common Template -->
   <screen name="PluginsCommon" flags="wfNoBorder">
-    <panel name="ScreenElements5" />
+    <panel name="ScreenElements6" />
     <ePixmap pixmap="GACommon/infobar/infobar_provider2.png" position="0,725" zPosition="-10" size="675,50" alphatest="off" transparent="1" />
     <ePixmap pixmap="GlamourAuraSky/infobar/flashspace.png" position="50,730" zPosition="3" size="40,40" alphatest="blend" transparent="1" />
     <widget source="session.CurrentService" render="Label" position="95,733" size="560,35" font="Numbers; 30" zPosition="6" backgroundColor="darkgrey" transparent="1" text="FlashInfo" noWrap="1" halign="left" foregroundColor="dark">
