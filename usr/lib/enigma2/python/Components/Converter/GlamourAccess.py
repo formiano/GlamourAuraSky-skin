@@ -618,7 +618,7 @@ class GlamourAccess(Poll, Converter):
 		else:
 			emu = "No active softcam"
 		
-		return f"{cardserver.split('\n')[0]} {emu.split('\n')[0]}"
+		return f"{cardserver.splitlines()[0]} {emu.splitlines()[0]}"
 
 	# Helper method to read lines
 	def read_lines(self, file_path):
