@@ -28,7 +28,7 @@
     <menu key="scart_switch" image="GACommon/images/scart.png" />
     <menu key="setup" image="GACommon/images/setup.png" />
     <menu key="setup_selection" image="GACommon/images/setup.png" />
-    <menu key="GreenPanel_selection" image="GACommon/images/infopanel.png" />
+    <menu key="OPD_panel_selection" image="GACommon/images/infopanel.png" />
     <menu key="shutdown" image="GACommon/images/shutdown.png" />
     <menu key="standby_restart_list" image="GACommon/images/shutdown.png" />
     <menu key="start_kodi" image="GACommon/images/kodi.png" />
@@ -1002,7 +1002,7 @@
       <convert type="ConditionalShowHide" />
     </widget>
     <widget source="menu" render="Pixmap" pixmap="GACommon/images/infopanel.png" position="515,425" size="180,180" scale="1" transparent="1" alphatest="on" zPosition="5">
-      <convert type="MenuEntryCompare">GreenPanel_selection</convert>
+      <convert type="MenuEntryCompare">OPD_panel_selection</convert>
       <convert type="ConditionalShowHide" />
     </widget>
     <widget source="menu" render="Pixmap" pixmap="GACommon/images/multiboot.png" position="515,425" size="180,180" scale="1" transparent="1" alphatest="on" zPosition="5">
@@ -3074,7 +3074,7 @@
     <ePixmap pixmap="GlamourAuraSky/infobar/halo_bottom.png" position="0,975" zPosition="-12" size="1920,88" alphatest="off" transparent="1" />
     <!-- Crypt Info -->
     <panel name="CryptInfo" />
-    <!-- Bitrate -->
+    <panel name="SourceInfo" />
     <!--panel name="BitrateInfobar" /-->
     <!-- WEATHER Current Temp on Infobar -->
     <panel name="WeatherInfobar2" />
