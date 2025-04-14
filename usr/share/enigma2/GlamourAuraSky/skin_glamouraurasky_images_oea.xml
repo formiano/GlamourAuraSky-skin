@@ -74,7 +74,7 @@
   <screen name="OPD_panel" position="0,0" size="1920,1080" title="OPD panel" backgroundColor="transparent" flags="wfNoBorder">
     <panel name="ScreenElements1" />
     <ePixmap pixmap="GACommon/images/infopanel.png" position="255,315" size="400,400" transparent="1" alphatest="on" zPosition="5" />
-    <widget name="Mlist" font="Regular; 45" position="800,90" size="900,800" scrollbarMode="showOnDemand" backgroundColor="background20" foregroundColor="white" itemHeight="80" enableWrapAround="1" transparent="1" selectionPixmap="GlamourAuraSky/selections/menuself900.png" alphatest="off" zPosition="3" />
+    <widget name="list" font="Regular; 45" position="800,90" size="900,800" scrollbarMode="showOnDemand" backgroundColor="background20" foregroundColor="white" itemHeight="80" enableWrapAround="1" transparent="1" selectionPixmap="GlamourAuraSky/selections/menuself900.png" alphatest="off" zPosition="3" />
     <widget name="label1" position="810,890" size="890,50" font="RegularB; 33" backgroundColor="background20" transparent="1" valign="center" zPosition="5" halign="left" foregroundColor="cyan" />
     <widget name="label2" position="810,890" size="890,50" font="RegularB; 33" backgroundColor="background20" transparent="1" valign="center" zPosition="5" halign="left" foregroundColor="white" />
   </screen>
