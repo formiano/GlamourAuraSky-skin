@@ -993,6 +993,7 @@
     <panel name="Wizard1" />
     <panel name="LanguageKey" />
     <panel name="RemoteWizard" />
+    <panel name="RCKeys" />
   </screen>
   <screen name="TutorialWizard" title="Tutorial Wizard..." position="0,0" size="1920,1080" backgroundColor="transparent" flags="wfNoBorder">
     <panel name="ScreenElements2" />
@@ -1000,6 +1001,7 @@
     <panel name="Wizard1" />
     <panel name="LanguageKey" />
     <panel name="RemoteWizard" />
+    <panel name="RCKeys" />
   </screen>
   <screen name="CleanupWizardConfiguration" position="0,0" size="1920,1080" title="CleanupWizard settings" flags="wfNoBorder" backgroundColor="transparent">
     <panel name="ScreenElements2" />
@@ -1023,6 +1025,7 @@
     <widget name="config" font="Regular; 32" position="800,430" size="1050,400" itemHeight="50" zPosition="14" scrollbarMode="showOnDemand" selectionPixmap="GlamourAuraSky/selections/aurasel.png" alphatest="off" transparent="1" />
     <panel name="LanguageKey" />
     <panel name="RemoteWizard" />
+    <panel name="RCKeys" />
     <widget name="HelpWindow" position="540,830" size="1305,130" zPosition="11" transparent="1" alphatest="blend" />
   </screen>
   <!-- 16. SETUP SCREENS -->
@@ -1638,6 +1641,34 @@
     </widget>
     <widget source="description" render="Label" position="535,760" size="1305,100" font="Regular;32" valign="center" zPosition="5" transparent="1" foregroundColor="cyan1" backgroundColor="background20" halign="center" />
     <panel name="FullKeysMIH" />
+    <panel name="RCKeys" />
+  </screen>
+    <screen name="LocaleWizard" position="0,0" size="1920,1080" title="Locale Selection" flags="wfNoBorder" backgroundColor="transparent">
+    <panel name="ScreenElements2" />
+    <ePixmap pixmap="GlamourAuraSky/menu/accentglowt810.png" position="540,760" size="810,45" zPosition="3" alphatest="blend" transparent="1" />
+    <ePixmap pixmap="GlamourAuraSky/menu/accentglowb810.png" position="1030,815" size="810,45" zPosition="3" alphatest="blend" transparent="1" />
+    <ePixmap position="50,315" size="400,400" pixmap="GACommon/images/languages.png" alphatest="on" transparent="1" zPosition="5" />
+    <widget name="icons" position="0,0" size="60,20" pixmaps="switches/menu_download.png,switches/menu_off.png,switches/menu_on.png" alphatest="blend" transparent="1" />
+    <widget source="locales" render="Listbox" position="535,60" size="1305,700" scrollbarMode="showOnDemand" transparent="1" selectionPixmap="GlamourAuraSky/selections/aurasel.png" alphatest="off" zPosition="6">
+      <convert type="TemplatedMultiContent">
+       {
+        "template":
+                  [
+                  MultiContentEntryPixmapAlphaBlend(pos = (5, 2), size = (90, 45), flags = BT_SCALE, png = 0),  # Flag.
+                  MultiContentEntryText(pos = (115, 0), size = (480, 50), font = 0, flags = RT_HALIGN_LEFT | RT_VALIGN_CENTER, text = 1, color=0x90e6, color_sel=0xdeff),  # native name
+                  MultiContentEntryText(pos = (615, 0), size = (480, 50), font = 0, flags = RT_HALIGN_LEFT | RT_VALIGN_CENTER, text = 2, color=0xffffc6, color_sel=0xdeff),  # language name
+                  # MultiContentEntryText(pos = (1115, 0), size = (90, 50), font = 0, flags = RT_HALIGN_LEFT | RT_VALIGN_CENTER, text = 3),  # locale name
+                  MultiContentEntryText(pos = (1115, 0), size = (90, 50), font = 0, flags = RT_HALIGN_LEFT | RT_VALIGN_CENTER, text = 4),  # package name
+                  MultiContentEntryPixmapAlphaBlend(pos = (1215, 15), size = (60, 20), flags = BT_SCALE, png = 5)  # status
+                 ],
+        "fonts": [gFont("Regular", 32)],
+        "itemHeight": 50
+      }
+     </convert>
+    </widget>
+    <widget name="text" position="535,760" size="1305,100" zPosition="9" font="Regular;32" noWrap="1" halign="center" transparent="1" backgroundColor="sky" valign="bottom" /> 
+    <panel name="FullKeysMIH" />
+    <panel name="RCKeys" />
   </screen>
   <!-- 5. MultiBoot Manager -->
   <screen name="MultiBootManager" position="0,0" size="1920,1080" title="MultiBoot Manager" flags="wfNoBorder" backgroundColor="transparent">
