@@ -572,10 +572,12 @@ class GlamourAccess(Poll, Converter):
 			if not active_softcam or active_softcam.lower() == "none":
 				softcam_init_file = "/etc/init.d/softcam"
 				if os.path.exists(softcam_init_file):
-					with open(softcam_init_file, "r") as f:
+					with open(softcam_init_file, "r", encoding="utf-8", errors="ignore") as f:
 						for line in f:
 							if "Short-Description:" in line:
-								active_softcam = line.split(":")[1].strip()
+								parts = line.split(":", 1)
+								if len(parts) > 1:
+									active_softcam = parts[1].strip()
 								break
 			if not active_softcam or active_softcam.lower() in {"nocam", "none"}:
 				return "No active softcam"

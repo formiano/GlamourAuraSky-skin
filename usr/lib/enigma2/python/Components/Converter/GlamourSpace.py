@@ -38,10 +38,13 @@ class GlamourSpace(Poll, Converter):
 			"BufferInfo": self.BUFFERINFO
 		}
 		self.type = type_mapping.get(type[0], None)
-		self.poll_interval = 5000 if self.type in (self.FLASHINFO, self.BUFFERINFO, self.DATASPACE, self.HDDSPACE, self.USBSPACE, self.NETSPACE) else 1000
-		self.poll_enabled = True
+		self.poll_enabled = self.type in (
+			self.RAMINFO, self.SWAPINFO, self.BUFFERINFO
+		)
+		self.poll_interval = 15000 if self.type in (
+			self.HDDSPACE, self.USBSPACE, self.FLASHINFO, self.DATASPACE, self.NETSPACE
+		) else 5000
 
-	@cached
 	def getText(self):
 		if self.type == self.NETSPACE:
 			mount_point = self.getNetworkMount()
