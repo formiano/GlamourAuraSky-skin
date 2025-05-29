@@ -101,6 +101,8 @@
     <font filename="/usr/share/enigma2/GACommon/fonts/auracaps.ttf" name="Caps" scale="100" />
     <font filename="/usr/share/enigma2/GACommon/fonts/aurasc.ttf" name="Caps" scale="100" />
     <font filename="/usr/share/enigma2/GACommon/fonts/misob.ttf" name="Numbers" scale="100" />
+    <font filename="/usr/share/enigma2/GACommon/fonts/misob.ttf" name="Numbers" scale="100" />
+    <font filename="/usr/share/enigma2/GACommon/fonts/NotoSansSC-Regular.ttf" name="Regular" scale="100" />
   </fonts>
   <fonts>
     <alias name="Body" font="Regular" size="32" height="50" />
