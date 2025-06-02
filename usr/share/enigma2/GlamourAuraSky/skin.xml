@@ -93,17 +93,12 @@
     <color name="yellow" value="#00f2e000" />
   </colors>
   <fonts>
-      <font filename="/usr/share/fonts/lcd.ttf" name="LCDA" scale="100" />
-      <font filename="/usr/share/enigma2/GACommon/fonts/consola.ttf" name="Console" scale="100" />
-      <font filename="/usr/share/enigma2/GACommon/fonts/aurar.ttf" name="AuraR" scale="100" />
-      <font filename="/usr/share/enigma2/GACommon/fonts/aurab.ttf" name="AuraB" scale="100" />
-      <font filename="/usr/share/enigma2/GACommon/fonts/aural.ttf" name="AuraL" scale="100" />
-      <font filename="/usr/share/enigma2/GACommon/fonts/auracaps.ttf" name="AuraCaps" scale="100" />
-      <font filename="/usr/share/enigma2/GACommon/fonts/aurasc.ttf" name="AuraSCaps" scale="100" />
-      <font filename="/usr/share/enigma2/GACommon/fonts/misob.ttf" name="NumbersBold" scale="100" />
-      <font filename="/usr/share/enigma2/GACommon/fonts/NotoSansSC-Regular.ttf" name="NotoSansSC" scale="100" />
-      <font filename="/usr/share/enigma2/GACommon/fonts/NotoSansHebrew-Regular.ttf" name="NotoSansHebrew" scale="100" />
-      <font filename="/usr/share/enigma2/GACommon/fonts/NotoSans-Regular.ttf" name="NotoSans" scale="100" />
+    <font filename="/usr/share/fonts/lcd.ttf" name="LCDA" scale="100" />
+    <font filename="/usr/share/enigma2/GACommon/fonts/consola.ttf" name="Console" scale="100" />
+    <font filename="/usr/share/enigma2/GACommon/fonts/aurar.ttf" name="Regular" scale="100" />
+    <font filename="/usr/share/enigma2/GACommon/fonts/aurab.ttf" name="RegularB" scale="100" />
+    <font filename="/usr/share/enigma2/GACommon/fonts/aurasc.ttf" name="Caps" scale="100" />
+    <font filename="/usr/share/enigma2/GACommon/fonts/misob.ttf" name="Numbers" scale="100" />
   </fonts>
   <fonts>
     <alias name="Body" font="Regular" size="32" height="50" />
