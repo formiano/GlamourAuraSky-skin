@@ -1624,20 +1624,20 @@
     <widget name="icons" position="0,0" size="60,20" pixmaps="switches/menu_download.png,switches/menu_off.png,switches/menu_on.png" alphatest="blend" transparent="1" />
     <widget source="locales" render="Listbox" position="535,60" size="1305,700" scrollbarMode="showOnDemand" transparent="1" selectionPixmap="GlamourAuraSky/selections/aurasel.png" alphatest="off" zPosition="6">
       <convert type="TemplatedMultiContent">
-       {
-        "template":
-                  [
-                  MultiContentEntryPixmapAlphaBlend(pos = (5, 2), size = (90, 45), flags = BT_SCALE, png = 0),  # Flag.
-                  MultiContentEntryText(pos = (115, 0), size = (480, 50), font = 0, flags = RT_HALIGN_LEFT | RT_VALIGN_CENTER, text = 1, color=0x90e6, color_sel=0xdeff),  # native name
-                  MultiContentEntryText(pos = (615, 0), size = (480, 50), font = 0, flags = RT_HALIGN_LEFT | RT_VALIGN_CENTER, text = 2, color=0xffffc6, color_sel=0xdeff),  # language name
-                  # MultiContentEntryText(pos = (1115, 0), size = (90, 50), font = 0, flags = RT_HALIGN_LEFT | RT_VALIGN_CENTER, text = 3),  # locale name
-                  MultiContentEntryText(pos = (1115, 0), size = (90, 50), font = 0, flags = RT_HALIGN_LEFT | RT_VALIGN_CENTER, text = 4),  # package name
-                  MultiContentEntryPixmapAlphaBlend(pos = (1215, 15), size = (60, 20), flags = BT_SCALE, png = 5)  # status
-                 ],
-        "fonts": [gFont("Regular", 32)],
-        "itemHeight": 50
-      }
-     </convert>
+	   {
+		"template":
+				  [
+				  MultiContentEntryPixmapAlphaBlend(pos = (5, 2), size = (90, 45), flags = BT_SCALE, png = 0),	# Flag.
+				  MultiContentEntryText(pos = (115, 0), size = (480, 50), font = 0, flags = RT_HALIGN_LEFT | RT_VALIGN_CENTER, text = 1, color=0x90e6, color_sel=0xdeff),  # native name
+				  MultiContentEntryText(pos = (615, 0), size = (480, 50), font = 0, flags = RT_HALIGN_LEFT | RT_VALIGN_CENTER, text = 2, color=0xffffc6, color_sel=0xdeff),	 # language name
+				  # MultiContentEntryText(pos = (1115, 0), size = (90, 50), font = 0, flags = RT_HALIGN_LEFT | RT_VALIGN_CENTER, text = 3),	 # locale name
+				  MultiContentEntryText(pos = (1115, 0), size = (90, 50), font = 0, flags = RT_HALIGN_LEFT | RT_VALIGN_CENTER, text = 4),  # package name
+				  MultiContentEntryPixmapAlphaBlend(pos = (1215, 15), size = (60, 20), flags = BT_SCALE, png = 5)  # status
+				 ],
+		"fonts": [gFont("Regular", 32)],
+		"itemHeight": 50
+	  }
+	 </convert>
     </widget>
     <widget source="description" render="Label" position="535,760" size="1305,100" font="Regular;32" valign="center" zPosition="5" transparent="1" foregroundColor="cyan1" backgroundColor="background20" halign="center" />
     <panel name="FullKeysMIH" />
