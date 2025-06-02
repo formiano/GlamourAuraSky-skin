@@ -290,6 +290,7 @@
     <menu key="PrimeVideo" image="GACommon/images/prime.png" />
     <menu key="Stalker Plugin" image="GACommon/images/stalker.png" />
     <menu key="startsetup" image="GACommon/images/alexa.png" />
+    <menu key="Wireguard" image="GACommon/images/wireguard.png" />
     <menu key="XCplugin" image="GACommon/images/xc.png" />
     <menu key="XStreamity" image="GACommon/images/xstreamity.png" />
   </menus>
