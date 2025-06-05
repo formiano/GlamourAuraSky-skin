@@ -2441,4 +2441,4 @@
     <widget name="MessageScreenIp" font="Regular; 33" position="100,2" zPosition="2" valign="center" halign="center" size="600,50" backgroundColor="background20" foregroundColor="amarillo" transparent="1" noWrap="1" />
     <widget name="MessageScreen" font="Regular; 33" position="100,2" zPosition="5" valign="center" halign="center" size="600,50" backgroundColor="background20" foregroundColor="cyan1" transparent="1" noWrap="1" />
   </screen>
-</skin></skin>
+</skin>
