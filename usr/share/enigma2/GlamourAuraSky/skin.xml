@@ -1564,16 +1564,16 @@
     <panel name="ScreenElements4" />
     <ePixmap pixmap="GACommon/images/audiosetup.png" position="255,315" size="400,400" transparent="1" alphatest="on" zPosition="5" />
     <widget name="config" font="Regular; 32" position="875,75" size="930,300" scrollbarMode="showOnDemand" itemHeight="50" selectionPixmap="GlamourAuraSky/selections/listsel930.png" alphatest="off" transparent="1" zPosition="3" />
-    <widget source="key_red" render="Pixmap" pixmap="GlamourAuraSky/buttons/red.png" position="795,80" size="75,45" transparent="1" zPosition="3" alphatest="blend" scale="1">
+    <widget source="key_red" render="Pixmap" pixmap="GlamourAuraSky/buttons/red.png" position="815,80" size="45,45" transparent="1" zPosition="3" alphatest="blend" scale="1">
       <convert type="ConditionalShowHide" />
     </widget>
-    <widget source="key_green" render="Pixmap" pixmap="GlamourAuraSky/buttons/green.png" position="795,130" size="75,45" transparent="1" zPosition="3" alphatest="blend" scale="1">
+    <widget source="key_green" render="Pixmap" pixmap="GlamourAuraSky/buttons/green.png" position="815,130" size="45,45" transparent="1" zPosition="3" alphatest="blend" scale="1">
       <convert type="ConditionalShowHide" />
     </widget>
-    <widget source="key_yellow" render="Pixmap" pixmap="GlamourAuraSky/buttons/yellow.png" position="795,180" size="75,45" transparent="1" zPosition="3" alphatest="blend" scale="1">
+    <widget source="key_yellow" render="Pixmap" pixmap="GlamourAuraSky/buttons/yellow.png" position="815,180" size="45,45" transparent="1" zPosition="3" alphatest="blend" scale="1">
       <convert type="ConditionalShowHide" />
     </widget>
-    <widget source="key_blue" render="Pixmap" pixmap="GlamourAuraSky/buttons/blue.png" position="795,230" size="75,45" transparent="1" zPosition="3" alphatest="blend" scale="1">
+    <widget source="key_blue" render="Pixmap" pixmap="GlamourAuraSky/buttons/blue.png" position="815,230" size="45,45" transparent="1" zPosition="3" alphatest="blend" scale="1">
       <convert type="ConditionalShowHide" />
     </widget>
     <widget name="key_left" position="805,380" size="54,54" zPosition="10" pixmap="GlamourAuraSky/buttons/key_left2.png" transparent="1" alphatest="on" />
@@ -3062,7 +3062,16 @@ if not self["videofps"].text:
   </screen>
   <!-- 04. Timer Selection -->
   <screen name="TimerSelection" position="0,0" size="1920,1080" title="Timer selection" flags="wfNoBorder" backgroundColor="transparent">
-    <panel name="TimerEntry" />
+    <ePixmap position="50,315" size="400,400" pixmap="GACommon/images/timer.png" alphatest="on" transparent="1" zPosition="5" />
+    <widget name="config" font="Regular; 32" position="540,75" size="1305,750" itemHeight="50" scrollbarMode="showOnDemand" backgroundColor="background20" enableWrapAround="1" transparent="1" selectionPixmap="GlamourAuraSky/selections/aurasel.png" alphatest="off" zPosition="5" />
+    <widget name="HelpWindow" position="540,780" size="1320,130" zPosition="11" transparent="1" />
+    <ePixmap pixmap="GACommon/buttons/aura_red.png" position="580,870" size="225,75" alphatest="blend" zPosition="5" transparent="1" />
+    <ePixmap pixmap="GACommon/buttons/aura_green.png" position="910,870" size="225,75" alphatest="blend" zPosition="5" transparent="1" />
+    <widget name="canceltext" position="535,855" size="320,90" zPosition="6" font="Regular; 32" halign="center" backgroundColor="background20" transparent="1" valign="bottom" />
+    <widget name="oktext" position="860,855" size="320,90" zPosition="6" font="Regular; 32" halign="center" backgroundColor="background20" transparent="1" valign="bottom" />
+    <widget name="cancel" position="535,855" size="320,90" zPosition="6" font="Regular; 32" halign="center" backgroundColor="background20" transparent="1" valign="bottom" />
+    <widget name="ok" position="860,855" size="320,90" zPosition="6" font="Regular; 32" halign="center" backgroundColor="background20" transparent="1" valign="bottom" />
+</screen>
   </screen>
   <!-- 05. Timer Log -->
   <screen name="TimerLog" position="0,0" size="1920,1080" title="Timer log" flags="wfNoBorder" backgroundColor="transparent">
