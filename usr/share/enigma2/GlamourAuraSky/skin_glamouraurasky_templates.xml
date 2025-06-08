@@ -158,6 +158,7 @@
     <menu key="recording_setup" image="GACommon/images/recordsetup.png" />
     <menu key="timshift_setup" image="GACommon/images/timeshift.png" />
     <menu key="vod_setup" image="GACommon/images/vod.png" />
+    <menu key="movie_selection" image="GACommon/images/movie.png" />
     <!-- Extended -->
     <menu key="factory_reset" image="GACommon/images/factory.png" />
     <menu key="fansetup_config" image="GACommon/images/fan.png" />
