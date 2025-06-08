@@ -3062,16 +3062,10 @@ if not self["videofps"].text:
   </screen>
   <!-- 04. Timer Selection -->
   <screen name="TimerSelection" position="0,0" size="1920,1080" title="Timer selection" flags="wfNoBorder" backgroundColor="transparent">
+    <panel name="ScreenElements2" />
     <ePixmap position="50,315" size="400,400" pixmap="GACommon/images/timer.png" alphatest="on" transparent="1" zPosition="5" />
-    <widget name="config" font="Regular; 32" position="540,75" size="1305,750" itemHeight="50" scrollbarMode="showOnDemand" backgroundColor="background20" enableWrapAround="1" transparent="1" selectionPixmap="GlamourAuraSky/selections/aurasel.png" alphatest="off" zPosition="5" />
-    <widget name="HelpWindow" position="540,780" size="1320,130" zPosition="11" transparent="1" />
-    <ePixmap pixmap="GACommon/buttons/aura_red.png" position="580,870" size="225,75" alphatest="blend" zPosition="5" transparent="1" />
-    <ePixmap pixmap="GACommon/buttons/aura_green.png" position="910,870" size="225,75" alphatest="blend" zPosition="5" transparent="1" />
-    <widget name="canceltext" position="535,855" size="320,90" zPosition="6" font="Regular; 32" halign="center" backgroundColor="background20" transparent="1" valign="bottom" />
-    <widget name="oktext" position="860,855" size="320,90" zPosition="6" font="Regular; 32" halign="center" backgroundColor="background20" transparent="1" valign="bottom" />
-    <widget name="cancel" position="535,855" size="320,90" zPosition="6" font="Regular; 32" halign="center" backgroundColor="background20" transparent="1" valign="bottom" />
-    <widget name="ok" position="860,855" size="320,90" zPosition="6" font="Regular; 32" halign="center" backgroundColor="background20" transparent="1" valign="bottom" />
-</screen>
+    <widget name="timerlist" position="540,55" size="1305,810" itemHeight="90" rowSplit="50" timerNameFont="RegularB;32" statusFont="Regular;32" detailFont="Regular;28" topHeight="45" bottomHeight="45" indent="30" satPosLeft="250" iconWidth="45" iconHeight="45" iconMargin="10" statusOffset="0" setEventNameFont="Regular;32" setServiceNameFont="Regular;32" setFont="Regular;28" showSeparator="True" scrollbarMode="showOnDemand" backgroundColor="background20" enableWrapAround="1" transparent="1" selectionPixmap="GlamourAuraSky/selections/timersel.png" alphatest="off" zPosition="5" />
+    <panel name="FullKeys1" />
   </screen>
   <!-- 05. Timer Log -->
   <screen name="TimerLog" position="0,0" size="1920,1080" title="Timer log" flags="wfNoBorder" backgroundColor="transparent">
