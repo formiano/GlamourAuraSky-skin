@@ -88,6 +88,12 @@
     <widget source="key_red" render="Label" position="835,855" size="320,90" zPosition="6" font="Regular; 30" halign="center" backgroundColor="background20" transparent="1" valign="bottom" />
     <ePixmap pixmap="GACommon/buttons/aura_green.png" position="1250,870" size="225,75" alphatest="blend" zPosition="5" transparent="1" />
     <widget source="key_green" render="Label" position="1205,855" size="320,90" zPosition="6" font="Regular; 30" halign="center" backgroundColor="background20" transparent="1" valign="bottom" />
+    </screen>
+    <screen name="InfoFull" position="0,0" size="1920,1080" title="Info" flags="wfNoBorder" backgroundColor="transparent" alphatest="on">
+	<widget name="label2" position="235,20" size="1880,40" font="RegularB;35" transparent="1" halign="center" foregroundColor="cyan" />
+	<widget name="label1" position="535,70" size="1305,900" font="RegularB;35" itemHeight="50" scrollbarMode="showOnDemand" transparent="1" selectionPixmap="GlamourAuraSky/selections/aurasel.png" alphatest="off" zPosition="4" foregroundColor="white" />
+	<ePixmap position="50,315" size="400,400" pixmap="GACommon/images/about.png" alphatest="on" transparent="1" zPosition="5" />
+	<panel name="ScreenElements2" />
   </screen>
   <!-- 05. Devices Manager -->
  <!-- <screen name="DeviceManager" position="0,0" size="1920,1080" title="Devices Manager" flags="wfNoBorder" backgroundColor="transparent">
