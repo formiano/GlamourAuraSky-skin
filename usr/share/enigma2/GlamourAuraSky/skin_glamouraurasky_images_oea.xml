@@ -47,6 +47,18 @@
     </widget>
     <panel name="FullKeysMIH" />
   </screen>
+  <!--  OPD CamStart FHD -->
+  <screen name="StartCam" position="0,0" size="1920,1080" title="Starting Softcam" flags="wfNoBorder" backgroundColor="background">
+    <widget name="starting" position="200,100" size="1180,770" zPosition="2" pixmaps="/usr/share/enigma2/GlamourAuraSky/opendroid/connection_1.png,/usr/share/enigma2/GlamourAuraSky/opendroid/connection_2.png,/usr/share/enigma2/GlamourAuraSky/opendroid/connection_3.png,/usr/share/enigma2/GlamourAuraSky/opendroid/connection_4.png,/usr/share/enigma2/GlamourAuraSky/opendroid/connection_5.png,/usr/share/enigma2/GlamourAuraSky/opendroid/connection_6.png,/usr/share/enigma2/GlamourAuraSky/opendroid/connection_7.png,/usr/share/enigma2/GlamourAuraSky/opendroid/connection_8.png,/usr/share/enigma2/GlamourAuraSky/opendroid/connection_9.png,/usr/share/enigma2/GlamourAuraSky/opendroid/connection_10.png,/usr/share/enigma2/GlamourAuraSky/opendroid/connection_11.png,/usr/share/enigma2/GlamourAuraSky/opendroid/connection_12.png" transparent="1" alphatest="blend" />
+    <widget name="text" position="100,890" size="1180,90" zPosition="10" font="Regular;36" halign="center" valign="center" transparent="1" />
+    <widget source="Title" render="Label" position="180,20" size="1300,50" font="Regular; 40" halign="left" valign="center" foregroundColor="white" backgroundColor="background" borderColor="white" borderWidth="3" transparent="1" zPosition="1" />
+  </screen>
+    <!--  OPD StopCam FHD -->
+  <screen name="StopCam" position="0,0" size="1920,1080" title="Starting Softcam" flags="wfNoBorder" backgroundColor="background">
+    <widget name="stopping" position="200,100" size="1180,770" zPosition="2" pixmaps="/usr/share/enigma2/GlamourAuraSky/opendroid/connection_1.png,/usr/share/enigma2/GlamourAuraSky/opendroid/connection_2.png,/usr/share/enigma2/GlamourAuraSky/opendroid/connection_3.png,/usr/share/enigma2/GlamourAuraSky/opendroid/connection_4.png,/usr/share/enigma2/GlamourAuraSky/opendroid/connection_5.png,/usr/share/enigma2/GlamourAuraSky/opendroid/connection_6.png,/usr/share/enigma2/GlamourAuraSky/opendroid/connection_7.png,/usr/share/enigma2/GlamourAuraSky/opendroid/connection_8.png,/usr/share/enigma2/GlamourAuraSky/opendroid/connection_9.png,/usr/share/enigma2/GlamourAuraSky/opendroid/connection_10.png,/usr/share/enigma2/GlamourAuraSky/opendroid/connection_11.png,/usr/share/enigma2/GlamourAuraSky/opendroid/connection_12.png" transparent="1" alphatest="blend" />
+    <widget name="text" position="100,890" size="1180,90" zPosition="10" font="Regular;36" halign="center" valign="center" transparent="1" />
+    <widget source="Title" render="Label" position="180,20" size="1300,50" font="Regular; 40" halign="left" valign="center" foregroundColor="white" backgroundColor="background" borderColor="white" borderWidth="3" transparent="1" zPosition="1" />
+  </screen>
   <!-- 02. GreenPanel -->
   <screen name="GreenPanel" position="0,0" size="1920,1080" title="Green Panel" flags="wfNoBorder" backgroundColor="transparent">
     <panel name="ScreenElements1" />
