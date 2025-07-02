@@ -856,8 +856,6 @@
     <panel name="MenuEntriesNew" conditional="key_blue" />
     <panel name="MenuEntriesOld" conditional="blue" />
     <widget source="description" render="Label" position="50,730" size="700,200" conditional="description" font="Regular; 32" foregroundColor="white" backgroundColor="black" shadowColor="black" shadowOffset="2,1" transparent="1" valign="top" halign="center" zPosition="7" />
-    <ePixmap position="1770,90" size="54,54" zPosition="10" pixmap="GlamourAuraSky/buttons/key_up2.png" transparent="1" alphatest="on" />
-    <ePixmap position="1770,850" size="54,54" zPosition="10" pixmap="GlamourAuraSky/buttons/key_down2.png" transparent="1" alphatest="on" />
     <panel name="MenuKeysUP" />
   </screen>
   <screen name="MenuCL" flags="wfNoBorder">

@@ -308,10 +308,8 @@
   <screen name="CommitInfo" position="0,0" size="1920,1080" title="Commit Info" backgroundColor="transparent" flags="wfNoBorder" alphatest="on">
     <panel name="ScreenElements2" />
     <ePixmap position="50,315" size="400,400" pixmap="GACommon/images/specialfeat.png" alphatest="on" transparent="1" zPosition="5" />
-    <widget name="AboutScrollLabel" position="540,210" size="1305,700" font="Regular; 32" halign="left" backgroundColor="background20" transparent="1" foregroundColor="cyan1" zPosition="6" />
-    <widget name="HintText" position="540,90" size="750,140" font="Regular; 32" halign="left" backgroundColor="background20" transparent="1" foregroundColor="cyan1" zPosition="6" />
-    <ePixmap position="1815,130" size="54,54" zPosition="10" pixmap="GlamourAuraSky/buttons/key_up2.png" transparent="1" alphatest="on" />
-    <ePixmap position="1815,900" size="54,54" zPosition="10" pixmap="GlamourAuraSky/buttons/key_down2.png" transparent="1" alphatest="on" />
+    <widget name="AboutScrollLabel" position="540,210" size="1285,720" font="Regular;32" noWrap="1" foregroundColor="cyan1" backgroundColor="header" scrollbarRadius="5" scrollbarForegroundColor="cyan" scrollbarBorderWidth="1" scrollbarBorderColor="cyan" scrollbarWidth="8" transparent="1" />
+    <widget name="HintText" position="540,90" size="750,140" font="Regular; 32" halign="left" backgroundColor="background20" scrollbarMode="showAlways" transparent="1" foregroundColor="cyan1" zPosition="6" />
     <ePixmap position="540,35" size="54,54" zPosition="10" pixmap="GlamourAuraSky/buttons/key_left2.png" transparent="1" alphatest="on" />
     <ePixmap position="775,35" size="54,54" zPosition="10" pixmap="GlamourAuraSky/buttons/key_right2.png" transparent="1" alphatest="on" />
     <panel name="FullKeys1" />

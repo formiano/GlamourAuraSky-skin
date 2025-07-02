@@ -269,7 +269,7 @@
     <widget source="lab1" render="Label" position="540,60" size="1305,50" font="RegularB; 34" backgroundColor="background20" foregroundColor="sky" transparent="1" zPosition="2" />
     <widget source="lab2" render="Label" position="540,110" size="650,50" font="Regular; 30" backgroundColor="background20" foregroundColor="white" transparent="1" zPosition="6" />
     <widget source="lab3" render="Label" position="1195,110" size="650,50" font="Regular; 30" backgroundColor="background20" foregroundColor="white" transparent="1" zPosition="6" />
-    <widget name="AboutScrollLabel" position="540,160" size="1305,700" font="Regular; 32" halign="left" backgroundColor="background20" transparent="1" foregroundColor="cyan1" zPosition="6" />
+    <widget name="AboutScrollLabel" position="540,160" size="1305,700" font="Regular;32" noWrap="1" foregroundColor="cyan1" backgroundColor="header" scrollbarRadius="5" scrollbarForegroundColor="cyan" scrollbarBorderWidth="1" scrollbarBorderColor="cyan" scrollbarWidth="8" transparent="1" />
     <eLabel text="Glamour Aura FHD Skin by MCelliotG" position="75,705" size="400,155" font="Regular; 42" backgroundColor="transparent" shadowColor="black" shadowOffset="-2,-2" transparent="1" valign="top" halign="center" zPosition="1" />
     <panel name="FullKeys1" />
   </screen>
@@ -1291,12 +1291,17 @@
   <!-- 1. Info Screens -->
   <screen name="CommonInfo">
     <widget source="description" render="Label" position="50,715" size="475,230" conditional="description" font="Regular; 32" foregroundColor="white" backgroundColor="black" shadowColor="black" shadowOffset="2,1" transparent="1" valign="top" halign="center" zPosition="7" />
-    <widget name="information" position="535,75" size="1305,780" colPosition="500" conditional="information" divideChar="|" font="Regular; 30" noWrap="0" leftColAlign="left" rightColAlign="left" split="1" backgroundColor="background20" transparent="1" zPosition="7" valign="top" halign="left" />
+    <widget name="information" position="535,65" size="1160,820" colPosition="475" conditional="information" divideChar="|" font="Regular;30" noWrap="1" split="1" foregroundColor="white" backgroundColor="header" scrollbarRadius="5" scrollbarForegroundColor="cyan" scrollbarBorderWidth="1" scrollbarBorderColor="cyan" scrollbarWidth="8" transparent="1" />
     <panel name="FullKeysMIH" />
   </screen>
   <screen name="CommonInfo2">
     <widget source="description" render="Label" position="535,645" size="1305,210" conditional="description" font="Regular; 32" foregroundColor="cyan1" backgroundColor="background20" transparent="1" valign="top" halign="center" zPosition="7" />
     <widget name="information" position="535,90" size="1305,550" colPosition="500" conditional="information" divideChar="|" font="Regular; 30" noWrap="0" leftColAlign="left" rightColAlign="left" split="1" backgroundColor="background20" transparent="1" zPosition="7" valign="top" halign="left" />
+    <panel name="FullKeysMIH" />
+  </screen>
+  <screen name="CommonInfo3">
+    <widget source="description" render="Label" position="50,715" size="475,230" conditional="description" font="Regular; 32" foregroundColor="cyan1" backgroundColor="black" shadowColor="black" shadowOffset="2,1" transparent="1" valign="top" halign="center" zPosition="7" />
+    <widget name="information" position="535,65" size="1160,820" colPosition="475" conditional="information" divideChar="|" font="Regular;33" noWrap="1" split="1" foregroundColor="cyan" backgroundColor="header" scrollbarRadius="5" scrollbarForegroundColor="cyan" scrollbarBorderWidth="1" scrollbarBorderColor="cyan2" scrollbarWidth="8" transparent="1" />
     <panel name="FullKeysMIH" />
   </screen>
   <!-- 1-01. Distribution Info -->
@@ -1305,31 +1310,31 @@
     <ePixmap position="50,315" size="400,400" pixmap="GACommon/images/about.png" alphatest="on" transparent="1" zPosition="5" />
     <eLabel text="https://github.com/opendroid" position="50,200" size="470,50" font="Regular;32" backgroundColor="background20" foregroundColor="yellow" halign="left" transparent="1" zPosition="5" />
     <eLabel text="https://github.com/oe-alliance" position="50,250" size="470,50" font="Regular;32" backgroundColor="background20" foregroundColor="amarillo" halign="left" transparent="1" zPosition="5" />
-    <panel name="CommonInfo" />
+    <panel name="CommonInfo3" />
   </screen>
   <!-- 1-02. System Info -->
   <screen name="SystemInformation" position="0,0" size="1920,1080" title="System Information" flags="wfNoBorder" backgroundColor="transparent">
     <panel name="ScreenElements2" />
     <ePixmap position="50,315" size="400,400" pixmap="GACommon/images/system_info.png" alphatest="on" transparent="1" zPosition="5" />
-    <panel name="CommonInfo" />
+    <panel name="CommonInfo3" />
   </screen>
   <!-- 1-03. Commit Info -->
   <screen name="CommitInformation" position="0,0" size="1920,1080" title="Commit Information" flags="wfNoBorder" backgroundColor="transparent">
     <panel name="ScreenElements2" />
     <ePixmap position="50,315" size="400,400" pixmap="GACommon/images/commit_info.png" alphatest="on" transparent="1" zPosition="5" />
-    <panel name="CommonInfo" />
+    <panel name="CommonInfo3" />
   </screen>
   <!-- 1-04. Debug Info -->
   <screen name="DebugInformation" position="0,0" size="1920,1080" title="Debug Information" flags="wfNoBorder" backgroundColor="transparent">
     <panel name="ScreenElements2" />
     <ePixmap position="50,315" size="400,400" pixmap="GACommon/images/debug_info.png" alphatest="on" transparent="1" zPosition="5" />
-    <panel name="CommonInfo" />
+    <panel name="CommonInfo3" />
   </screen>
   <!-- 1-05. Translation Info -->
   <screen name="TranslationInformation" position="0,0" size="1920,1080" title="Information" flags="wfNoBorder" backgroundColor="transparent">
     <panel name="ScreenElements2" />
     <ePixmap position="50,315" size="400,400" pixmap="GACommon/images/translation.png" alphatest="on" transparent="1" zPosition="5" />
-    <panel name="CommonInfo" />
+    <panel name="CommonInfo3" />
   </screen>
   <!-- 1-06. Network Info -->
   <screen name="SystemNetworkInfo" position="0,0" size="1920,1080" title="Network Information" flags="wfNoBorder" backgroundColor="transparent">
@@ -1339,21 +1344,21 @@
   </screen>
   <!-- 1-07. Receiver Info -->
   <screen name="ReceiverInformation" position="0,0" size="1920,1080" title="Receiver Information" flags="wfNoBorder" backgroundColor="transparent">
-    <panel name="ScreenElements2" />
-    <ePixmap position="50,315" size="400,400" pixmap="GACommon/images/receiver_info.png" alphatest="on" transparent="1" zPosition="5" />
-    <panel name="CommonInfo" />
+    <panel name="ScreenElements3" />
+    <widget name="boxpic" position="80,315" size="400,400" zPosition="2" transparent="1" alphatest="on" scale="1" />
+    <panel name="CommonInfo3" />
   </screen>
   <!-- 1-08. Tuner Info -->
   <screen name="TunerInformation" position="0,0" size="1920,1080" title="Tuner Information" flags="wfNoBorder" backgroundColor="transparent">
     <panel name="ScreenElements2" />
     <ePixmap position="50,315" size="400,400" pixmap="GACommon/images/tuner_screen.png" alphatest="on" transparent="1" zPosition="5" />
-    <panel name="CommonInfo" />
+    <panel name="CommonInfo3" />
   </screen>
   <!-- 1-09. Storage Info -->
   <screen name="StorageInformation" position="0,0" size="1920,1080" title="Storage Information" flags="wfNoBorder" backgroundColor="transparent">
     <panel name="ScreenElements2" />
     <ePixmap position="50,315" size="400,400" pixmap="GACommon/images/storage.png" alphatest="on" transparent="1" zPosition="5" />
-    <panel name="CommonInfo" />
+    <panel name="CommonInfo3" />
   </screen>
   <!-- 1-10. Memory Info -->
   <screen name="MemoryInformation" position="0,0" size="1920,1080" title="Memory Information" flags="wfNoBorder" backgroundColor="transparent">
@@ -1365,25 +1370,25 @@
   <screen name="MultiBootInformation" position="0,0" size="1920,1080" title="MultiBoot Information" flags="wfNoBorder" backgroundColor="transparent">
     <panel name="ScreenElements2" />
     <ePixmap position="50,315" size="400,400" pixmap="GACommon/images/multiboot.png" alphatest="on" transparent="1" zPosition="5" />
-    <panel name="CommonInfo" />
+    <panel name="CommonInfo3" />
   </screen>
   <!-- 1-12. Streaming Info -->
   <screen name="StreamingInformation" position="0,0" size="1920,1080" title="Streaming Information" flags="wfNoBorder" backgroundColor="transparent">
     <panel name="ScreenElements2" />
     <ePixmap position="50,315" size="400,400" pixmap="GACommon/images/streaming.png" alphatest="on" transparent="1" zPosition="5" />
-    <panel name="CommonInfo" />
+    <panel name="CommonInfo3" />
   </screen>
   <!-- 1-13. Geolocation Info -->
   <screen name="GeolocationInformation" position="0,0" size="1920,1080" title="Geolocation Information" flags="wfNoBorder" backgroundColor="transparent">
     <panel name="ScreenElements2" />
     <ePixmap position="50,315" size="400,400" pixmap="GACommon/images/geolocation.png" alphatest="on" transparent="1" zPosition="5" />
-    <panel name="CommonInfo" />
+    <panel name="CommonInfo3" />
   </screen>
   <!-- 1-14. Storage Disk Info -->
   <screen name="StorageDiskInformation" position="0,0" size="1920,1080" title="Storage Disk Information" flags="wfNoBorder" backgroundColor="transparent">
     <panel name="ScreenElements2" />
     <ePixmap position="50,315" size="400,400" pixmap="GACommon/images/storage.png" alphatest="on" transparent="1" zPosition="5" />
-    <panel name="CommonInfo" />
+    <panel name="CommonInfo3" />
   </screen>
   <!-- 1-15. Picture Info -->
   <screen name="PictureInformation" position="0,0" size="1920,1080" title="Picture Information" flags="wfNoBorder" backgroundColor="transparent">
@@ -1398,25 +1403,25 @@
   <screen name="BenchmarkInformation" position="0,0" size="1920,1080" title="Benchmark Information" flags="wfNoBorder" backgroundColor="transparent">
     <panel name="ScreenElements2" />
     <ePixmap position="50,315" size="400,400" pixmap="GACommon/images/ram.png" alphatest="on" transparent="1" zPosition="5" />
-    <panel name="CommonInfo" />
+    <panel name="CommonInfo3" />
   </screen>
   <!-- 1-17. Build Info -->
   <screen name="BuildInformation" position="0,0" size="1920,1080" title="Build Information" flags="wfNoBorder" backgroundColor="transparent">
     <panel name="ScreenElements2" />
     <ePixmap position="50,315" size="400,400" pixmap="GACommon/images/build_info.png" alphatest="on" transparent="1" zPosition="5" />
-    <panel name="CommonInfo" />
+    <panel name="CommonInfo3" />
   </screen>
   <!-- 1-18. Testing Info -->
   <screen name="TestingInformation" position="0,0" size="1920,1080" title="Testing Information" flags="wfNoBorder" backgroundColor="transparent">
     <panel name="ScreenElements2" />
     <ePixmap position="50,315" size="400,400" pixmap="GACommon/images/information.png" alphatest="on" transparent="1" zPosition="5" />
-    <panel name="CommonInfo" />
+    <panel name="CommonInfo3" />
   </screen>
   <!-- 1-19. General Info -->
   <screen name="Information" position="0,0" size="1920,1080" title="Information" flags="wfNoBorder" backgroundColor="transparent">
     <panel name="ScreenElements2" />
     <ePixmap position="50,315" size="400,400" pixmap="GACommon/images/service_info.png" alphatest="on" transparent="1" zPosition="5" />
-    <panel name="CommonInfo" />
+    <panel name="CommonInfo3" />
     <ePixmap pixmap="GACommon/icons/infobar/hbbtv_off.png" position="535,825" size="60,30" zPosition="1" alphatest="blend" />
     <widget source="session.CurrentService" render="Pixmap" position="535,825" size="60,30" zPosition="2" pixmap="GACommon/icons/infobar/hbbtv_on.png" alphatest="blend">
       <convert type="ServiceInfo">HasHBBTV</convert>
