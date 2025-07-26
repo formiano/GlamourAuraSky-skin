@@ -661,9 +661,9 @@
     <widget name="list" position="550,330" size="1288,420" enableWrapAround="1" transparent="1" itemHeight="60" selectionDisabled="1" zPosition="5" />
     <widget name="prompt" position="540,145" size="1305,90" font="Regular; 40" halign="center" transparent="1" noWrap="1" zPosition="4" foregroundColor="cyan1" backgroundColor="background20" valign="bottom" />
     <widget name="text" position="540,240" size="1305,70" zPosition="9" font="Regular;40" noWrap="1" halign="center" transparent="1" backgroundColor="sky" valign="bottom" />
-    <widget name="locale" position="560,800" size="1000,50" font="Regular; 30" transparent="1" zPosition="7" foregroundColor="orange" backgroundColor="background20" />
+    <widget name="locale" position="560,800" size="1000,50" font="Regular; 32" transparent="1" zPosition="7" foregroundColor="orange" backgroundColor="background20" />
     <widget name="mode" position="1700,750" size="120,100" font="Regular; 40" halign="center" transparent="1" valign="center" zPosition="7" foregroundColor="lightciel" backgroundColor="background20" />
-    <widget name="language" position="560,750" size="1000,50" font="Regular; 30" transparent="1" zPosition="6" foregroundColor="amarillo" backgroundColor="background20" />
+    <widget name="language" position="560,750" size="1000,50" font="Regular; 32" transparent="1" zPosition="6" foregroundColor="amarillo" backgroundColor="background20" />
     <panel name="FullKeys1" />
   </screen>
   <!-- 08. Numerical Input -->
@@ -1564,16 +1564,16 @@
     <panel name="ScreenElements4" />
     <ePixmap pixmap="GACommon/images/audiosetup.png" position="255,315" size="400,400" transparent="1" alphatest="on" zPosition="5" />
     <widget name="config" font="Regular; 32" position="875,75" size="930,300" scrollbarMode="showOnDemand" itemHeight="50" selectionPixmap="GlamourAuraSky/selections/listsel930.png" alphatest="off" transparent="1" zPosition="3" />
-    <widget source="key_red" render="Pixmap" pixmap="GlamourAuraSky/buttons/red.png" position="815,80" size="45,45" transparent="1" zPosition="3" alphatest="blend" scale="1">
+    <widget source="key_red" render="Pixmap" pixmap="GlamourAuraSky/buttons/red.png" position="815,80" size="45,45" transparent="1" zPosition="3" alphatest="blend">
       <convert type="ConditionalShowHide" />
     </widget>
-    <widget source="key_green" render="Pixmap" pixmap="GlamourAuraSky/buttons/green.png" position="815,130" size="45,45" transparent="1" zPosition="3" alphatest="blend" scale="1">
+    <widget source="key_green" render="Pixmap" pixmap="GlamourAuraSky/buttons/green.png" position="815,130" size="45,45" transparent="1" zPosition="3" alphatest="blend">
       <convert type="ConditionalShowHide" />
     </widget>
-    <widget source="key_yellow" render="Pixmap" pixmap="GlamourAuraSky/buttons/yellow.png" position="815,180" size="45,45" transparent="1" zPosition="3" alphatest="blend" scale="1">
+    <widget source="key_yellow" render="Pixmap" pixmap="GlamourAuraSky/buttons/yellow.png" position="815,180" size="45,45" transparent="1" zPosition="3" alphatest="blend">
       <convert type="ConditionalShowHide" />
     </widget>
-    <widget source="key_blue" render="Pixmap" pixmap="GlamourAuraSky/buttons/blue.png" position="815,230" size="45,45" transparent="1" zPosition="3" alphatest="blend" scale="1">
+    <widget source="key_blue" render="Pixmap" pixmap="GlamourAuraSky/buttons/blue.png" position="815,230" size="45,45" transparent="1" zPosition="3" alphatest="blend">
       <convert type="ConditionalShowHide" />
     </widget>
     <widget name="key_left" position="805,380" size="54,54" zPosition="10" pixmap="GlamourAuraSky/buttons/key_left2.png" transparent="1" alphatest="on" />
@@ -1948,8 +1948,8 @@ if not self["videofps"].text:
   <screen name="MessageBox" position="0,0" size="1920,1080" zPosition="1" title="Message" backgroundColor="transparent" flags="wfNoBorder">
     <widget name="icon" pixmaps="GACommon/icons/message/input_question.png,GACommon/icons/message/input_info.png,GACommon/icons/message/input_warning.png,GACommon/icons/message/input_error.png,GACommon/icons/message/input_message.png" position="255,315" size="400,400" zPosition="4" transparent="1" alphatest="on" />
     <panel name="ScreenElements6" />
-    <widget name="text" position="810,60" size="1050,480" font="RegularB; 33" backgroundColor="background20" zPosition="4" foregroundColor="sky" halign="center" transparent="1" valign="center" />
-    <widget name="list" font="Regular; 32" position="810,540" size="1050,400" itemHeight="50" scrollbarMode="showOnDemand" selectionPixmap="GlamourAuraSky/selections/aurasel1050.png" transparent="1" alphatest="off" zPosition="6" />
+    <widget name="text" position="810,60" size="1050,580" font="RegularB; 33" backgroundColor="background20" zPosition="4" foregroundColor="sky" halign="center" transparent="1" valign="center" />
+    <widget name="list" font="Regular; 32" position="810,640" size="1050,300" itemHeight="50" scrollbarMode="showOnDemand" selectionPixmap="GlamourAuraSky/selections/aurasel1050.png" transparent="1" alphatest="off" zPosition="6" />
   </screen>
   <!-- 06. MessageBox Simple -->
   <screen name="MessageBoxSimple" position="0,0" size="1920,1080" zPosition="1" title="Message" backgroundColor="transparent" flags="wfNoBorder">
@@ -2116,14 +2116,14 @@ if not self["videofps"].text:
     <widget source="Service" render="GlamRun" options="movetype=running,startpoint=0,direction=left,step=6,steptime=50,repeat=2,startdelay=3000,nowrap,oneshot=1,always=0" position="655,880" size="1200,45" foregroundColor="cyan1" font="Regular; 32" transparent="1" backgroundColor="background20" zPosition="7">
       <convert type="MovieInfo">ShortDescription</convert>
     </widget>
-    <widget source="Service" render="GlamRun" options="movetype=running,startpoint=0,direction=top,steptime=10,repeat=2,startdelay=5000,wrap,oneshot=1,always=0" position="50,185" size="580,600" font="Regular; 30" valign="top" transparent="1" backgroundColor="sky" zPosition="8">
+    <widget source="Service" render="GlamRun" options="movetype=running,startpoint=0,direction=top,step=3,steptime=60,repeat=2,startdelay=5000,wrap,oneshot=1,always=0" position="50,185" size="580,600" font="Regular; 32" valign="top" transparent="1" backgroundColor="sky" zPosition="8">
       <convert type="EventName">ExtendedDescription</convert>
     </widget>
     <widget source="Service" render="Label" position="50,910" size="100,40" foregroundColor="cyan1" font="RegularB; 30" halign="left" transparent="1" backgroundColor="background20" zPosition="7" noWrap="1">
       <convert type="ServiceTime">Duration</convert>
       <convert type="ClockToText">AsLength</convert>
     </widget>
-    <widget source="Service" render="Label" position="155,910" size="325,40" font="Regular; 30" foregroundColor="amarillo" halign="center" transparent="1" backgroundColor="background20" zPosition="7" noWrap="1" valign="center">
+    <widget source="Service" render="Label" position="155,910" size="325,40" font="Regular; 32" foregroundColor="amarillo" halign="center" transparent="1" backgroundColor="background20" zPosition="7" noWrap="1" valign="center">
       <convert type="ServiceTime">StartTime</convert>
       <convert type="ClockToText">LongDate</convert>
     </widget>
@@ -2931,7 +2931,7 @@ if not self["videofps"].text:
     <widget name="model" position="540,90" size="1305,75" font="Regular; 34" transparent="1" zPosition="5" />
     <widget name="capacity" position="540,210" size="1305,75" font="Regular; 34" transparent="1" zPosition="5" />
     <widget name="bus" position="540,330" size="1305,75" font="Regular; 34" transparent="1" zPosition="5" />
-    <widget name="initializetext" position="535,855" size="320,90" zPosition="8" font="Regular; 30" halign="center" backgroundColor="background20" transparent="1" valign="bottom" />
+    <widget name="initializetext" position="535,855" size="320,90" zPosition="8" font="Regular; 32" halign="center" backgroundColor="background20" transparent="1" valign="bottom" />
     <ePixmap pixmap="GACommon/buttons/aura_red.png" position="580,870" size="225,75" alphatest="blend" transparent="1" zPosition="3" />
   </screen>
   <screen name="HddSetup" position="0,0" size="1920,1080" title="Hard Drive Setup" flags="wfNoBorder" backgroundColor="transparent">
@@ -3038,7 +3038,7 @@ if not self["videofps"].text:
   <screen name="TimerEditList" position="0,0" size="1920,1080" title="Timer Editor" flags="wfNoBorder" backgroundColor="transparent">
     <panel name="ScreenElements2" />
     <ePixmap position="50,315" size="400,400" pixmap="GACommon/images/timer.png" alphatest="on" transparent="1" zPosition="5" />
-    <widget name="timerlist" position="540,75" size="1305,720" itemHeight="90" rowSplit="50" timerNameFont="RegularB;30" statusFont="Regular;30" detailFont="Regular;28" topHeight="44" bottomHeight="44" indent="30" satPosLeft="250" iconWidth="44" iconHeight="44" iconMargin="10" statusOffset="0" setEventNameFont="Regular;30" setServiceNameFont="Regular;30" setFont="Regular;28" showSeparator="True" scrollbarMode="showOnDemand" backgroundColor="background20" enableWrapAround="1" transparent="1" selectionPixmap="GlamourAuraSky/selections/timersel.png" alphatest="off" zPosition="5" />
+    <widget name="timerlist" position="540,75" size="1305,720" itemHeight="90" rowSplit="50" timerNameFont="RegularB;32" statusFont="Regular;32" detailFont="Regular;28" topHeight="45" bottomHeight="45" indent="30" satPosLeft="250" iconWidth="45" iconHeight="45" iconMargin="10" statusOffset="0" setEventNameFont="Regular;32" setServiceNameFont="Regular;32" setFont="Regular;28" showSeparator="True" scrollbarMode="showOnDemand" backgroundColor="background20" enableWrapAround="1" transparent="1" selectionPixmap="GlamourAuraSky/selections/timersel.png" alphatest="off" zPosition="5" />
     <widget name="HelpWindow" position="540,780" size="1320,130" zPosition="11" transparent="1" />
     <panel name="FullKeys1" />
   </screen>
@@ -3046,9 +3046,9 @@ if not self["videofps"].text:
   <screen name="TimerEntry" position="0,0" size="1920,1080" title="Timer entry" flags="wfNoBorder" backgroundColor="transparent">
     <panel name="ScreenElements2" />
     <ePixmap position="50,315" size="400,400" pixmap="GACommon/images/timer.png" alphatest="on" transparent="1" zPosition="5" />
-    <widget name="config" font="Regular; 32" position="540,75" size="1305,750" itemHeight="50" scrollbarMode="showOnDemand" backgroundColor="background20" enableWrapAround="1" transparent="1" selectionPixmap="GlamourAuraSky/selections/aurasel.png" alphatest="off" zPosition="5" />
-    <widget name="HelpWindow" position="540,780" size="1320,130" zPosition="11" transparent="1" />
-    <panel name="RGKeysCO" />
+    <widget name="config" font="Regular; 32" position="540,50" size="1305,650" itemHeight="50" scrollbarMode="showOnDemand" backgroundColor="background20" transparent="1" selectionPixmap="GlamourAuraSky/selections/aurasel.png" alphatest="off" zPosition="5" />
+    <widget name="description" position="540,700" size="1320,180" backgroundColor="background20" transparent="1" font="Regular; 32" zPosition="5" foregroundColor="sky" />
+    <widget name="HelpWindow" position="540,815" size="1320,130" zPosition="11" transparent="1" />
     <panel name="FullKeys1" />
   </screen>
   <!-- 03. Timer Sanity Check -->

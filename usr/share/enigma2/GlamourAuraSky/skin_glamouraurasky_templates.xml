@@ -736,26 +736,26 @@
     <widget objectTypes="key_blue,StaticText" source="key_blue" render="Label" position="1270,0" size="450,75" zPosition="6" font="Regular; 32" halign="center" backgroundColor="background20" transparent="1" valign="bottom" />
   </screen>
   <screen name="MenuKeysUP" flags="wfNoBorder">
-    <widget objectTypes="key_red,StaticText" source="key_red" render="Pixmap" pixmap="GlamourAuraSky/buttons/red.png" position="480,25" size="50,30" alphatest="blend" zPosition="5" transparent="1">
+    <widget objectTypes="key_red,StaticText" source="key_red" render="Pixmap" pixmap="GlamourAuraSky/buttons/red.png" position="480,20" size="35,35" alphatest="blend" zPosition="5" transparent="1" scale="1">
       <convert type="ConditionalShowHide" />
     </widget>
-    <ePixmap objectTypes="key_red,red,Button,Label" pixmap="GlamourAuraSky/buttons/red.png" position="480,25" size="50,30" alphatest="blend" zPosition="5" transparent="1" />
-    <widget objectTypes="key_green,StaticText" source="key_green" render="Pixmap" pixmap="GlamourAuraSky/buttons/green.png" position="800,25" size="50,30" alphatest="blend" zPosition="5" transparent="1">
+    <ePixmap objectTypes="key_red,red,Button,Label" pixmap="GlamourAuraSky/buttons/red.png" position="480,20" size="35,35" alphatest="blend" zPosition="5" transparent="1" scale="1" />
+    <widget objectTypes="key_green,StaticText" source="key_green" render="Pixmap" pixmap="GlamourAuraSky/buttons/green.png" position="800,20" size="35,35" alphatest="blend" zPosition="5" transparent="1" scale="1">
       <convert type="ConditionalShowHide" />
     </widget>
-    <ePixmap objectTypes="key_green,green,Button,Label" pixmap="GlamourAuraSky/buttons/green.png" position="800,25" size="50,30" alphatest="blend" zPosition="5" transparent="1" />
-    <widget objectTypes="key_yellow,StaticText" source="key_yellow" render="Pixmap" pixmap="GlamourAuraSky/buttons/yellow.png" position="1120,25" size="50,30" alphatest="blend" zPosition="5" transparent="1">
+    <ePixmap objectTypes="key_green,green,Button,Label" pixmap="GlamourAuraSky/buttons/green.png" position="800,20" size="35,35" alphatest="blend" zPosition="5" transparent="1" scale="1" />
+    <widget objectTypes="key_yellow,StaticText" source="key_yellow" render="Pixmap" pixmap="GlamourAuraSky/buttons/yellow.png" position="1120,20" size="35,35" alphatest="blend" zPosition="5" transparent="1" scale="1">
       <convert type="ConditionalShowHide" />
     </widget>
-    <ePixmap objectTypes="key_yellow,yellow,Button,Label" pixmap="GlamourAuraSky/buttons/yellow.png" position="1120,25" size="50,30" alphatest="blend" zPosition="5" transparent="1" />
-    <widget objectTypes="key_blue,StaticText" source="key_blue" render="Pixmap" pixmap="GlamourAuraSky/buttons/blue.png" position="1440,25" size="50,30" alphatest="blend" zPosition="5" transparent="1">
+    <ePixmap objectTypes="key_yellow,yellow,Button,Label" pixmap="GlamourAuraSky/buttons/yellow.png" position="1120,20" size="35,35" alphatest="blend" zPosition="5" transparent="1" scale="1" />
+    <widget objectTypes="key_blue,StaticText" source="key_blue" render="Pixmap" pixmap="GlamourAuraSky/buttons/blue.png" position="1440,20" size="35,35" alphatest="blend" zPosition="5" transparent="1" scale="1">
       <convert type="ConditionalShowHide" />
     </widget>
-    <ePixmap objectTypes="key_blue,blue,Button,Label" pixmap="GlamourAuraSky/buttons/blue.png" position="1440,25" size="50,30" alphatest="blend" zPosition="5" transparent="1" />
-    <ePixmap objectTypes="red,Label,Button" pixmap="GlamourAuraSky/buttons/red.png" position="480,25" size="50,30" alphatest="blend" zPosition="5" transparent="1" />
-    <ePixmap objectTypes="green,Label,Button" pixmap="GlamourAuraSky/buttons/green.png" position="800,25" size="50,30" alphatest="blend" zPosition="5" transparent="1" />
-    <ePixmap objectTypes="yellow,Label,Button" pixmap="GlamourAuraSky/buttons/yellow.png" position="1120,25" size="50,30" alphatest="blend" zPosition="5" transparent="1" />
-    <ePixmap objectTypes="blue,Label,Button" pixmap="GlamourAuraSky/buttons/blue.png" position="1440,25" size="50,30" alphatest="blend" zPosition="5" transparent="1" />
+    <ePixmap objectTypes="key_blue,blue,Button,Label" pixmap="GlamourAuraSky/buttons/blue.png" position="1440,20" size="35,35" alphatest="blend" zPosition="5" transparent="1" scale="1" />
+    <ePixmap objectTypes="red,Label,Button" pixmap="GlamourAuraSky/buttons/red.png" position="480,20" size="35,35" alphatest="blend" zPosition="5" transparent="1" scale="1" />
+    <ePixmap objectTypes="green,Label,Button" pixmap="GlamourAuraSky/buttons/green.png" position="800,20" size="35,35" alphatest="blend" zPosition="5" transparent="1" scale="1" />
+    <ePixmap objectTypes="yellow,Label,Button" pixmap="GlamourAuraSky/buttons/yellow.png" position="1120,20" size="35,35" alphatest="blend" zPosition="5" transparent="1" scale="1" />
+    <ePixmap objectTypes="blue,Label,Button" pixmap="GlamourAuraSky/buttons/blue.png" position="1440,20" size="35,35" alphatest="blend" zPosition="5" transparent="1" scale="1" />
     <widget objectTypes="red,Label,Button" name="red" position="530,20" size="270,40" zPosition="6" font="Regular; 32" halign="left" backgroundColor="background20" transparent="1" valign="center" />
     <widget objectTypes="green,Label,Button" name="green" position="850,20" size="270,40" zPosition="6" font="Regular; 32" halign="left" backgroundColor="background20" transparent="1" valign="center" />
     <widget objectTypes="yellow,Label,Button" name="yellow" position="1170,20" size="270,40" zPosition="6" font="Regular; 32" halign="left" backgroundColor="background20" transparent="1" valign="center" />
@@ -823,7 +823,7 @@
   </screen>
   <!-- 02. Menu Labels -->
   <screen name="MenuEntriesNew" flags="wfNoBorder">
-    <widget source="menu" render="Listbox" position="770,60" size="920,880" transparent="1" selectionPixmap="GlamourAuraSky/selections/menuself920.png" alphatest="off" zPosition="5">
+    <widget source="menu" render="Listbox" position="770,60" size="920,880" transparent="1" selectionPixmap="GlamourAuraSky/selections/menuself920.png" alphatest="off" zPosition="5" scrollbarMode="showNever">
       <convert type="TemplatedMultiContent">
 	 {"templates":
 	  {"default": (80,[MultiContentEntryText(pos = (50, 0), size = (870, 80), flags = RT_HALIGN_LEFT | RT_VALIGN_CENTER, text = 0)]),
@@ -856,6 +856,8 @@
     <panel name="MenuEntriesNew" conditional="key_blue" />
     <panel name="MenuEntriesOld" conditional="blue" />
     <widget source="description" render="Label" position="50,730" size="700,200" conditional="description" font="Regular; 32" foregroundColor="white" backgroundColor="black" shadowColor="black" shadowOffset="2,1" transparent="1" valign="top" halign="center" zPosition="7" />
+    <ePixmap position="1770,90" size="54,54" zPosition="10" pixmap="GlamourAuraSky/buttons/key_up2.png" transparent="1" alphatest="on" />
+    <ePixmap position="1770,850" size="54,54" zPosition="10" pixmap="GlamourAuraSky/buttons/key_down2.png" transparent="1" alphatest="on" />
     <panel name="MenuKeysUP" />
   </screen>
   <screen name="MenuCL" flags="wfNoBorder">
@@ -2565,8 +2567,8 @@
       <convert type="GlamourBase">IsStreaming</convert>
       <convert type="ConditionalShowHide" />
     </widget>
-    <ePixmap pixmap="GACommon/icons/infobar/uhd_off.png" position="1318,947" size="76,30" zPosition="1" alphatest="blend" transparent="1" />
-    <widget source="session.CurrentService" render="Pixmap" pixmap="GlamourAuraSky/icons/infobar/qhd_on.png" position="1318,947" size="76,30" zPosition="2" alphatest="blend" transparent="1">
+    <ePixmap pixmap="GACommon/icons/infobar/hd_off.png" position="1318,947" size="76,30" zPosition="1" alphatest="blend" transparent="1" />
+    <widget source="session.CurrentService" render="Pixmap" pixmap="GlamourAuraSky/icons/infobar/qhd_on.png" position="1318,947" size="76,30" zPosition="4" alphatest="blend" transparent="1">
       <convert type="ServiceInfo">VideoWidth</convert>
       <convert type="ValueRange">2000,2600</convert>
       <convert type="ConditionalShowHide" />
@@ -3083,8 +3085,8 @@
   <screen name="SetupCommon" flags="wfNoBorder">
     <ePixmap pixmap="GlamourAuraSky/menu/accentglowt810.png" position="540,780" size="810,45" zPosition="5" alphatest="blend" transparent="1" />
     <ePixmap pixmap="GlamourAuraSky/menu/accentglowb810.png" position="1040,915" size="810,45" zPosition="5" alphatest="blend" transparent="1" />
-    <widget name="description" position="540,780" size="1320,180" backgroundColor="background20" transparent="1" font="Regular; 30" zPosition="5" foregroundColor="sky" />
-    <widget name="config" font="Regular; 30" position="540,105" size="1320,675" scrollbarMode="showOnDemand" foregroundColorSelected="cyan1" backgroundColorSelected="background20" selectionPixmap="GlamourAuraSky/selections/setupsel.png" alphatest="off" backgroundColor="background20" itemHeight="45" enableWrapAround="1" transparent="1" zPosition="9" />
+    <widget name="description" position="540,780" size="1320,180" backgroundColor="background20" transparent="1" font="Regular; 32" zPosition="5" foregroundColor="sky" />
+    <widget name="config" font="Regular; 32" position="540,105" size="1320,675" scrollbarMode="showOnDemand" foregroundColorSelected="cyan1" backgroundColorSelected="background20" selectionPixmap="GlamourAuraSky/selections/setupsel.png" alphatest="off" backgroundColor="background20" itemHeight="45" enableWrapAround="1" transparent="1" zPosition="9" />
     <widget name="footnote" position="50,730" size="470,200" font="Regular; 32" foregroundColor="white" backgroundColor="black" shadowColor="black" shadowOffset="2,1" transparent="1" valign="top" halign="center" zPosition="7" />
     <widget name="HelpWindow" position="540,870" size="1320,90" zPosition="11" transparent="1" />
     <widget name="setupimage" position="50,315" size="400,400" conditional="setupimage" alphatest="on" transparent="1" zPosition="5" />
@@ -3107,7 +3109,7 @@
     <widget source="ServiceEvent" render="Label" position="265,15" size="510,100" font="RegularB; 34" backgroundColor="sky" transparent="1" valign="bottom" halign="center" foregroundColor="white" zPosition="7">
       <convert type="ServiceName">Name</convert>
     </widget>
-    <widget source="ServiceEvent" render="GlamRun" options="movetype=running,startpoint=0,direction=left,steptime=2,repeat=2,startdelay=1000,nowrap,oneshot=1,always=0" position="50,168" size="720,50" font="RegularB; 32" backgroundColor="grey2" transparent="1" valign="center" halign="center" foregroundColor="black" zPosition="7">
+    <widget source="ServiceEvent" render="GlamRun" options="movetype=running,startpoint=0,direction=left,step=6,steptime=50,repeat=2,startdelay=700,nowrap,oneshot=1,always=0,ellipsis=1" position="50,168" size="720,50" font="RegularB; 32" backgroundColor="grey2" transparent="1" valign="center" halign="center" foregroundColor="black" zPosition="7">
       <convert type="EventName">Name</convert>
     </widget>
     <widget source="ServiceEvent" render="Label" position="265,115" size="95,45" font="Numbers; 42" backgroundColor="background20" transparent="1" halign="center" valign="center" zPosition="6" noWrap="1">
@@ -3209,19 +3211,19 @@
   <!-- 10-5 Channel Selection Lists -->
   <screen name="CSList" flags="wfNoBorder">
     <!-- 10-5-1 CS List -->
-    <widget name="list" position="785,135" size="1095,850" itemHeight="85" scrollbarMode="showOnDemand" backgroundColorMarked="sky" backgroundColorMarkedSelected="cyan" colorEventProgressbar="sky" colorEventProgressbarBorder="white" colorEventProgressbarBorderSelected="white" colorEventProgressbarSelected="cyan2" colorFallbackItem="white" colorServiceDescription="sky" colorServiceDescriptionFallback="white" colorServiceDescriptionSelected="lightciel" colorServiceDescriptionSelectedFallback="cyan" colorServiceRecordedcolorServicePseudoRecorded="transpyellow" colorServiceRecording="transpred" colorServiceSelectedFallback="white" colorServiceStreamed="orange" colorServiceWithAdvertisment="green" fieldMargins="20" foregroundColorMarked="white" foregroundColorMarkedSelected="lightciel" foregroundColorServiceNotAvail="darkgrey" itemsDistances="15" listMarginLeft="5" listMarginRight="30" nonplayableMargins="20" progressbarBorderWidth="2" progressbarHeight="18" progressBarWidth="75" progressInfoFont="Numbers;33" serviceInfoFont="RegularB" serviceItemHeight="50" serviceNameFont="RegularB;34" serviceNumberFont="Numbers;31" transparent="1" selectionPixmap="GlamourAuraSky/selections/channelselbig.png" alphatest="off" zPosition="3" />
+    <widget name="list" position="785,135" size="1095,850" itemHeight="85" scrollbarMode="showOnDemand" backgroundColorMarked="sky" backgroundColorMarkedSelected="cyan" colorEventProgressbar="sky" colorEventProgressbarBorder="white" colorEventProgressbarBorderSelected="white" colorEventProgressbarSelected="cyan2" colorFallbackItem="white" colorServiceDescription="sky" colorServiceDescriptionFallback="white" colorServiceDescriptionSelected="lightciel" colorServiceDescriptionSelectedFallback="cyan" colorServiceRecordedcolorServicePseudoRecorded="transpyellow" colorServiceRecording="transpred" colorServiceSelectedFallback="white" colorServiceStreamed="orange" colorServiceWithAdvertisment="green" fieldMargins="20" foregroundColorMarked="white" foregroundColorMarkedSelected="lightciel" foregroundColorServiceNotAvail="darkgrey" itemsDistances="15" listMarginLeft="5" listMarginRight="30" nonplayableMargins="20" progressbarBorderWidth="2" progressbarHeight="18" progressBarWidth="75" progressInfoFont="Numbers;33" serviceInfoFont="Regular;31" serviceItemHeight="50" serviceNameFont="RegularB;34" serviceNumberFont="Numbers;31" transparent="1" selectionPixmap="GlamourAuraSky/selections/channelselbig.png" alphatest="off" zPosition="3" />
   </screen>
   <screen name="CSListRadio" flags="wfNoBorder">
     <!-- 10-5-2 CS List Radio-->
-    <widget name="list" position="785,135" size="1095,640" itemHeight="80" scrollbarMode="showOnDemand" backgroundColorMarked="sky" backgroundColorMarkedSelected="cyan" colorEventProgressbar="sky" colorEventProgressbarBorder="white" colorEventProgressbarBorderSelected="white" colorEventProgressbarSelected="cyan2" colorFallbackItem="white" colorServiceDescription="sky" colorServiceDescriptionFallback="white" colorServiceDescriptionSelected="lightciel" colorServiceDescriptionSelectedFallback="cyan" colorServiceRecordedcolorServicePseudoRecorded="transpyellow" colorServiceRecording="transpred" colorServiceSelectedFallback="white" colorServiceStreamed="orange" colorServiceWithAdvertisment="green" fieldMargins="20" foregroundColorMarked="white" foregroundColorMarkedSelected="lightciel" foregroundColorServiceNotAvail="darkgrey" itemsDistances="15" listMarginLeft="5" listMarginRight="30" nonplayableMargins="20" progressbarBorderWidth="2" progressbarHeight="18" progressBarWidth="75" progressInfoFont="Numbers;33" serviceInfoFont="RegularB" serviceItemHeight="50" serviceNameFont="RegularB;34" serviceNumberFont="Numbers;31" transparent="1" selectionPixmap="GlamourAuraSky/selections/channelselbig.png" alphatest="off" zPosition="3" />
+    <widget name="list" position="785,135" size="1095,640" itemHeight="80" scrollbarMode="showOnDemand" backgroundColorMarked="sky" backgroundColorMarkedSelected="cyan" colorEventProgressbar="sky" colorEventProgressbarBorder="white" colorEventProgressbarBorderSelected="white" colorEventProgressbarSelected="cyan2" colorFallbackItem="white" colorServiceDescription="sky" colorServiceDescriptionFallback="white" colorServiceDescriptionSelected="lightciel" colorServiceDescriptionSelectedFallback="cyan" colorServiceRecordedcolorServicePseudoRecorded="transpyellow" colorServiceRecording="transpred" colorServiceSelectedFallback="white" colorServiceStreamed="orange" colorServiceWithAdvertisment="green" fieldMargins="20" foregroundColorMarked="white" foregroundColorMarkedSelected="lightciel" foregroundColorServiceNotAvail="darkgrey" itemsDistances="15" listMarginLeft="5" listMarginRight="30" nonplayableMargins="20" progressbarBorderWidth="2" progressbarHeight="18" progressBarWidth="75" progressInfoFont="Numbers;33" serviceInfoFont="Regular;31" serviceItemHeight="50" serviceNameFont="RegularB;34" serviceNumberFont="Numbers;31" transparent="1" selectionPixmap="GlamourAuraSky/selections/channelselbig.png" alphatest="off" zPosition="3" />
   </screen>
   <screen name="CSListSimple" flags="wfNoBorder">
     <!-- 10-5-3 CS List Simple-->
-    <widget name="list" position="655,135" size="1200,800" itemHeight="80" scrollbarMode="showOnDemand" backgroundColorMarked="sky" backgroundColorMarkedSelected="cyan" colorEventProgressbar="sky" colorEventProgressbarBorder="white" colorEventProgressbarBorderSelected="white" colorEventProgressbarSelected="cyan2" colorFallbackItem="white" colorServiceDescription="sky" colorServiceDescriptionFallback="white" colorServiceDescriptionSelected="lightciel" colorServiceDescriptionSelectedFallback="cyan" colorServiceRecordedcolorServicePseudoRecorded="transpyellow" colorServiceRecording="transpred" colorServiceSelectedFallback="white" colorServiceStreamed="orange" colorServiceWithAdvertisment="green" fieldMargins="20" foregroundColorMarked="white" foregroundColorMarkedSelected="lightciel" foregroundColorServiceNotAvail="darkgrey" itemsDistances="15" listMarginLeft="5" listMarginRight="30" nonplayableMargins="20" progressbarBorderWidth="2" progressbarHeight="18" progressBarWidth="75" progressInfoFont="Numbers;33" serviceInfoFont="RegularB" serviceItemHeight="50" serviceNameFont="RegularB;34" serviceNumberFont="Numbers;31" transparent="1" selectionPixmap="GlamourAuraSky/selections/epgselmulti90.png" alphatest="off" zPosition="3" />
+    <widget name="list" position="655,135" size="1200,800" itemHeight="80" scrollbarMode="showOnDemand" backgroundColorMarked="sky" backgroundColorMarkedSelected="cyan" colorEventProgressbar="sky" colorEventProgressbarBorder="white" colorEventProgressbarBorderSelected="white" colorEventProgressbarSelected="cyan2" colorFallbackItem="white" colorServiceDescription="sky" colorServiceDescriptionFallback="white" colorServiceDescriptionSelected="lightciel" colorServiceDescriptionSelectedFallback="cyan" colorServiceRecordedcolorServicePseudoRecorded="transpyellow" colorServiceRecording="transpred" colorServiceSelectedFallback="white" colorServiceStreamed="orange" colorServiceWithAdvertisment="green" fieldMargins="20" foregroundColorMarked="white" foregroundColorMarkedSelected="lightciel" foregroundColorServiceNotAvail="darkgrey" itemsDistances="15" listMarginLeft="5" listMarginRight="30" nonplayableMargins="20" progressbarBorderWidth="2" progressbarHeight="18" progressBarWidth="75" progressInfoFont="Numbers;33" serviceInfoFont="Regular;31" serviceItemHeight="50" serviceNameFont="RegularB;34" serviceNumberFont="Numbers;31" transparent="1" selectionPixmap="GlamourAuraSky/selections/epgselmulti90.png" alphatest="off" zPosition="3" />
   </screen>
   <screen name="CSListPosters" flags="wfNoBorder">
     <!-- 10-5-4 CS List Posters-->
-    <widget name="list" position="785,135" size="1095,550" itemHeight="55" scrollbarMode="showOnDemand" backgroundColorMarked="sky" backgroundColorMarkedSelected="cyan" colorEventProgressbar="sky" colorEventProgressbarBorder="white" colorEventProgressbarBorderSelected="white" colorEventProgressbarSelected="cyan2" colorFallbackItem="white" colorServiceDescription="sky" colorServiceDescriptionFallback="white" colorServiceDescriptionSelected="lightciel" colorServiceDescriptionSelectedFallback="cyan" colorServiceRecordedcolorServicePseudoRecorded="transpyellow" colorServiceRecording="transpred" colorServiceSelectedFallback="white" colorServiceStreamed="orange" colorServiceWithAdvertisment="green" fieldMargins="20" foregroundColorMarked="white" foregroundColorMarkedSelected="lightciel" foregroundColorServiceNotAvail="darkgrey" itemsDistances="15" listMarginLeft="5" listMarginRight="30" nonplayableMargins="20" progressbarBorderWidth="2" progressbarHeight="18" progressBarWidth="75" progressInfoFont="Numbers;33" serviceInfoFont="RegularB" serviceItemHeight="50" serviceNameFont="RegularB;34" serviceNumberFont="Numbers;31" transparent="1" selectionPixmap="GlamourAuraSky/selections/channelselbig.png" alphatest="off" zPosition="3" />
+    <widget name="list" position="785,135" size="1095,550" itemHeight="55" scrollbarMode="showOnDemand" backgroundColorMarked="sky" backgroundColorMarkedSelected="cyan" colorEventProgressbar="sky" colorEventProgressbarBorder="white" colorEventProgressbarBorderSelected="white" colorEventProgressbarSelected="cyan2" colorFallbackItem="white" colorServiceDescription="sky" colorServiceDescriptionFallback="white" colorServiceDescriptionSelected="lightciel" colorServiceDescriptionSelectedFallback="cyan" colorServiceRecordedcolorServicePseudoRecorded="transpyellow" colorServiceRecording="transpred" colorServiceSelectedFallback="white" colorServiceStreamed="orange" colorServiceWithAdvertisment="green" fieldMargins="20" foregroundColorMarked="white" foregroundColorMarkedSelected="lightciel" foregroundColorServiceNotAvail="darkgrey" itemsDistances="15" listMarginLeft="5" listMarginRight="30" nonplayableMargins="20" progressbarBorderWidth="2" progressbarHeight="18" progressBarWidth="75" progressInfoFont="Numbers;33" serviceInfoFont="Regular;31" serviceItemHeight="50" serviceNameFont="RegularB;34" serviceNumberFont="Numbers;31" transparent="1" selectionPixmap="GlamourAuraSky/selections/channelselbig.png" alphatest="off" zPosition="3" />
   </screen>
   <!-- 11. MOVIE TEMPLATES -->
   <!-- 11-1 BACKGROUND -->
