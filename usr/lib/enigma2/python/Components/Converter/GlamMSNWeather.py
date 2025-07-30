@@ -21,22 +21,17 @@
 # You should have received a copy of the GNU General Public License
 # along with this program. If not, see <http://www.gnu.org/licenses/>.
 #
-from __future__ import absolute_import
-import os
 import math
-import gettext
-import datetime, time
-from Components.Converter.Converter import Converter
-from Components.Element import cached
-from Components.config import config, configfile
-from Components.Console import Console as iConsole
-from Components.Language import language
-from time import localtime, strftime
-from datetime import date
-from os import environ
-from Components.Converter.Poll import Poll
-import six
+import os
+import time
+from time import strftime
 
+import six
+from Components.config import config
+from Components.Console import Console as iConsole
+from Components.Converter.Converter import Converter
+from Components.Converter.Poll import Poll
+from Components.Element import cached
 
 weather_city = config.plugins.weathermsn.city.value # 'Moscow,Russia'
 degreetype = config.plugins.weathermsn.degreetype.value # 'C'
@@ -49,7 +44,7 @@ if weather_location == 'en-EN':
 time_update = 30
 time_update_ms = 3000
 
-class GlamMSNWeather(Poll, Converter, object):
+class GlamMSNWeather(Poll, Converter):
 
 	VFD = 1
 	DATE = 2
@@ -730,7 +725,7 @@ class GlamMSNWeather(Poll, Converter, object):
 		JD = JDN + UT / 24
 # Astral time
 		T = (JDN - 2451545) / 36525 # Julian Century on Midnight Greenwich
-		STT = math.fmod((6.697374558333 + 2400.0513369072223 * T + 0.0000258622 * T * T - 0.00000000172 * T * T * T), 24) # astral time at GMT 
+		STT = math.fmod((6.697374558333 + 2400.0513369072223 * T + 0.0000258622 * T * T - 0.00000000172 * T * T * T), 24) # astral time at GMT
 		ST = math.fmod((STT + UT * 1.0027379093 - zone * 1.0027379093 + long / 15), 24) # local astral time
 		if ST < 0:
 			ST = ST + 24
@@ -1420,7 +1415,7 @@ class GlamMSNWeather(Poll, Converter, object):
 			LM = 218.3164477 + 481267.88123421 * T - 0.0015786 * T * T + T * T * T / 538841 - T * T * T * T / 65194000 # lunar longitude cf.
 			FM = 93.272095 + 483202.0175233 * T - 0.0036539 * T * T - T * T * T / 3526000 + T * T * T * T / 863310000 # ср argument of latitude of the moon
 			DM = 297.8501921 + 445267.114034 * T - 0.0018819 * T * T + T * T * T / 545868 - T * T * T * T / 113065000 # ср moon elongation
-			MS = 357.5291092 + 35999.0502909 * T - 0.0001536 * T * T + T * T * T / 24490000 # ср Solar anomaly 
+			MS = 357.5291092 + 35999.0502909 * T - 0.0001536 * T * T + T * T * T / 24490000 # ср Solar anomaly
 			MM = 134.9633964 + 477198.8675055 * T + 0.0087414 * T * T + T * T * T / 69699 - T * T * T * T / 14712000 # ср Lunar anomaly
 			EM = 1 - 0.002516 * T - 0.0000074 * T * T # correction for varying eccentricity
 
@@ -1879,7 +1874,7 @@ class GlamMSNWeather(Poll, Converter, object):
 			LM = 218.3164477 + 481267.88123421 * T - 0.0015786 * T * T + T * T * T / 538841 - T * T * T * T / 65194000 # lunar longitude cf.
 			FM = 93.272095 + 483202.0175233 * T - 0.0036539 * T * T - T * T * T / 3526000 + T * T * T * T / 863310000 # ср argument of latitude of the moon
 			DM = 297.8501921 + 445267.114034 * T - 0.0018819 * T * T + T * T * T / 545868 - T * T * T * T / 113065000 # ср moon elongation
-			MS = 357.5291092 + 35999.0502909 * T - 0.0001536 * T * T + T * T * T / 24490000 # ср Solar anomaly 
+			MS = 357.5291092 + 35999.0502909 * T - 0.0001536 * T * T + T * T * T / 24490000 # ср Solar anomaly
 			MM = 134.9633964 + 477198.8675055 * T + 0.0087414 * T * T + T * T * T / 69699 - T * T * T * T / 14712000 # ср Lunar anomaly
 			EM = 1 - 0.002516 * T - 0.0000074 * T * T # correction for varying eccentricity
 
@@ -1958,7 +1953,7 @@ class GlamMSNWeather(Poll, Converter, object):
 	#
 			T = (JD + 0.5 / 24 - 2451545) / 36525
 			DM = 297.8501921 + 445267.114034 * T - 0.0018819 * T * T + T * T * T / 545868 - T * T * T * T / 113065000 # ср moon elongation
-			MS = 357.5291092 + 35999.0502909 * T - 0.0001536 * T * T + T * T * T / 24490000 # ср Solar anomaly 
+			MS = 357.5291092 + 35999.0502909 * T - 0.0001536 * T * T + T * T * T / 24490000 # ср Solar anomaly
 			MM = 134.9633964 + 477198.8675055 * T + 0.0087414 * T * T + T * T * T / 69699 - T * T * T * T / 14712000 # ср Lunar anomaly
 			IM = 180 - DM\
 				- 6.289 * math.sin(MM * DEG2RAD)\
