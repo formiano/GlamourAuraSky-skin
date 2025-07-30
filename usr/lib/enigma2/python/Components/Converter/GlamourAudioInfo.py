@@ -98,7 +98,7 @@ class GlamourAudioInfo(Poll, Converter):
 				type = AUDIO_FORMATS[self.audio_info.getType()][1];
 				description_str = type
 				channels = self.audio_info.getDescription();
-				channels_str = re.search("([0-9\.]+)", channels)
+				channels_str = re.search(r"([0-9\.]+)", channels)
 				if channels_str:
 					description_str = description_str + " " + channels_str.group(1)
 			except:

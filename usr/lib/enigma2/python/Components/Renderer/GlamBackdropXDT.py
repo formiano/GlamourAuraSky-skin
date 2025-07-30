@@ -443,7 +443,7 @@ class GlamBackdropXDT(threading.Thread):
 				else:
 					imdb[4]=""
 				imdb[4] = self.UNAC(imdb[4])
-				imdb_backdrop=re.search("(.*?)._V1_.*?.jpg",imdb[0])
+				imdb_backdrop=re.search(r"(.*?)._V1_.*?.jpg",imdb[0])
 				if imdb_backdrop:
 					if imdb[3]=="":
 						if year and year!="":
