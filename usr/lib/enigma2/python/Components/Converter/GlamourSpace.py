@@ -1,6 +1,6 @@
 ﻿#GlamourSpace converter (Python 3)
 #Modded and recoded by MCelliotG for use in Glamour skins or standalone
-# Revised by OPENDROID_TEAM and ChatGPT for reliability across devices and mounts
+# Revised by OPENDROID_TEAM for reliability across devices and mounts
 
 import os
 from Components.Converter.Converter import Converter

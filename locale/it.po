@@ -5,7 +5,7 @@ msgstr ""
 "Project-Id-Version: enigma2 openDroid\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2025-07-30 14:59+0200\n"
-"PO-Revision-Date: 2025-07-30 15:23+0200\n"
+"PO-Revision-Date: 2025-07-30 15:45+0200\n"
 "Last-Translator: FULL NAME <opendroid-Team <opendroid2013@gmail.com>, >\n"
 "Language-Team: Gimsy Formiano\n"
 "Language: it\n"
@@ -18,167 +18,167 @@ msgstr ""
 
 #, python-format
 msgid "%.01f ft/s"
-msgstr ""
+msgstr "%.01f ft/s"
 
 #, python-format
 msgid "%.01f km/h"
-msgstr ""
+msgstr "%.01f km/h"
 
 #, python-format
 msgid "%.01f knots"
-msgstr ""
+msgstr "%.01f knots"
 
 #, python-format
 msgid "%.01f m/s"
-msgstr ""
+msgstr "%.01f m/s"
 
 #, python-format
 msgid "%.01f mp/h"
-msgstr ""
+msgstr "%.01f mp/h"
 
 #, python-format
 msgid "%s h"
-msgstr ""
+msgstr "%s h"
 
 #, python-format
 msgid "%s km"
-msgstr ""
+msgstr "%s km"
 
 #, python-format
 msgid "%s km/h"
-msgstr ""
+msgstr "%s km/h"
 
 #, python-format
 msgid "%s m/s"
-msgstr ""
+msgstr "%s m/s"
 
 #, python-format
 msgid "%s mp/h"
-msgstr ""
+msgstr "%s mp/h"
 
 #, python-format
 msgid "+%s h"
-msgstr ""
+msgstr "+%s h"
 
 msgid "<unknown>"
-msgstr ""
+msgstr "<sconosciuto>"
 
 msgid "AAC"
-msgstr ""
+msgstr "AAC"
 
 msgid "AC3"
-msgstr ""
+msgstr "AC3"
 
 msgid "AC3+"
-msgstr ""
+msgstr "AC3+"
 
 msgid "AC4"
-msgstr ""
+msgstr "AC4"
 
 msgid "ATMOS"
-msgstr ""
+msgstr "ATMOSFERA"
 
 msgid "BufferInfo"
-msgstr ""
+msgstr "Informazioni sul buffer"
 
 msgid "CI slot: "
-msgstr ""
+msgstr "CI slot: "
 
 msgid "DTS"
-msgstr ""
+msgstr "DTS"
 
 msgid "DTS-HD"
-msgstr ""
+msgstr "DTS-HD"
 
 msgid "DataSpace"
-msgstr ""
+msgstr "Spazio dati"
 
 msgid "FLAC"
-msgstr ""
+msgstr "FLAC"
 
 msgid "First quarter"
-msgstr ""
+msgstr "Primo quarto"
 
 msgid "FlashInfo"
-msgstr ""
+msgstr "Informazioni flash"
 
 msgid "Full moon"
-msgstr ""
+msgstr "Luna piena"
 
 msgid "HDDSpace"
-msgstr ""
+msgstr "Spazio HDD"
 
 msgid "HE-AAC"
-msgstr ""
+msgstr "HE-AAC"
 
 msgid "Invalid type"
-msgstr ""
+msgstr "Tipo non valido"
 
 msgid "LPCM"
-msgstr ""
+msgstr "LPCM"
 
 msgid "Last quarter"
-msgstr ""
+msgstr "Ultimo trimestre"
 
 msgid "MP3"
-msgstr ""
+msgstr "MP3"
 
 msgid "MPEG"
-msgstr ""
+msgstr "MPEG"
 
 msgid "MemFree"
-msgstr ""
+msgstr "MemFree"
 
 msgid "MemTotal"
-msgstr ""
+msgstr "MemTotal"
 
 msgid "NetSpace"
-msgstr ""
+msgstr "NetSpace"
 
 msgid "New moon"
-msgstr ""
+msgstr "Luna nuova"
 
 msgid "OGG"
-msgstr ""
+msgstr "OGG"
 
 msgid "OPUS"
-msgstr ""
+msgstr "OPUS"
 
 msgid "PCM"
-msgstr ""
+msgstr "PCM"
 
 msgid "RAMInfo"
-msgstr ""
+msgstr "Informazioni sulla RAM"
 
 msgid "SwapFree"
-msgstr ""
+msgstr "Swap gratuito"
 
 msgid "SwapInfo"
-msgstr ""
+msgstr "SwapInfo"
 
 msgid "SwapTotal"
-msgstr ""
+msgstr "SwapTotale"
 
 msgid "TRUEHD"
-msgstr ""
+msgstr "TRUEHD"
 
 msgid "USBSpace"
-msgstr ""
+msgstr "Spazio USB"
 
 msgid "WMA"
-msgstr ""
+msgstr "WMA"
 
 msgid "Waning crescent"
-msgstr ""
+msgstr "Mezzaluna calante"
 
 msgid "Waning gibbous"
-msgstr ""
+msgstr "Gibbosa calante"
 
 msgid "Waxing cresent"
-msgstr ""
+msgstr "mezzaluna crescente"
 
 msgid "Waxing gibbous"
-msgstr ""
+msgstr "Luna gibbosa crescente"
 
 msgid "unknown"
-msgstr ""
+msgstr "sconosciuto"
