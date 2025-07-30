@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: Opendroid / enigma2\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2025-07-30 14:59+0200\n"
-"PO-Revision-Date: 2025-07-30 15:18+0200\n"
+"PO-Revision-Date: 2025-07-30 15:48+0200\n"
 "Last-Translator: OPD Team <opendroid2013@gmail.com>\n"
 "Language-Team: TEAM <EMAIL@ADDRESS>\n"
 "Language: bg\n"
@@ -20,58 +20,58 @@ msgstr ""
 
 #, python-format
 msgid "%.01f km/h"
-msgstr ""
+msgstr "%.01f km/h"
 
 #, python-format
 msgid "%.01f knots"
-msgstr ""
+msgstr "%.01f knots"
 
 #, python-format
 msgid "%.01f m/s"
-msgstr ""
+msgstr "%.01f m/s"
 
 #, python-format
 msgid "%.01f mp/h"
-msgstr ""
+msgstr "%.01f mp/h"
 
 #, python-format
 msgid "%s h"
-msgstr ""
+msgstr "%s h"
 
 #, python-format
 msgid "%s km"
-msgstr ""
+msgstr "%s km"
 
 #, python-format
 msgid "%s km/h"
-msgstr ""
+msgstr "%s km/h"
 
 #, python-format
 msgid "%s m/s"
-msgstr ""
+msgstr "%s m/s"
 
 #, python-format
 msgid "%s mp/h"
-msgstr ""
+msgstr "%s mp/h"
 
 #, python-format
 msgid "+%s h"
 msgstr ""
 
 msgid "<unknown>"
-msgstr ""
+msgstr "<unknown>"
 
 msgid "AAC"
-msgstr ""
+msgstr "AAC"
 
 msgid "AC3"
-msgstr ""
+msgstr "AC3"
 
 msgid "AC3+"
-msgstr ""
+msgstr "AC3+"
 
 msgid "AC4"
-msgstr ""
+msgstr "AC4"
 
 msgid "ATMOS"
 msgstr ""
