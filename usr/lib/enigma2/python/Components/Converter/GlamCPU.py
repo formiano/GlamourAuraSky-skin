@@ -6,7 +6,8 @@ from Components.Converter.Converter import Converter
 from Components.Converter.Poll import Poll
 from Components.Element import cached
 
-class GlamCPU(Converter, object):
+
+class GlamCPU(Converter):
 	CPU_ALL = -2
 	CPU_TOTAL = -1
 
@@ -15,12 +16,12 @@ class GlamCPU(Converter, object):
 		self.percentlist = []
 		self.format_type = "Default"
 		self.sfmt = type.strip()
-		
+
 		if "," in type:
 			parts = type.split(",")
 			self.sfmt = parts[0].strip()
 			self.format_type = parts[1].strip()
-		
+
 	def doSuspend(self, suspended):
 		if suspended:
 			cpuUsageMonitor.disconnectCallback(self.gotPercentage)
@@ -35,16 +36,16 @@ class GlamCPU(Converter, object):
 	def getText(self):
 		if not self.percentlist:
 			return ""
-		
+
 		cpu_count = len(self.percentlist)
 		res = self.sfmt[:]
-		
+
 		for i in range(16):
 			if f"${i}" in res:
 				res = res.replace(f"${i}", f"{self.percentlist[i]}%" if i < cpu_count else "")
-		
+
 		res = res.replace("$?", str(cpu_count - 1))
-		
+
 		if self.sfmt in ["All", "Default"]:
 			if self.format_type == "Separator":
 				return f"CPU: {self.percentlist[0]}% (" + " | ".join(f"{p}%" for p in self.percentlist[1:]) + ")"
@@ -55,7 +56,7 @@ class GlamCPU(Converter, object):
 			else:
 				core_loads = " ".join(f"{p}%" for p in self.percentlist[1:])
 				return f"CPU: {self.percentlist[0]}% ({core_loads})" if core_loads else f"CPU: {self.percentlist[0]}%"
-		
+
 		return res.strip()
 
 	@cached
@@ -69,7 +70,7 @@ class GlamCPU(Converter, object):
 	value = property(getValue)
 	range = 100
 
-class CpuUsageMonitor(Poll, object):
+class CpuUsageMonitor(Poll):
 	def __init__(self):
 		Poll.__init__(self)
 		self.__callbacks = []
@@ -82,7 +83,7 @@ class CpuUsageMonitor(Poll, object):
 	def getCpusInfo(self):
 		res = []
 		try:
-			fd = open("/proc/stat", "r")
+			fd = open("/proc/stat")
 			for l in fd:
 				if l.startswith("cpu"):
 					total = busy = 0

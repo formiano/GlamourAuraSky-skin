@@ -2,17 +2,17 @@
 #Modded and recoded by MCelliotG for use in Glamour skins or standalone
 #If you use this Converter for other skins and rename it, please keep the lines above adding your credits below
 
-import os
 import shutil
+
 from Components.Converter.Converter import Converter
-from enigma import eTimer, iServiceInformation, eConsoleAppContainer, iPlayableService
 from Components.Element import cached
 from Components.ServiceEventTracker import ServiceEventTracker
+from enigma import eConsoleAppContainer, eTimer, iPlayableService, iServiceInformation
 
 BITRATE_BINARY_PATH = 'bitrate'
 binaryfound = shutil.which(BITRATE_BINARY_PATH) is not None
 
-class GlamBitrate(Converter, object):
+class GlamBitrate(Converter):
 	VIDEOBITRATE = -1
 	AUDIOBITRATE = 0
 	VCUR = 1
@@ -152,25 +152,25 @@ class GlamBitrate(Converter, object):
 		}
 		if self.type == "VIDEOBITRATE":
 			return f"Video: Cur:{self.vcur} Min:{self.vmin} Max:{self.vmax} Avg:{self.vavg}"
-		elif self.type == "AUDIOBITRATE": 
+		elif self.type == "AUDIOBITRATE":
 			return f"Audio: Cur:{self.acur} Min:{self.amin} Max:{self.amax} Avg:{self.aavg}"
-		elif self.type == "VCUR": 
+		elif self.type == "VCUR":
 			return f"Cur:{self.vcur} Kbit/s"
-		elif self.type == "VMIN": 
+		elif self.type == "VMIN":
 			return f"Min:{self.vmin} Kbit/s"
-		elif self.type == "VMAX": 
+		elif self.type == "VMAX":
 			return f"Max:{self.vmax} Kbit/s"
-		elif self.type == "VAVG": 
+		elif self.type == "VAVG":
 			return f"Avg:{self.vavg} Kbit/s"
-		elif self.type == "ACUR": 
+		elif self.type == "ACUR":
 			return f"Cur:{self.acur} Kbit/s"
-		elif self.type == "AMIN": 
+		elif self.type == "AMIN":
 			return f"Min:{self.amin} Kbit/s"
-		elif self.type == "AMAX": 
+		elif self.type == "AMAX":
 			return f"Max:{self.amax} Kbit/s"
-		elif self.type == "AAVG": 
+		elif self.type == "AAVG":
 			return f"Avg:{self.aavg} Kbit/s"
-		elif self.type == "ALL": 
+		elif self.type == "ALL":
 			return f"Video: Cur:{self.vcur} Min:{self.vmin} Max:{self.vmax} Avg:{self.vavg}\nAudio: Cur:{self.acur} Min:{self.amin} Max:{self.amax} Avg:{self.aavg}"
 		text = self.type
 		for key, value in values.items():
