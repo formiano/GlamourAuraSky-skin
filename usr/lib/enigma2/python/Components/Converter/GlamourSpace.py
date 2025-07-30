@@ -1,6 +1,6 @@
 ﻿#GlamourSpace converter (Python 3)
 #Modded and recoded by MCelliotG for use in Glamour skins or standalone
-#If you use this Converter for other skins and rename it, please keep the lines above adding your credits below
+# Revised by OPENDROID_TEAM and ChatGPT for reliability across devices and mounts
 
 import os
 from Components.Converter.Converter import Converter
@@ -38,19 +38,20 @@ class GlamourSpace(Poll, Converter):
 			"BufferInfo": self.BUFFERINFO
 		}
 		self.type = type_mapping.get(type[0], None)
-		self.poll_enabled = self.type in (
-			self.RAMINFO, self.SWAPINFO, self.BUFFERINFO
-		)
-		self.poll_interval = 15000 if self.type in (
-			self.HDDSPACE, self.USBSPACE, self.FLASHINFO, self.DATASPACE, self.NETSPACE
-		) else 5000
+		self.poll_enabled = True
+		self.poll_interval = 5000
+
+	def changed(self, what):
+		self.downstream_elements.changed(what)
 
 	def getText(self):
 		if self.type == self.NETSPACE:
-			mount_point = self.getNetworkMount()
-			if not mount_point:
-				return "NetHDD: N/A"
-			return self.getDiskUsage(mount_point, "NetHDD")
+			mount = self.getMountedPath(["/media/net", "/media/autofs", "/media/hdd/NAS", "/mnt"])
+			return self.getDiskUsage(mount, "NetHDD") if mount else "NetHDD: Not mounted"
+
+		if self.type == self.HDDSPACE:
+			mount = self.getMountedPath(["/media/hdd"])
+			return self.getDiskUsage(mount, "HDD") if mount else "HDD: Not mounted"
 
 		if self.type in (self.RAMINFO, self.SWAPINFO, self.BUFFERINFO):
 			return self.getMemoryInfo()
@@ -61,7 +62,6 @@ class GlamourSpace(Poll, Converter):
 			self.SWAPTOTAL: ("Swap", "/proc/meminfo"),
 			self.SWAPFREE: ("Swap", "/proc/meminfo"),
 			self.USBSPACE: ("USB", "/media/usb"),
-			self.HDDSPACE: ("HDD", "/media/hdd"),
 			self.FLASHINFO: ("Flash", "/"),
 			self.DATASPACE: ("Data", "/data")
 		}
@@ -71,19 +71,20 @@ class GlamourSpace(Poll, Converter):
 
 		return "N/A"
 
-	def getNetworkMount(self):
+	def getMountedPath(self, candidates):
 		try:
-			for entry in os.scandir("/media/net"):
-				if entry.is_dir():
-					return entry.path
-		except:
+			with open("/proc/mounts", "r") as mounts:
+				mounted_paths = [line.split()[1] for line in mounts.readlines()]
+			for path in candidates:
+				if os.path.exists(path) and path in mounted_paths:
+					return path
+		except Exception:
 			pass
 		return None
 
 	def getDiskUsage(self, path, label):
-		if not os.path.ismount(path):
-			return f"{label}: N/A"
-
+		if not path or not os.path.exists(path):
+			return f"{label}: Not found"
 		try:
 			st = statvfs(path)
 			total = (st.f_blocks * st.f_frsize) // 1024
@@ -101,8 +102,8 @@ class GlamourSpace(Poll, Converter):
 				return f"{label}: {percent}% ({self.formatSize(free)} Free, {self.formatSize(used)} Used, {self.formatSize(total)} Total)"
 			else:
 				return f"{label}: {self.formatSize(total)} ({self.formatSize(used)} Used, {self.formatSize(free)} Free)"
-		except:
-			return f"{label}: N/A"
+		except Exception:
+			return f"{label}: Error"
 
 	def getMemoryInfo(self):
 		try:
@@ -120,6 +121,7 @@ class GlamourSpace(Poll, Converter):
 			free_swap = meminfo.get('SwapFree', 0)
 			used_swap = total_swap - free_swap
 			buffers = meminfo.get('Buffers', 0)
+
 			ram = f"RAM: Total {self.formatSize(total_ram)}, Used {self.formatSize(used_ram)}, Free {self.formatSize(free_ram)}"
 			swap = f"Swap: Total {self.formatSize(total_swap)}, Used {self.formatSize(used_swap)}, Free {self.formatSize(free_swap)}"
 			buffer_info = f"Buffer: {self.formatSize(buffers)}"
@@ -127,9 +129,8 @@ class GlamourSpace(Poll, Converter):
 			return {
 				self.RAMINFO: ram,
 				self.BUFFERINFO: buffer_info
-			}.get(self.type, swap)  # Default to swap if type is unknown
-
-		except (OSError, ValueError, KeyError):
+			}.get(self.type, swap)
+		except Exception:
 			return "Memory Info: N/A"
 
 	def formatSize(self, value, unit_index=1):
