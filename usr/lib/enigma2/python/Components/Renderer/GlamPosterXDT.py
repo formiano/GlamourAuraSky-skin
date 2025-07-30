@@ -1,9 +1,9 @@
-﻿# -*- coding: utf-8 -*-
-import os
-import sys
+﻿import os
 import re
-import requests
+import sys
 import threading
+
+import requests
 from PIL import Image
 
 PY3 = (sys.version_info[0] == 3)
@@ -35,8 +35,8 @@ class GlamPosterXDT(threading.Thread):
 		self.checkMovie = ["film", "movie", "фильм", "кино", "ταινία", "película", "cinéma", "cine", "cinema", "filma", "φιλμ", "σινεμά", "adventure", "περιπέτεια", "κινηματογράφος", "comedy", "κωμωδία" ]
 		self.checkTV = [ "serial", "series", "serie", "serien", "série", "séries", "serious", "σειρά",
 			"folge", "episodio", "episode", "épisode", "l'épisode", "επεισόδιο", "σεζόν", "ep.", "animation",
-			"staffel", "soap", "doku", "tv", "talk", "show", "news", "factual", "entertainment", "telenovela", 
-			"dokumentation", "dokutainment", "documentary", "ντοκιμαντέρ", "informercial", "information", "sitcom", "reality", 
+			"staffel", "soap", "doku", "tv", "talk", "show", "news", "factual", "entertainment", "telenovela",
+			"dokumentation", "dokutainment", "documentary", "ντοκιμαντέρ", "informercial", "information", "sitcom", "reality",
 			"program", "magazine", "ειδήσεις", "mittagsmagazin", "т/с", "м/с", "сезон", "с-н", "эпизод", "сериал", "серия",
 			"εκπομπή", "actualité", "discussion", "interview", "débat", "émission", "divertissement", "jeu", "τηλεπαιχνίδι", "magasine",
 			"information", "météo", "καιρός", "journal", "sport", "αθλητικά", "culture", "infos", "feuilleton", "téléréalité",
@@ -57,32 +57,32 @@ class GlamPosterXDT(threading.Thread):
 				srch="tv"
 
 			try:
-				if re.findall('19\d{2}|20\d{2}', title):
-					year = re.findall('19\d{2}|20\d{2}', fd)[1]
+				if re.findall(r'19\d{2}|20\d{2}', title):
+					year = re.findall(r'19\d{2}|20\d{2}', fd)[1]
 				else:
-					year = re.findall('19\d{2}|20\d{2}', fd)[0]
+					year = re.findall(r'19\d{2}|20\d{2}', fd)[0]
 			except:
 				year = ""
 				pass
 
-			url_tmdb = "https://api.themoviedb.org/3/search/{}?api_key={}&query={}".format(srch, tmdb_api, quote(title))
+			url_tmdb = f"https://api.themoviedb.org/3/search/{srch}?api_key={tmdb_api}&query={quote(title)}"
 			if year:
-				url_tmdb += "&year={}".format(year)
+				url_tmdb += f"&year={year}"
 			if lng:
-				url_tmdb += "&language={}".format(lng[:-3])
+				url_tmdb += f"&language={lng[:-3]}"
 
 
 			poster = requests.get(url_tmdb).json()
 			if poster and poster['results'] and poster['results'][0] and poster['results'][0]['poster_path']:
 				url_poster = "https://image.tmdb.org/t/p/w{}{}".format(str(isz.split(",")[0]), poster['results'][0]['poster_path'])
 				self.savePoster(dwn_poster, url_poster)
-				return True, "[SUCCESS : tmdb] {} [{}-{}] => {} => {}".format(title,chkType,year,url_tmdb,url_poster)
+				return True, f"[SUCCESS : tmdb] {title} [{chkType}-{year}] => {url_tmdb} => {url_poster}"
 			else:
-				return False, "[SKIP : tmdb] {} [{}-{}] => {} (Not found)".format(title,chkType,year,url_tmdb)
+				return False, f"[SKIP : tmdb] {title} [{chkType}-{year}] => {url_tmdb} (Not found)"
 		except Exception as e:
 			if os.path.exists(dwn_poster):
 				os.remove(dwn_poster)
-			return False, "[ERROR : tmdb] {} [{}-{}] => {} ({})".format(title,chkType,year,url_tmdb,str(e))
+			return False, f"[ERROR : tmdb] {title} [{chkType}-{year}] => {url_tmdb} ({e!s})"
 
 	def search_programmetv_google(self,dwn_poster,title,shortdesc,fulldesc,channel=None):
 		try:
@@ -92,11 +92,11 @@ class GlamPosterXDT(threading.Thread):
 			chkType, fd = self.checkType(shortdesc,fulldesc)
 
 			if chkType.startswith("movie"):
-				return False, "[SKIP : programmetv-google] {} [{}] => Skip movie title".format(title,chkType)
+				return False, f"[SKIP : programmetv-google] {title} [{chkType}] => Skip movie title"
 
 			year = None
-			
-			year = re.findall('19\d{2}|20\d{2}', fd)
+
+			year = re.findall(r'19\d{2}|20\d{2}', fd)
 			if len(year)>0:
 				year = year[0]
 			else:
@@ -106,49 +106,49 @@ class GlamPosterXDT(threading.Thread):
 			if channel and title.find(channel.split()[0])<0:
 				url_ptv += "+"+quote(channel)
 			if year:
-				url_ptv += "+{}".format(year)
-				
-			url_ptv = "https://www.google.com/search?q={}&tbm=isch&tbs=ift:jpg%2Cisz:m".format(url_ptv)
+				url_ptv += f"+{year}"
+
+			url_ptv = f"https://www.google.com/search?q={url_ptv}&tbm=isch&tbs=ift:jpg%2Cisz:m"
 			ff = requests.get(url_ptv, stream=True, headers=headers).text
 			if not PY3:
 				ff = ff.encode('utf-8')
 
-			posterlst = re.findall('\],\["https://(.*?)",\d+,\d+]', ff)
+			posterlst = re.findall(r'\],\["https://(.*?)",\d+,\d+]', ff)
 			if posterlst and posterlst[0]:
-				url_poster = "https://{}".format(posterlst[0])
+				url_poster = f"https://{posterlst[0]}"
 				url_poster = re.sub(r"\\u003d", "=", url_poster)
-				url_poster_size = re.findall('/(\d+)x(\d+)/',url_poster)
+				url_poster_size = re.findall(r'/(\d+)x(\d+)/',url_poster)
 				if url_poster_size and url_poster_size[0]:
 					h_ori = float(url_poster_size[0][1])
-					h_tar = float(re.findall('(\d+)',isz)[1])
+					h_tar = float(re.findall(r'(\d+)',isz)[1])
 					ratio = h_ori/h_tar
 					w_ori = float(url_poster_size[0][0])
 					w_tar = w_ori/ratio
 					w_tar = int(w_tar)
 					h_tar = int(h_tar)
-					url_poster = re.sub('/\d+x\d+/',"/"+str(w_tar)+"x"+str(h_tar)+"/",url_poster)
+					url_poster = re.sub(r'/\d+x\d+/',"/"+str(w_tar)+"x"+str(h_tar)+"/",url_poster)
 				url_poster = re.sub('crop-from/top/','',url_poster)
 				self.savePoster(dwn_poster, url_poster)
 				if self.verifyPoster(dwn_poster) and url_poster_size:
-					return True, "[SUCCESS : programmetv-google] {} [{}] => {} => {} (initial size: {})".format(title,chkType,url_ptv,url_poster,url_poster_size)
+					return True, f"[SUCCESS : programmetv-google] {title} [{chkType}] => {url_ptv} => {url_poster} (initial size: {url_poster_size})"
 				else:
 					if os.path.exists(dwn_poster):
 						os.remove(dwn_poster)
-					return False, "[SKIP : programmetv-google] {} [{}] => {} => {} (initial size: {}) (jpeg error)".format(title,chkType,url_ptv,url_poster,url_poster_size)
+					return False, f"[SKIP : programmetv-google] {title} [{chkType}] => {url_ptv} => {url_poster} (initial size: {url_poster_size}) (jpeg error)"
 			else:
-				return False, "[SKIP : programmetv-google] {} [{}] => {} (Not found)".format(title,chkType,url_ptv)
+				return False, f"[SKIP : programmetv-google] {title} [{chkType}] => {url_ptv} (Not found)"
 		except Exception as e:
 			if os.path.exists(dwn_poster):
 				os.remove(dwn_poster)
-			return False, "[ERROR : programmetv-google] {} [{}] => {} ({})".format(title,chkType,url_ptv,str(e))
-			
+			return False, f"[ERROR : programmetv-google] {title} [{chkType}] => {url_ptv} ({e!s})"
+
 	def search_molotov_google(self,dwn_poster,title,shortdesc,fulldesc,channel=None):
 		try:
 			url_mgoo = ''
 			headers = {"User-Agent":"Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_4) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/83.0.4103.97 Safari/537.36"}
 
 			chkType, fd = self.checkType(shortdesc,fulldesc)
-				
+
 			ptitle = self.UNAC(title)
 			if channel:
 				pchannel = self.UNAC(channel).replace(" ","")
@@ -161,7 +161,7 @@ class GlamPosterXDT(threading.Thread):
 			url_mgoo = "site:molotov.tv+"+quote(title)
 			if channel and title.find(channel.split()[0])<0:
 				url_mgoo += "+"+quote(channel)
-			url_mgoo = "https://www.google.com/search?q={}&tbm=isch".format(url_mgoo)
+			url_mgoo = f"https://www.google.com/search?q={url_mgoo}&tbm=isch"
 			ff = requests.get(url_mgoo, stream=True, headers=headers).text
 			if not PY3:
 				ff = ff.encode('utf-8')
@@ -213,9 +213,9 @@ class GlamPosterXDT(threading.Thread):
 				if len(pltt)>0:
 					pltc = self.UNAC(pltt[0][1])
 					plst = "https://fusion.molotov.tv/"+pltt[0][0]+"/jpg"
-					imsg="Found title ({}%) & channel ({}%) : '{}' + '{}' [{}/{}]".format(molotov_table[0],molotov_table[1],molotov_table[2],pltc,molotov_table[4],len_plst)
+					imsg=f"Found title ({molotov_table[0]}%) & channel ({molotov_table[1]}%) : '{molotov_table[2]}' + '{pltc}' [{molotov_table[4]}/{len_plst}]"
 			else:
-				plst = re.findall('\],\["https://(.*?)",\d+,\d+].*?"https://.*?","(.*?)"', ff)
+				plst = re.findall(r'\],\["https://(.*?)",\d+,\d+].*?"https://.*?","(.*?)"', ff)
 				len_plst = len(plst)
 				if len_plst>0:
 					for  pl in plst:
@@ -232,41 +232,41 @@ class GlamPosterXDT(threading.Thread):
 								partialtitle=1
 							plst = "https://"+pl[0]
 							molotov_table = [partialtitle, partialchannel, pltc, plst,-1]
-							imsg="Fallback title ({}%) & channel ({}%) : '{}' [{}/{}]".format(molotov_table[0],molotov_table[1],pltc,-1,len_plst)
+							imsg=f"Fallback title ({molotov_table[0]}%) & channel ({molotov_table[1]}%) : '{pltc}' [{-1}/{len_plst}]"
 							break
 
 			if molotov_table[0]==100 and molotov_table[1]==100:
 				poster=plst
 			elif chkType.startswith("movie"):
-				imsg = "Skip movie type '{}' [{}]".format(pltc,len_plst)
+				imsg = f"Skip movie type '{pltc}' [{len_plst}]"
 			elif molotov_table[0]==100:
 				poster=plst
 			elif molotov_table[0]>50 and molotov_table[1]:
 				poster=plst
 			elif chkType=='':
-				imsg = "Skip unknown type '{}' [{}]".format(pltc,len_plst)
+				imsg = f"Skip unknown type '{pltc}' [{len_plst}]"
 			elif molotov_table[0] and molotov_table[1]:
 				poster=plst
 			elif molotov_table[0]>25:
 				poster=plst
 			else:
-				imsg = "Not found '{}' [{}]".format(pltc,len_plst)
+				imsg = f"Not found '{pltc}' [{len_plst}]"
 
 			if poster:
-				url_poster = re.sub('/\d+x\d+/',"/"+re.sub(',','x',isz)+"/",poster)
+				url_poster = re.sub(r'/\d+x\d+/',"/"+re.sub(',','x',isz)+"/",poster)
 				self.savePoster(dwn_poster, url_poster)
 				if self.verifyPoster(dwn_poster):
-					return True, "[SUCCESS : molotov-google] {} ({}) [{}] => {} => {} => {}".format(title,channel,chkType,imsg,url_mgoo,url_poster)
+					return True, f"[SUCCESS : molotov-google] {title} ({channel}) [{chkType}] => {imsg} => {url_mgoo} => {url_poster}"
 				else:
 					if os.path.exists(dwn_poster):
 						os.remove(dwn_poster)
-					return False, "[SKIP : molotov-google] {} ({}) [{}] => {} => {} => {} (jpeg error)".format(title,channel,chkType,imsg,url_mgoo,url_poster)
+					return False, f"[SKIP : molotov-google] {title} ({channel}) [{chkType}] => {imsg} => {url_mgoo} => {url_poster} (jpeg error)"
 			else:
-				return False, "[SKIP : molotov-google] {} ({}) [{}] => {} => {}".format(title,channel,chkType,imsg,url_mgoo)
+				return False, f"[SKIP : molotov-google] {title} ({channel}) [{chkType}] => {imsg} => {url_mgoo}"
 		except Exception as e:
 			if os.path.exists(dwn_poster):
 				os.remove(dwn_poster)
-			return False, "[ERROR : molotov-google] {} [{}] => {} ({})".format(title,chkType,url_mgoo,str(e))
+			return False, f"[ERROR : molotov-google] {title} [{chkType}] => {url_mgoo} ({e!s})"
 
 	def search_google(self,dwn_poster,title,shortdesc,fulldesc,channel=None):
 		try:
@@ -278,8 +278,8 @@ class GlamPosterXDT(threading.Thread):
 			url_poster = ""
 			year = None
 			srch = None
-			
-			year = re.findall('19\d{2}|20\d{2}', fd)
+
+			year = re.findall(r'19\d{2}|20\d{2}', fd)
 			if len(year)>0:
 				year = year[0]
 			else:
@@ -289,27 +289,27 @@ class GlamPosterXDT(threading.Thread):
 				srch=chkType[6:]
 			elif chkType.startswith("tv"):
 				srch=chkType[3:]
-			
+
 			url_google = quote(title)
 			if channel and title.find(channel)<0:
-				url_google += "+{}".format(quote(channel))
+				url_google += f"+{quote(channel)}"
 			if srch:
-				url_google += "+{}".format(srch)
+				url_google += f"+{srch}"
 			if year:
-				url_google += "+{}".format(year)
+				url_google += f"+{year}"
 
-			url_google = "https://www.google.com/search?q={}&tbm=isch&tbs=ift:jpg%2Cisz:m".format(url_google)
+			url_google = f"https://www.google.com/search?q={url_google}&tbm=isch&tbs=ift:jpg%2Cisz:m"
 			ff = requests.get(url_google, stream=True, headers=headers).text
 
-			posterlst = re.findall('\],\["https://(.*?)",\d+,\d+]', ff)
+			posterlst = re.findall(r'\],\["https://(.*?)",\d+,\d+]', ff)
 			if len(posterlst)==0:
 				url_google = quote(title)
-				url_google = "https://www.google.com/search?q={}&tbm=isch&tbs=ift:jpg%2Cisz:m".format(url_google)
+				url_google = f"https://www.google.com/search?q={url_google}&tbm=isch&tbs=ift:jpg%2Cisz:m"
 				ff = requests.get(url_google, stream=True, headers=headers).text
-				posterlst = re.findall('\],\["https://(.*?)",\d+,\d+]', ff)
-				
+				posterlst = re.findall(r'\],\["https://(.*?)",\d+,\d+]', ff)
+
 			for pl in posterlst:
-				url_poster = "https://{}".format(pl)
+				url_poster = f"https://{pl}"
 				url_poster = re.sub(r"\\u003d", "=", url_poster)
 				self.savePoster(dwn_poster, url_poster)
 				if self.verifyPoster(dwn_poster):
@@ -317,17 +317,17 @@ class GlamPosterXDT(threading.Thread):
 					break
 
 			if poster:
-				return True, "[SUCCESS : google] {} [{}-{}] => {} => {}".format(title,chkType,year,url_google,url_poster)
+				return True, f"[SUCCESS : google] {title} [{chkType}-{year}] => {url_google} => {url_poster}"
 			else:
 				if os.path.exists(dwn_poster):
 					os.remove(dwn_poster)
-				return False, "[SKIP : google] {} [{}-{}] => {} => {} (Not found)".format(title,chkType,year,url_google,url_poster)
+				return False, f"[SKIP : google] {title} [{chkType}-{year}] => {url_google} => {url_poster} (Not found)"
 
 
 		except Exception as e:
 			if os.path.exists(dwn_poster):
 				os.remove(dwn_poster)
-			return False, "[ERROR : google] {} [{}-{}] => {} => {} ({})".format(title,chkType,year,url_google,url_poster,str(e))
+			return False, f"[ERROR : google] {title} [{chkType}-{year}] => {url_google} => {url_poster} ({e!s})"
 
 	def search_tvdb(self,dwn_poster,title,shortdesc,fulldesc,channel=None):
 		try:
@@ -336,18 +336,18 @@ class GlamPosterXDT(threading.Thread):
 			chkType, fd = self.checkType(shortdesc,fulldesc)
 
 			ptitle = self.UNAC(title)
-			
-			year = re.findall('19\d{2}|20\d{2}', fd)
+
+			year = re.findall(r'19\d{2}|20\d{2}', fd)
 			if len(year)>0:
 				year = year[0]
 			else:
 				year = ""
 
-			url_tvdbg = "https://thetvdb.com/api/GetSeries.php?seriesname={}".format(quote(title))
+			url_tvdbg = f"https://thetvdb.com/api/GetSeries.php?seriesname={quote(title)}"
 			url_read = requests.get(url_tvdbg).text
-			series_id = re.findall('<seriesid>(.*?)</seriesid>', url_read) 
+			series_id = re.findall('<seriesid>(.*?)</seriesid>', url_read)
 			series_name = re.findall('<SeriesName>(.*?)</SeriesName>', url_read)
-			series_year = re.findall('<FirstAired>(19\d{2}|20\d{2})-\d{2}-\d{2}</FirstAired>', url_read)
+			series_year = re.findall(r'<FirstAired>(19\d{2}|20\d{2})-\d{2}-\d{2}</FirstAired>', url_read)
 			i = 0
 			for iseries_year in series_year:
 				if year=="":
@@ -365,27 +365,27 @@ class GlamPosterXDT(threading.Thread):
 				else:
 					series_name =''
 				if self.PMATCH(ptitle,series_name):
-					url_tvdb = "https://thetvdb.com/api/{}/series/{}".format(tvdb_api, series_id[series_nb])
+					url_tvdb = f"https://thetvdb.com/api/{tvdb_api}/series/{series_id[series_nb]}"
 					if lng:
-						url_tvdb += "/{}".format(lng[:-3])
+						url_tvdb += f"/{lng[:-3]}"
 					else:
 						url_tvdb += "/en"
-				
+
 					url_read = requests.get(url_tvdb).text
 					poster = re.findall('<poster>(.*?)</poster>', url_read)
-				
+
 			if poster and poster[0]:
-				url_poster = "https://artworks.thetvdb.com/banners/{}".format(poster[0])
+				url_poster = f"https://artworks.thetvdb.com/banners/{poster[0]}"
 				self.savePoster(dwn_poster, url_poster)
-				return True, "[SUCCESS : tvdb] {} [{}-{}] => {} => {} => {}".format(title,chkType,year,url_tvdbg,url_tvdb,url_poster)
+				return True, f"[SUCCESS : tvdb] {title} [{chkType}-{year}] => {url_tvdbg} => {url_tvdb} => {url_poster}"
 			else:
-				return False, "[SKIP : tvdb] {} [{}-{}] => {} (Not found)".format(title,chkType,year,url_tvdbg)
+				return False, f"[SKIP : tvdb] {title} [{chkType}-{year}] => {url_tvdbg} (Not found)"
 
 		except Exception as e:
 			if os.path.exists(dwn_poster):
 				os.remove(dwn_poster)
-			return False, "[ERROR : tvdb] {} => {} ({})".format(title,url_tvdbg,str(e))
-			
+			return False, f"[ERROR : tvdb] {title} => {url_tvdbg} ({e!s})"
+
 	def search_imdb(self,dwn_poster,title,shortdesc,fulldesc,channel=None):
 		try:
 			url_poster = None
@@ -393,8 +393,8 @@ class GlamPosterXDT(threading.Thread):
 			chkType, fd = self.checkType(shortdesc,fulldesc)
 
 			ptitle = self.UNAC(title)
-			
-			aka = re.findall('\((.*?)\)',fd)
+
+			aka = re.findall(r'\((.*?)\)',fd)
 			if len(aka)>1 and not aka[1].isdigit():
 				aka = aka[1]
 			elif len(aka)>0 and not aka[0].isdigit():
@@ -406,7 +406,7 @@ class GlamPosterXDT(threading.Thread):
 			else:
 				paka = ""
 
-			year = re.findall('19\d{2}|20\d{2}', fd)
+			year = re.findall(r'19\d{2}|20\d{2}', fd)
 			if len(year)>0:
 				year = year[0]
 			else:
@@ -415,21 +415,21 @@ class GlamPosterXDT(threading.Thread):
 			imsg = ""
 			url_mimdb = ""
 			url_imdb = ""
-			
+
 			if aka and aka!=title:
-				url_mimdb = "https://m.imdb.com/find?q={}%20({})".format(quote(title),quote(aka))
+				url_mimdb = f"https://m.imdb.com/find?q={quote(title)}%20({quote(aka)})"
 			else:
-				url_mimdb = "https://m.imdb.com/find?q={}".format(quote(title))
+				url_mimdb = f"https://m.imdb.com/find?q={quote(title)}"
 			url_read = requests.get(url_mimdb).text
-			rc=re.compile('<img src="(.*?)".*?<span class="h3">\n(.*?)\n</span>.*?\((\d+)\)(\s\(.*?\))?(.*?)</a>',re.DOTALL)
+			rc=re.compile('<img src="(.*?)".*?<span class="h3">\n(.*?)\n</span>.*?\\((\\d+)\\)(\\s\\(.*?\\))?(.*?)</a>',re.DOTALL)
 			url_imdb = rc.findall(url_read)
 
 			if len(url_imdb)==0 and aka:
-				url_mimdb = "https://m.imdb.com/find?q={}".format(quote(title))
+				url_mimdb = f"https://m.imdb.com/find?q={quote(title)}"
 				url_read = requests.get(url_mimdb).text
-				rc=re.compile('<img src="(.*?)".*?<span class="h3">\n(.*?)\n</span>.*?\((\d+)\)(\s\(.*?\))?(.*?)</a>',re.DOTALL)
+				rc=re.compile('<img src="(.*?)".*?<span class="h3">\n(.*?)\n</span>.*?\\((\\d+)\\)(\\s\\(.*?\\))?(.*?)</a>',re.DOTALL)
 				url_imdb = rc.findall(url_read)
-				
+
 			len_imdb = len(url_imdb)
 			idx_imdb = 0
 			pfound = False
@@ -448,20 +448,20 @@ class GlamPosterXDT(threading.Thread):
 					if imdb[3]=="":
 						if year and year!="":
 							if year==imdb[2]:
-								url_poster = "{}._V1_UY278,1,185,278_AL_.jpg".format(imdb_poster.group(1))
-								imsg = "Found title : '{}', aka : '{}', year : '{}'".format(imdb[1],imdb[4],imdb[2])
+								url_poster = f"{imdb_poster.group(1)}._V1_UY278,1,185,278_AL_.jpg"
+								imsg = f"Found title : '{imdb[1]}', aka : '{imdb[4]}', year : '{imdb[2]}'"
 								if self.PMATCH(ptitle,imdb[1]) or self.PMATCH(ptitle,imdb[4]) or (paka!="" and self.PMATCH(paka,imdb[1])) or (paka!="" and self.PMATCH(paka,imdb[4])):
 									pfound = True
 									break
 							elif not url_poster and (int(year)-1==int(imdb[2]) or int(year)+1==int(imdb[2])):
-								url_poster = "{}._V1_UY278,1,185,278_AL_.jpg".format(imdb_poster.group(1))
-								imsg = "Found title : '{}', aka : '{}', year : '+/-{}'".format(imdb[1],imdb[4],imdb[2])
+								url_poster = f"{imdb_poster.group(1)}._V1_UY278,1,185,278_AL_.jpg"
+								imsg = f"Found title : '{imdb[1]}', aka : '{imdb[4]}', year : '+/-{imdb[2]}'"
 								if ptitle==imdb[1] or ptitle==imdb[4] or (paka!="" and paka==imdb[1]) or (paka!="" and paka==imdb[4]):
 									pfound = True
 									break
 						else:
-							url_poster = "{}._V1_UY278,1,185,278_AL_.jpg".format(imdb_poster.group(1))
-							imsg = "Found title : '{}', aka : '{}', year : ''".format(imdb[1],imdb[4])
+							url_poster = f"{imdb_poster.group(1)}._V1_UY278,1,185,278_AL_.jpg"
+							imsg = f"Found title : '{imdb[1]}', aka : '{imdb[4]}', year : ''"
 							if ptitle==imdb[1] or ptitle==imdb[4] or (paka!="" and paka==imdb[1]) or (paka!="" and paka==imdb[4]):
 								pfound = True
 								break
@@ -469,13 +469,13 @@ class GlamPosterXDT(threading.Thread):
 
 			if url_poster and pfound:
 				self.savePoster(dwn_poster, url_poster)
-				return True, "[SUCCESS : imdb] {} [{}-{}] => {} [{}/{}] => {} => {}".format(title,chkType,year,imsg,idx_imdb,len_imdb,url_mimdb,url_poster)
+				return True, f"[SUCCESS : imdb] {title} [{chkType}-{year}] => {imsg} [{idx_imdb}/{len_imdb}] => {url_mimdb} => {url_poster}"
 			else:
-				return False, "[SKIP : imdb] {} [{}-{}] => {} (No Entry found [{}])".format(title,chkType,year,url_mimdb,len_imdb)
+				return False, f"[SKIP : imdb] {title} [{chkType}-{year}] => {url_mimdb} (No Entry found [{len_imdb}])"
 		except Exception as e:
 			if os.path.exists(dwn_poster):
 				os.remove(dwn_poster)
-			return False, "[ERROR : imdb] {} [{}-{}] => {} ({})".format(title,chkType,year,url_mimdb,str(e))
+			return False, f"[ERROR : imdb] {title} [{chkType}-{year}] => {url_mimdb} ({e!s})"
 
 	def savePoster(self, dwn_poster, url_poster):
 		with open(dwn_poster,'wb') as f:
@@ -494,7 +494,7 @@ class GlamPosterXDT(threading.Thread):
 				except:
 					pass
 				return None
-		except Exception as e:
+		except Exception:
 			try:
 				os.remove(dwn_poster)
 			except:
@@ -509,7 +509,7 @@ class GlamPosterXDT(threading.Thread):
 			fd=fulldesc.splitlines()[0]
 		else:
 			fd = ""
-	
+
 		srch = ""
 		fds = fd[:60]
 		for i in self.checkMovie:
@@ -521,26 +521,26 @@ class GlamPosterXDT(threading.Thread):
 			if i in fds.lower():
 				srch = "tv:"+i
 				break
-	
+
 		return srch, fd
 
 	def UNAC(self,string):
 		if not PY3:
 			if type(string) != unicode:
 				string = unicode(string, encoding='utf-8')
-		string = re.sub(u"u0026", "&", string)
+		string = re.sub("u0026", "&", string)
 		string = re.sub(r"[-,!/\.\":]",' ',string)
-		string = re.sub(u"[ÀÁÂÃÄàáâãäåª]", 'a', string)
-		string = re.sub(u"[ÈÉÊËèéêë]", 'e', string)
-		string = re.sub(u"[ÍÌÎÏìíîï]", 'i', string)
-		string = re.sub(u"[ÒÓÔÕÖòóôõöº]", 'o', string)
-		string = re.sub(u"[ÙÚÛÜùúûü]", 'u', string)
-		string = re.sub(u"[Ññ]", 'n', string)
-		string = re.sub(u"[Çç]", 'c', string)
-		string = re.sub(u"[Ÿýÿ]", 'y', string)
+		string = re.sub("[ÀÁÂÃÄàáâãäåª]", 'a', string)
+		string = re.sub("[ÈÉÊËèéêë]", 'e', string)
+		string = re.sub("[ÍÌÎÏìíîï]", 'i', string)
+		string = re.sub("[ÒÓÔÕÖòóôõöº]", 'o', string)
+		string = re.sub("[ÙÚÛÜùúûü]", 'u', string)
+		string = re.sub("[Ññ]", 'n', string)
+		string = re.sub("[Çç]", 'c', string)
+		string = re.sub("[Ÿýÿ]", 'y', string)
 		string = re.sub(r"[^a-zA-Zα-ωΑ-ΩίϊΐόάέύϋΰήώΊΪΌΆΈΎΫΉΏ0-9 ']","", string)
 		string = string.lower()
-		string = re.sub(u"u003d", "", string)
+		string = re.sub("u003d", "", string)
 		string = re.sub(r'\s{1,}', ' ', string)
 		string = string.strip()
 		return string

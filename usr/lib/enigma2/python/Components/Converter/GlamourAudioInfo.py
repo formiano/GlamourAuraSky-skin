@@ -2,11 +2,12 @@
 #Modded and recoded by MCelliotG for use in Glamour skins or standalone, based on VAudioInfo converter
 #If you use this Converter with its modifications as it is for other skins and rename it, please keep the lines above adding your credits below
 
-from enigma import iPlayableService
-from Components.Converter.Converter import Converter
-from Components.Element import cached
-from Components.Converter.Poll import Poll
 import re
+
+from Components.Converter.Converter import Converter
+from Components.Converter.Poll import Poll
+from Components.Element import cached
+from enigma import iPlayableService
 
 try:
 	from enigma import iAudioType_ENUMS as iAt
@@ -95,15 +96,15 @@ class GlamourAudioInfo(Poll, Converter):
 		description_str = _("unknown")
 		if self.getAudio():
 			try:
-				type = AUDIO_FORMATS[self.audio_info.getType()][1];
+				type = AUDIO_FORMATS[self.audio_info.getType()][1]
 				description_str = type
-				channels = self.audio_info.getDescription();
+				channels = self.audio_info.getDescription()
 				channels_str = re.search(r"([0-9\.]+)", channels)
 				if channels_str:
 					description_str = description_str + " " + channels_str.group(1)
 			except:
 				languages = self.getLanguage()
-				description = self.audio_info.getDescription();
+				description = self.audio_info.getDescription()
 				description_str = description.split(" ")
 				if len(description_str) and description_str[0] in languages:
 					return languages

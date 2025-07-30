@@ -3,8 +3,9 @@
 #  If you use this Renderer for other skins and rename it, please keep the first and second line adding your credits below
 
 from os.path import exists, join
-from enigma import ePixmap
+
 from Components.Renderer.Renderer import Renderer
+from enigma import ePixmap
 from Tools.Directories import SCOPE_GUISKIN, resolveFilename
 
 

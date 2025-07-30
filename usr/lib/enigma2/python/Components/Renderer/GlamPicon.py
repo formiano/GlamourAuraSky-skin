@@ -2,14 +2,15 @@
 #  Modded and recoded by MCelliotG for use in Glamour skins or standalone, added Python3 support
 #  If you use this Renderer for other skins and rename it, please keep the first and second line adding your credits below
 
+import os.path
+import re
+import unicodedata
+
+import six
 from Components.Renderer.Renderer import Renderer
 from enigma import ePixmap
-from enigma import iServiceInformation, iPlayableService, iPlayableServicePtr
-from Tools.Directories import SCOPE_SKIN_IMAGE, SCOPE_CURRENT_SKIN, resolveFilename
 from ServiceReference import ServiceReference
-import re, unicodedata
-import os.path
-import six
+
 
 class GlamPicon(Renderer):
 	searchPaths = ("/media/usb/%s/", "/media/usb2/%s/", "/%s/", "/%sx/", "/usr/share/enigma2/%s/", "/usr/%s/", "/media/hdd/%s/", "/media/usb/XPicons/%s/", "/usr/share/enigma2/XPicons/%s/", "/media/hdd/XPicons/%s/", "/media/ba/%s/", "/media/cf/%s/")

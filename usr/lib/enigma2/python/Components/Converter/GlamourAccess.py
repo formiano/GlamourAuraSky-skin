@@ -2,13 +2,14 @@
 #Modded and recoded by MCelliotG for use in Glamour skins or standalone
 #If you use this Converter for other skins and rename it, please keep the lines above adding your credits below
 
-from Components.Converter.Converter import Converter
-from enigma import iServiceInformation, iPlayableService
-from Components.Element import cached
-from Components.config import config, ConfigText, ConfigSubsection
-from Components.Converter.Poll import Poll
 import os
-from os import path
+
+from Components.config import ConfigText, config
+from Components.Converter.Converter import Converter
+from Components.Converter.Poll import Poll
+from Components.Element import cached
+from enigma import iServiceInformation
+
 info = {}
 old_ecm_mtime = None
 try:
@@ -486,7 +487,7 @@ class GlamourAccess(Poll, Converter):
 												pass
 
 									elif self.type == self.CASINFO:
-										if source == "emu" or not server and not port:
+										if source == "emu" or (not server and not port):
 											ecminfo = f"{csi} [{caid}:{prov} - {source} - {ecm_time}]"
 										else:
 											try:
@@ -518,11 +519,11 @@ class GlamourAccess(Poll, Converter):
 								else:
 									ecminfo = casi
 
-					elif self.type == self.ECMINFO or self.type == self.FORMAT and self.sfmt.count("%") > 3:
+					elif self.type == self.ECMINFO or (self.type == self.FORMAT and self.sfmt.count("%") > 3):
 						ecminfo = f"Service with {caidtxt} encryption ({caidlist})"
 					elif self.type == self.SHORTINFO or self.type == self.CASINFO:
 						ecminfo = f"Service with {caidtxt} encryption"
-				elif self.type == self.ECMINFO or self.type == self.SHORTINFO or self.type == self.CASINFO or self.type == self.FORMAT and self.sfmt.count("%") > 3:
+				elif self.type == self.ECMINFO or self.type == self.SHORTINFO or self.type == self.CASINFO or (self.type == self.FORMAT and self.sfmt.count("%") > 3):
 					ecminfo = "FTA service"
 		return ecminfo
 
@@ -545,7 +546,7 @@ class GlamourAccess(Poll, Converter):
 		sername = []
 
 		# OpenPLI/SatDreamGr
-		if os.path.exists("/etc/init.d/softcam") and not os.path.exists("/etc/image-version") or os.path.exists("/etc/init.d/cardserver") and not os.path.exists("/etc/image-version"):
+		if (os.path.exists("/etc/init.d/softcam") and not os.path.exists("/etc/image-version")) or (os.path.exists("/etc/init.d/cardserver") and not os.path.exists("/etc/image-version")):
 			lines = self.read_file("/etc/init.d/softcam")
 			for line in lines:
 				if line.startswith("CAMNAME="):
@@ -572,7 +573,7 @@ class GlamourAccess(Poll, Converter):
 			if not active_softcam or active_softcam.lower() == "none":
 				softcam_init_file = "/etc/init.d/softcam"
 				if os.path.exists(softcam_init_file):
-					with open(softcam_init_file, "r", encoding="utf-8", errors="ignore") as f:
+					with open(softcam_init_file, encoding="utf-8", errors="ignore") as f:
 						for line in f:
 							if "Short-Description:" in line:
 								parts = line.split(":", 1)
@@ -619,12 +620,12 @@ class GlamourAccess(Poll, Converter):
 			emu = self.read_lines(camdlist)
 		else:
 			emu = "No active softcam"
-		
+
 		return f"{cardserver.splitlines()[0]} {emu.splitlines()[0]}"
 
 	# Helper method to read lines
 	def read_lines(self, file_path):
-		with open(file_path, "r") as f:
+		with open(file_path) as f:
 			return f.readlines()
 
 	# Read version from a file
@@ -657,7 +658,7 @@ class GlamourAccess(Poll, Converter):
 	def CaidList(self):
 		caids = self.Caids()
 		if caids:
-			caidlist = ", ".join(("{:04x}".format(x) for x in caids)).upper()
+			caidlist = ", ".join(f"{x:04x}" for x in caids).upper()
 			return caidlist
 		return ""
 
@@ -728,7 +729,7 @@ class GlamourAccess(Poll, Converter):
 				return info
 			old_ecm_mtime = ecm_mtime
 
-			with open(ecmpath, "r") as ecmf:
+			with open(ecmpath) as ecmf:
 				ecm = ecmf.readlines()
 
 			if not ecm:

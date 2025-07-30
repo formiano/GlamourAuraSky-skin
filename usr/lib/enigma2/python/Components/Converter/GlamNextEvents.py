@@ -2,13 +2,15 @@
 #Modded and recoded by MCelliotG for use in Glamour skins or standalone
 #If you use this Converter for other skins and rename it, please keep the lines above adding your credits below
 
+from datetime import datetime
+from time import localtime, mktime, strftime, time
+
 from Components.Converter.Converter import Converter
 from Components.Element import cached
 from enigma import eEPGCache, eServiceReference
-from time import localtime, strftime, mktime, time
-from datetime import datetime
 
-class GlamNextEvents(Converter, object):
+
+class GlamNextEvents(Converter):
 	EVENT_TYPES = {f"Event{i}": i - 1 for i in range(1, 11)}  # Event1 to Event10
 	EVENT_TYPES.update({"PrimeTime": 10})
 
@@ -24,7 +26,7 @@ class GlamNextEvents(Converter, object):
 		args = type.split(',')
 		if len(args) != 2:
 			raise ValueError("Type must contain exactly 2 arguments")
-		
+
 		self.type = self.EVENT_TYPES.get(args[0], 0)  # Default to Event1
 		self.showDuration = self.DISPLAY_TYPES.get(args[1], 18)  # Default to withDuration
 
@@ -38,7 +40,7 @@ class GlamNextEvents(Converter, object):
 		curEvent = self.source.getCurrentEvent()
 		if not curEvent:
 			return ""
-		
+
 		if self.type < 10:
 			self.epgcache.startTimeQuery(eServiceReference(ref.toString()), curEvent.getBeginTime() + curEvent.getDuration())
 			nextEvents = [self.epgcache.getNextTimeEntry() for _ in range(self.type + 1)]
@@ -59,7 +61,7 @@ class GlamNextEvents(Converter, object):
 		end = strftime("%H:%M", localtime(event.getBeginTime() + event.getDuration()))
 		title = event.getEventName()
 		duration = "%d min" % (event.getDuration() // 60)
-		
+
 		formats = {
 			18: f"{begin} - {end} {title} ({duration})",
 			17: duration,

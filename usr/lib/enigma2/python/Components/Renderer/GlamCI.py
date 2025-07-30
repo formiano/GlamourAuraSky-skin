@@ -2,10 +2,10 @@
 #  Modded and recoded by MCelliotG for use in Glamour skins or standalone, added Python3 support
 #  If you use this Renderer for other skins and rename it, please keep the first and second line adding your credits below
 
-from __future__ import absolute_import
 from Components.Renderer.Renderer import Renderer
-from enigma import eDVBCI_UI, eDVBCIInterfaces, eLabel, iPlayableService
 from Components.VariableText import VariableText
+from enigma import eDVBCI_UI, eDVBCIInterfaces, eLabel, iPlayableService
+
 
 class GlamCI(Renderer, VariableText):
 	def __init__(self):
@@ -33,7 +33,7 @@ class GlamCI(Renderer, VariableText):
 		self.changed(True)
 
 	def changed(self, what):
-		if what == True or what[0] == self.CHANGED_SPECIFIC and what[1] == iPlayableService.evStart:
+		if what == True or (what[0] == self.CHANGED_SPECIFIC and what[1] == iPlayableService.evStart):
 			string = ""
 			if self.NUM_CI and self.NUM_CI > 0:
 				if self.eDVBCIUIInstance:
@@ -48,17 +48,17 @@ class GlamCI(Renderer, VariableText):
 									string += ""
 									add_num = False
 								else:
-									string += "\c007?7?7?"
+									string += r"\c007?7?7?"
 							elif state == 1:
-								string += "\c00????00"
+								string += r"\c00????00"
 							elif state == 2:
-								string += "\c0000??00"
+								string += r"\c0000??00"
 						else:
 							if not self.allVisible:
 								string += ""
 								add_num = False
 							else:
-								string += "\c00??2525"
+								string += r"\c00??2525"
 						if add_num:
 							string += "%d" % (slot + 1)
 					if string:

@@ -3,9 +3,9 @@
 #  If you use this Renderer for other skins and rename it, please keep the first and second line adding your credits below
 
 from Components.Renderer.Renderer import Renderer
-from enigma import eLabel
 from Components.VariableText import VariableText
-from enigma import eServiceCenter, iServiceInformation
+from enigma import eLabel, eServiceCenter
+
 
 class GlamPids(VariableText, Renderer):
 	__module__ = __name__
@@ -25,7 +25,7 @@ class GlamPids(VariableText, Renderer):
 			if what[0] == self.CHANGED_CLEAR:
 				self.text = " "
 				return
-			
+
 			service = self.source.service
 			info = eServiceCenter.getInstance().info(service)
 
@@ -34,7 +34,7 @@ class GlamPids(VariableText, Renderer):
 
 			refstr = self.source.service.toString()
 			curref = refstr.replace("%3a", ":")
-			
+
 			if curref.startswith("1:7:") or "%3a/" in refstr:
 				self.text = " "
 				return

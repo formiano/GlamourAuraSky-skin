@@ -2,13 +2,12 @@
 # Modded and recoded by MCelliotG for use in Glamour skins or standalone
 # Updated by OPENDROID_TEAM to use getCPUInfoString() from Components/About.py
 
-import os
-import re
+from Components.About import getCPUInfoString
 from Components.Converter.Converter import Converter
-from Components.Element import cached
 from Components.Converter.Poll import Poll
+from Components.Element import cached
 from enigma import eConsoleAppContainer
-from Components.About import getCPUInfoString, getSystemTemperature
+
 
 class GlamourExtra(Poll, Converter):
 	TEMPERATURE = 0
@@ -80,14 +79,14 @@ class GlamourExtra(Poll, Converter):
 
 	def getCpuLoad(self):
 		try:
-			with open("/proc/loadavg", "r") as f:
+			with open("/proc/loadavg") as f:
 				return f"CPU Load: {f.readline().split()[0]}"
 		except:
 			return "CPU Load: N/A"
 
 	def getUptime(self):
 		try:
-			with open("/proc/uptime", "r") as f:
+			with open("/proc/uptime") as f:
 				total_seconds = int(float(f.readline().split()[0]))
 		except:
 			return "Uptime: N/A"

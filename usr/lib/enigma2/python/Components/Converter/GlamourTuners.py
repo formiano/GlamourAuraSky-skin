@@ -3,11 +3,12 @@
 #If you use this Converter for other skins and rename it, please keep the lines above adding your credits below
 
 
+
 from Components.Converter.Converter import Converter
 from Components.Element import cached
-import os
 
-class GlamourTuners(Converter, object):
+
+class GlamourTuners(Converter):
 	TUNERS = {f"Tuner_{chr(65+i)}": i for i in range(26)}  # A-Z
 	TUNER_NAMES = {i: f"Tuner_{chr(65+i)}" for i in range(26)}  # Reverse mapping
 	TUNERS["NimInfo"] = 26
@@ -18,9 +19,9 @@ class GlamourTuners(Converter, object):
 
 	def getTuners(self):
 		try:
-			with open("/proc/bus/nim_sockets", "r") as file:
+			with open("/proc/bus/nim_sockets") as file:
 				return [line.strip() for line in file.readlines() if "NIM Socket" in line]
-		except IOError:
+		except OSError:
 			return []
 
 	@cached

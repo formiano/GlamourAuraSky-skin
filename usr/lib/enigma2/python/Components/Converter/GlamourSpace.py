@@ -3,10 +3,10 @@
 # Revised by OPENDROID_TEAM for reliability across devices and mounts
 
 import os
-from Components.Converter.Converter import Converter
-from Components.Element import cached
-from Components.Converter.Poll import Poll
 from os import statvfs
+
+from Components.Converter.Converter import Converter
+from Components.Converter.Poll import Poll
 
 SIZE_UNITS = ["B", "KB", "MB", "GB", "TB", "PB", "EB"]
 
@@ -73,7 +73,7 @@ class GlamourSpace(Poll, Converter):
 
 	def getMountedPath(self, candidates):
 		try:
-			with open("/proc/mounts", "r") as mounts:
+			with open("/proc/mounts") as mounts:
 				mounted_paths = [line.split()[1] for line in mounts.readlines()]
 			for path in candidates:
 				if os.path.exists(path) and path in mounted_paths:
@@ -107,7 +107,7 @@ class GlamourSpace(Poll, Converter):
 
 	def getMemoryInfo(self):
 		try:
-			with open("/proc/meminfo", "r") as f:
+			with open("/proc/meminfo") as f:
 				meminfo = {}
 				for line in f:
 					parts = line.split()

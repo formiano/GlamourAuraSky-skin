@@ -1,16 +1,17 @@
-﻿#(c) 2boom mod 2012 
+﻿#(c) 2boom mod 2012
 # 26.09.2012 added search mountpoints
 #  GlamPiconUni renderer
 #  Modded and recoded by MCelliotG for use in Glamour skins or standalone
 #  If you use this Renderer for other skins and rename it, please keep all the above lines adding your credits below
 
-from Components.Renderer.Renderer import Renderer 
-from enigma import ePixmap, eTimer 
-from Tools.Directories import SCOPE_SKIN_IMAGE, SCOPE_CURRENT_SKIN, resolveFilename 
-from Tools.LoadPixmap import LoadPixmap 
-from Components.Pixmap import Pixmap 
-from Components.config import * 
 import os.path
+
+from Components.config import *
+from Components.Renderer.Renderer import Renderer
+from enigma import ePixmap, eTimer
+from Tools.Directories import SCOPE_CURRENT_SKIN, SCOPE_SKIN_IMAGE, resolveFilename
+from Tools.LoadPixmap import LoadPixmap
+
 
 class GlamPiconUni(Renderer):
 	__module__ = __name__

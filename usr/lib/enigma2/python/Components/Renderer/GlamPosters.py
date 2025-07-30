@@ -1,5 +1,4 @@
-﻿# -*- coding: utf-8 -*-
-# GlamPosters renderer (Python 3) for Glamour skins or standalone
+﻿# GlamPosters renderer (Python 3) for Glamour skins or standalone
 # Original work by digiteng...
 # © Provided that digiteng rights are protected, all or part of the code can be used, modified...
 # Previous enhancements by sunriser and beber...
@@ -7,24 +6,24 @@
 # If you use this renderer as is with the latest changes and rename it for your skins, or modify it please respect the credits...
 # This code is available on Github (MCelliotG)
 
+import math
+import os
+import re
+import socket
+import threading
+import time
+import unicodedata
+
+import NavigationInstance
+import requests
 from Components.Renderer.Renderer import Renderer
-from Components.Sources.ServiceEvent import ServiceEvent
+from Components.Sources.CurrentService import CurrentService
 from Components.Sources.Event import Event
 from Components.Sources.EventInfo import EventInfo
-from ServiceReference import ServiceReference
-from Components.Sources.CurrentService import CurrentService
-from enigma import ePixmap, eTimer, loadJPG, eEPGCache
-import NavigationInstance
-import os
-import sys
-import re
-import unicodedata
-import time
-import socket
-import requests
-import threading
+from Components.Sources.ServiceEvent import ServiceEvent
+from enigma import eEPGCache, ePixmap, eTimer, loadJPG
 from PIL import Image
-import math
+from ServiceReference import ServiceReference
 
 try:
 	from functools import lru_cache
@@ -72,7 +71,7 @@ if not os.path.exists(autobouquet_file):
 	autobouquet_file = None
 	autobouquet_count = 0
 else:
-	with open(autobouquet_file, 'r') as f:
+	with open(autobouquet_file) as f:
 		lines = f.readlines()
 	if autobouquet_count > len(lines):
 		autobouquet_count = len(lines)
@@ -227,7 +226,7 @@ def image_postprocessing(img_path, image_type):
 			# Only process if ratio mismatch
 			if not math.isclose(current_ratio, target_ratio, rel_tol=0.01):
 				log_to_file("CVI: Aspect ratio differs - cropping...")
-		
+
 				if current_ratio > target_ratio:  # Too wide
 					new_width = int(img.height * target_ratio)
 					offset = (img.width - new_width) // 2
@@ -256,7 +255,7 @@ def image_postprocessing(img_path, image_type):
 				return True
 
 	except Exception as e:
-		log_to_file(f"CVI: [ERROR] Processing failed: {str(e)}")
+		log_to_file(f"CVI: [ERROR] Processing failed: {e!s}")
 		if os.path.exists(img_path):
 			try:
 				os.remove(img_path)
@@ -336,10 +335,10 @@ class PostersDB(threading.Thread):
 		self.logDB("[QUEUE] : Initialized")
 		while True:
 			canal = pdb.get()
-			self.logDB("[QUEUE] : {} : {}-{} ({})".format(canal[0], canal[1], canal[2], canal[5]))
+			self.logDB(f"[QUEUE] : {canal[0]} : {canal[1]}-{canal[2]} ({canal[5]})")
 
 			# Define storage folder by the usedImage attribute in the skin code
-			usedImage = canal[6]  # receiving usedImage from the last queued object 
+			usedImage = canal[6]  # receiving usedImage from the last queued object
 			subfolder = "poster/" if usedImage == "poster" else "backdrop/"
 			dwn_image = path_folder + subfolder + canal[5] + ".jpg"
 
@@ -372,8 +371,8 @@ class PostersDB(threading.Thread):
 							found = True
 							break
 					except Exception as e:
-						print(f"GlamPosters: [ERROR] {search_function.__name__} failed: {str(e)}")
-						self.logDB(f"[ERROR] {search_function.__name__} failed: {str(e)}")
+						print(f"GlamPosters: [ERROR] {search_function.__name__} failed: {e!s}")
+						self.logDB(f"[ERROR] {search_function.__name__} failed: {e!s}")
 
 			if not found:
 				print("GlamPosters: [INFO] No image found, trying Google Searches with channel name.")
@@ -385,8 +384,8 @@ class PostersDB(threading.Thread):
 							found = True
 							break
 				except Exception as e:
-					print(f"GlamPosters: [ERROR] {google_search.__name__} failed: {str(e)}")
-					self.logDB(f"[ERROR] {google_search.__name__} failed: {str(e)}")
+					print(f"GlamPosters: [ERROR] {google_search.__name__} failed: {e!s}")
+					self.logDB(f"[ERROR] {google_search.__name__} failed: {e!s}")
 
 			pdb.task_done()
 
@@ -491,7 +490,7 @@ class PostersDB(threading.Thread):
 		except Exception as e:
 			if os.path.exists(dwn_image):
 				os.remove(dwn_image)
-			return False, f"[ERROR : tmdb] {title} [{chkType}-{year}] => {url_tmdb} ({str(e)})"
+			return False, f"[ERROR : tmdb] {title} [{chkType}-{year}] => {url_tmdb} ({e!s})"
 
 # TVDB Search
 	@lru_cache(maxsize=500)
@@ -512,7 +511,7 @@ class PostersDB(threading.Thread):
 				try:
 					language, region = lng.split('_')  # Χωρίζουμε το lng σε language και region
 					headers = {'Accept-Language': language}
-				except ValueError: 
+				except ValueError:
 					language = lng
 					headers = {'Accept-Language': language}
 			else:
@@ -531,7 +530,7 @@ class PostersDB(threading.Thread):
 				series_year = re.findall(r'<FirstAired>(\d{4})-\d{2}-\d{2}</FirstAired>', url_read)
 				series_aliases = re.findall(r'<Alias>(.*?)</Alias>', url_read)
 			except Exception as e:
-				return False, f"[ERROR : tvdb] Failed parsing response: {str(e)}"
+				return False, f"[ERROR : tvdb] Failed parsing response: {e!s}"
 
 			# Clean title with UNAC
 			series_nb = -1
@@ -546,7 +545,7 @@ class PostersDB(threading.Thread):
 				title_score = self.PMATCH(ptitle, clean_s_name)
 				aka_score = max([self.PMATCH(paka, alias) for alias in clean_s_aliases]) if paka else 0
 				total_score = max(title_score, aka_score)
-		
+
 				# Score based on year match
 				if year and s_year == year:
 					total_score += 50
@@ -577,7 +576,7 @@ class PostersDB(threading.Thread):
 		except Exception as e:
 			if os.path.exists(dwn_image):
 				os.remove(dwn_image)
-			return False, f"[ERROR : tvdb] {title} ({str(e)})"
+			return False, f"[ERROR : tvdb] {title} ({e!s})"
 
 # Fanart Search
 	@lru_cache(maxsize=500)
@@ -603,7 +602,7 @@ class PostersDB(threading.Thread):
 					if data_tmdb.get('results'):
 						best_result = max(data_tmdb['results'], key=lambda x: x.get('vote_average', 0))
 						imdb_id = best_result.get("imdb_id")
-	
+
 			if not imdb_id:
 				return False, f"[SKIP : fanart] {title} (No IMDb ID found)"
 			# searching Fanart.tv
@@ -623,13 +622,13 @@ class PostersDB(threading.Thread):
 				return False, f"[SKIP : fanart] {title} (No image found)"
 
 		except Exception as e:
-			return False, f"[ERROR : fanart] {title} ({str(e)})"
+			return False, f"[ERROR : fanart] {title} ({e!s})"
 
 #IMDB Search
 	@lru_cache(maxsize=500)
 	def search_imdb(self, dwn_image, title, shortdesc, fulldesc, usedImage, channel=None):
 		try:
-			# Convert to greeklish 
+			# Convert to greeklish
 			title = convtext(title)
 			title = convert_to_greeklish(title)
 			# Extract year from fulldesc
@@ -652,7 +651,7 @@ class PostersDB(threading.Thread):
 				except ValueError:
 					language = lng
 					url_mimdb += f"&language={language}"
-	
+
 			headers = {
 				"User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.124 Safari/537.36"
 			}
@@ -708,7 +707,7 @@ class PostersDB(threading.Thread):
 		except Exception as e:
 			if os.path.exists(dwn_image):
 				os.remove(dwn_image)
-			return False, f"[ERROR : imdb] {title} [{chkType}-{year}] => {url_mimdb} ({str(e)})"
+			return False, f"[ERROR : imdb] {title} [{chkType}-{year}] => {url_mimdb} ({e!s})"
 
 #Filmy Search
 	@lru_cache(maxsize=500)
@@ -763,7 +762,7 @@ class PostersDB(threading.Thread):
 				return False, f"[SKIP : filmy.gr] {title} (No suitable image found)"
 
 		except Exception as e:
-			return False, f"[ERROR : filmy.gr] {title} ({str(e)})"
+			return False, f"[ERROR : filmy.gr] {title} ({e!s})"
 
 #IMPAwards Search
 	@lru_cache(maxsize=500)
@@ -832,7 +831,7 @@ class PostersDB(threading.Thread):
 		except Exception as e:
 			if os.path.exists(dwn_image):
 				os.remove(dwn_image)
-			return False, f"[ERROR : impawards] {title} ({str(e)})"
+			return False, f"[ERROR : impawards] {title} ({e!s})"
 
 # TVMaze Search
 	@lru_cache(maxsize=500)
@@ -870,7 +869,7 @@ class PostersDB(threading.Thread):
 			if data:
 				best_result = None
 				best_score = 0
-		
+
 				for result in data:
 					show = result["show"]
 					current_score = 0
@@ -890,13 +889,13 @@ class PostersDB(threading.Thread):
 					url_image = best_result["image"]["original"]
 					self.saveImage(dwn_image, url_image, usedImage)
 					return True, f"[SUCCESS : tvmaze] {title} => {url_image} (Score: {best_score})"
-		
+
 				return False, f"[SKIP : tvmaze] {title} (No valid image found)"
-	
+
 			return False, f"[SKIP : tvmaze] {title} (No results)"
 
 		except Exception as e:
-			return False, f"[ERROR : tvmaze] {title} ({str(e)})"
+			return False, f"[ERROR : tvmaze] {title} ({e!s})"
 
 # Molotov Search
 	@lru_cache(maxsize=500)
@@ -905,7 +904,7 @@ class PostersDB(threading.Thread):
 			# Check for French location (fr_FR)
 			if lng != "fr_FR":
 				return False, f"[SKIP : molotov-google] {title} (Only available for France, lng={lng})"
-	
+
 			headers = {
 				"User-Agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_4) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/83.0.4103.97 Safari/537.36"
 			}
@@ -936,7 +935,7 @@ class PostersDB(threading.Thread):
 				if partialtitle > best_score:
 					best_score = partialtitle
 					best_image = get_path
-	
+
 			if best_image:
 				self.saveImage(dwn_image, best_image, usedImage)
 				return True, f"[SUCCESS : molotov-google] {title} => {best_image}"
@@ -944,7 +943,7 @@ class PostersDB(threading.Thread):
 				return False, f"[SKIP : molotov-google] {title} (No suitable image found)"
 
 		except Exception as e:
-			return False, f"[ERROR : molotov-google] {title} ({str(e)})"
+			return False, f"[ERROR : molotov-google] {title} ({e!s})"
 
 #Google Search
 	@lru_cache(maxsize=500)
@@ -972,7 +971,7 @@ class PostersDB(threading.Thread):
 			# Check for none channel
 			if not canal_name:
 				canal_name = ""
-				log_to_file(f"[DEBUG : google] Canal name is None or empty")
+				log_to_file("[DEBUG : google] Canal name is None or empty")
 			else:
 				canal_name = self.UNAC(canal_name)
 				log_to_file(f"[DEBUG : google] Cleaned canal name: {canal_name}")
@@ -999,10 +998,10 @@ class PostersDB(threading.Thread):
 			# Check for correct aspect ratio
 			if usedImage == "poster":
 				aspect_ratio = "t|s"  # tall or square
-				log_to_file(f"[INFO : google] Searching for poster using aspect ratios: t or s")
+				log_to_file("[INFO : google] Searching for poster using aspect ratios: t or s")
 			else:
 				aspect_ratio = "w|xw"  # wide or extra wide
-				log_to_file(f"[INFO : google] Searching for backdrop using aspect ratios: w or xw")
+				log_to_file("[INFO : google] Searching for backdrop using aspect ratios: w or xw")
 			# URL quote
 			google_url = f"https://www.google.com/search?as_st=y&as_q={search_query}&as_epq=&as_oq=&as_eq=&imgar={aspect_ratio}&imgcolor=&imgtype=&cr=&as_sitesearch=&as_filetype=jpg&tbs=&udm=2"
 
@@ -1049,7 +1048,7 @@ class PostersDB(threading.Thread):
 		except Exception as e:
 			if os.path.exists(dwn_image):
 				os.remove(dwn_image)
-			error_msg = f"[ERROR : google] {title} [{chkType}-{year}] ({str(e)})"
+			error_msg = f"[ERROR : google] {title} [{chkType}-{year}] ({e!s})"
 			log_to_file(error_msg)
 			return False, error_msg
 
@@ -1102,7 +1101,7 @@ class PostersDB(threading.Thread):
 				except:
 					pass
 				return None
-		except Exception as e:
+		except Exception:
 			try:
 				os.remove(dwn_image)
 			except:
@@ -1140,21 +1139,21 @@ class PostersDB(threading.Thread):
 		string = ''.join(c for c in string if not unicodedata.combining(c))
 		# replace special characters and HD from channel names
 		string = re.sub(r'\s+HD\b', '', string, flags=re.IGNORECASE)
-		string = re.sub(u"u0026", "&", string)
+		string = re.sub("u0026", "&", string)
 		string = re.sub(r"[-,!/\.\":]", " ", string)
 		# replace diacritics with plain latin characters
 		translit_map = {
-			u"[ÀÁÂÃÄàáâãäåª]": 'a', u"[ÈÉÊËèéêë]": 'e', u"[ÍÌÎÏìíîï]": 'i',
-			u"[ÒÓÔÕÖòóôõöº]": 'o', u"[ÙÚÛÜùúûü]": 'u', u"[Ññ]": 'n',
-			u"[Çç]": 'c', u"[Ÿýÿ]": 'y',
+			"[ÀÁÂÃÄàáâãäåª]": 'a', "[ÈÉÊËèéêë]": 'e', "[ÍÌÎÏìíîï]": 'i',
+			"[ÒÓÔÕÖòóôõöº]": 'o', "[ÙÚÛÜùúûü]": 'u', "[Ññ]": 'n',
+			"[Çç]": 'c', "[Ÿýÿ]": 'y',
 			# Add non latin chars (π.χ. ρώσικα)
-			u"[Аа]": 'a', u"[Бб]": 'b', u"[Вв]": 'v', u"[Гг]": 'g', u"[Дд]": 'd',
-			u"[Ее]": 'e', u"[Ёё]": 'yo', u"[Жж]": 'zh', u"[Зз]": 'z', u"[Ии]": 'i',
-			u"[Йй]": 'y', u"[Кк]": 'k', u"[Лл]": 'l', u"[Мм]": 'm', u"[Нн]": 'n',
-			u"[Оо]": 'o', u"[Пп]": 'p', u"[Рр]": 'r', u"[Сс]": 's', u"[Тт]": 't',
-			u"[Уу]": 'u', u"[Фф]": 'f', u"[Хх]": 'kh', u"[Цц]": 'ts', u"[Чч]": 'ch',
-			u"[Шш]": 'sh', u"[Щщ]": 'shch', u"[Ъъ]": '', u"[Ыы]": 'y', u"[Ьь]": '',
-			u"[Ээ]": 'e', u"[Юю]": 'yu', u"[Яя]": 'ya',
+			"[Аа]": 'a', "[Бб]": 'b', "[Вв]": 'v', "[Гг]": 'g', "[Дд]": 'd',
+			"[Ее]": 'e', "[Ёё]": 'yo', "[Жж]": 'zh', "[Зз]": 'z', "[Ии]": 'i',
+			"[Йй]": 'y', "[Кк]": 'k', "[Лл]": 'l', "[Мм]": 'm', "[Нн]": 'n',
+			"[Оо]": 'o', "[Пп]": 'p', "[Рр]": 'r', "[Сс]": 's', "[Тт]": 't',
+			"[Уу]": 'u', "[Фф]": 'f', "[Хх]": 'kh', "[Цц]": 'ts', "[Чч]": 'ch',
+			"[Шш]": 'sh', "[Щщ]": 'shch', "[Ъъ]": '', "[Ыы]": 'y', "[Ьь]": '',
+			"[Ээ]": 'e', "[Юю]": 'yu', "[Яя]": 'ya',
 		}
 		for pattern, replacement in translit_map.items():
 			string = re.sub(pattern, replacement, string)
@@ -1162,7 +1161,7 @@ class PostersDB(threading.Thread):
 		# keep only English, Greek, Cyrillic, and numbers
 		string = re.sub(r"[^a-zA-Zα-ωΑ-Ωа-яА-Я0-9 ']", "", string)
 		string = string.lower()
-		string = re.sub(u"u003d", "", string)
+		string = re.sub("u003d", "", string)
 		string = re.sub(r'\s{1,}', ' ', string)  # replace multiple spaces
 		string = string.strip()
 		return string
@@ -1204,7 +1203,7 @@ class PosterAutoDB(PostersDB):
 						canal = [None, None, None, None, None, None]
 						canal[0] = ServiceReference(service).getServiceName().replace('\xc2\x86', '').replace('\xc2\x87', '').replace(' HD','')
 						if evt[1] is None or evt[4] is None or evt[5] is None or evt[6] is None:
-							self.logAutoDB("[AutoDB] *** Missing EPG for {}".format(canal[0]))
+							self.logAutoDB(f"[AutoDB] *** Missing EPG for {canal[0]}")
 						else:
 							canal[1] = evt[1]  # Start time
 							canal[2] = evt[4]  # Event title
@@ -1253,9 +1252,9 @@ class PosterAutoDB(PostersDB):
 												break
 
 					newcn = canal[0]
-					self.logAutoDB("[AutoDB] {} new file(s) added ({})".format(newfd, newcn))
+					self.logAutoDB(f"[AutoDB] {newfd} new file(s) added ({newcn})")
 				except Exception as e:
-					self.logAutoDB("[AutoDB] *** Service error: {} ({})".format(service, e))
+					self.logAutoDB(f"[AutoDB] *** Service error: {service} ({e})")
 
 			# **auto delete old and empty files**
 			now_tm = time.time()
@@ -1269,8 +1268,8 @@ class PosterAutoDB(PostersDB):
 				if diff_tm > 259200:  # scan old files > 3 days
 					os.remove(path_folder + f)
 					oldfd += 1
-			self.logAutoDB("[AutoDB] {} old file(s) removed".format(oldfd))
-			self.logAutoDB("[AutoDB] {} empty file(s) removed".format(emptyfd))
+			self.logAutoDB(f"[AutoDB] {oldfd} old file(s) removed")
+			self.logAutoDB(f"[AutoDB] {emptyfd} empty file(s) removed")
 			self.logAutoDB("[AutoDB] *** Stopping ***")
 
 	def logAutoDB(self, logmsg, log_type="operational"):
@@ -1374,14 +1373,14 @@ class GlamPosters(Renderer):
 			return
 
 		try:
-			curCanal = "{}-{}".format(self.canal[1], self.canal[2])
+			curCanal = f"{self.canal[1]}-{self.canal[2]}"
 			# **if the program is the same, do not hide poster**
 			if curCanal == getattr(self, "last_program", None):
-				return  
+				return
 			self.last_program = curCanal  # store last program
 			self.oldCanal = curCanal
 
-			self.logPoster("Service : {} [{}] : {} : {}".format(servicetype, self.nxts, self.canal[0], self.oldCanal))
+			self.logPoster(f"Service : {servicetype} [{self.nxts}] : {self.canal[0]} : {self.oldCanal}")
 
 			# select correct image file by the usedImage skin attribute
 			subfolder = "backdrop/" if self.usedImage == "backdrop" else "poster/"
@@ -1392,7 +1391,7 @@ class GlamPosters(Renderer):
 			else:
 				self.instance.hide()
 				canal_with_type = self.canal[:] + [self.usedImage]  # add usedImage in the list
-		
+
 				# Έλεγχος αν το canal_with_type υπάρχει ήδη στο queue
 				if canal_with_type not in list(pdb.queue):
 					pdb.put(canal_with_type)
@@ -1433,7 +1432,7 @@ class GlamPosters(Renderer):
 			pstrNm = path_folder + subfolder + self.canal[5] + ".jpg"
 			loop = 300
 			found = None
-			self.logPoster("[LOOP : waitPoster] {}".format(pstrNm))
+			self.logPoster(f"[LOOP : waitPoster] {pstrNm}")
 
 			while loop >= 0:
 				if os.path.exists(pstrNm):

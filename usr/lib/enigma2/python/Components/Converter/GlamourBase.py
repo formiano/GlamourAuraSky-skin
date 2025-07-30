@@ -2,15 +2,15 @@
 #Modded and recoded by MCelliotG for use in Glamour skins or standalone
 #If you use this Converter for other skins and rename it, please keep the lines above adding your credits below
 
-from Components.Converter.Converter import Converter
-from Components.Element import cached
-from Components.Converter.Poll import Poll
-from ServiceReference import ServiceReference, resolveAlternate 
-from enigma import eAVControl, iServiceInformation, iPlayableService, iPlayableServicePtr, eServiceCenter
-from Tools.Transponder import ConvertToHumanReadable
-from Components.config import config
-import os.path
 import re
+
+from Components.config import config
+from Components.Converter.Converter import Converter
+from Components.Converter.Poll import Poll
+from Components.Element import cached
+from enigma import eAVControl, iPlayableService, iServiceInformation
+from Tools.Transponder import ConvertToHumanReadable
+
 
 def sp(text):
 	if text:
@@ -272,7 +272,7 @@ satnames = (
 	(-176.7, -177.4, "NSS 9")
 )
 
-class GlamourBase(Poll, Converter, object):
+class GlamourBase(Poll, Converter):
 	TYPE_MAP = {
 		"FreqInfo": 0, "Orbital": 1, "ResCodec": 2,
 		"PidInfoDec": 3, "PidInfoHex": 4, "PidInfoDecHex": 5,
@@ -304,7 +304,7 @@ class GlamourBase(Poll, Converter, object):
 ######### COMMON VARIABLES #################
 	def _read_value(self, path, base=16):
 		try:
-			with open(path, "r") as f:
+			with open(path) as f:
 				return int(f.read().strip(), base)
 		except (OSError, ValueError):
 			return None
@@ -410,7 +410,7 @@ class GlamourBase(Poll, Converter, object):
 		if not any([isid, plscode, plsmode]):
 			return ""
 		return sp(isid) + sp(plsmode) + sp(plscode)
- 
+
 	def satname(self, tp):
 		sat = "Satellite:"
 		orb = int(tp.get("orbital_position"))
@@ -420,7 +420,7 @@ class GlamourBase(Poll, Converter, object):
 			if min_pos <= orbe <= max_pos or max_pos <= orbw <= min_pos:
 				return name
 		try:
-			with open("/etc/tuxbox/satellites.xml", "r", encoding="utf-8") as f:
+			with open("/etc/tuxbox/satellites.xml", encoding="utf-8") as f:
 				for line in f:
 					match = re.search(r'<sat name="(.*?)" position="(-?\d+)"', line)
 					if match and int(match.group(2)) == orb:

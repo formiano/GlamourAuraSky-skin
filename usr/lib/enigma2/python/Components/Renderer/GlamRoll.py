@@ -3,8 +3,9 @@
 #If you use this Renderer for other skins and rename it, please keep the first and second line adding your credits below
 
 from Components.Renderer.Renderer import Renderer
-from enigma import eLabel, eTimer
 from Components.VariableText import VariableText
+from enigma import eLabel, eTimer
+
 
 class GlamRoll(VariableText, Renderer):
 	def __init__(self):

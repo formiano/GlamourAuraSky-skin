@@ -1,5 +1,4 @@
-﻿# -*- coding: utf-8 -*-
-# by digiteng...07.2021, 
+﻿# by digiteng...07.2021,
 # 08.2021(stb lang support),
 # 09.2021 mini fixes
 # © Provided that digiteng rights are protected, all or part of the code can be used, modified...
@@ -9,24 +8,23 @@
 # 03.2022 several enhancements : several renders with one queue thread, google search (incl. molotov for france) + autosearch & autoclean thread ...
 # 02.2023 greek language and utf-8 compatibility enhancements by MCelliotG
 
-from __future__ import absolute_import
-from __future__ import print_function
-from Components.Renderer.Renderer import Renderer
-from enigma import ePixmap, eTimer, loadJPG, eEPGCache
-from ServiceReference import ServiceReference
-from Components.Sources.ServiceEvent import ServiceEvent
-from Components.Sources.CurrentService import CurrentService
-from Components.Sources.EventInfo import EventInfo
-from Components.Sources.Event import Event
-from Components.Renderer.GlamBackdropXDT import GlamBackdropXDT
-import NavigationInstance
 import os
-import sys
 import re
-import time
 import socket
+import sys
+import time
 
+import NavigationInstance
 from Components.config import config
+from Components.Renderer.GlamBackdropXDT import GlamBackdropXDT
+from Components.Renderer.Renderer import Renderer
+from Components.Sources.CurrentService import CurrentService
+from Components.Sources.Event import Event
+from Components.Sources.EventInfo import EventInfo
+from Components.Sources.ServiceEvent import ServiceEvent
+from enigma import eEPGCache, ePixmap, eTimer, loadJPG
+from ServiceReference import ServiceReference
+
 PY3 = (sys.version_info[0] == 3)
 try:
 	if PY3:
@@ -60,7 +58,7 @@ if not os.path.exists(autobouquet_file):
 	autobouquet_file = None
 	autobouquet_count = 0
 else:
-	with open(autobouquet_file, 'r') as f:
+	with open(autobouquet_file) as f:
 		lines = f.readlines()
 	if autobouquet_count > len(lines):
 		autobouquet_count = len(lines)
@@ -78,9 +76,9 @@ path_folder = "/tmp/backdrop/"
 if os.path.isdir("/media/hdd"):
 	path_folder = "/media/hdd/backdrop/"
 elif os.path.isdir("/media/usb"):
-	path_folder = "/media/usb/backdrop/" 
+	path_folder = "/media/usb/backdrop/"
 elif os.path.isdir("/media/mmc"):
-	path_folder = "/media/mmc/backdrop/"  
+	path_folder = "/media/mmc/backdrop/"
 if not os.path.isdir(path_folder):
 	os.makedirs(path_folder)
 
@@ -136,7 +134,7 @@ class BackdropDB(GlamBackdropXDT):
 		self.logDB("[QUEUE] : Initialized")
 		while True:
 			canal = pdb.get()
-			self.logDB("[QUEUE] : {} : {}-{} ({})".format(canal[0],canal[1],canal[2],canal[5]))
+			self.logDB(f"[QUEUE] : {canal[0]} : {canal[1]}-{canal[2]} ({canal[5]})")
 			dwn_backdrop = path_folder + canal[5] + ".jpg"
 			if os.path.exists(dwn_backdrop):
 				os.utime(dwn_backdrop, (time.time(), time.time()))
@@ -191,7 +189,7 @@ class BackdropAutoDB(GlamBackdropXDT):
 						canal = [None,None,None,None,None,None]
 						canal[0] = ServiceReference(service).getServiceName().replace('\xc2\x86', '').replace('\xc2\x87', '')
 						if evt[1]==None or evt[4]==None or evt[5]==None or evt[6]==None:
-							self.logAutoDB("[AutoDB] *** missing epg for {}".format(canal[0]))
+							self.logAutoDB(f"[AutoDB] *** missing epg for {canal[0]}")
 						else:
 							canal[1] = evt[1]
 							canal[2] = evt[4]
@@ -228,9 +226,9 @@ class BackdropAutoDB(GlamBackdropXDT):
 								if val and log.find("SUCCESS"):
 									newfd = newfd + 1
 						newcn = canal[0]
-					self.logAutoDB("[AutoDB] {} new file(s) added ({})".format(newfd,newcn))
+					self.logAutoDB(f"[AutoDB] {newfd} new file(s) added ({newcn})")
 				except Exception as e:
-					self.logAutoDB("[AutoDB] *** service error : {} ({})".format(service,e))
+					self.logAutoDB(f"[AutoDB] *** service error : {service} ({e})")
 			# AUTO REMOVE OLD FILES
 			now_tm = time.time()
 			emptyfd = 0
@@ -243,8 +241,8 @@ class BackdropAutoDB(GlamBackdropXDT):
 				if diff_tm > 259200: # Detect old files > 3 days old
 					os.remove(path_folder+f)
 					oldfd = oldfd + 1
-			self.logAutoDB("[AutoDB] {} old file(s) removed".format(oldfd))
-			self.logAutoDB("[AutoDB] {} empty file(s) removed".format(emptyfd))
+			self.logAutoDB(f"[AutoDB] {oldfd} old file(s) removed")
+			self.logAutoDB(f"[AutoDB] {emptyfd} empty file(s) removed")
 			self.logAutoDB("[AutoDB] *** Stopping ***")
 
 	def logAutoDB(self, logmsg):
@@ -275,7 +273,7 @@ class GlamBackdropX(Renderer):
 			attribs.append((attrib, value))
 		self.skinAttributes = attribs
 		return Renderer.applySkin(self, desktop, parent)
-		
+
 	def intCheck(self):
 		try:
 			socket.setdefaulttimeout(1)
@@ -334,11 +332,11 @@ class GlamBackdropX(Renderer):
 				self.instance.hide()
 				return
 			try:
-				curCanal = "{}-{}".format(self.canal[1],self.canal[2])
+				curCanal = f"{self.canal[1]}-{self.canal[2]}"
 				if curCanal == self.oldCanal:
 					return
 				self.oldCanal = curCanal
-				self.logBackdrop("Service : {} [{}] : {} : {}".format(servicetype,self.nxts,self.canal[0],self.oldCanal))
+				self.logBackdrop(f"Service : {servicetype} [{self.nxts}] : {self.canal[0]} : {self.oldCanal}")
 				pstrNm = path_folder + self.canal[5] + ".jpg"
 				if os.path.exists(pstrNm):
 					self.timer.start(100, True)
@@ -357,7 +355,7 @@ class GlamBackdropX(Renderer):
 		if self.canal[5]:
 			pstrNm = path_folder + self.canal[5] + ".jpg"
 			if os.path.exists(pstrNm):
-				self.logBackdrop("[LOAD : showBackdrop] {}".format(pstrNm))
+				self.logBackdrop(f"[LOAD : showBackdrop] {pstrNm}")
 				self.instance.setPixmap(loadJPG(pstrNm))
 				self.instance.setScale(2)
 				self.instance.show()
@@ -368,7 +366,7 @@ class GlamBackdropX(Renderer):
 			pstrNm = path_folder + self.canal[5] + ".jpg"
 			loop = 300
 			found = None
-			self.logBackdrop("[LOOP : waitBackdrop] {}".format(pstrNm))
+			self.logBackdrop(f"[LOOP : waitBackdrop] {pstrNm}")
 			while loop>=0:
 				if os.path.exists(pstrNm):
 					if os.path.getsize(pstrNm) > 0:
