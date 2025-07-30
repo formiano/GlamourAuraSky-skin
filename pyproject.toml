@@ -1,6 +1,6 @@
 [tool.ruff]
 line-length = 120
-target-version = "py311"
+target-version = "py313"
 include = ["*.py"]
 exclude = [
     "build/",
@@ -11,15 +11,17 @@ exclude = [
 ]
 
 select = [
-    "E",  # Errori PEP8
-    "F",  # Flake8 (import inutilizzati, variabili non usate)
-    "W",  # Warning PEP8
-    "I",  # Import sorting (isort)
-    "UP", # Python upgrade (es. usare pathlib, f-string, etc.)
-    "RUF" # Regole Ruff specifiche (es. raw strings per regex)
+    "E",    # Errori PEP8
+    "F",    # Flake8 (import inutili, variabili non usate)
+    "W",    # Warning PEP8
+    "I",    # Import sorting (isort)
+    "UP",   # Upgrade suggeriti per nuove versioni di Python
+    "RUF"   # Regole specifiche di Ruff (regex, etc.)
 ]
 
 ignore = [
     "E501",  # Line too long
 ]
 
+[tool.ruff.format]
+skip = true
