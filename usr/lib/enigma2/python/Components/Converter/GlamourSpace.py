@@ -24,18 +24,18 @@ class GlamourSpace(Poll, Converter):
 		self.simpleFormat = "Simple" in type
 
 		type_mapping = {
-			"MemTotal": self.MEMTOTAL,
-			"MemFree": self.MEMFREE,
-			"SwapTotal": self.SWAPTOTAL,
-			"SwapFree": self.SWAPFREE,
-			"USBSpace": self.USBSPACE,
-			"HDDSpace": self.HDDSPACE,
-			"RAMInfo": self.RAMINFO,
-			"SwapInfo": self.SWAPINFO,
-			"NetSpace": self.NETSPACE,
-			"DataSpace": self.DATASPACE,
-			"FlashInfo": self.FLASHINFO,
-			"BufferInfo": self.BUFFERINFO
+			_("MemTotal"): self.MEMTOTAL,
+			_("MemFree"): self.MEMFREE,
+			_("SwapTotal"): self.SWAPTOTAL,
+			_("SwapFree"): self.SWAPFREE,
+			_("USBSpace"): self.USBSPACE,
+			_("HDDSpace"): self.HDDSPACE,
+			_("RAMInfo"): self.RAMINFO,
+			_("SwapInfo"): self.SWAPINFO,
+			_("NetSpace"): self.NETSPACE,
+			_("DataSpace"): self.DATASPACE,
+			_("FlashInfo"): self.FLASHINFO,
+			_("BufferInfo"): self.BUFFERINFO
 		}
 		self.type = type_mapping.get(type[0], None)
 		self.poll_enabled = True

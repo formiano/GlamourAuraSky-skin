@@ -8,33 +8,37 @@ on:
 
 jobs:
   build:
-    name: Build GlamourAuraSky-skin
+    name: Build and Extract Translations
     runs-on: ubuntu-latest
+
     steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+
       - name: Install prerequisites
         run: |
-          sudo add-apt-repository -y ppa:ubuntu-toolchain-r/test
-          sudo apt-get -q update
-          sudo apt-get install automake
-          sudo apt-get install build-essential
-          sudo apt-get install gettext
+          sudo apt-get update
+          sudo apt-get install -y automake build-essential gettext python3
 
-      - uses: actions/checkout@v3
+      - name: Set up Python
+        uses: actions/setup-python@v4
         with:
-          ref: 'main'
-      - uses: actions/setup-python@v4
-        with:
-          python-version: '3.10'
-      - name: Build, python 3.10
+          python-version: '3.13'
+
+      - name: Compile Python files
         run: |
           python -m compileall .
 
-      - uses: actions/checkout@v3
-        with:
-          ref: 'main'
-      - uses: actions/setup-python@v4
-        with:
-          python-version: '3.11'
-      - name: Build, python 3.11
+      - name: Update .pot file from source
         run: |
-          python -m compileall .
+          chmod +x locale/updatepot.sh
+          ./locale/updatepot.sh
+
+      - name: Compile .po files into .mo
+        run: |
+          for lang in locale/*.po; do
+            langname=$(basename "$lang" .po)
+            mkdir -p "locale/$langname/LC_MESSAGES"
+            msgfmt "$lang" -o "locale/$langname/LC_MESSAGES/Glam.mo"
+          done
+

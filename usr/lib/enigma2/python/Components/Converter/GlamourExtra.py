@@ -1,14 +1,14 @@
-﻿#GlamourExtra converter (Python 3)
-#Modded and recoded by MCelliotG for use in Glamour skins or standalone
-#If you use this Converter for other skins and rename it, please keep the lines above adding your credits below
+# GlamourExtra converter (Python 3)
+# Modded and recoded by MCelliotG for use in Glamour skins or standalone
+# Updated by OPENDROID_TEAM to use getCPUInfoString() from Components/About.py
 
 import os
 import re
-import binascii
-from Components.Converter.Converter import Converter 
-from Components.Element import cached 
+from Components.Converter.Converter import Converter
+from Components.Element import cached
 from Components.Converter.Poll import Poll
-from enigma import eConsoleAppContainer 
+from enigma import eConsoleAppContainer
+from Components.About import getCPUInfoString, getSystemTemperature
 
 class GlamourExtra(Poll, Converter):
 	TEMPERATURE = 0
@@ -62,16 +62,18 @@ class GlamourExtra(Poll, Converter):
 
 	@cached
 	def getText(self):
-		if self.type == self.CPULOAD:
-			return self.getCpuLoad()
-		elif self.type == self.TEMPERATURE:
-			return self.getTemperature()
+		if self.type in (self.CPULOAD, self.CPUSPEED, self.TEMPERATURE, self.FANINFO):
+			processor, speed, cores, temperature = getCPUInfoString()
+			if self.type == self.CPULOAD:
+				return self.getCpuLoad()
+			elif self.type == self.CPUSPEED:
+				return f"CPU Speed: {speed}"
+			elif self.type == self.TEMPERATURE:
+				return f"Temperature: {temperature}" if temperature else "Temperature: N/A"
+			elif self.type == self.FANINFO:
+				return f"{processor} - {cores}"
 		elif self.type == self.HDDTEMP:
 			return self.hddtemp
-		elif self.type == self.CPUSPEED:
-			return self.getCpuSpeed()
-		elif self.type == self.FANINFO:
-			return self.getFanInfo()
 		elif self.type == self.UPTIME:
 			return self.getUptime()
 		return "N/A"
@@ -82,79 +84,6 @@ class GlamourExtra(Poll, Converter):
 				return f"CPU Load: {f.readline().split()[0]}"
 		except:
 			return "CPU Load: N/A"
-
-	def getTemperature(self):
-		temps = {}
-		paths = {
-			"System": "/proc/stb/sensors/temp0/value",
-			"Board": "/proc/stb/fp/temp_sensor",
-			"CPU": "/sys/devices/virtual/thermal/thermal_zone0/temp",
-			"AVS": "/proc/stb/fp/temp_sensor_avs"
-		}
-		divisors = {"CPU": 1000}
-
-		for label, path in paths.items():
-			if os.path.exists(path):
-				try:
-					with open(path, "r") as f:
-						temp = f.read().strip()
-						if temp.isdigit():
-							temps[label] = f"{int(temp) // divisors.get(label, 1)}°C"
-				except:
-					pass
-		hisi_path = "/proc/hisi/msp/pm_cpu"
-		if os.path.exists(hisi_path):
-			try:
-				with open(hisi_path, "r") as f:
-					for line in f:
-						parts = [x.strip() for x in line.strip().split(":")]
-						if parts[0] == "Tsensor":
-							ctemp = parts[1].split("=")[-1].split()[0]
-							temps["HISI CPU"] = f"{ctemp}°C"
-			except:
-				pass
-
-		if not temps:
-			return "Temperature: N/A"
-		
-		return "  ".join(f"{k}: {v}" for k, v in temps.items())
-
-	def getCpuSpeed(self):
-		try:
-			with open("/proc/cpuinfo", "r") as f:
-				match = re.search(r"cpu MHz\s+:\s+([\d.]+)", f.read())
-				if match:
-					return f"CPU Speed: {int(float(match.group(1)))} MHz"
-			try:
-				with open("/sys/firmware/devicetree/base/cpus/cpu@0/clock-frequency", "rb") as f:
-					freq = int(binascii.hexlify(f.read()), 16) // 1000000
-					return f"CPU Speed: {freq} MHz"
-			except FileNotFoundError:
-				pass
-			with open("/sys/devices/system/cpu/cpu0/cpufreq/cpuinfo_max_freq", "r") as f:
-				return f"CPU Speed: {int(f.read().strip()) // 1000} MHz"
-		except Exception:
-			return "CPU Speed: N/A"
-
-	def getFanInfo(self):
-		paths = {
-			"Speed": "/proc/stb/fp/fan_speed",
-			"V": "/proc/stb/fp/fan_vlt",
-			"PWM": "/proc/stb/fp/fan_pwm"
-		}
-		fan_data = {label: "N/A" for label in paths}
-		found = False
-		for label, path in paths.items():
-			if os.path.exists(path):
-				try:
-					with open(path, "r") as f:
-						value = f.read().strip()
-						if value:
-							fan_data[label] = value
-							found = True
-				except:
-					pass
-		return "Fan Info: N/A" if not found else "Fan: " + "  ".join(f"{k}: {v}" for k, v in fan_data.items())
 
 	def getUptime(self):
 		try:
