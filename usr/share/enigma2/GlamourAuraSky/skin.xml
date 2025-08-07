@@ -343,6 +343,10 @@
     <widget source="session.CurrentService" render="Label" position="1615,890" size="260,35" font="Numbers; 33" zPosition="6" backgroundColor="black" transparent="1" foregroundColor="white" noWrap="1" halign="left" valign="center">
       <convert type="GlamBitrate">Audio:  %ACUR kbit/s</convert>
     </widget>
+    <ePixmap pixmap="GlamourAuraSky/menu/infobar.png" position="1610,790" zPosition="-5" size="280,50" alphatest="off" transparent="1" />
+    <widget source="session.CurrentService" backgroundColor="background20" foregroundColor="sky" render="Label" font="RegularB;33" position="1615,790" size="935,45" halign="left" valign="center" noWrap="1" transparent="1" zPosition="9">
+      <convert type="OpdVpnIp_converter">c+myip</convert>
+    </widget>
     <!-- MIDDLE INFOBAR MAIN INFO -->
     <ePixmap pixmap="GlamourAuraSky/infobar/infobar_chname.png" position="350,708" zPosition="-1" size="1570,130" alphatest="off" transparent="1" />
     <panel name="MainInfobar" />
