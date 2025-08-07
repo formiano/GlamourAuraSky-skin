@@ -1,14 +1,6 @@
-name: GlamourAuraSky-skin
-
-on:
-  push:
-    branches: [ main ]
-  pull_request:
-    branches: [ main ]
-
 jobs:
   build:
-    name: Build and Extract Translations
+    name: Build Skin
     runs-on: ubuntu-latest
 
     steps:
@@ -18,7 +10,7 @@ jobs:
       - name: Install prerequisites
         run: |
           sudo apt-get update
-          sudo apt-get install -y automake build-essential gettext python3
+          sudo apt-get install -y automake build-essential python3
 
       - name: Set up Python
         uses: actions/setup-python@v4
@@ -28,17 +20,3 @@ jobs:
       - name: Compile Python files
         run: |
           python -m compileall .
-
-      - name: Update .pot file from source
-        run: |
-          chmod +x locale/updatepot.sh
-          ./locale/updatepot.sh
-
-      - name: Compile .po files into .mo
-        run: |
-          for lang in locale/*.po; do
-            langname=$(basename "$lang" .po)
-            mkdir -p "locale/$langname/LC_MESSAGES"
-            msgfmt "$lang" -o "locale/$langname/LC_MESSAGES/Glam.mo"
-          done
-
