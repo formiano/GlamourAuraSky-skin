@@ -1,5 +1,5 @@
 #!/bin/sh
-rm -rf /usr/share/enigma2/GlamourAuraFHD-OPD 
+rm -rf /usr/share/enigma2/GlamourAuraSky/
 rm -rf /usr/lib/enigma2/python/Components/Converter/Glam*
 rm -rf /usr/lib/enigma2/python/Components/Renderer/Glam*
 echo "                                                                      "

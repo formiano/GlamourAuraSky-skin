@@ -15,10 +15,10 @@ echo "                                             "
 echo "                                             "
 echo "                                             "
 echo "Checking if a previous version of Glamour Aura FHD openDroid skin is installed..."
-if [ -f /usr/share/enigma2/GlamourAuraFHD-OPD/skin.xml ]; then
-    cp -R /usr/share/enigma2/GlamourAuraFHD-OPD/ /tmp
+if [ -f /usr/share/enigma2/GlamourAuraSky/skin.xml ]; then
+    cp -R /usr/share/enigma2/GlamourAuraSky/ /tmp
     cp -R /usr/share/enigma2/GACommon/ /tmp
-    rm -rf /usr/share/enigma2/GlamourAuraFHD-OPD
+    rm -rf /usr/share/enigma2/GlamourAuraSky
     rm -rf /usr/lib/enigma2/python/Components/Converter/Glam*
     rm -rf /usr/lib/enigma2/python/Components/Renderer/Glam*
     echo "                                               "
