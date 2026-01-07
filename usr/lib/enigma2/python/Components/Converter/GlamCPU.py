@@ -6,8 +6,7 @@ from Components.Converter.Converter import Converter
 from Components.Converter.Poll import Poll
 from Components.Element import cached
 
-
-class GlamCPU(Converter):
+class GlamCPU(Converter, object):
 	CPU_ALL = -2
 	CPU_TOTAL = -1
 
@@ -70,7 +69,7 @@ class GlamCPU(Converter):
 	value = property(getValue)
 	range = 100
 
-class CpuUsageMonitor(Poll):
+class CpuUsageMonitor(Poll, object):
 	def __init__(self):
 		Poll.__init__(self)
 		self.__callbacks = []
@@ -83,7 +82,7 @@ class CpuUsageMonitor(Poll):
 	def getCpusInfo(self):
 		res = []
 		try:
-			fd = open("/proc/stat")
+			fd = open("/proc/stat", "r")
 			for l in fd:
 				if l.startswith("cpu"):
 					total = busy = 0

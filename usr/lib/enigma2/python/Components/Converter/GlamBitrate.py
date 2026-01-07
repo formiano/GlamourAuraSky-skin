@@ -2,8 +2,8 @@
 #Modded and recoded by MCelliotG for use in Glamour skins or standalone
 #If you use this Converter for other skins and rename it, please keep the lines above adding your credits below
 
+import os
 import shutil
-
 from Components.Converter.Converter import Converter
 from Components.Element import cached
 from Components.ServiceEventTracker import ServiceEventTracker
@@ -12,7 +12,7 @@ from enigma import eConsoleAppContainer, eTimer, iPlayableService, iServiceInfor
 BITRATE_BINARY_PATH = 'bitrate'
 binaryfound = shutil.which(BITRATE_BINARY_PATH) is not None
 
-class GlamBitrate(Converter):
+class GlamBitrate(Converter, object):
 	VIDEOBITRATE = -1
 	AUDIOBITRATE = 0
 	VCUR = 1
@@ -118,6 +118,10 @@ class GlamBitrate(Converter):
 		print(f"[GlamBitrate] Executing: {cmd}")
 		self.container.execute(cmd)
 
+	@staticmethod
+	def sanitize(value):
+		return value if value <= 999999 else 0
+
 	def processOutput(self, data):
 		try:
 			output = data.decode('utf-8').strip()
@@ -128,6 +132,12 @@ class GlamBitrate(Converter):
 				adata = [int(x) if x.isdigit() else 0 for x in lines[1].split()]
 				self.vmin, self.vmax, self.vavg, self.vcur = (vdata + [0, 0, 0, 0])[:4]
 				self.amin, self.amax, self.aavg, self.acur = (adata + [0, 0, 0, 0])[:4]
+
+				# --- Sanitize fake large values ---
+				for attr in ["vmin", "vmax", "vavg", "vcur", "amin", "amax", "aavg", "acur"]:
+					setattr(self, attr, self.sanitize(getattr(self, attr)))
+				# ------------------------------------------------------
+
 				print(f"[GlamBitrate] Video - Min: {self.vmin}, Max: {self.vmax}, Avg: {self.vavg}, Cur: {self.vcur}")
 				print(f"[GlamBitrate] Audio - Min: {self.amin}, Max: {self.amax}, Avg: {self.aavg}, Cur: {self.acur}")
 				Converter.changed(self, (self.CHANGED_POLL,))
