@@ -1,7 +1,7 @@
-# GlamNetIcon Universal network icon renderer for Enigma2
-# Fully recoded by MCelliotG for use in Glamour skins or standalone
-# Uses the same path resolving mechanism as GlamAudioIcon with full debug logging
-# If you use this Renderer for other skins and rename it, please keep the first and second line adding your credits below
+# GlamBaseIcons - common base renderer for SVG/PNG icons
+# Used by GlamNetIcon, GlamAudioIcon, and any future Glam-* icon renderers
+# Coded by MCelliotG for use in Glamour skins or standalone
+# If you use this Renderer for other skins and rename it, please keep the lines above adding your credits below
 
 from os.path import exists, join
 from enigma import ePixmap
@@ -14,91 +14,101 @@ class GlamNetIcon(Renderer):
 		"/usr/share/enigma2/skin_default/"
 	)
 
+	GUI_WIDGET = ePixmap
+
 	def __init__(self):
 		Renderer.__init__(self)
 		self.size = None
 		self.cache = {}
-		self.pngname = ""
+		self.currentIcon = ""
 		self.path = ""
-		print("[GlamNetIcon] Renderer initialized.")
+		print("[GlamNetIcon] Base icon renderer initialized")
 
 	def applySkin(self, desktop, parent):
 		attribs = []
 		for (attrib, value) in self.skinAttributes:
 			if attrib == "path":
-				self.path = join(value, "")  # ensure trailing slash if relative
+				self.path = join(value, "")
 				print(f"[GlamNetIcon] applySkin: path='{self.path}'")
+			elif attrib == "size":
+				parts = value.split(",")
+				if len(parts) == 2:
+					self.size = (int(parts[0]), int(parts[1]))
+					print(f"[GlamNetIcon] applySkin: size={self.size}")
+				attribs.append((attrib, value))
 			else:
 				attribs.append((attrib, value))
-
-			if attrib == "size":
-				s = value.split(",")
-				if len(s) == 2:
-					self.size = f"{s[0]}x{s[1]}"
-					print(f"[GlamNetIcon] applySkin: size='{self.size}'")
 
 		self.skinAttributes = attribs
 		return Renderer.applySkin(self, desktop, parent)
 
-	GUI_WIDGET = ePixmap
+	def _tryIcon(self, base, name, ext):
+		full = f"{base}{self.path}{name}.{ext}"
+		print(f"[GlamNetIcon] Trying {ext.upper()}: {full}")
+		return full if exists(full) else ""
 
-	def _findIcon(self, name):
+	def findIcon(self, name):
 		if not name:
-			print("[GlamNetIcon] _findIcon: empty name")
 			return ""
 
-		print(f"[GlamNetIcon] _findIcon: searching for '{name}'")
+		lname = name.lower()
+		if lname == "unknown":
+			return ""
 
-		pngname = ""
-
-		# 1) Absolute path
 		if self.path.startswith("/"):
-			pngname = f"{self.path}{name}.png"
-			print(f"[GlamNetIcon] Trying absolute path: {pngname}")
-			if exists(pngname):
-				print("[GlamNetIcon] Found absolute path")
-				return pngname
+			svg = f"{self.path}{name}.svg"
+			if exists(svg):
+				return svg
 
-		# 2) In active skin folder (resolved by SCOPE_GUISKIN)
+			png = f"{self.path}{name}.png"
+			if exists(png):
+				return png
+
 		for base in self.searchPaths:
-			full = f"{base}{self.path}{name}.png"
-			print(f"[GlamNetIcon] Trying skin path: {full}")
+			svg = self._tryIcon(base, name, "svg")
+			if svg:
+				return svg
 
-			if exists(full):
-				print("[GlamNetIcon] Found in skin")
-				return full
+			png = self._tryIcon(base, name, "png")
+			if png:
+				return png
 
-		print("[GlamNetIcon] Not found")
 		return ""
+
+	def _loadPixmap(self, path):
+		try:
+			self.instance.setPixmapFromFile(path)
+		except Exception as e:
+			print("[GlamNetIcon] ERROR loading icon:", e)
 
 	def changed(self, what):
 		if not self.instance:
-			print("[GlamNetIcon] changed(): instance is None")
+			return
+
+		if what[0] == self.CHANGED_CLEAR:
+			self.instance.hide()
 			return
 
 		value = (self.source.text or "").strip()
-		print(f"[GlamNetIcon] changed(): converter returned '{value}'")
+		if value.lower() in ("on", "true", "1", "yes", "vpn_on"):
+			value = "vpn_on"
+		elif value.lower() in ("off", "false", "0", "no", "vpn_off"):
+			value = "vpn_off"
 
-		if not value:
-			print("[GlamNetIcon] Empty value -> hide")
+		iconPath = self.cache.get(value, "")
+		if not iconPath:
+			iconPath = self.findIcon(value)
+			if iconPath:
+				self.cache[value] = iconPath
+
+		if not iconPath:
 			self.instance.hide()
 			return
 
-		pngname = self.cache.get(value, "")
-		if not pngname:
-			pngname = self._findIcon(value)
-			if pngname:
-				self.cache[value] = pngname
-
-		if not pngname:
-			print("[GlamNetIcon] Icon not found -> hide")
-			self.instance.hide()
-			return
-
-		# If icon changed, load new pixmap
-		if self.pngname != pngname:
-			print(f"[GlamNetIcon] Showing icon: {pngname}")
-			self.instance.setPixmapFromFile(pngname)
-			self.pngname = pngname
-
-		self.instance.show()
+		if iconPath != self.currentIcon:
+			self._loadPixmap(iconPath)
+			self.currentIcon = iconPath
+			if value == "vpn_off":
+				self.instance.hide()
+			else:
+				self.instance.show()

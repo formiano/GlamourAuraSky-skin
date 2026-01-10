@@ -2968,6 +2968,12 @@
     <widget source="session.CurrentService" render="Label" position="90,660" size="310,40" font="Numbers; 29" zPosition="6" backgroundColor="background20" transparent="1" text="Internal IP" halign="left" noWrap="1">
       <convert type="GlamourNetInfo">InternalIP</convert>
     </widget>
+    <widget source="session.CurrentService" render="GlamNetIcon" position="45,705" size="40,40" path="infobar/vpn" alphatest="blend" transparent="1" zPosition="13">
+    <convert type="opdvpninfo">VpnActiveICON</convert>
+</widget>
+<widget source="session.CurrentService" render="Label" position="90,705" size="310,40" font="Regular;29" valign="center">
+    <convert type="opdvpninfo">VpnActiveText</convert>
+</widget>
   </screen>
   <!-- HDD/USB Infopanel -->
   <screen name="HDDInfoPanel" flags="wfNoBorder">
@@ -4203,9 +4209,6 @@
     <widget source="Title" render="Picon" position="125,90" size="400,240" transparent="1" alphatest="blend" zPosition="5">
       <convert type="GlamRefString">CurrentRef</convert>
     </widget>
-    <!--widget source="ServiceEvent" render="Picon" position="125,90" size="400,240" transparent="1" alphatest="blend" zPosition="4">
-	  <convert type="ServiceName">Reference</convert>
-	</widget-->
     <widget source="session.CurrentService" render="Label" position="40,760" size="600,95" font="Numbers; 28" transparent="1" zPosition="5" foregroundColor="amarillo" backgroundColor="transpyellow" halign="center" valign="center">
       <convert type="GlamourBase">PidInfoDecHex</convert>
     </widget>
