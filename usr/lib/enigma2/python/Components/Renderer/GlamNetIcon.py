@@ -90,9 +90,10 @@ class GlamNetIcon(Renderer):
 			return
 
 		value = (self.source.text or "").strip()
-		if value.lower() in ("on", "true", "1", "yes", "vpn_on"):
+		lname = value.lower()
+		if lname in ("on", "true", "1", "yes", "vpn_on"):
 			value = "vpn_on"
-		elif value.lower() in ("off", "false", "0", "no", "vpn_off"):
+		elif lname in ("off", "false", "0", "no", "vpn_off"):
 			value = "vpn_off"
 
 		iconPath = self.cache.get(value, "")
@@ -101,14 +102,11 @@ class GlamNetIcon(Renderer):
 			if iconPath:
 				self.cache[value] = iconPath
 
-		if not iconPath:
-			self.instance.hide()
-			return
+		if iconPath:
 
-		if iconPath != self.currentIcon:
-			self._loadPixmap(iconPath)
-			self.currentIcon = iconPath
-			if value == "vpn_off":
-				self.instance.hide()
-			else:
-				self.instance.show()
+			if iconPath != self.currentIcon:
+				self._loadPixmap(iconPath)
+				self.currentIcon = iconPath
+			self.instance.show()
+		else:
+			self.instance.hide()

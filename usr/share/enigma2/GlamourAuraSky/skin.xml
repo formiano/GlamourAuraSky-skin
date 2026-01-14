@@ -347,6 +347,10 @@
     <widget source="session.CurrentService" backgroundColor="background20" foregroundColor="sky" render="Label" font="RegularB;33" position="1615,790" size="935,45" halign="left" valign="center" noWrap="1" transparent="1" zPosition="9">
       <convert type="OpdVpnIp_converter">c+myip</convert>
     </widget>
+      <ePixmap pixmap="GlamourAuraSky/menu/infobar.png" position="1610,750" zPosition="-5" size="280,50" alphatest="off" transparent="1" />
+    <widget source="session.CurrentService" render="GlamNetIcon" position="1610,750" size="40,40" path="infobar/vpn" alphatest="blend" transparent="1" zPosition="13">
+    <convert type="opdvpninfo">VpnActiveICON</convert>
+    </widget>
     <!-- MIDDLE INFOBAR MAIN INFO -->
     <ePixmap pixmap="GlamourAuraSky/infobar/infobar_chname.png" position="350,708" zPosition="-1" size="1570,130" alphatest="off" transparent="1" />
     <panel name="MainInfobar" />

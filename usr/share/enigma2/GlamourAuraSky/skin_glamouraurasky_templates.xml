@@ -2279,6 +2279,17 @@
                 <convert type="OpdVpnIp_converter">vpn</convert>
 		<convert type="ConditionalShowHide" />
      </widget>
+     <ePixmap pixmap="GlamourAuraSky/menu/infobar.png" position="1500,750" zPosition="-5" size="400,50" alphatest="off" transparent="1" />
+     <widget source="session.CurrentService" render="GlamNetIcon" position="1500,755" size="40,40" path="infobar/vpn" alphatest="blend" transparent="1" zPosition="13">
+    <convert type="opdvpninfo">VpnVisible</convert>
+    <convert type="ConditionalShowHide" />
+    <convert type="opdvpninfo">VpnActiveICON</convert>
+     </widget>
+     <widget source="session.CurrentService" backgroundColor="background20" foregroundColor="white" render="Label" font="RegularB;33" position="1560,750" size="310,40" halign="left" valign="center" noWrap="1" transparent="1" zPosition="9">
+    <convert type="opdvpninfo">VpnVisible</convert>
+    <convert type="ConditionalShowHide" />
+    <convert type="opdvpninfo">VpnProvider</convert>
+     </widget>
     <!-- Picon -->
     <widget source="session.CurrentService" render="Picon" position="50,803" zPosition="4" size="300,180" transparent="1" alphatest="blend">
       <convert type="ServiceName">Reference</convert>
@@ -2970,9 +2981,14 @@
     </widget>
     <widget source="session.CurrentService" render="GlamNetIcon" position="45,705" size="40,40" path="infobar/vpn" alphatest="blend" transparent="1" zPosition="13">
     <convert type="opdvpninfo">VpnActiveICON</convert>
+    <convert type="opdvpninfo">VpnVisible</convert>
+    <convert type="ConditionalShowHide" />
+    <convert type="opdvpninfo">VpnActiveICON</convert>
 </widget>
 <widget source="session.CurrentService" render="Label" position="90,705" size="310,40" font="Regular;29" valign="center">
-    <convert type="opdvpninfo">VpnActiveText</convert>
+    <convert type="opdvpninfo">VpnVisible</convert>
+    <convert type="ConditionalShowHide" />
+    <convert type="opdvpninfo">VpnProvider</convert>
 </widget>
   </screen>
   <!-- HDD/USB Infopanel -->
