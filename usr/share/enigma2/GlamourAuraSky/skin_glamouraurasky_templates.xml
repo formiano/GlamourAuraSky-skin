@@ -2285,7 +2285,7 @@
     <convert type="ConditionalShowHide" />
     <convert type="opdvpninfo">VpnActiveICON</convert>
      </widget>
-     <widget source="session.CurrentService" backgroundColor="background20" foregroundColor="white" render="Label" font="RegularB;33" position="1560,750" size="310,40" halign="left" valign="center" noWrap="1" transparent="1" zPosition="9">
+     <widget source="session.CurrentService" backgroundColor="background20" foregroundColor="white" render="Label" font="RegularB;33" position="1550,750" size="310,40" halign="left" valign="center" noWrap="1" transparent="1" zPosition="9">
     <convert type="opdvpninfo">VpnVisible</convert>
     <convert type="ConditionalShowHide" />
     <convert type="opdvpninfo">VpnProvider</convert>
