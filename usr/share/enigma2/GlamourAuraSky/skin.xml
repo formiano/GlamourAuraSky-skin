@@ -349,6 +349,8 @@
     </widget>
       <ePixmap pixmap="GlamourAuraSky/menu/infobar.png" position="1610,750" zPosition="-5" size="280,50" alphatest="off" transparent="1" />
     <widget source="session.CurrentService" render="GlamNetIcon" position="1610,750" size="40,40" path="infobar/vpn" alphatest="blend" transparent="1" zPosition="13">
+    <convert type="opdvpninfo">VpnVisible</convert>
+    <convert type="ConditionalShowHide" />
     <convert type="opdvpninfo">VpnActiveICON</convert>
     </widget>
     <!-- MIDDLE INFOBAR MAIN INFO -->
