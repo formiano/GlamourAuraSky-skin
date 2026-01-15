@@ -2946,7 +2946,7 @@
   </screen>
   <!-- CPU & Temp Infobar -->
   <screen name="CPUTempInfobar" flags="wfNoBorder">
-    <ePixmap pixmap="GlamourAuraSky/infobar/infobar_cpu.png" position="0,355" zPosition="-6" size="420,370" alphatest="off" transparent="1" />
+    <ePixmap pixmap="GlamourAuraSky/infobar/infobar_cpu.png" position="0,350" zPosition="-6" size="420,435" alphatest="off" transparent="1" />
     <ePixmap pixmap="GlamourAuraSky/infobar/cputemp.png" position="45,380" zPosition="3" size="40,40" alphatest="blend" transparent="1" />
     <widget source="session.CurrentService" render="Label" position="90,380" size="310,40" font="Numbers; 29" zPosition="6" backgroundColor="background20" transparent="1" foregroundColor="white" text="Temperature" noWrap="1">
       <convert type="GlamourExtra">Temperature</convert>
@@ -2980,14 +2980,14 @@
       <convert type="GlamourNetInfo">InternalIP</convert>
     </widget>
     <widget source="session.CurrentService" render="GlamNetIcon" position="45,705" size="40,40" path="infobar/vpn" alphatest="blend" transparent="1" zPosition="13">
+    <convert type="opdvpninfo">VpnVisible</convert>
+    <convert type="ConditionalShowHide" />
     <convert type="opdvpninfo">VpnActiveICON</convert>
-    <convert type="opdvpninfo">VpnVisible</convert>
-    <convert type="ConditionalShowHide" />
     </widget>
-    <widget source="session.CurrentService" render="Label" position="90,705" size="310,40" font="Regular;29" valign="center">
-     <convert type="opdvpninfo">VpnProvider</convert>
+    <widget source="session.CurrentService" backgroundColor="background20" foregroundColor="white" render="Label" font="RegularB;33" position="90,700" size="310,40" halign="left" valign="center" noWrap="1" transparent="1" zPosition="9">
     <convert type="opdvpninfo">VpnVisible</convert>
     <convert type="ConditionalShowHide" />
+    <convert type="opdvpninfo">VpnProvider</convert>
     </widget>
   </screen>
   <!-- HDD/USB Infopanel -->
