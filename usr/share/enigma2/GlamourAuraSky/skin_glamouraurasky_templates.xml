@@ -2983,13 +2983,12 @@
     <convert type="opdvpninfo">VpnActiveICON</convert>
     <convert type="opdvpninfo">VpnVisible</convert>
     <convert type="ConditionalShowHide" />
-    <convert type="opdvpninfo">VpnActiveICON</convert>
-</widget>
-<widget source="session.CurrentService" render="Label" position="90,705" size="310,40" font="Regular;29" valign="center">
+    </widget>
+    <widget source="session.CurrentService" render="Label" position="90,705" size="310,40" font="Regular;29" valign="center">
+     <convert type="opdvpninfo">VpnProvider</convert>
     <convert type="opdvpninfo">VpnVisible</convert>
     <convert type="ConditionalShowHide" />
-    <convert type="opdvpninfo">VpnProvider</convert>
-</widget>
+    </widget>
   </screen>
   <!-- HDD/USB Infopanel -->
   <screen name="HDDInfoPanel" flags="wfNoBorder">
