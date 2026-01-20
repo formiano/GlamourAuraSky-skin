@@ -2984,7 +2984,7 @@
     <convert type="ConditionalShowHide" />
     <convert type="opdvpninfo">VpnActiveICON</convert>
     </widget>
-    <widget source="session.CurrentService" backgroundColor="background20" foregroundColor="white" render="Label" font="RegularB;33" position="90,650" size="310,40" halign="left" valign="center" noWrap="1" transparent="1" zPosition="9">
+    <widget source="session.CurrentService" backgroundColor="background20" foregroundColor="white" render="Label" font="Numbers; 29" position="90,650" size="310,40" halign="left" valign="center" noWrap="1" transparent="1" zPosition="9">
     <convert type="opdvpninfo">VpnVisible</convert>
     <convert type="ConditionalShowHide" />
     <convert type="opdvpninfo">VpnProvider</convert>
@@ -2993,7 +2993,7 @@
     <convert type="VNetSpeedInfo">NET_TYP</convert>
     <convert type="ConditionalShowHide" />
     </widget>
-    <widget source="session.CurrentService" backgroundColor="background20" foregroundColor="white" render="Label" font="RegularB;33" position="90,700" size="410,40" halign="left" valign="center" noWrap="1" transparent="1" zPosition="9">
+    <widget source="session.CurrentService" backgroundColor="background20" foregroundColor="white" render="Label" font="Numbers; 29" position="90,700" size="410,40" halign="left" valign="center" noWrap="1" transparent="1" zPosition="9">
     <convert type="VNetSpeedInfo">RC</convert> Mbps ↓
     <convert type="VNetSpeedInfo">TM</convert> Mbps ↑
     <convert type="ConditionalShowHide" />
