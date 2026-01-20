@@ -2946,48 +2946,57 @@
   </screen>
   <!-- CPU & Temp Infobar -->
   <screen name="CPUTempInfobar" flags="wfNoBorder">
-    <ePixmap pixmap="GlamourAuraSky/infobar/infobar_cpu.png" position="0,350" zPosition="-6" size="420,435" alphatest="off" transparent="1" />
-    <ePixmap pixmap="GlamourAuraSky/infobar/cputemp.png" position="45,380" zPosition="3" size="40,40" alphatest="blend" transparent="1" />
-    <widget source="session.CurrentService" render="Label" position="90,380" size="310,40" font="Numbers; 29" zPosition="6" backgroundColor="background20" transparent="1" foregroundColor="white" text="Temperature" noWrap="1">
+    <ePixmap pixmap="GlamourAuraSky/infobar/infobar_cpu.png" position="0,300" zPosition="-6" size="420,475" alphatest="off" transparent="1" />
+    <ePixmap pixmap="GlamourAuraSky/infobar/cputemp.png" position="45,330" zPosition="3" size="40,40" alphatest="blend" transparent="1" />
+    <widget source="session.CurrentService" render="Label" position="90,330" size="310,40" font="Numbers; 29" zPosition="6" backgroundColor="background20" transparent="1" foregroundColor="white" text="Temperature" noWrap="1">
       <convert type="GlamourExtra">Temperature</convert>
     </widget>
-    <ePixmap pixmap="GlamourAuraSky/infobar/fanspeed.png" position="45,540" zPosition="3" size="40,40" alphatest="blend" transparent="1" />
-    <widget source="session.CurrentService" render="Label" position="90,540" size="310,40" font="Numbers; 29" zPosition="6" backgroundColor="background20" transparent="1" text="FanInfo" noWrap="1" foregroundColor="white">
+    <ePixmap pixmap="GlamourAuraSky/infobar/fanspeed.png" position="45,490" zPosition="3" size="40,40" alphatest="blend" transparent="1" />
+    <widget source="session.CurrentService" render="Label" position="90,490" size="310,40" font="Numbers; 29" zPosition="6" backgroundColor="background20" transparent="1" text="FanInfo" noWrap="1" foregroundColor="white">
       <convert type="GlamourExtra">FanInfo,Short</convert>
     </widget>
-    <ePixmap pixmap="GlamourAuraSky/infobar/cpuload.png" position="45,420" zPosition="3" size="40,40" alphatest="blend" transparent="1" />
-    <widget source="session.CurrentService" render="Label" position="90,420" size="310,40" font="Numbers; 29" zPosition="6" backgroundColor="background20" transparent="1" foregroundColor="white" text="CPUload" halign="left" noWrap="1">
+    <ePixmap pixmap="GlamourAuraSky/infobar/cpuload.png" position="45,370" zPosition="3" size="40,40" alphatest="blend" transparent="1" />
+    <widget source="session.CurrentService" render="Label" position="90,370" size="310,40" font="Numbers; 29" zPosition="6" backgroundColor="background20" transparent="1" foregroundColor="white" text="CPUload" halign="left" noWrap="1">
       <convert type="GlamourExtra">CPULoad</convert>
     </widget>
-    <ePixmap pixmap="GlamourAuraSky/infobar/cpuinfo.png" position="45,460" zPosition="3" size="40,40" alphatest="blend" transparent="1" />
-    <widget source="session.CurrentService" render="Label" position="90,460" size="330,40" font="Numbers; 29" zPosition="6" backgroundColor="background20" transparent="1" text="CPU Info" halign="left" noWrap="1" foregroundColor="white">
+    <ePixmap pixmap="GlamourAuraSky/infobar/cpuinfo.png" position="45,410" zPosition="3" size="40,40" alphatest="blend" transparent="1" />
+    <widget source="session.CurrentService" render="Label" position="90,410" size="330,40" font="Numbers; 29" zPosition="6" backgroundColor="background20" transparent="1" text="CPU Info" halign="left" noWrap="1" foregroundColor="white">
       <convert type="GlamCPU">All,Default</convert>
     </widget>
-    <ePixmap pixmap="GlamourAuraSky/infobar/cpuspeed.png" position="45,500" zPosition="3" size="40,40" alphatest="blend" transparent="1" />
-    <widget source="session.CurrentService" render="Label" position="90,500" size="310,40" font="Numbers; 29" zPosition="6" backgroundColor="background20" transparent="1" text="CPU speed" halign="left" noWrap="1">
+    <ePixmap pixmap="GlamourAuraSky/infobar/cpuspeed.png" position="45,450" zPosition="3" size="40,40" alphatest="blend" transparent="1" />
+    <widget source="session.CurrentService" render="Label" position="90,450" size="310,40" font="Numbers; 29" zPosition="6" backgroundColor="background20" transparent="1" text="CPU speed" halign="left" noWrap="1">
       <convert type="GlamourExtra">CPUSpeed</convert>
     </widget>
-    <ePixmap pixmap="GlamourAuraSky/infobar/uptime.png" position="45,580" zPosition="3" size="40,40" alphatest="blend" transparent="1" />
-    <widget source="session.CurrentService" render="Label" position="90,580" size="310,40" font="Numbers; 29" zPosition="6" backgroundColor="background20" transparent="1" text="Uptime" halign="left" noWrap="1" foregroundColor="white">
+    <ePixmap pixmap="GlamourAuraSky/infobar/uptime.png" position="45,530" zPosition="3" size="40,40" alphatest="blend" transparent="1" />
+    <widget source="session.CurrentService" render="Label" position="90,530" size="310,40" font="Numbers; 29" zPosition="6" backgroundColor="background20" transparent="1" text="Uptime" halign="left" noWrap="1" foregroundColor="white">
       <convert type="GlamourExtra">Uptime,Short</convert>
     </widget>
-    <ePixmap pixmap="GlamourAuraSky/infobar/ip_wan.png" position="45,620" zPosition="3" size="40,40" alphatest="blend" transparent="1" />
-    <widget source="session.CurrentService" render="Label" position="90,620" size="310,40" font="Numbers; 29" zPosition="6" backgroundColor="background20" transparent="1" text="External IP" halign="left" noWrap="1">
+    <ePixmap pixmap="GlamourAuraSky/infobar/ip_wan.png" position="45,570" zPosition="3" size="40,40" alphatest="blend" transparent="1" />
+    <widget source="session.CurrentService" render="Label" position="90,570" size="310,40" font="Numbers; 29" zPosition="6" backgroundColor="background20" transparent="1" text="External IP" halign="left" noWrap="1">
       <convert type="GlamourNetInfo">ExternalIP</convert>
     </widget>
-    <ePixmap pixmap="GlamourAuraSky/infobar/ip_lan.png" position="45,660" zPosition="3" size="40,40" alphatest="blend" transparent="1" />
-    <widget source="session.CurrentService" render="Label" position="90,660" size="310,40" font="Numbers; 29" zPosition="6" backgroundColor="background20" transparent="1" text="Internal IP" halign="left" noWrap="1">
+    <ePixmap pixmap="GlamourAuraSky/infobar/ip_lan.png" position="45,610" zPosition="3" size="40,40" alphatest="blend" transparent="1" />
+    <widget source="session.CurrentService" render="Label" position="90,610" size="310,40" font="Numbers; 29" zPosition="6" backgroundColor="background20" transparent="1" text="Internal IP" halign="left" noWrap="1">
       <convert type="GlamourNetInfo">InternalIP</convert>
     </widget>
-    <widget source="session.CurrentService" render="GlamNetIcon" position="45,705" size="40,40" path="infobar/vpn" alphatest="blend" transparent="1" zPosition="13">
+    <widget source="session.CurrentService" render="GlamNetIcon" position="45,655" size="40,40" path="infobar/vpn" alphatest="blend" transparent="1" zPosition="13">
     <convert type="opdvpninfo">VpnVisible</convert>
     <convert type="ConditionalShowHide" />
     <convert type="opdvpninfo">VpnActiveICON</convert>
     </widget>
-    <widget source="session.CurrentService" backgroundColor="background20" foregroundColor="white" render="Label" font="RegularB;33" position="90,700" size="310,40" halign="left" valign="center" noWrap="1" transparent="1" zPosition="9">
+    <widget source="session.CurrentService" backgroundColor="background20" foregroundColor="white" render="Label" font="RegularB;33" position="90,650" size="310,40" halign="left" valign="center" noWrap="1" transparent="1" zPosition="9">
     <convert type="opdvpninfo">VpnVisible</convert>
     <convert type="ConditionalShowHide" />
     <convert type="opdvpninfo">VpnProvider</convert>
+    </widget>
+        <widget source="session.CurrentService" render="GlamNetIcon" position="45,705" size="40,40" path="infobar/vpn" alphatest="blend" transparent="1" zPosition="13">
+    <convert type="VNetSpeedInfo">NET_TYP</convert>
+    <convert type="ConditionalShowHide" />
+    </widget>
+    <widget source="session.CurrentService" backgroundColor="background20" foregroundColor="white" render="Label" font="RegularB;33" position="90,700" size="410,40" halign="left" valign="center" noWrap="1" transparent="1" zPosition="9">
+    <convert type="VNetSpeedInfo">RC</convert> Mbps ↓
+    <convert type="VNetSpeedInfo">TM</convert> Mbps ↑
+    <convert type="ConditionalShowHide" />
     </widget>
   </screen>
   <!-- HDD/USB Infopanel -->
