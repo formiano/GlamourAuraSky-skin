@@ -89,13 +89,27 @@ class GlamNetIcon(Renderer):
 			self.instance.hide()
 			return
 
+		# Estrae la stringa inviata dal convertitore (es: "bannatpers" oppure "vpn_off")
 		value = (self.source.text or "").strip()
 		lname = value.lower()
-		if lname in ("on", "true", "1", "yes", "vpn_on"):
-			value = "vpn_on"
-		elif lname in ("off", "false", "0", "no", "vpn_off"):
+
+		# 1. GESTIONE STATO SPENTO (OFF)
+		if lname in ("off", "false", "0", "no", "vpn_off", ""):
 			value = "vpn_off"
 
+		# 2. GESTIONE STATO ACCESO (ON)
+		else:
+			# Se arriva una stringa booleana generica di accensione, usa vpn_on
+			if lname in ("on", "true", "1", "yes", "vpn_on"):
+				value = "vpn_on"
+			else:
+				# Se arriva un nome specifico (es: "bannatpers"), verifica se l'icona esiste davvero
+				icon_found = self.findIcon(value)
+				if not icon_found:
+					# Se NON esiste il file "bannatpers.png", ripiega in automatico su "vpn_on.png"
+					value = "vpn_on"
+
+		# 3. CARICAMENTO DELLA GRAFICA DAL PERCORSO DELLA SKIN
 		iconPath = self.cache.get(value, "")
 		if not iconPath:
 			iconPath = self.findIcon(value)
@@ -103,7 +117,6 @@ class GlamNetIcon(Renderer):
 				self.cache[value] = iconPath
 
 		if iconPath:
-
 			if iconPath != self.currentIcon:
 				self._loadPixmap(iconPath)
 				self.currentIcon = iconPath
