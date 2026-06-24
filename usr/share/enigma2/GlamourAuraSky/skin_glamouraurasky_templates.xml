@@ -2280,7 +2280,7 @@
 		<convert type="ConditionalShowHide" />
      </widget>
      <ePixmap pixmap="GlamourAuraSky/menu/infobar.png" position="1500,750" zPosition="-5" size="400,50" alphatest="off" transparent="1" />
-     <widget source="session.CurrentService" render="GlamNetIcon" position="1500,755" size="40,40" path="infobar/vpn" alphatest="blend" transparent="1" zPosition="13">
+     <widget source="session.CurrentService" render="GlamNetIcon" position="1500,755" size="42,42" path="infobar/vpn" alphatest="blend" transparent="1" zPosition="13">
     <convert type="opdvpninfo">VpnVisible</convert>
     <convert type="ConditionalShowHide" />
     <convert type="opdvpninfo">VpnActiveICON</convert>
@@ -2979,7 +2979,7 @@
     <widget source="session.CurrentService" render="Label" position="90,610" size="310,40" font="Numbers; 29" zPosition="6" backgroundColor="background20" transparent="1" text="Internal IP" halign="left" noWrap="1">
       <convert type="GlamourNetInfo">InternalIP</convert>
     </widget>
-    <widget source="session.CurrentService" render="GlamNetIcon" position="45,655" size="40,40" path="infobar/vpn" alphatest="blend" transparent="1" zPosition="13">
+    <widget source="session.CurrentService" render="GlamNetIcon" position="45,655" size="42,42" path="infobar/vpn" alphatest="blend" transparent="1" zPosition="13">
     <convert type="opdvpninfo">VpnVisible</convert>
     <convert type="ConditionalShowHide" />
     <convert type="opdvpninfo">VpnActiveICON</convert>
