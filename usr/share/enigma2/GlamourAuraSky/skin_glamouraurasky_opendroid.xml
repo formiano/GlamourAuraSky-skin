@@ -1350,12 +1350,12 @@
     <panel name="CommonInfo" />
   </screen>
   <!-- 1-07. Receiver Info -->
-  <screen name="ReceiverInformation" position="0,0" size="1920,1080" title="Receiver Information" flags="wfNoBorder" backgroundColor="transparent">
+<screen name="ReceiverInformation" position="0,0" size="1920,1080" title="Receiver Information" flags="wfNoBorder" backgroundColor="transparent">
     <panel name="ScreenElements3" />
-    <widget name="boxpic" position="80,315" size="400,160" zPosition="2" transparent="1" alphatest="blend" />
     <eLabel position="60,290" size="464,250" zPosition="1" backgroundColor="background40" />
+    <widget name="boxpic" position="92,335" size="400,160" zPosition="2" transparent="1" alphatest="blend" />
     <panel name="CommonInfo3" />
-  </screen>
+</screen>
   <!-- 1-08. Tuner Info -->
   <screen name="TunerInformation" position="0,0" size="1920,1080" title="Tuner Information" flags="wfNoBorder" backgroundColor="transparent">
     <panel name="ScreenElements2" />
