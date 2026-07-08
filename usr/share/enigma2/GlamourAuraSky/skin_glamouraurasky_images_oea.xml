@@ -342,8 +342,8 @@
       <convert type="slide">Progress</convert>
     </widget>
   </screen>
-  <!-- 19. ModelPic -->
-  <screen name="ModelPic" position="0,0" size="1920,1080" title="ModelPic" backgroundColor="transparent" flags="wfNoBorder" alphatest="on">
+  <!-- 19. OpdHardwarePicture -->
+  <screen name="OpdHardwarePicture" position="0,0" size="1920,1080" title="OpdHardwarePicture" backgroundColor="transparent" flags="wfNoBorder" alphatest="on">
     <panel name="ScreenElements2" />
     <ePixmap position="50,315" size="400,400" pixmap="GACommon/images/devicemanager.png" alphatest="on" transparent="1" zPosition="5" />
     <widget name="model" position="540,270" size="1305,300" font="Regular; 45" halign="center" backgroundColor="background20" transparent="1" foregroundColor="cyan1" zPosition="6" />

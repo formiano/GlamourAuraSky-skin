@@ -1338,19 +1338,19 @@
     <panel name="CommonInfo3" />
   </screen>
   <!-- 1-05. Translation Info -->
-  <screen name="TranslationInformation" position="0,0" size="1920,1080" title="Information" flags="wfNoBorder" backgroundColor="transparent">
+  <screen name="OpdTranslationDetails" position="0,0" size="1920,1080" title="Information" flags="wfNoBorder" backgroundColor="transparent">
     <panel name="ScreenElements2" />
     <ePixmap position="50,315" size="400,400" pixmap="GACommon/images/translation.png" alphatest="on" transparent="1" zPosition="5" />
     <panel name="CommonInfo3" />
   </screen>
   <!-- 1-06. Network Info -->
-  <screen name="SystemNetworkInfo" position="0,0" size="1920,1080" title="Network Information" flags="wfNoBorder" backgroundColor="transparent">
+  <screen name="OpdNetworkDetails" position="0,0" size="1920,1080" title="Network Information" flags="wfNoBorder" backgroundColor="transparent">
     <panel name="ScreenElements2" />
     <ePixmap position="50,315" size="400,400" pixmap="GACommon/images/network.png" alphatest="on" transparent="1" zPosition="5" />
     <panel name="CommonInfo" />
   </screen>
   <!-- 1-07. Receiver Info -->
-<screen name="ReceiverInformation" position="0,0" size="1920,1080" title="Receiver Information" flags="wfNoBorder" backgroundColor="transparent">
+<screen name="OpdHardwareDetails" position="0,0" size="1920,1080" title="Receiver Information" flags="wfNoBorder" backgroundColor="transparent">
     <panel name="ScreenElements3" />
     <eLabel position="60,290" size="464,250" zPosition="1" backgroundColor="background40" />
     <widget name="boxpic" position="92,335" size="400,160" zPosition="2" transparent="1" alphatest="blend" />
@@ -1369,7 +1369,7 @@
     <panel name="CommonInfo3" />
   </screen>
   <!-- 1-10. Memory Info -->
-  <screen name="MemoryInformation" position="0,0" size="1920,1080" title="Memory Information" flags="wfNoBorder" backgroundColor="transparent">
+  <screen name="OpdMemoryDetails" position="0,0" size="1920,1080" title="Memory Information" flags="wfNoBorder" backgroundColor="transparent">
     <panel name="ScreenElements2" />
     <ePixmap position="50,315" size="400,400" pixmap="GACommon/images/memory.png" alphatest="on" transparent="1" zPosition="5" />
     <panel name="CommonInfo" />
@@ -1381,13 +1381,13 @@
     <panel name="CommonInfo3" />
   </screen>
   <!-- 1-12. Streaming Info -->
-  <screen name="StreamingInformation" position="0,0" size="1920,1080" title="Streaming Information" flags="wfNoBorder" backgroundColor="transparent">
+  <screen name="OpdStreamingDetails" position="0,0" size="1920,1080" title="Streaming Information" flags="wfNoBorder" backgroundColor="transparent">
     <panel name="ScreenElements2" />
     <ePixmap position="50,315" size="400,400" pixmap="GACommon/images/streaming.png" alphatest="on" transparent="1" zPosition="5" />
     <panel name="CommonInfo3" />
   </screen>
   <!-- 1-13. Geolocation Info -->
-  <screen name="GeolocationInformation" position="0,0" size="1920,1080" title="Geolocation Information" flags="wfNoBorder" backgroundColor="transparent">
+  <screen name="OpdGeolocationDetails" position="0,0" size="1920,1080" title="Geolocation Information" flags="wfNoBorder" backgroundColor="transparent">
     <panel name="ScreenElements2" />
     <ePixmap position="50,315" size="400,400" pixmap="GACommon/images/geolocation.png" alphatest="on" transparent="1" zPosition="5" />
     <panel name="CommonInfo3" />
@@ -1426,7 +1426,7 @@
     <panel name="CommonInfo3" />
   </screen>
   <!-- 1-19. General Info -->
-  <screen name="Information" position="0,0" size="1920,1080" title="Information" flags="wfNoBorder" backgroundColor="transparent">
+  <screen name="OpdServiceDetails" position="0,0" size="1920,1080" title="Information" flags="wfNoBorder" backgroundColor="transparent">
     <panel name="ScreenElements2" />
     <ePixmap position="50,315" size="400,400" pixmap="GACommon/images/service_info.png" alphatest="on" transparent="1" zPosition="5" />
     <panel name="CommonInfo3" />
