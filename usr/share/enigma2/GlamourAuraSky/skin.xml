@@ -1563,6 +1563,10 @@
       <convert type="GlamourAccess">Emu</convert>
       <convert type="ConditionalShowHide" />
     </widget>
+    <widget source="session.CurrentService" render="Pixmap" pixmap="GACommon/caids/softcsa.png" position="1800,903" size="63,30" zPosition="3" alphatest="blend" transparent="1">
+      <convert type="ServiceInfo">IsSoftCSA</convert>
+      <convert type="ConditionalShowHide" />
+    </widget>
     <widget source="session.CurrentService" render="Pixmap" pixmap="GACommon/caids/crd.png" position="1800,903" size="63,30" zPosition="4" alphatest="blend" transparent="1">
       <convert type="GlamourAccess">Crd</convert>
       <convert type="ConditionalShowHide" />
