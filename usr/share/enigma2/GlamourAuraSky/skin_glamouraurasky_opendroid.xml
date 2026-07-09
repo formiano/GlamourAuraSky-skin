@@ -1426,7 +1426,7 @@
     <panel name="CommonInfo3" />
   </screen>
   <!-- 1-19. General Info -->
-  <screen name="OpdServiceDetails" position="0,0" size="1920,1080" title="Information" flags="wfNoBorder" backgroundColor="transparent">
+  <screen name="Information" position="0,0" size="1920,1080" title="Information" flags="wfNoBorder" backgroundColor="transparent">
     <panel name="ScreenElements2" />
     <ePixmap position="50,315" size="400,400" pixmap="GACommon/images/service_info.png" alphatest="on" transparent="1" zPosition="5" />
     <panel name="CommonInfo3" />

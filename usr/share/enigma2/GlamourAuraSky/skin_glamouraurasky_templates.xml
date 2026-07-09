@@ -246,6 +246,7 @@
     <menu key="parental_setup" image="GACommon/images/parental.png" />
     <menu key="softcam_settings" image="GACommon/images/camd.png" />
     <menu key="softcam_setup" image="GACommon/images/camsetup.png" />
+    <menu key="softcsa_settings" image="GACommon/images/camsetup.png" />
     <menu key="streamrelay_settings" image="GACommon/images/streaming.png" />
     <!-- Shutdown -->
     <menu key="chkroot_multiboot" image="GACommon/images/multiboot.png" />
