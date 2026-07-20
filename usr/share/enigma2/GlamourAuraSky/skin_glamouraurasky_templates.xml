@@ -123,6 +123,7 @@
     <menu key="device_manager" image="GACommon/images/devicemanager.png" />
     <menu key="dvdplayer_setup" image="GACommon/images/dvd.png" />
     <menu key="iptv_config" image="GACommon/images/iptv_config.png" />
+    <menu key="OpendroidVodCategories" image="GACommon/images/iptv_config.png" />
     <menu key="iptv_player" image="GACommon/images/iptv_player.png" />
     <menu key="language_setup" image="GACommon/images/languages.png" />
     <menu key="LED_Giga" image="GACommon/images/gigaled.png" />
@@ -594,6 +595,22 @@
     <widget objectTypes="key_blue,Label,Button" name="key_blue" position="1360,990" size="530,50" zPosition="6" font="Regular; 32" halign="center" backgroundColor="background20" transparent="1" valign="bottom" />
     <widget objectTypes="blue,Label,Button" name="blue" position="1360,990" size="530,50" zPosition="6" font="Regular; 32" halign="center" backgroundColor="background20" transparent="1" valign="bottom" />
     <widget objectTypes="key_blue,StaticText" source="key_blue" render="Label" position="1360,990" size="530,50" zPosition="6" font="Regular; 32" halign="center" backgroundColor="background20" transparent="1" valign="bottom" />
+  </screen>
+    <screen name="FullKeys-vod" flags="wfNoBorder">
+    <widget objectTypes="key_red,StaticText" source="key_red" render="Pixmap" pixmap="GACommon/buttons/aura_red.png" position="50,870" size="225,75" alphatest="blend" zPosition="5" transparent="1">
+      <convert type="ConditionalShowHide" />
+    </widget>
+    <ePixmap objectTypes="key_red,red,Button,Label" pixmap="GACommon/buttons/aura_red.png" position="50,870" size="225,75" alphatest="blend" zPosition="5" transparent="1" />
+    <widget objectTypes="key_red,Label,Button" name="key_red" position="2,862" size="320,90" zPosition="6" font="Regular;32" halign="center" backgroundColor="background20" transparent="1" valign="bottom" />
+    <widget objectTypes="red,Label,Button" name="red" position="2,862" size="320,90" zPosition="6" font="Regular;32" halign="center" backgroundColor="background20" transparent="1" valign="bottom" />
+    <widget objectTypes="key_red,StaticText" source="key_red" render="Label" position="2,862" size="320,90" zPosition="6" font="Regular;32" halign="center" backgroundColor="background20" transparent="1" valign="bottom" />
+    <widget objectTypes="key_green,StaticText" source="key_green" render="Pixmap" pixmap="GACommon/buttons/aura_green.png" position="300,870" size="225,75" alphatest="blend" zPosition="5" transparent="1">
+      <convert type="ConditionalShowHide" />
+    </widget>
+    <ePixmap objectTypes="key_green,green,Button,Label" pixmap="GACommon/buttons/aura_green.png" position="300,870" size="225,75" alphatest="blend" zPosition="5" transparent="1" />
+    <widget objectTypes="key_green,Label,Button" name="key_green" position="252,862" size="320,90" zPosition="6" font="Regular;32" halign="center" backgroundColor="background20" transparent="1" valign="bottom" />
+    <widget objectTypes="green,Label,Button" name="green" position="252,862" size="320,90" zPosition="6" font="Regular;32" halign="center" backgroundColor="background20" transparent="1" valign="bottom" />
+    <widget objectTypes="key_green,StaticText" source="key_green" render="Label" position="252,862" size="320,90" zPosition="6" font="Regular;32" halign="center" backgroundColor="background20" transparent="1" valign="bottom" />
   </screen>
   <screen name="FullKeys1" flags="wfNoBorder">
     <!-- Button Graphics -->
@@ -1916,6 +1933,13 @@
     <ePixmap pixmap="GACommon/menu/menufaderight.png" position="1795,0" zPosition="-11" size="75,1080" alphatest="off" transparent="1" />
     <ePixmap pixmap="GACommon/menu/menufadebottom.png" position="795,1005" zPosition="-11" size="1000,75" alphatest="off" transparent="1" />
   </screen>
+  <screen name="MainBackground4" flags="wfNoBorder">
+    <ePixmap pixmap="GlamourAuraSky/menu/menuhalo.png" position="294,60" size="232,900" transparent="1" alphatest="off" zPosition="-12" />
+    <ePixmap pixmap="GlamourAuraSky/menu/accentglowtl.png" position="525,0" size="300,270" zPosition="-9" alphatest="blend" transparent="1" />
+    <eLabel name="menubig" position="485,0" size="1440,1005" backgroundColor="background20" foregroundColor="background20" zPosition="-11" />
+    <ePixmap pixmap="GACommon/menu/menufaderight.png" position="1830,0" zPosition="-11" size="75,1080" alphatest="off" transparent="1" />
+    <ePixmap pixmap="GACommon/menu/menufadebottom.png" position="525,1005" zPosition="-11" size="1305,75" alphatest="off" transparent="1" />
+  </screen>
   <screen name="MainBackgroundClock" flags="wfNoBorder">
     <ePixmap pixmap="GlamourAuraSky/menu/accentglowtl.png" position="645,0" size="300,270" zPosition="-9" alphatest="blend" transparent="1" />
     <eLabel name="eventview" position="645,0" size="1200,1005" backgroundColor="background20" foregroundColor="background20" zPosition="-11" />
@@ -1991,6 +2015,13 @@
   </screen>
   <screen name="ScreenElements6" flags="wfNoBorder">
     <panel name="MainBackgroundMS" />
+    <panel name="ClockLabel1" />
+    <panel name="Title1" />
+  </screen>
+    <screen name="ScreenElements7" flags="wfNoBorder">
+  </screen>
+    <screen name="ScreenElements8" flags="wfNoBorder">
+    <panel name="MainBackground4" />
     <panel name="ClockLabel1" />
     <panel name="Title1" />
   </screen>
