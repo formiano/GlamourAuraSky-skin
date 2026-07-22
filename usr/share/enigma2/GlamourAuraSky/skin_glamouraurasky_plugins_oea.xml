@@ -1512,8 +1512,8 @@
 	<widget name="vod_backdrop" position="0,0" size="1920,1080" transparent="1" zPosition="-1" />
 	<widget name="vod_logo" position="1560,20" size="300,100" transparent="1" zPosition="3" alphatest="blend" />
 	<widget source="Title" render="Label" position="50,40" size="820,80" font="Regular;34" backgroundColor="black" transparent="1" halign="left" valign="top" zPosition="4" foregroundColor="cyan1" />
-	<widget name="list" font="Regular;32" position="50,120" size="720,760" scrollbarMode="showOnDemand" selectionPixmap="GlamourAuraSky/selections/aurasel.png" alphatest="off" backgroundColor="black" itemHeight="50" enableWrapAround="1" transparent="1" zPosition="9" />
-	<widget name="vod_cover" position="780,50" cornerRadius="15" size="600,1060" transparent="1" zPosition="2" />
+	<widget name="list" font="Regular;32" position="50,100" size="720,650" scrollbarMode="showOnDemand" selectionPixmap="GlamourAuraSky/selections/aurasel.png" alphatest="off" backgroundColor="black" itemHeight="50" enableWrapAround="1" transparent="1" zPosition="9" />
+	<widget name="vod_cover" position="780,50" cornerRadius="15" size="600,1000" transparent="1" zPosition="2" />
 	<widget name="yearstxt" position="910,730" size="90,32" font="Regular;26" halign="left" foregroundColor="#49bbff" backgroundColor="black" transparent="1" zPosition="2" />
 	<widget name="years" position="1000,730" size="390,32" font="Regular;26" halign="left" foregroundColor="#ffffff" backgroundColor="black" transparent="1" zPosition="2" />
 	<widget name="genretxt" position="910,775" size="480,32" font="Regular;26" halign="left" foregroundColor="#49bbff" backgroundColor="black" transparent="1" zPosition="2" />
@@ -1530,14 +1530,21 @@
 	<widget name="vod_director" position="1600,520" size="300,32" font="Regular;26" halign="left" foregroundColor="#ffffff" backgroundColor="black" transparent="1" zPosition="2" />
 	<widget name="vod_cast_label" position="1450,570" size="440,32" font="Regular;28" halign="left" foregroundColor="#49bbff" backgroundColor="black" transparent="1" zPosition="2" />
 	<widget name="vod_cast" position="1450,615" size="440,240" font="Regular;24" halign="left" foregroundColor="#ffffff" backgroundColor="black" transparent="1" zPosition="2" />
-     <panel name="FullKeys-vod" />
+	<!-- duration (duration) -->
+  <widget source="durationtxt" render="Label" position="50,765" size="150,35" font="Regular;32" transparent="1" zPosition="5" foregroundColor="cyan1" backgroundColor="background20" />
+	<widget source="duration" render="Label" position="195,765" size="350,35" font="Regular;32" transparent="1" zPosition="5" foregroundColor="cyan1" backgroundColor="background20" />
+    <widget source="video_info" render="Label" position="50,815" size="500,35" font="Regular;32" transparent="1" zPosition="5" foregroundColor="cyan1" backgroundColor="background20" />
+    <widget source="audio_info" render="Label" position="360,815" size="500,35" font="Regular;32" transparent="1" zPosition="5" foregroundColor="cyan1" backgroundColor="background20" />
+    <widget source="bitrate_info" render="Label" position="50,865" size="500,35" font="Regular;32" transparent="1" zPosition="5" foregroundColor="cyan1" backgroundColor="background20" />
+    <widget source="language" render="Label" position="50,915" size="500,35" font="Regular;32" transparent="1" zPosition="5" foregroundColor="cyan1" backgroundColor="background20" />
+	<panel name="FullKeys-vod" />
   </screen>
    <screen name="OpendroidVodCategories" position="0,0" size="1920,1080" title="OpenDroid VoD Categories" flags="wfNoBorder" backgroundColor="transparent">
     <panel name="ScreenElements2" />
     <ePixmap position="50,315" size="400,400" pixmap="GACommon/images/iptv.png" alphatest="on" transparent="1" zPosition="5" />
     <widget name="vod_logo" position="1560,20" size="300,100" transparent="1" zPosition="3" alphatest="blend" />
     <widget name="title" position="700,80" size="1140,105" font="RegularB; 36" halign="center" valign="bottom" backgroundColor="background20" transparent="1" zPosition="4" foregroundColor="cyan1" />
-    <widget name="list" position="535,70" size="1305,800" font="Regular; 32" itemHeight="50" scrollbarMode="showOnDemand" transparent="1" selectionPixmap="GlamourAuraSky/selections/aurasel.png" alphatest="off" zPosition="4" />
+    <widget name="list" position="535,70" size="780,800" font="Regular; 32" itemHeight="50" scrollbarMode="showOnDemand" transparent="1" selectionPixmap="GlamourAuraSky/selections/aurasel.png" alphatest="off" zPosition="4" />
     <panel name="FullKeys1" />
 </screen>
   <screen name="IPTVSetupMainWidget" position="0,0" size="1920,1080" title="E2iPlayer setup version %s" flags="wfNoBorder" backgroundColor="transparent">
