@@ -123,7 +123,7 @@
     <menu key="device_manager" image="GACommon/images/devicemanager.png" />
     <menu key="dvdplayer_setup" image="GACommon/images/dvd.png" />
     <menu key="iptv_config" image="GACommon/images/iptv_config.png" />
-    <menu key="OpendroidVodCategories" image="GACommon/images/iptv_config.png" />
+    <menu key="VodSetup" image="GACommon/images/iptv_config.png" />
     <menu key="iptv_player" image="GACommon/images/iptv_player.png" />
     <menu key="language_setup" image="GACommon/images/languages.png" />
     <menu key="LED_Giga" image="GACommon/images/gigaled.png" />
@@ -597,20 +597,20 @@
     <widget objectTypes="key_blue,StaticText" source="key_blue" render="Label" position="1360,990" size="530,50" zPosition="6" font="Regular; 32" halign="center" backgroundColor="background20" transparent="1" valign="bottom" />
   </screen>
     <screen name="FullKeys-vod" flags="wfNoBorder">
-    <widget objectTypes="key_red,StaticText" source="key_red" render="Pixmap" pixmap="GACommon/buttons/aura_red.png" position="50,870" size="225,75" alphatest="blend" zPosition="5" transparent="1">
+    <widget objectTypes="key_red,StaticText" source="key_red" render="Pixmap" pixmap="GACommon/buttons/aura_red.png" position="50,970" size="225,75" alphatest="blend" zPosition="5" transparent="1">
       <convert type="ConditionalShowHide" />
     </widget>
-    <ePixmap objectTypes="key_red,red,Button,Label" pixmap="GACommon/buttons/aura_red.png" position="50,870" size="225,75" alphatest="blend" zPosition="5" transparent="1" />
+    <ePixmap objectTypes="key_red,red,Button,Label" pixmap="GACommon/buttons/aura_red.png" position="50,970" size="225,75" alphatest="blend" zPosition="5" transparent="1" />
     <widget objectTypes="key_red,Label,Button" name="key_red" position="2,862" size="320,90" zPosition="6" font="Regular;32" halign="center" backgroundColor="background20" transparent="1" valign="bottom" />
     <widget objectTypes="red,Label,Button" name="red" position="2,862" size="320,90" zPosition="6" font="Regular;32" halign="center" backgroundColor="background20" transparent="1" valign="bottom" />
-    <widget objectTypes="key_red,StaticText" source="key_red" render="Label" position="2,862" size="320,90" zPosition="6" font="Regular;32" halign="center" backgroundColor="background20" transparent="1" valign="bottom" />
-    <widget objectTypes="key_green,StaticText" source="key_green" render="Pixmap" pixmap="GACommon/buttons/aura_green.png" position="300,870" size="225,75" alphatest="blend" zPosition="5" transparent="1">
+    <widget objectTypes="key_red,StaticText" source="key_red" render="Label" position="2,962" size="320,90" zPosition="6" font="Regular;32" halign="center" backgroundColor="background20" transparent="1" valign="bottom" />
+    <widget objectTypes="key_green,StaticText" source="key_green" render="Pixmap" pixmap="GACommon/buttons/aura_green.png" position="300,970" size="225,75" alphatest="blend" zPosition="5" transparent="1">
       <convert type="ConditionalShowHide" />
     </widget>
-    <ePixmap objectTypes="key_green,green,Button,Label" pixmap="GACommon/buttons/aura_green.png" position="300,870" size="225,75" alphatest="blend" zPosition="5" transparent="1" />
-    <widget objectTypes="key_green,Label,Button" name="key_green" position="252,862" size="320,90" zPosition="6" font="Regular;32" halign="center" backgroundColor="background20" transparent="1" valign="bottom" />
+    <ePixmap objectTypes="key_green,green,Button,Label" pixmap="GACommon/buttons/aura_green.png" position="300,970" size="225,75" alphatest="blend" zPosition="5" transparent="1" />
+    <widget objectTypes="key_green,Label,Button" name="key_green" position="252,962" size="320,90" zPosition="6" font="Regular;32" halign="center" backgroundColor="background20" transparent="1" valign="bottom" />
     <widget objectTypes="green,Label,Button" name="green" position="252,862" size="320,90" zPosition="6" font="Regular;32" halign="center" backgroundColor="background20" transparent="1" valign="bottom" />
-    <widget objectTypes="key_green,StaticText" source="key_green" render="Label" position="252,862" size="320,90" zPosition="6" font="Regular;32" halign="center" backgroundColor="background20" transparent="1" valign="bottom" />
+    <widget objectTypes="key_green,StaticText" source="key_green" render="Label" position="252,962" size="320,90" zPosition="6" font="Regular;32" halign="center" backgroundColor="background20" transparent="1" valign="bottom" />
   </screen>
   <screen name="FullKeys1" flags="wfNoBorder">
     <!-- Button Graphics -->
