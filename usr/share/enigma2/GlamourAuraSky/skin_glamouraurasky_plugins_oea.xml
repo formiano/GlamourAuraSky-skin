@@ -1539,14 +1539,33 @@
     <widget source="language" render="Label" position="50,915" size="500,35" font="Regular;32" transparent="1" zPosition="5" foregroundColor="cyan1" backgroundColor="background20" />
 	<panel name="FullKeys-vod" />
   </screen>
-   <screen name="OpendroidVodCategories" position="0,0" size="1920,1080" title="OpenDroid VoD Categories" flags="wfNoBorder" backgroundColor="transparent">
-    <panel name="ScreenElements2" />
+ <screen name="OpendroidVodCategories" position="0,0" size="1920,1080" title="OpenDroid VoD Categories" flags="wfNoBorder" backgroundColor="transparent">
+    <panel name="ScreenElements9" />
     <ePixmap position="50,315" size="400,400" pixmap="GACommon/images/iptv.png" alphatest="on" transparent="1" zPosition="5" />
-    <widget name="vod_logo" position="1560,20" size="300,100" transparent="1" zPosition="3" alphatest="blend" />
-    <widget name="title" position="700,80" size="1140,105" font="RegularB; 36" halign="center" valign="bottom" backgroundColor="background20" transparent="1" zPosition="4" foregroundColor="cyan1" />
-    <widget name="list" position="535,70" size="780,800" font="Regular; 32" itemHeight="50" scrollbarMode="showOnDemand" transparent="1" selectionPixmap="GlamourAuraSky/selections/aurasel.png" alphatest="off" zPosition="4" />
+    <widget name="list" font="Regular; 32" position="540,130" size="1305,650" scrollbarMode="showOnDemand" backgroundColor="background20" foregroundColor="white" itemHeight="50" enableWrapAround="1" transparent="1" selectionPixmap="GlamourAuraSky/selections/aurasel.png" alphatest="off" zPosition="5" />
+    <widget source="Title" position="700,80" size="1140,105" font="RegularB; 36" halign="center" valign="bottom" backgroundColor="background20" transparent="1" zPosition="4" foregroundColor="cyan1" />
     <panel name="FullKeys1" />
-</screen>
+  </screen>
+   <screen name="OpendroidLiveCategories" position="0,0" size="1920,1080" title="OpenDroid Live Categories" flags="wfNoBorder" backgroundColor="transparent">
+    <panel name="ScreenElements9" />
+    <ePixmap position="50,315" size="400,400" pixmap="GACommon/images/iptv.png" alphatest="on" transparent="1" zPosition="5" />
+    <widget name="list" font="Regular; 32" position="540,130" size="1305,650" scrollbarMode="showOnDemand" backgroundColor="background20" foregroundColor="white" itemHeight="50" enableWrapAround="1" transparent="1" selectionPixmap="GlamourAuraSky/selections/aurasel.png" alphatest="off" zPosition="5" />
+    <widget source="Title" position="700,80" size="1140,105" font="RegularB; 36" halign="center" valign="bottom" backgroundColor="background20" transparent="1" zPosition="4" foregroundColor="cyan1" />
+    <panel name="FullKeys1" />
+  </screen>
+  <screen name="OpendroidLiveList" position="0,0" size="1920,1080" title="OpenDroid Live" flags="wfNoBorder" backgroundColor="transparent">
+        <panel name="ScreenElements9"/>
+        <widget name="live_backdrop" position="0,0" size="1920,1080" transparent="1" zPosition="-1"/>
+        <widget name="Title" position="80,40" size="1200,80" font="Regular;46" transparent="1"/>
+        <widget name="live_logo" position="830,800" size="200,60" transparent="1" zPosition="5"/>
+        <ePixmap position="50,315" size="400,400" pixmap="GACommon/images/iptv.png" alphatest="on" transparent="1" zPosition="5"/>
+        <widget source="channel_info" render="Label" position="540,800" size="1150,60" font="Regular;34" transparent="1" zPosition="5"/>
+        <widget name="list" font="Regular; 32" position="540,110" size="1305,650" scrollbarMode="showOnDemand" backgroundColor="background20" foregroundColor="white" itemHeight="50" enableWrapAround="1" transparent="1" selectionPixmap="GlamourAuraSky/selections/aurasel.png" alphatest="off" zPosition="5" />
+        <ePixmap position="50,315" size="400,400" pixmap="GACommon/images/iptv.png" alphatest="on" transparent="1" zPosition="5"/>
+        <ePixmap pixmap="GlamourAuraSky/menu/accentglowt810.png" position="540,757" size="810,45" zPosition="5" alphatest="blend" transparent="1"/>
+        <ePixmap pixmap="GlamourAuraSky/menu/accentglowb810.png" position="1040,860" size="810,45" zPosition="5" alphatest="blend" transparent="1"/>
+        <panel name="FullKeys1"/>
+  </screen>
   <screen name="IPTVSetupMainWidget" position="0,0" size="1920,1080" title="E2iPlayer setup version %s" flags="wfNoBorder" backgroundColor="transparent">
     <panel name="ScreenElements2" />
     <ePixmap position="50,315" size="400,400" pixmap="GACommon/images/iptv.png" alphatest="on" transparent="1" zPosition="5" />

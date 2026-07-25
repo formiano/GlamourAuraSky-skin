@@ -2020,10 +2020,14 @@
   </screen>
     <screen name="ScreenElements7" flags="wfNoBorder">
   </screen>
-    <screen name="ScreenElements8" flags="wfNoBorder">
+    <screen name="ScreenElements9" flags="wfNoBorder">
     <panel name="MainBackground4" />
     <panel name="ClockLabel1" />
-    <panel name="Title1" />
+    <panel name="Title3" />
+      <screen name="Title2" flags="wfNoBorder" alphatest="on" zPosition="6">
+    <ePixmap pixmap="GlamourAuraSky/menu/title_aura.png" position="0,945" zPosition="6" size="1920,135" alphatest="on" transparent="1" />
+    <widget source="Title" render="Label" position="200,945" size="1660,100" font="Regular; 70" foregroundColor="white" backgroundColor="transparent" transparent="1" valign="center" zPosition="7" noWrap="1" shadowColor="background20" shadowOffset="2,2" />
+  </screen>
   </screen>
   <screen name="EventViewScreen" flags="wfNoBorder">
     <panel name="MainBackgroundClock" />
@@ -2042,6 +2046,10 @@
   <screen name="Title2" flags="wfNoBorder" alphatest="on" zPosition="6">
     <ePixmap pixmap="GlamourAuraSky/menu/title_aura.png" position="0,945" zPosition="6" size="1920,135" alphatest="on" transparent="1" />
     <widget source="Title" render="Label" position="200,945" size="1660,100" font="Regular; 70" foregroundColor="white" backgroundColor="transparent" transparent="1" valign="center" zPosition="7" noWrap="1" shadowColor="background20" shadowOffset="2,2" />
+  </screen>
+    <screen name="Title3" flags="wfNoBorder" alphatest="on" zPosition="6">
+    <ePixmap pixmap="GlamourAuraSky/menu/title_aura.png" position="0,945" zPosition="6" size="1920,135" alphatest="on" transparent="1" />
+    <widget source="Title" render="Label" position="540,20" size="1660,50" font="Regular; 50" foregroundColor="white" backgroundColor="transparent" transparent="1" valign="center" zPosition="7" noWrap="1" shadowColor="background20" shadowOffset="2,2" />
   </screen>
   <!-- 07. WEATHER -->
   <!-- 07-0 Weather Background -->
