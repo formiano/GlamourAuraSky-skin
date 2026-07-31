@@ -2349,7 +2349,7 @@
     </widget>
     <widget source="session.Event_Now" render="Label" position="1430,837" size="180,53" font="Regular; 33" halign="center" transparent="1" backgroundColor="background20" foregroundColor="white" noWrap="1" zPosition="11" valign="center">
       <convert type="EventTime">Remaining</convert>
-      <convert type="RemainingToText">InMinutes</convert>
+      <convert type="RemainingToText">OnlyMinute</convert>
     </widget>
     <widget source="session.Event_Now" render="Progress" pixmap="GlamourAuraSky/pointers/pointer_infobar.png" alphatest="blend" position="350,890" size="1258,6" zPosition="7" transparent="1">
       <convert type="EventTime">Progress</convert>
