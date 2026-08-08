@@ -1560,7 +1560,7 @@
         <widget name="live_logo" position="830,800" size="200,60" transparent="1" zPosition="5"/>
         <ePixmap position="50,315" size="400,400" pixmap="GACommon/images/iptv.png" alphatest="on" transparent="1" zPosition="5"/>
         <widget source="channel_info" render="Label" position="540,800" size="1150,60" font="Regular;34" transparent="1" zPosition="5"/>
-        <widget name="list" font="Regular; 32" position="540,110" size="1305,650" scrollbarMode="showOnDemand" backgroundColor="background20" foregroundColor="white" itemHeight="50" enableWrapAround="1" transparent="1" selectionPixmap="GlamourAuraSky/selections/aurasel.png" alphatest="off" zPosition="5" />
+        <widget name="list" font="Regular; 45" position="540,110" size="1305,650" scrollbarMode="showOnDemand" backgroundColor="background20" foregroundColor="white" itemHeight="70" enableWrapAround="1" transparent="1" selectionPixmap="GlamourAuraSky/selections/updatesel.png" alphatest="off" zPosition="3" />
         <ePixmap position="50,315" size="400,400" pixmap="GACommon/images/iptv.png" alphatest="on" transparent="1" zPosition="5"/>
         <ePixmap pixmap="GlamourAuraSky/menu/accentglowt810.png" position="540,757" size="810,45" zPosition="5" alphatest="blend" transparent="1"/>
         <ePixmap pixmap="GlamourAuraSky/menu/accentglowb810.png" position="1040,860" size="810,45" zPosition="5" alphatest="blend" transparent="1"/>
