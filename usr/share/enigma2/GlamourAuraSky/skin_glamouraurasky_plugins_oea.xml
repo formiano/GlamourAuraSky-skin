@@ -1038,6 +1038,14 @@
     <widget name="content" position="540,760" size="1305,50" backgroundColor="background20" transparent="1" font="RegularB; 32" zPosition="5" foregroundColor="cyan" />
     <panel name="FullKeys1" />
   </screen>
+    <!-- RTSP / HLS STREAMING STATUS -->
+  <screen name="StreamServerStatus" position="0,0" size="1920,1080" title="RTSP / HLS Streaming Status" flags="wfNoBorder" backgroundColor="transparent">
+    <panel name="ScreenElements2" />
+    <ePixmap position="50,315" size="400,400" pixmap="GACommon/images/transcode.png" alphatest="on" transparent="1" zPosition="5" />
+   <ePixmap position="50,315" size="400,400" pixmap="GACommon/images/transcode.png" alphatest="on" transparent="1" zPosition="5" />
+   <widget name="information" position="540,20" size="1300,830" font="Regular;32" splitPosition="300" splitTrim="1" scrollbarMode="showOnDemand" />
+  <panel name="FullKeys1" />
+  </screen>
   <!-- System Time -->
   <screen name="SystemTimeSetupScreen" position="0,0" size="1920,1080" title="Setup System Time" flags="wfNoBorder" backgroundColor="transparent">
     <panel name="ScreenElements2" />
